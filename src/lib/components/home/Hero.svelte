@@ -77,7 +77,7 @@
 	<div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<!-- TAGLINE -->
 		<h1
-			class="font-display max-w-4xl text-6xl font-bold leading-[1.05] tracking-tight text-[#161446] transition-all duration-1000 md:text-8xl lg:text-9xl dark:text-white"
+			class="font-display max-w-4xl text-4xl font-bold leading-[1.1] tracking-tight text-[#161446] transition-all duration-1000 md:text-6xl lg:text-7xl dark:text-white"
 			class:opacity-0={!isVisible}
 			class:translate-y-8={!isVisible}
 			class:opacity-100={isVisible}
