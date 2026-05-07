@@ -32,10 +32,10 @@
 <!-- NAVBAR -->
 <nav
 	class={cn(
-		'fixed top-0 right-0 left-0 z-50 transition-all duration-300',
+		'fixed top-0 right-0 left-0 z-50 border-b transition-all duration-300',
 		isScrolled
-			? 'border-b border-[#E2E8F0] bg-white/80 backdrop-blur-lg dark:border-[#2A2578] dark:bg-[#0B0A23]/80'
-			: 'bg-transparent',
+			? 'border-[#E2E8F0] bg-white/80 backdrop-blur-lg dark:border-[#2A2578] dark:bg-[#0B0A23]/80'
+			: 'border-transparent bg-transparent',
 	)}
 >
 	<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
