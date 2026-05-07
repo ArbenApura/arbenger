@@ -18,8 +18,8 @@
 <!-- FOOTER -->
 <footer class="border-t border-[#E2E8F0] bg-white dark:border-[#2A2578] dark:bg-[#0B0A23]">
 	<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-		<!-- FOOTER GRID: STACKED ON MOBILE, 3 COLUMNS ON DESKTOP -->
-		<div class="grid gap-8 md:grid-cols-3">
+		<!-- FOOTER GRID: STACKED ON MOBILE, 4 COLUMNS ON DESKTOP -->
+		<div class="grid gap-8 md:grid-cols-4">
 			<!-- LOGO + TAGLINE -->
 			<div>
 				<a href="/" class="flex items-center gap-3">
@@ -43,6 +43,37 @@
 							</a>
 						</li>
 					{/each}
+				</ul>
+			</div>
+
+			<!-- LEGAL LINKS -->
+			<div>
+				<h3 class="font-display text-sm font-bold tracking-tight text-[#0F172A] uppercase dark:text-white">Legal</h3>
+				<ul class="mt-4 space-y-2">
+					<li>
+						<a
+							href="/privacy"
+							class="text-sm text-[#64748B] transition-colors duration-200 hover:text-[#0891B2] dark:text-slate-400 dark:hover:text-[#22D3EE]"
+						>
+							Privacy Policy
+						</a>
+					</li>
+					<li>
+						<a
+							href="/terms"
+							class="text-sm text-[#64748B] transition-colors duration-200 hover:text-[#0891B2] dark:text-slate-400 dark:hover:text-[#22D3EE]"
+						>
+							Terms of Service
+						</a>
+					</li>
+					<li>
+						<a
+							href="/cookies"
+							class="text-sm text-[#64748B] transition-colors duration-200 hover:text-[#0891B2] dark:text-slate-400 dark:hover:text-[#22D3EE]"
+						>
+							Cookie Policy
+						</a>
+					</li>
 				</ul>
 			</div>
 

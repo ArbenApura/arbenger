@@ -7,6 +7,9 @@ const PAGES = [
 	{ path: '/products', priority: '0.8', changefreq: 'weekly' },
 	{ path: '/about', priority: '0.6', changefreq: 'monthly' },
 	{ path: '/contact', priority: '0.5', changefreq: 'monthly' },
+	{ path: '/privacy', priority: '0.3', changefreq: 'yearly' },
+	{ path: '/terms', priority: '0.3', changefreq: 'yearly' },
+	{ path: '/cookies', priority: '0.3', changefreq: 'yearly' },
 ];
 
 export const GET: RequestHandler = async () => {

@@ -5,6 +5,7 @@
 	// IMPORTED COMPONENTS
 	import Navbar from '$lib/components/layout/Navbar.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
+	import CookieBanner from '$lib/components/layout/CookieBanner.svelte';
 	import JsonLd from '$lib/components/seo/JsonLd.svelte';
 </script>
 
@@ -34,3 +35,4 @@
 </main>
 
 <Footer />
+<CookieBanner />
