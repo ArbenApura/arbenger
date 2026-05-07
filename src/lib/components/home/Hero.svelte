@@ -88,7 +88,7 @@
 			<br />
 			<span
 				class="animate-gradient bg-clip-text text-transparent"
-				style="background-image: linear-gradient(135deg, {$isDark ? '#22D3EE' : '#0891B2'}, {$isDark ? '#2DD4BF' : '#0D9488'}, {$isDark ? '#22D3EE' : '#0891B2'});"
+				style="background-image: linear-gradient(135deg, {$isDark ? '#22D3EE' : '#0F172A'}, {$isDark ? '#2DD4BF' : '#0891B2'}, {$isDark ? '#22D3EE' : '#0F172A'});"
 			>
 				<Typewriter phrases={HERO_PHRASES} typingSpeed={70} deletingSpeed={35} pauseDuration={2500} />
 			</span>
