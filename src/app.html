@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,10 +8,8 @@
 		<link rel="preload" href="%sveltekit.assets%/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin />
 		<link rel="preload" href="%sveltekit.assets%/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin />
 		<script>
-			if (localStorage.getItem('arbenger-theme') !== 'light') {
+			if (localStorage.getItem('arbenger-theme') === 'dark') {
 				document.documentElement.classList.add('dark');
-			} else {
-				document.documentElement.classList.remove('dark');
 			}
 		</script>
 		%sveltekit.head%

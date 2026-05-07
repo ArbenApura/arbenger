@@ -24,6 +24,10 @@
 
 	let timeoutId: ReturnType<typeof setTimeout>;
 
+	// -- REACTIVE STATES -- //
+
+	$: longestPhrase = phrases.reduce((a, b) => (a.length > b.length ? a : b), '');
+
 	// -- FUNCTIONS -- //
 
 	function tick() {
@@ -72,8 +76,12 @@
 	});
 </script>
 
-<!-- TYPEWRITER TEXT WITH BLINKING CURSOR -->
-<span class="inline">
-	{displayText}<span class="animate-blink ml-0.5 inline-block h-[0.85em] w-[3px] translate-y-[0.1em] bg-[#22D3EE]"
-	></span>
+<!-- TYPEWRITER WITH RESERVED WIDTH TO PREVENT LAYOUT SHIFT -->
+<span class="relative inline-grid">
+	<!-- HIDDEN SIZER — RESERVES WIDTH OF LONGEST PHRASE -->
+	<span class="invisible col-start-1 row-start-1" aria-hidden="true">{longestPhrase}_</span>
+	<!-- VISIBLE TYPED TEXT — OVERLAYS THE SIZER -->
+	<span class="col-start-1 row-start-1 whitespace-nowrap">
+		{displayText}<span class="animate-blink inline-block h-[0.85em] w-[3px] translate-y-[0.1em] bg-[#22D3EE]" aria-hidden="true"></span>
+	</span>
 </span>

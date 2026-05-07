@@ -6,7 +6,7 @@ import { browser } from '$app/environment';
 // PERSISTED TO localStorage KEY: arbenger-theme
 
 function createThemeStore() {
-	const initial = browser ? localStorage.getItem('arbenger-theme') !== 'light' : true;
+	const initial = browser ? localStorage.getItem('arbenger-theme') === 'dark' : false;
 
 	const { subscribe, set, update } = writable<boolean>(initial);
 
