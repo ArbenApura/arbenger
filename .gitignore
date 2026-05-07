@@ -2,6 +2,8 @@ node_modules
 .svelte-kit
 build
 .vercel
+.wrangler
+.cloudflare
 .env
 .env.*
 !.env.example
