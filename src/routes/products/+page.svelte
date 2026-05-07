@@ -8,6 +8,7 @@
 	// IMPORTED MODULES
 	import { cn } from '$lib/utils/cn';
 	import { categories } from '$lib/data/products';
+	import { reveal } from '$lib/actions/reveal';
 
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
@@ -54,7 +55,7 @@
 
 <!-- PAGE HERO -->
 <section class="relative pt-32 pb-16">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div use:reveal class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<SectionLabel label="PRODUCTS" />
 
 		<h1 class="font-display text-4xl font-bold tracking-tight text-white md:text-5xl">Our Products</h1>
@@ -67,7 +68,7 @@
 
 <!-- FILTER TABS -->
 <section class="relative pb-8">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div use:reveal={{ delay: 100 }} class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="flex flex-wrap gap-2">
 			{#each FILTERS as filter}
 				<button
@@ -90,53 +91,55 @@
 <section class="relative pb-24">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-			{#each filteredCategories as category (category.id)}
-				<Card>
-					<!-- CATEGORY ICON -->
-					<div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#22D3EE]/10">
-						{#if category.icon === 'chrome'}
-							<!-- INLINE SVG FOR CHROME — BRAND ICONS REMOVED IN LUCIDE V1+ -->
-							<svg
-								class="size-6 text-[#22D3EE]"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<rect x="3" y="3" width="18" height="18" rx="2" />
-								<path d="M7 7h10v10H7z" />
-								<path d="M12 3v4" />
-								<path d="M12 17v4" />
-								<path d="M3 12h4" />
-								<path d="M17 12h4" />
-							</svg>
-						{:else}
-							<svelte:component this={ICON_MAP[category.icon]} class="size-6 text-[#22D3EE]" />
-						{/if}
-					</div>
+			{#each filteredCategories as category, i (category.id)}
+				<div use:reveal={{ delay: i * 80 }}>
+					<Card>
+						<!-- CATEGORY ICON -->
+						<div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#22D3EE]/10">
+							{#if category.icon === 'chrome'}
+								<!-- INLINE SVG FOR CHROME — BRAND ICONS REMOVED IN LUCIDE V1+ -->
+								<svg
+									class="size-6 text-[#22D3EE]"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<rect x="3" y="3" width="18" height="18" rx="2" />
+									<path d="M7 7h10v10H7z" />
+									<path d="M12 3v4" />
+									<path d="M12 17v4" />
+									<path d="M3 12h4" />
+									<path d="M17 12h4" />
+								</svg>
+							{:else}
+								<svelte:component this={ICON_MAP[category.icon]} class="size-6 text-[#22D3EE]" />
+							{/if}
+						</div>
 
-					<!-- CATEGORY NAME -->
-					<h2 class="font-display text-lg font-bold tracking-tight text-white">
-						{category.name}
-					</h2>
+						<!-- CATEGORY NAME -->
+						<h2 class="font-display text-lg font-bold tracking-tight text-white">
+							{category.name}
+						</h2>
 
-					<!-- CATEGORY DESCRIPTION -->
-					<p class="mt-2 text-sm text-slate-300">
-						{category.description}
-					</p>
+						<!-- CATEGORY DESCRIPTION -->
+						<p class="mt-2 text-sm text-slate-300">
+							{category.description}
+						</p>
 
-					<!-- STATUS AND COUNT -->
-					<div class="mt-4 flex items-center justify-between">
-						<Badge variant="cyan">Coming soon</Badge>
-						<span class="text-xs text-slate-500">
-							{category.productCount}
-							{category.productCount === 1 ? 'product' : 'products'}
-						</span>
-					</div>
-				</Card>
+						<!-- STATUS AND COUNT -->
+						<div class="mt-4 flex items-center justify-between">
+							<Badge variant="cyan">Coming soon</Badge>
+							<span class="text-xs text-slate-500">
+								{category.productCount}
+								{category.productCount === 1 ? 'product' : 'products'}
+							</span>
+						</div>
+					</Card>
+				</div>
 			{/each}
 		</div>
 

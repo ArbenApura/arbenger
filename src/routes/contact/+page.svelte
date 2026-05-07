@@ -4,6 +4,7 @@
 
 	// IMPORTED MODULES
 	import { socialLinks } from '$lib/data/navigation';
+	import { reveal } from '$lib/actions/reveal';
 
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
@@ -25,7 +26,7 @@
 
 <!-- PAGE HERO -->
 <section class="relative pt-32 pb-16">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div use:reveal class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<SectionLabel label="CONTACT" />
 
 		<h1 class="font-display text-4xl font-bold tracking-tight text-white md:text-5xl">Get in touch</h1>
@@ -41,7 +42,7 @@
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="grid gap-8 md:grid-cols-2">
 			<!-- EMAIL -->
-			<div class="rounded-xl border border-[#2A2578] bg-[#1E1A5E] p-8">
+			<div use:reveal={{ delay: 100 }} class="rounded-xl border border-[#2A2578] bg-[#1E1A5E] p-8">
 				<SectionLabel label="EMAIL" />
 
 				<div class="flex items-center gap-4">
@@ -64,7 +65,7 @@
 			</div>
 
 			<!-- SOCIAL LINKS -->
-			<div class="rounded-xl border border-[#2A2578] bg-[#1E1A5E] p-8">
+			<div use:reveal={{ delay: 200 }} class="rounded-xl border border-[#2A2578] bg-[#1E1A5E] p-8">
 				<SectionLabel label="SOCIAL" />
 
 				<h2 class="font-display text-lg font-bold tracking-tight text-white">Social Media</h2>

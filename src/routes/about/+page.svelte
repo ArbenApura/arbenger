@@ -1,6 +1,7 @@
 <script lang="ts">
 	// IMPORTED MODULES
 	import { socialLinks } from '$lib/data/navigation';
+	import { reveal, revealSlide } from '$lib/actions/reveal';
 
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
@@ -17,6 +18,24 @@
 		linkedin:
 			'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z',
 	};
+
+	const MISSION_CARDS = [
+		{
+			title: 'Developer First',
+			description:
+				'Every tool is designed with developers in mind. Clean APIs, thoughtful UX, and documentation that actually helps.',
+		},
+		{
+			title: 'Quality Over Quantity',
+			description:
+				'We ship fewer products, but each one is polished and purposeful. No bloat, no unnecessary complexity.',
+		},
+		{
+			title: 'Open & Transparent',
+			description:
+				'We believe in open source and transparent development. Building in public and sharing what we learn along the way.',
+		},
+	];
 </script>
 
 <MetaTags
@@ -27,7 +46,7 @@
 
 <!-- PAGE HERO -->
 <section class="relative pt-32 pb-16">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div use:reveal class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<SectionLabel label="ABOUT" />
 
 		<h1 class="font-display text-4xl font-bold tracking-tight text-white md:text-5xl">About Arbenger</h1>
@@ -45,7 +64,7 @@
 
 		<div class="grid items-start gap-12 lg:grid-cols-2">
 			<!-- FOUNDER INFO -->
-			<div>
+			<div use:revealSlide={{ direction: 'left' }}>
 				<h2 class="font-display text-3xl font-bold tracking-tight text-white">Arben Apura</h2>
 				<p class="mt-2 font-mono text-sm text-[#22D3EE]">Founder & Developer</p>
 
@@ -62,7 +81,7 @@
 			</div>
 
 			<!-- DECORATIVE TERMINAL CARD -->
-			<div class="rounded-xl border border-[#2A2578] bg-[#1E1A5E] p-6">
+			<div use:revealSlide={{ direction: 'right' }} class="rounded-xl border border-[#2A2578] bg-[#1E1A5E] p-6">
 				<div class="flex items-center gap-2">
 					<div class="h-3 w-3 rounded-full bg-red-500/50"></div>
 					<div class="h-3 w-3 rounded-full bg-yellow-500/50"></div>
@@ -90,44 +109,28 @@
 <!-- MISSION SECTION -->
 <section class="relative border-t border-[#2A2578] py-16">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<SectionLabel label="MISSION" />
+		<div use:reveal>
+			<SectionLabel label="MISSION" />
 
-		<h2 class="font-display text-3xl font-bold tracking-tight text-white">Why we build</h2>
+			<h2 class="font-display text-3xl font-bold tracking-tight text-white">Why we build</h2>
+		</div>
 
 		<div class="mt-8 grid gap-8 md:grid-cols-3">
-			<!-- MISSION CARD 1 -->
-			<div class="rounded-xl border border-[#2A2578] bg-[#1E1A5E] p-6">
-				<h3 class="font-display text-lg font-bold tracking-tight text-white">Developer First</h3>
-				<p class="mt-3 text-sm text-slate-300">
-					Every tool is designed with developers in mind. Clean APIs, thoughtful UX, and documentation that
-					actually helps.
-				</p>
-			</div>
-
-			<!-- MISSION CARD 2 -->
-			<div class="rounded-xl border border-[#2A2578] bg-[#1E1A5E] p-6">
-				<h3 class="font-display text-lg font-bold tracking-tight text-white">Quality Over Quantity</h3>
-				<p class="mt-3 text-sm text-slate-300">
-					We ship fewer products, but each one is polished and purposeful. No bloat, no unnecessary
-					complexity.
-				</p>
-			</div>
-
-			<!-- MISSION CARD 3 -->
-			<div class="rounded-xl border border-[#2A2578] bg-[#1E1A5E] p-6">
-				<h3 class="font-display text-lg font-bold tracking-tight text-white">Open & Transparent</h3>
-				<p class="mt-3 text-sm text-slate-300">
-					We believe in open source and transparent development. Building in public and sharing what we learn
-					along the way.
-				</p>
-			</div>
+			{#each MISSION_CARDS as card, i}
+				<div use:reveal={{ delay: i * 100 }} class="rounded-xl border border-[#2A2578] bg-[#1E1A5E] p-6">
+					<h3 class="font-display text-lg font-bold tracking-tight text-white">{card.title}</h3>
+					<p class="mt-3 text-sm text-slate-300">
+						{card.description}
+					</p>
+				</div>
+			{/each}
 		</div>
 	</div>
 </section>
 
 <!-- SOCIAL LINKS SECTION -->
 <section class="relative border-t border-[#2A2578] py-16">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div use:reveal class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<SectionLabel label="CONNECT" />
 
 		<h2 class="font-display text-3xl font-bold tracking-tight text-white">Find us online</h2>
