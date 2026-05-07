@@ -23,25 +23,24 @@
 		<div class="grid items-center gap-16 lg:grid-cols-2">
 			<!-- TEXT — PERSONAL, NOT CORPORATE -->
 			<div use:revealSlide={{ direction: 'left' }}>
-				<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Who's behind this</p>
+				<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">About</p>
 
 				<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#0F172A] md:text-4xl dark:text-white">
-					I'm Arben. I build tools for people who build things.
+					Built by developers, for developers.
 				</h2>
 
 				<p class="mt-6 text-lg leading-relaxed text-[#475569] dark:text-slate-300">
-					Arbenger is just me -- a developer who got tired of waiting for the right tools to exist.
-					So I started making them. VS Code extensions, Chrome plugins, AI utilities, whatever
-					scratches the itch.
+					Arbenger exists because the right tools often don't. We build VS Code extensions,
+					Chrome plugins, AI utilities, and SaaS products that solve real problems.
 				</p>
 
 				<p class="mt-4 text-[#64748B] dark:text-slate-400">
-					Currently obsessed with AI tooling and developer extensions. Everything here is solo-built,
-					shipped when it's ready, and designed for people who actually write code.
+					Our current focus is AI tooling and developer extensions. Everything we ship is
+					designed for people who actually write code.
 				</p>
 
 				<div class="mt-10">
-					<Button href="/about" variant="secondary">More about me</Button>
+					<Button href="/about" variant="secondary">Learn more</Button>
 				</div>
 			</div>
 

@@ -27,9 +27,9 @@
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<!-- SECTION INTRO — LEFT-ALIGNED, NO SECTION LABEL -->
 		<div use:reveal class="max-w-2xl">
-			<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">What I'm working on</p>
+			<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Products</p>
 			<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
-				If the tool doesn't exist, I make it.
+				What we're building
 			</h2>
 		</div>
 

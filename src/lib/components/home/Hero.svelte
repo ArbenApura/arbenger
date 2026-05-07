@@ -16,11 +16,11 @@
 	// -- CONSTANTS -- //
 
 	const HERO_PHRASES = [
-		'developers love',
-		'that actually ship',
-		'I wish existed',
-		'worth using',
-		'that solve real problems',
+		'developers need',
+		'that ship fast',
+		'worth building',
+		'that just work',
+		'for the modern stack',
 	];
 
 	// -- STATES -- //
@@ -86,7 +86,7 @@
 				class:translate-y-0={isVisible}
 				style="transition-delay: 200ms;"
 			>
-				I build things
+				Building the tools
 				<br />
 				<span class="text-[#0891B2] dark:text-[#22D3EE]">
 					<Typewriter phrases={HERO_PHRASES} typingSpeed={70} deletingSpeed={35} pauseDuration={2500} />
@@ -102,7 +102,7 @@
 				class:translate-y-0={isVisible}
 				style="transition-delay: 400ms;"
 			>
-				One person. Real products. No VC, no team of 50, no slide decks.
+				Developer tools, AI products, and SaaS platforms built for speed, quality, and real-world use.
 			</p>
 
 			<!-- CTA BUTTON -->
@@ -115,7 +115,7 @@
 				style="transition-delay: 600ms;"
 			>
 				<Button href="/products" variant="primary" class="group relative overflow-hidden">
-					<span class="relative z-10">See what I'm building</span>
+					<span class="relative z-10">Explore Products</span>
 				</Button>
 			</div>
 		</div>

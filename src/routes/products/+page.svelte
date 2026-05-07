@@ -59,11 +59,11 @@
 		<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Products</p>
 
 		<h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
-			Things I'm building
+			Our Products
 		</h1>
 
 		<p class="mt-6 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			More shipping soon. I build in public -- follow along.
+			More products coming soon.
 		</p>
 	</div>
 </section>

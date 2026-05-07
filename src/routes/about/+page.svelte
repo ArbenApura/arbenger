@@ -12,7 +12,7 @@
 
 <MetaTags
 	title="About Arbenger | Company & Founder"
-	description="Learn about Arbenger, a solo venture by Arben Apura focused on building AI tools, developer extensions, and SaaS products."
+	description="Learn about Arbenger and our mission to build AI tools, developer extensions, and SaaS products."
 	url="https://arbenger.com/about"
 />
 
@@ -36,12 +36,12 @@
 		<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">About</p>
 
 		<h1 class="font-display mt-4 max-w-3xl text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
-			One developer. Real products. That's the whole story.
+			About Arbenger
 		</h1>
 
 		<p class="mt-6 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			Arbenger is a solo operation by Arben Apura. No investors, no board meetings,
-			no roadmap decks. Just building.
+			We build developer tools, AI products, and SaaS platforms.
+			Quality software, shipped fast.
 		</p>
 	</div>
 </section>
@@ -56,18 +56,18 @@
 				<p class="mt-2 font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Founder & Developer</p>
 
 				<p class="mt-6 text-[#475569] dark:text-slate-300">
-					I got into this because I kept running into tools that were almost right but not quite.
+					Arbenger started because too many developer tools were almost right but not quite.
 					The VS Code extension that was 80% there. The AI wrapper that missed the point.
 					The SaaS app that felt like it was built by people who never used their own product.
 				</p>
 
 				<p class="mt-4 text-[#475569] dark:text-slate-300">
-					So I started building my own. Every product here exists because I needed it first.
-					If it solves my problem well, it'll probably solve yours too.
+					Every product exists because we needed it first. If it solves our problem well,
+					it will probably solve yours too.
 				</p>
 
 				<p class="mt-4 text-[#64748B] dark:text-slate-400">
-					Stack: TypeScript, Svelte, whatever AI model is actually good this week.
+					Stack: TypeScript, Svelte, Python, and the best AI models available.
 					Philosophy: ship it, use it, fix it, repeat.
 				</p>
 			</div>
@@ -83,7 +83,7 @@
 					<p><span class="text-[#0891B2] dark:text-[#22D3EE]">$</span> whoami</p>
 					<p class="mt-1 text-[#0F172A] dark:text-white">arben-apura</p>
 					<p class="mt-3"><span class="text-[#0891B2] dark:text-[#22D3EE]">$</span> cat role.txt</p>
-					<p class="mt-1 text-[#0F172A] dark:text-white">solo dev, shipping real things</p>
+					<p class="mt-1 text-[#0F172A] dark:text-white">founder @ arbenger</p>
 					<p class="mt-3"><span class="text-[#0891B2] dark:text-[#22D3EE]">$</span> cat stack.txt</p>
 					<p class="mt-1 text-[#0F172A] dark:text-white">TypeScript, Svelte, AI/ML, Extensions</p>
 					<p class="mt-3"><span class="text-[#0891B2] dark:text-[#22D3EE]">$</span> cat philosophy.txt</p>
@@ -98,21 +98,21 @@
 	</div>
 </section>
 
-<!-- HOW I WORK SECTION — REPLACES GENERIC MISSION CARDS -->
+<!-- HOW WE WORK SECTION -->
 <section class="relative border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div use:reveal>
-			<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">How I work</p>
-			<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">No process. Just principles.</h2>
+			<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Our approach</p>
+			<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">Principles over process.</h2>
 		</div>
 
 		<!-- ASYMMETRIC LAYOUT — NOT A 3-COLUMN CARD GRID -->
 		<div class="mt-12 grid gap-8 md:grid-cols-5">
 			<!-- LARGE CARD -->
 			<div use:reveal={{ delay: 100 }} class="rounded-xl border border-[#F1F5F9] bg-white p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] md:col-span-3 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
-				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">I use what I build</h3>
+				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">We use what we build</h3>
 				<p class="mt-3 text-[#475569] dark:text-slate-300">
-					Every tool starts as something I need. If I'm not using it daily, it's not ready to ship.
+					Every tool starts as something we need. If we're not using it daily, it's not ready to ship.
 					That's the bar. No hypothetical users, no assumed workflows. Real usage, real feedback, real iteration.
 				</p>
 			</div>
@@ -128,10 +128,10 @@
 
 			<!-- SMALL CARD -->
 			<div use:reveal={{ delay: 300 }} class="rounded-xl border border-[#F1F5F9] bg-white p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] md:col-span-2 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
-				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">Solo doesn't mean sloppy</h3>
+				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">Every line has intent</h3>
 				<p class="mt-3 text-[#475569] dark:text-slate-300">
-					One person means every line of code has intent.
-					No handoffs, no "someone else will fix this." I own every pixel.
+					We care about craft. Every line of code, every interaction, every pixel is deliberate.
+					No shortcuts, no "good enough." Quality is the standard.
 				</p>
 			</div>
 
@@ -139,8 +139,8 @@
 			<div use:reveal={{ delay: 400 }} class="rounded-xl border border-[#F1F5F9] bg-white p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] md:col-span-3 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
 				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">Build in public</h3>
 				<p class="mt-3 text-[#475569] dark:text-slate-300">
-					I share what I'm working on, what's broken, what I'm learning.
-					Not for clout -- because it keeps me honest and helps other devs doing the same thing.
+					We share what we're working on, what's broken, and what we're learning.
+					Transparency keeps us honest and helps other developers doing the same thing.
 				</p>
 			</div>
 		</div>
@@ -151,7 +151,7 @@
 <section class="relative border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]">
 	<div use:reveal class="mx-auto flex max-w-7xl flex-col items-start gap-6 px-4 sm:px-6 lg:px-8">
 		<p class="text-lg text-[#475569] dark:text-slate-300">
-			Want to follow along or just say hey?
+			Have a question or want to collaborate?
 		</p>
 		<Button href="/contact" variant="secondary">Get in touch</Button>
 	</div>

@@ -29,12 +29,11 @@
 		<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Contact</p>
 
 		<h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
-			Say hey
+			Get in Touch
 		</h1>
 
 		<p class="mt-6 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			Bug report, feature idea, collaboration pitch, or just want to talk shop --
-			I read everything.
+			Bug report, feature idea, or collaboration pitch -- we'd love to hear from you.
 		</p>
 	</div>
 </section>
@@ -49,8 +48,8 @@
 					<Mail class="size-6 text-[#0891B2] dark:text-[#22D3EE]" />
 				</div>
 				<div>
-					<h2 class="font-display text-lg font-bold tracking-tight text-[#0F172A] dark:text-white">Email is best</h2>
-					<p class="mt-1 text-sm text-[#64748B] dark:text-slate-400">I'll get back to you within a day or two.</p>
+					<h2 class="font-display text-lg font-bold tracking-tight text-[#0F172A] dark:text-white">Email</h2>
+					<p class="mt-1 text-sm text-[#64748B] dark:text-slate-400">We'll get back to you within a day or two.</p>
 				</div>
 			</div>
 
@@ -65,7 +64,7 @@
 
 		<!-- SOCIAL LINKS — SIMPLE INLINE LIST -->
 		<div use:reveal={{ delay: 200 }} class="mt-12">
-			<p class="font-mono text-sm text-[#64748B] dark:text-slate-400">Or find me here</p>
+			<p class="font-mono text-sm text-[#64748B] dark:text-slate-400">Or find us here</p>
 
 			<div class="mt-4 flex flex-wrap gap-4">
 				{#each socialLinks as social}
