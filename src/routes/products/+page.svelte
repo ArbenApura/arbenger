@@ -13,6 +13,8 @@
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
 	import Badge from '$lib/components/ui/Badge.svelte';
+	import CategoryIllustration from '$lib/components/ui/CategoryIllustration.svelte';
+	import EmptyStateIllustration from '$lib/components/ui/EmptyStateIllustration.svelte';
 
 	// -- TYPES -- //
 
@@ -134,13 +136,18 @@
 						</div>
 					</div>
 
-					<!-- STATUS -->
-					<div class="flex shrink-0 items-center gap-4">
-						<span class="hidden text-xs text-[#94A3B8] sm:block dark:text-slate-500">
-							{category.productCount}
-							{category.productCount === 1 ? 'product' : 'products'}
-						</span>
-						<Badge variant="cyan">Coming soon</Badge>
+					<!-- ILLUSTRATION + STATUS -->
+					<div class="flex shrink-0 items-center gap-6">
+						<div class="hidden md:block">
+							<CategoryIllustration category={category.id} />
+						</div>
+						<div class="flex items-center gap-4">
+							<span class="hidden text-xs text-[#94A3B8] sm:block dark:text-slate-500">
+								{category.productCount}
+								{category.productCount === 1 ? 'product' : 'products'}
+							</span>
+							<Badge variant="cyan">Coming soon</Badge>
+						</div>
 					</div>
 				</div>
 			{/each}
@@ -149,7 +156,8 @@
 		<!-- EMPTY STATE -->
 		{#if filteredCategories.length === 0}
 			<div class="py-16 text-center">
-				<p class="font-mono text-sm text-[#64748B] dark:text-slate-400">Nothing here yet. Check back soon.</p>
+				<EmptyStateIllustration />
+				<p class="mt-6 font-mono text-sm text-[#64748B] dark:text-slate-400">Nothing here yet. Check back soon.</p>
 			</div>
 		{/if}
 	</div>

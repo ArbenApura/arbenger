@@ -9,6 +9,7 @@
 	import ProductCategories from '$lib/components/home/ProductCategories.svelte';
 	import AboutTeaser from '$lib/components/home/AboutTeaser.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
+	import GeometricDivider from '$lib/components/ui/GeometricDivider.svelte';
 </script>
 
 <MetaTags
@@ -41,8 +42,11 @@
 <!-- ABOUT TEASER -->
 <AboutTeaser />
 
+<!-- GEOMETRIC DIVIDER -->
+<GeometricDivider />
+
 <!-- SINGLE-LINE CTA — REPLACES THE BLOATED CONNECT SECTION -->
-<section class="border-t border-[#E2E8F0] py-20 dark:border-[#2A2578]/50">
+<section class="py-20">
 	<div use:reveal class="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 text-center sm:px-6 lg:px-8">
 		<p class="text-lg text-[#475569] dark:text-slate-300">
 			Got an idea? Want to collaborate? Just want to say hey?

@@ -2,6 +2,9 @@
 	// IMPORTED MODULES
 	import { reveal, revealSlide } from '$lib/actions/reveal';
 
+	// IMPORTED STORES
+	import { isDark } from '$lib/stores/theme';
+
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
@@ -14,8 +17,22 @@
 />
 
 <!-- PAGE HERO -->
-<section class="relative pt-32 pb-16">
-	<div use:reveal class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden pt-32 pb-16">
+	<!-- GEOMETRIC BACKGROUND — ANGULAR LINES FROM TOP-RIGHT -->
+	<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+		<svg viewBox="0 0 800 300" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute top-0 right-0 hidden h-75 w-200 md:block" preserveAspectRatio="none">
+			<line x1="800" y1="0" x2="500" y2="200" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.5" opacity="0.12" />
+			<line x1="800" y1="0" x2="600" y2="280" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.5" opacity="0.08" />
+			<line x1="800" y1="0" x2="700" y2="300" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.5" opacity="0.1" />
+			<line x1="800" y1="0" x2="400" y2="120" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.3" opacity="0.06" />
+			<circle cx="500" cy="200" r="2" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.15" />
+			<circle cx="600" cy="280" r="1.5" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.1" />
+			<circle cx="700" cy="300" r="1.5" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.12" />
+			<circle cx="400" cy="120" r="2" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.1" />
+		</svg>
+	</div>
+
+	<div use:reveal class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">About</p>
 
 		<h1 class="font-display mt-4 max-w-3xl text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">

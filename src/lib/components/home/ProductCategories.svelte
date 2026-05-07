@@ -9,6 +9,9 @@
 	// IMPORTED STORES
 	import { isDark } from '$lib/stores/theme';
 
+	// IMPORTED COMPONENTS
+	import CategoryIllustration from '$lib/components/ui/CategoryIllustration.svelte';
+
 	// -- CONSTANTS -- //
 
 	const ICON_MAP: Record<string, typeof Code> = {
@@ -73,10 +76,15 @@
 						</div>
 					</div>
 
-					<!-- ARROW -->
-					<ArrowRight
-						class="size-5 shrink-0 text-[#94A3B8] transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#22D3EE] dark:text-slate-500"
-					/>
+					<!-- ILLUSTRATION + ARROW -->
+					<div class="flex shrink-0 items-center gap-6">
+						<div class="hidden md:block">
+							<CategoryIllustration category={category.id} />
+						</div>
+						<ArrowRight
+							class="size-5 shrink-0 text-[#94A3B8] transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#22D3EE] dark:text-slate-500"
+						/>
+					</div>
 				</a>
 			{/each}
 		</div>
