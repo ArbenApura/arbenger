@@ -4,12 +4,18 @@
 
 	// IMPORTED MODULES
 	import { browser } from '$app/environment';
+	import { isDark } from '$lib/stores/theme';
 
 	// -- STATES -- //
 
 	let container: HTMLDivElement;
 	let canvas: HTMLCanvasElement;
 	let animationId: number;
+	let dark = true;
+
+	// -- SUBSCRIPTIONS -- //
+
+	const unsubTheme = isDark.subscribe((v) => (dark = v));
 
 	// -- CONSTANTS -- //
 
@@ -93,6 +99,10 @@
 				}
 			});
 
+			// THEME-AWARE PARTICLE COLORS
+			const lineColor = dark ? '34, 211, 238' : '22, 20, 70';
+			const dotColor = dark ? '34, 211, 238' : '22, 20, 70';
+
 			// DRAW CONNECTIONS
 			for (let i = 0; i < particles.length; i++) {
 				for (let j = i + 1; j < particles.length; j++) {
@@ -102,7 +112,7 @@
 					if (dist < CONNECTION_DISTANCE) {
 						const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.15;
 						ctx.beginPath();
-						ctx.strokeStyle = `rgba(34, 211, 238, ${opacity})`;
+						ctx.strokeStyle = `rgba(${lineColor}, ${opacity})`;
 						ctx.lineWidth = 0.5;
 						ctx.moveTo(particles[i].x, particles[i].y);
 						ctx.lineTo(particles[j].x, particles[j].y);
@@ -115,7 +125,7 @@
 			particles.forEach((p) => {
 				ctx.beginPath();
 				ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-				ctx.fillStyle = `rgba(34, 211, 238, ${p.opacity})`;
+				ctx.fillStyle = `rgba(${dotColor}, ${p.opacity})`;
 				ctx.fill();
 			});
 
@@ -138,6 +148,7 @@
 			resizeObserver.disconnect();
 			container.removeEventListener('mousemove', onMouseMove);
 			container.removeEventListener('mouseleave', onMouseLeave);
+			unsubTheme();
 		};
 	});
 </script>

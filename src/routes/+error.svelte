@@ -15,7 +15,7 @@
 		</h1>
 
 		<!-- ERROR MESSAGE -->
-		<p class="mt-6 text-lg text-slate-300">
+		<p class="mt-6 text-lg text-[#334155] dark:text-slate-300">
 			{$page.error?.message || 'Something went wrong'}
 		</p>
 

@@ -49,9 +49,9 @@
 	<div use:reveal class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<SectionLabel label="ABOUT" />
 
-		<h1 class="font-display text-4xl font-bold tracking-tight text-white md:text-5xl">About Arbenger</h1>
+		<h1 class="font-display text-4xl font-bold tracking-tight text-[#161446] md:text-5xl dark:text-white">About Arbenger</h1>
 
-		<p class="mt-6 max-w-2xl text-lg text-slate-300">
+		<p class="mt-6 max-w-2xl text-lg text-[#334155] dark:text-slate-300">
 			A solo venture dedicated to building tools that empower developers and creators.
 		</p>
 	</div>
@@ -65,37 +65,37 @@
 		<div class="grid items-start gap-12 lg:grid-cols-2">
 			<!-- FOUNDER INFO -->
 			<div use:revealSlide={{ direction: 'left' }}>
-				<h2 class="font-display text-3xl font-bold tracking-tight text-white">Arben Apura</h2>
+				<h2 class="font-display text-3xl font-bold tracking-tight text-[#161446] dark:text-white">Arben Apura</h2>
 				<p class="mt-2 font-mono text-sm text-[#22D3EE]">Founder & Developer</p>
 
-				<p class="mt-6 text-slate-300">
+				<p class="mt-6 text-[#334155] dark:text-slate-300">
 					A passionate developer and creator building tools at the intersection of AI, developer experience,
 					and productivity. Every product at Arbenger starts with a simple question: how can we make this
 					better?
 				</p>
 
-				<p class="mt-4 text-slate-300">
+				<p class="mt-4 text-[#334155] dark:text-slate-300">
 					With a focus on clean code, thoughtful design, and real utility, Arbenger products are crafted to
 					solve problems that developers and creators face every day.
 				</p>
 			</div>
 
 			<!-- DECORATIVE TERMINAL CARD -->
-			<div use:revealSlide={{ direction: 'right' }} class="rounded-xl border border-[#2A2578] bg-[#1E1A5E] p-6">
+			<div use:revealSlide={{ direction: 'right' }} class="rounded-xl border border-[#E2E8F0] bg-white p-6 dark:border-[#2A2578] dark:bg-[#1E1A5E]">
 				<div class="flex items-center gap-2">
 					<div class="h-3 w-3 rounded-full bg-red-500/50"></div>
 					<div class="h-3 w-3 rounded-full bg-yellow-500/50"></div>
 					<div class="h-3 w-3 rounded-full bg-green-500/50"></div>
 				</div>
-				<div class="mt-4 font-mono text-sm text-slate-300">
+				<div class="mt-4 font-mono text-sm text-[#334155] dark:text-slate-300">
 					<p><span class="text-[#22D3EE]">$</span> whoami</p>
-					<p class="mt-1 text-white">arben-apura</p>
+					<p class="mt-1 text-[#161446] dark:text-white">arben-apura</p>
 					<p class="mt-3"><span class="text-[#22D3EE]">$</span> cat role.txt</p>
-					<p class="mt-1 text-white">Founder & Developer @ Arbenger</p>
+					<p class="mt-1 text-[#161446] dark:text-white">Founder & Developer @ Arbenger</p>
 					<p class="mt-3"><span class="text-[#22D3EE]">$</span> cat stack.txt</p>
-					<p class="mt-1 text-white">TypeScript, Svelte, AI/ML, Extensions</p>
+					<p class="mt-1 text-[#161446] dark:text-white">TypeScript, Svelte, AI/ML, Extensions</p>
 					<p class="mt-3"><span class="text-[#22D3EE]">$</span> cat mission.txt</p>
-					<p class="mt-1 text-white">Building the tools of tomorrow</p>
+					<p class="mt-1 text-[#161446] dark:text-white">Building the tools of tomorrow</p>
 					<p class="mt-3">
 						<span class="text-[#22D3EE]">$</span>
 						<span class="animate-blink">_</span>
@@ -107,19 +107,19 @@
 </section>
 
 <!-- MISSION SECTION -->
-<section class="relative border-t border-[#2A2578] py-16">
+<section class="relative border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div use:reveal>
 			<SectionLabel label="MISSION" />
 
-			<h2 class="font-display text-3xl font-bold tracking-tight text-white">Why we build</h2>
+			<h2 class="font-display text-3xl font-bold tracking-tight text-[#161446] dark:text-white">Why we build</h2>
 		</div>
 
 		<div class="mt-8 grid gap-8 md:grid-cols-3">
 			{#each MISSION_CARDS as card, i}
-				<div use:reveal={{ delay: i * 100 }} class="rounded-xl border border-[#2A2578] bg-[#1E1A5E] p-6">
-					<h3 class="font-display text-lg font-bold tracking-tight text-white">{card.title}</h3>
-					<p class="mt-3 text-sm text-slate-300">
+				<div use:reveal={{ delay: i * 100 }} class="rounded-xl border border-[#E2E8F0] bg-white p-6 dark:border-[#2A2578] dark:bg-[#1E1A5E]">
+					<h3 class="font-display text-lg font-bold tracking-tight text-[#161446] dark:text-white">{card.title}</h3>
+					<p class="mt-3 text-sm text-[#334155] dark:text-slate-300">
 						{card.description}
 					</p>
 				</div>
@@ -129,11 +129,11 @@
 </section>
 
 <!-- SOCIAL LINKS SECTION -->
-<section class="relative border-t border-[#2A2578] py-16">
+<section class="relative border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]">
 	<div use:reveal class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<SectionLabel label="CONNECT" />
 
-		<h2 class="font-display text-3xl font-bold tracking-tight text-white">Find us online</h2>
+		<h2 class="font-display text-3xl font-bold tracking-tight text-[#161446] dark:text-white">Find us online</h2>
 
 		<div class="mt-8 flex flex-wrap gap-4">
 			{#each socialLinks as social}
@@ -141,7 +141,7 @@
 					href={social.url}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex items-center gap-3 rounded-lg border border-[#2A2578] px-5 py-3 text-slate-300 transition-all duration-300 hover:border-[#22D3EE]/50 hover:text-[#22D3EE]"
+					class="flex items-center gap-3 rounded-lg border border-[#E2E8F0] px-5 py-3 text-[#334155] transition-all duration-300 hover:border-[#22D3EE]/50 hover:text-[#22D3EE] dark:border-[#2A2578] dark:text-slate-300"
 					aria-label={social.platform}
 				>
 					<svg class="size-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

@@ -74,19 +74,19 @@
 	<div class="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
 		<!-- TERMINAL BADGE -->
 		<div
-			class="mb-8 inline-flex items-center gap-2 rounded-full border border-[#2A2578] bg-[#1E1A5E]/50 px-4 py-2 backdrop-blur-sm transition-all duration-700"
+			class="mb-8 inline-flex items-center gap-2 rounded-full border border-[#E2E8F0] bg-white/80 px-4 py-2 backdrop-blur-sm transition-all duration-700 dark:border-[#2A2578] dark:bg-[#1E1A5E]/50"
 			class:opacity-0={!isVisible}
 			class:translate-y-4={!isVisible}
 			class:opacity-100={isVisible}
 			class:translate-y-0={isVisible}
 		>
 			<span class="animate-pulse-glow h-2 w-2 rounded-full bg-[#2DD4BF]"></span>
-			<span class="font-mono text-xs text-slate-300">SHIPPING NEW TOOLS</span>
+			<span class="font-mono text-xs text-[#334155] dark:text-slate-300">SHIPPING NEW TOOLS</span>
 		</div>
 
 		<!-- TAGLINE -->
 		<h1
-			class="font-display text-5xl font-bold tracking-tight text-white transition-all duration-1000 md:text-7xl lg:text-8xl"
+			class="font-display text-5xl font-bold tracking-tight text-[#161446] transition-all duration-1000 md:text-7xl lg:text-8xl dark:text-white"
 			class:opacity-0={!isVisible}
 			class:translate-y-8={!isVisible}
 			class:opacity-100={isVisible}
@@ -105,7 +105,7 @@
 
 		<!-- SUBTITLE -->
 		<p
-			class="mx-auto mt-8 max-w-2xl text-lg text-slate-300 transition-all duration-1000 md:text-xl"
+			class="mx-auto mt-8 max-w-2xl text-lg text-[#334155] transition-all duration-1000 md:text-xl dark:text-slate-300"
 			class:opacity-0={!isVisible}
 			class:translate-y-8={!isVisible}
 			class:opacity-100={isVisible}
@@ -138,8 +138,8 @@
 			class:opacity-100={isVisible}
 			style="transition-delay: 1000ms;"
 		>
-			<span class="font-mono text-xs text-slate-500">SCROLL</span>
-			<div class="animate-pulse-glow h-8 w-[1px] bg-[#2A2578]"></div>
+			<span class="font-mono text-xs text-[#94A3B8] dark:text-slate-500">SCROLL</span>
+			<div class="animate-pulse-glow h-8 w-[1px] bg-[#E2E8F0] dark:bg-[#2A2578]"></div>
 		</div>
 	</div>
 </section>

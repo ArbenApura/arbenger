@@ -16,28 +16,28 @@
 </script>
 
 <!-- FOOTER -->
-<footer class="border-t border-[#2A2578] bg-[#0B0A23] dark:border-[#2A2578] dark:bg-[#0B0A23]">
+<footer class="border-t border-[#E2E8F0] bg-[#F1F5F9] dark:border-[#2A2578] dark:bg-[#0B0A23]">
 	<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
 		<!-- FOOTER GRID: STACKED ON MOBILE, 3 COLUMNS ON DESKTOP -->
 		<div class="grid gap-8 md:grid-cols-3">
 			<!-- LOGO + TAGLINE -->
 			<div>
 				<a href="/" class="flex items-center gap-3">
-					<Logo size={32} class="text-white" />
-					<span class="font-display text-lg tracking-tight text-white">ARBENGER</span>
+					<Logo size={32} class="text-[#161446] dark:text-white" />
+					<span class="font-display text-lg tracking-tight text-[#161446] dark:text-white">ARBENGER</span>
 				</a>
-				<p class="mt-4 text-sm text-slate-400">Building tools for developers and creators.</p>
+				<p class="mt-4 text-sm text-[#64748B] dark:text-slate-400">Building tools for developers and creators.</p>
 			</div>
 
 			<!-- NAV LINKS -->
 			<div>
-				<h3 class="font-display text-sm font-bold tracking-tight text-white uppercase">Navigation</h3>
+				<h3 class="font-display text-sm font-bold tracking-tight text-[#161446] uppercase dark:text-white">Navigation</h3>
 				<ul class="mt-4 space-y-2">
 					{#each navLinks as link}
 						<li>
 							<a
 								href={link.href}
-								class="text-sm text-slate-400 transition-colors duration-200 hover:text-[#22D3EE]"
+								class="text-sm text-[#64748B] transition-colors duration-200 hover:text-[#22D3EE] dark:text-slate-400"
 							>
 								{link.label}
 							</a>
@@ -48,14 +48,14 @@
 
 			<!-- SOCIAL LINKS -->
 			<div>
-				<h3 class="font-display text-sm font-bold tracking-tight text-white uppercase">Connect</h3>
+				<h3 class="font-display text-sm font-bold tracking-tight text-[#161446] uppercase dark:text-white">Connect</h3>
 				<div class="mt-4 flex gap-4">
 					{#each socialLinks as social}
 						<a
 							href={social.url}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="text-slate-400 transition-colors duration-200 hover:text-[#22D3EE]"
+							class="text-[#64748B] transition-colors duration-200 hover:text-[#22D3EE] dark:text-slate-400"
 							aria-label={social.platform}
 						>
 							<svg
@@ -73,8 +73,8 @@
 		</div>
 
 		<!-- COPYRIGHT -->
-		<div class="mt-12 border-t border-[#2A2578] pt-8 dark:border-[#2A2578]">
-			<p class="text-sm text-slate-400">
+		<div class="mt-12 border-t border-[#E2E8F0] pt-8 dark:border-[#2A2578]">
+			<p class="text-sm text-[#64748B] dark:text-slate-400">
 				&copy; {CURRENT_YEAR} Arbenger. All rights reserved.
 			</p>
 		</div>

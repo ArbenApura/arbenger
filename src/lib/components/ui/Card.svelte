@@ -18,9 +18,8 @@
 	this={href ? 'a' : 'div'}
 	{...href ? { href } : {}}
 	class={cn(
-		'block rounded-xl border border-[#2A2578] bg-[#1E1A5E] p-6 transition-all duration-300',
+		'block rounded-xl border border-[#E2E8F0] bg-white p-6 transition-all duration-300',
 		'dark:border-[#2A2578] dark:bg-[#1E1A5E]',
-		'border-[#E2E8F0] bg-white',
 		isHovered && 'translate-y-[-2px] shadow-[0_0_40px_rgba(34,211,238,0.1)]',
 		href && 'cursor-pointer',
 		className,

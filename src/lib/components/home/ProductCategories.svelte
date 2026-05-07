@@ -33,8 +33,8 @@
 		<div use:reveal>
 			<SectionLabel label="PRODUCTS" />
 
-			<h2 class="font-display text-3xl font-bold tracking-tight text-white md:text-5xl">What we build</h2>
-			<p class="mt-4 max-w-2xl text-lg text-slate-300">
+			<h2 class="font-display text-3xl font-bold tracking-tight text-[#161446] md:text-5xl dark:text-white">What we build</h2>
+			<p class="mt-4 max-w-2xl text-lg text-[#334155] dark:text-slate-300">
 				From browser extensions to AI-powered platforms, we build tools that solve real problems for developers
 				and creators across multiple ecosystems.
 			</p>
@@ -45,7 +45,7 @@
 			{#each categories as category, i}
 				<div
 					use:reveal={{ delay: i * 100 }}
-					class="group relative overflow-hidden rounded-xl border border-[#2A2578] bg-[#1E1A5E]/50 p-8 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-[#22D3EE]/30 hover:shadow-[0_0_60px_rgba(34,211,238,0.08)]"
+					class="group relative overflow-hidden rounded-xl border border-[#E2E8F0] bg-white/80 p-8 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-[#22D3EE]/30 hover:shadow-[0_0_60px_rgba(34,211,238,0.08)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/50"
 				>
 					<!-- HOVER GRADIENT — RADIAL-GRADIENT CANNOT BE EXPRESSED AS TAILWIND -->
 					<div
@@ -78,11 +78,11 @@
 					</div>
 
 					<!-- CONTENT -->
-					<h3 class="font-display relative text-xl font-bold tracking-tight text-white">
+					<h3 class="font-display relative text-xl font-bold tracking-tight text-[#161446] dark:text-white">
 						{category.name}
 					</h3>
 
-					<p class="relative mt-3 text-sm leading-relaxed text-slate-300">
+					<p class="relative mt-3 text-sm leading-relaxed text-[#334155] dark:text-slate-300">
 						{category.description}
 					</p>
 
@@ -90,7 +90,7 @@
 					<div class="relative mt-6 flex items-center justify-between">
 						<Badge variant="cyan">Coming soon</Badge>
 						<span
-							class="flex items-center gap-1 text-xs text-slate-500 transition-colors duration-300 group-hover:text-[#22D3EE]"
+							class="flex items-center gap-1 text-xs text-[#94A3B8] transition-colors duration-300 group-hover:text-[#22D3EE] dark:text-slate-500"
 						>
 							View
 							<ArrowRight class="size-3 transition-transform duration-300 group-hover:translate-x-1" />

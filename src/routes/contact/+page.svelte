@@ -29,9 +29,9 @@
 	<div use:reveal class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<SectionLabel label="CONTACT" />
 
-		<h1 class="font-display text-4xl font-bold tracking-tight text-white md:text-5xl">Get in touch</h1>
+		<h1 class="font-display text-4xl font-bold tracking-tight text-[#161446] md:text-5xl dark:text-white">Get in touch</h1>
 
-		<p class="mt-6 max-w-2xl text-lg text-slate-300">
+		<p class="mt-6 max-w-2xl text-lg text-[#334155] dark:text-slate-300">
 			Have a question, idea, or just want to say hello? Reach out through any of the channels below.
 		</p>
 	</div>
@@ -42,7 +42,7 @@
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="grid gap-8 md:grid-cols-2">
 			<!-- EMAIL -->
-			<div use:reveal={{ delay: 100 }} class="rounded-xl border border-[#2A2578] bg-[#1E1A5E] p-8">
+			<div use:reveal={{ delay: 100 }} class="rounded-xl border border-[#E2E8F0] bg-white p-8 dark:border-[#2A2578] dark:bg-[#1E1A5E]">
 				<SectionLabel label="EMAIL" />
 
 				<div class="flex items-center gap-4">
@@ -50,8 +50,8 @@
 						<Mail class="size-6 text-[#22D3EE]" />
 					</div>
 					<div>
-						<h2 class="font-display text-lg font-bold tracking-tight text-white">Email</h2>
-						<p class="mt-1 text-sm text-slate-300">Best for detailed inquiries</p>
+						<h2 class="font-display text-lg font-bold tracking-tight text-[#161446] dark:text-white">Email</h2>
+						<p class="mt-1 text-sm text-[#334155] dark:text-slate-300">Best for detailed inquiries</p>
 					</div>
 				</div>
 
@@ -65,11 +65,11 @@
 			</div>
 
 			<!-- SOCIAL LINKS -->
-			<div use:reveal={{ delay: 200 }} class="rounded-xl border border-[#2A2578] bg-[#1E1A5E] p-8">
+			<div use:reveal={{ delay: 200 }} class="rounded-xl border border-[#E2E8F0] bg-white p-8 dark:border-[#2A2578] dark:bg-[#1E1A5E]">
 				<SectionLabel label="SOCIAL" />
 
-				<h2 class="font-display text-lg font-bold tracking-tight text-white">Social Media</h2>
-				<p class="mt-1 text-sm text-slate-300">Follow along and connect</p>
+				<h2 class="font-display text-lg font-bold tracking-tight text-[#161446] dark:text-white">Social Media</h2>
+				<p class="mt-1 text-sm text-[#334155] dark:text-slate-300">Follow along and connect</p>
 
 				<div class="mt-6 flex flex-col gap-3">
 					{#each socialLinks as social}
@@ -77,7 +77,7 @@
 							href={social.url}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="flex items-center gap-3 rounded-lg border border-[#2A2578] px-4 py-3 text-slate-300 transition-all duration-300 hover:border-[#22D3EE]/50 hover:text-[#22D3EE]"
+							class="flex items-center gap-3 rounded-lg border border-[#E2E8F0] px-4 py-3 text-[#334155] transition-all duration-300 hover:border-[#22D3EE]/50 hover:text-[#22D3EE] dark:border-[#2A2578] dark:text-slate-300"
 							aria-label={social.platform}
 						>
 							<svg

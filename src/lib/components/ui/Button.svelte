@@ -18,7 +18,7 @@
 	const VARIANTS = {
 		primary: 'bg-[#22D3EE] text-[#0B0A23] hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] hover:brightness-110',
 		secondary: 'border border-[#22D3EE] text-[#22D3EE] hover:bg-[#22D3EE]/10',
-		ghost: 'text-slate-300 hover:bg-white/5',
+		ghost: 'text-[#334155] hover:bg-black/5 dark:text-slate-300 dark:hover:bg-white/5',
 	} as const;
 </script>
 

@@ -54,7 +54,7 @@
 <AboutTeaser />
 
 <!-- CONNECT SECTION -->
-<section class="relative overflow-hidden border-t border-[#2A2578]/50 py-32">
+<section class="relative overflow-hidden border-t border-[#E2E8F0] py-32 dark:border-[#2A2578]/50">
 	<!-- BACKGROUND ACCENT -->
 	<div
 		class="pointer-events-none absolute top-1/2 left-1/2 h-150 w-150 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-10 blur-3xl"
@@ -66,12 +66,12 @@
 		<div use:reveal>
 			<SectionLabel label="CONNECT" class="justify-center" />
 
-			<h2 class="font-display text-3xl font-bold tracking-tight text-white md:text-5xl">
+			<h2 class="font-display text-3xl font-bold tracking-tight text-[#161446] md:text-5xl dark:text-white">
 				Let's build
 				<span class="text-[#22D3EE]">together</span>
 			</h2>
 
-			<p class="mx-auto mt-6 max-w-xl text-lg text-slate-300">
+			<p class="mx-auto mt-6 max-w-xl text-lg text-[#334155] dark:text-slate-300">
 				Follow along as we ship new tools and products. Join the journey from idea to launch.
 			</p>
 		</div>
@@ -84,7 +84,7 @@
 						href={social.url}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="group flex items-center gap-3 rounded-xl border border-[#2A2578] bg-[#1E1A5E]/30 px-6 py-4 text-slate-300 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#22D3EE]/30 hover:text-[#22D3EE] hover:shadow-[0_0_30px_rgba(34,211,238,0.08)]"
+						class="group flex items-center gap-3 rounded-xl border border-[#E2E8F0] bg-white/60 px-6 py-4 text-[#334155] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#22D3EE]/30 hover:text-[#22D3EE] hover:shadow-[0_0_30px_rgba(34,211,238,0.08)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:text-slate-300"
 						aria-label={social.platform}
 					>
 						<svg

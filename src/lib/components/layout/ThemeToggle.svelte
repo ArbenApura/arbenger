@@ -9,7 +9,7 @@
 <!-- THEME TOGGLE BUTTON -->
 <button
 	on:click={() => isDark.toggle()}
-	class="rounded-lg p-2 text-slate-300 transition-colors duration-200 hover:bg-white/5 hover:text-[#22D3EE]"
+	class="rounded-lg p-2 text-[#334155] transition-colors duration-200 hover:bg-black/5 hover:text-[#22D3EE] dark:text-slate-300 dark:hover:bg-white/5"
 	aria-label="Toggle theme"
 >
 	{#if $isDark}
