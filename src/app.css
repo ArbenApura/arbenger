@@ -43,8 +43,14 @@
 }
 
 @keyframes blink {
-	0%, 50% { opacity: 1; }
-	51%, 100% { opacity: 0; }
+	0%,
+	50% {
+		opacity: 1;
+	}
+	51%,
+	100% {
+		opacity: 0;
+	}
 }
 
 @keyframes fade-up {
@@ -64,4 +70,94 @@
 
 @utility animate-fade-up {
 	animation: fade-up 0.6s ease-out both;
+}
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+@keyframes pulse-glow {
+	0%,
+	100% {
+		opacity: 0.4;
+	}
+	50% {
+		opacity: 0.8;
+	}
+}
+
+@keyframes slide-in-left {
+	from {
+		opacity: 0;
+		transform: translateX(-40px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slide-in-right {
+	from {
+		opacity: 0;
+		transform: translateX(40px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes scale-in {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes gradient-shift {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@utility animate-float {
+	animation: float 6s ease-in-out infinite;
+}
+
+@utility animate-pulse-glow {
+	animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@utility animate-slide-left {
+	animation: slide-in-left 0.8s ease-out both;
+}
+
+@utility animate-slide-right {
+	animation: slide-in-right 0.8s ease-out both;
+}
+
+@utility animate-scale-in {
+	animation: scale-in 0.6s ease-out both;
+}
+
+@utility animate-gradient {
+	animation: gradient-shift 8s ease infinite;
+	background-size: 200% 200%;
 }
