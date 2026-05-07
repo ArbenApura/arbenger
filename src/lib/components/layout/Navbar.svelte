@@ -8,6 +8,7 @@
 
 	// IMPORTED COMPONENTS
 	import ThemeToggle from '$lib/components/layout/ThemeToggle.svelte';
+	import Logo from '$lib/components/ui/Logo.svelte';
 
 	// -- STATES -- //
 
@@ -40,8 +41,8 @@
 	<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 		<!-- LOGO + WORDMARK -->
 		<a href="/" class="flex items-center gap-3">
-			<img src="/arbenger.svg" alt="" class="h-8 w-8" width="32" height="32" />
-			<span class="font-display text-lg tracking-tight text-[#161446] text-white dark:text-white">
+			<Logo size={32} class="text-[#161446] dark:text-white" />
+			<span class="font-display text-lg tracking-tight text-[#161446] dark:text-white">
 				ARBENGER
 			</span>
 		</a>

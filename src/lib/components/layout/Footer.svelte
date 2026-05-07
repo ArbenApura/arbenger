@@ -2,6 +2,9 @@
 	// IMPORTED MODULES
 	import { navLinks, socialLinks } from '$lib/data/navigation';
 
+	// IMPORTED COMPONENTS
+	import Logo from '$lib/components/ui/Logo.svelte';
+
 	// -- CONSTANTS -- //
 
 	const CURRENT_YEAR = new Date().getFullYear();
@@ -20,7 +23,7 @@
 			<!-- LOGO + TAGLINE -->
 			<div>
 				<a href="/" class="flex items-center gap-3">
-					<img src="/arbenger.svg" alt="" class="h-8 w-8" width="32" height="32" />
+					<Logo size={32} class="text-white" />
 					<span class="font-display text-lg tracking-tight text-white">ARBENGER</span>
 				</a>
 				<p class="mt-4 text-sm text-slate-400">Building tools for developers and creators.</p>

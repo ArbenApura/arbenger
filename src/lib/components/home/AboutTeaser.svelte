@@ -8,6 +8,7 @@
 	// IMPORTED COMPONENTS
 	import Button from '$lib/components/ui/Button.svelte';
 	import SectionLabel from '$lib/components/ui/SectionLabel.svelte';
+	import Logo from '$lib/components/ui/Logo.svelte';
 
 	// -- CONSTANTS -- //
 
@@ -82,7 +83,7 @@
 					<div
 						class="relative flex h-72 w-72 items-center justify-center rounded-full border border-[#2A2578]/60 bg-[#1E1A5E]/30 backdrop-blur-sm"
 					>
-						<img src="/arbenger.svg" alt="" class="animate-float h-28 w-28" width="112" height="112" />
+						<Logo size={112} class="animate-float text-[#161446] dark:text-white" />
 					</div>
 				</div>
 			</div>

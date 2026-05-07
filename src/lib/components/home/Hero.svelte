@@ -7,7 +7,18 @@
 
 	// IMPORTED COMPONENTS
 	import Button from '$lib/components/ui/Button.svelte';
+	import Typewriter from '$lib/components/ui/Typewriter.svelte';
 	import ParticleBackground from '$lib/components/home/ParticleBackground.svelte';
+
+	// -- CONSTANTS -- //
+
+	const HERO_PHRASES = [
+		'of tomorrow',
+		'developers love',
+		'that ship fast',
+		'with purpose',
+		'that scale',
+	];
 
 	// -- STATES -- //
 
@@ -88,10 +99,8 @@
 				class="animate-gradient bg-clip-text text-transparent"
 				style="background-image: linear-gradient(135deg, #22D3EE, #2DD4BF, #22D3EE);"
 			>
-				of tomorrow
+				<Typewriter phrases={HERO_PHRASES} typingSpeed={70} deletingSpeed={35} pauseDuration={2500} />
 			</span>
-			<!-- BLINKING CURSOR -->
-			<span class="animate-blink ml-1 inline-block h-[0.8em] w-[4px] translate-y-[0.05em] bg-[#22D3EE]"></span>
 		</h1>
 
 		<!-- SUBTITLE -->
