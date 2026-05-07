@@ -100,17 +100,18 @@
 			});
 
 			// THEME-AWARE PARTICLE COLORS
-			const lineColor = dark ? '34, 211, 238' : '22, 20, 70';
-			const dotColor = dark ? '34, 211, 238' : '22, 20, 70';
+			const lineColor = dark ? '34, 211, 238' : '15, 23, 42';
+			const dotColor = dark ? '34, 211, 238' : '15, 23, 42';
 
-			// DRAW CONNECTIONS
+			// DRAW CONNECTIONS — VERY SUBTLE IN LIGHT MODE
+			const connectionOpacityMultiplier = dark ? 0.15 : 0.03;
 			for (let i = 0; i < particles.length; i++) {
 				for (let j = i + 1; j < particles.length; j++) {
 					const dx = particles[i].x - particles[j].x;
 					const dy = particles[i].y - particles[j].y;
 					const dist = Math.sqrt(dx * dx + dy * dy);
 					if (dist < CONNECTION_DISTANCE) {
-						const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.15;
+						const opacity = (1 - dist / CONNECTION_DISTANCE) * connectionOpacityMultiplier;
 						ctx.beginPath();
 						ctx.strokeStyle = `rgba(${lineColor}, ${opacity})`;
 						ctx.lineWidth = 0.5;
@@ -121,11 +122,12 @@
 				}
 			}
 
-			// DRAW PARTICLES
+			// DRAW PARTICLES — VERY SUBTLE IN LIGHT MODE
+			const dotOpacityMultiplier = dark ? 1 : 0.3;
 			particles.forEach((p) => {
 				ctx.beginPath();
 				ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-				ctx.fillStyle = `rgba(${dotColor}, ${p.opacity})`;
+				ctx.fillStyle = `rgba(${dotColor}, ${p.opacity * dotOpacityMultiplier})`;
 				ctx.fill();
 			});
 

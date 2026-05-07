@@ -34,15 +34,15 @@
 	class={cn(
 		'fixed top-0 right-0 left-0 z-50 border-b transition-all duration-300',
 		isScrolled
-			? 'border-[#E2E8F0] bg-white/80 backdrop-blur-lg dark:border-[#2A2578] dark:bg-[#0B0A23]/80'
+			? 'border-[#F1F5F9] bg-white/90 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-lg dark:border-[#2A2578] dark:bg-[#0B0A23]/80 dark:shadow-none'
 			: 'border-transparent bg-transparent',
 	)}
 >
 	<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 		<!-- LOGO + WORDMARK -->
 		<a href="/" class="flex items-center gap-3">
-			<Logo size={32} class="text-[#161446] dark:text-white" />
-			<span class="font-display text-lg tracking-tight text-[#161446] dark:text-white">
+			<Logo size={32} class="text-[#0F172A] dark:text-white" />
+			<span class="font-display text-lg tracking-tight text-[#0F172A] dark:text-white">
 				ARBENGER
 			</span>
 		</a>
@@ -52,7 +52,7 @@
 			{#each navLinks as link}
 				<a
 					href={link.href}
-					class="text-sm text-[#334155] transition-colors duration-200 hover:text-[#22D3EE] dark:text-slate-300 dark:hover:text-[#22D3EE]"
+					class="text-sm text-[#475569] transition-colors duration-200 hover:text-[#0891B2] dark:text-slate-300 dark:hover:text-[#22D3EE]"
 				>
 					{link.label}
 				</a>
@@ -65,7 +65,7 @@
 			<ThemeToggle />
 			<button
 				on:click={() => (isMobileMenuOpen = !isMobileMenuOpen)}
-				class="rounded-lg p-2 text-[#334155] transition-colors duration-200 hover:bg-black/5 dark:text-slate-300 dark:hover:bg-white/5"
+				class="rounded-lg p-2 text-[#475569] transition-colors duration-200 hover:bg-black/5 dark:text-slate-300 dark:hover:bg-white/5"
 				aria-label="Toggle menu"
 			>
 				{#if isMobileMenuOpen}
@@ -79,11 +79,11 @@
 
 	<!-- MOBILE MENU DRAWER -->
 	{#if isMobileMenuOpen}
-		<div class="border-t border-[#E2E8F0] bg-white px-4 py-4 lg:hidden dark:border-[#2A2578] dark:bg-[#0B0A23]">
+		<div class="border-t border-[#F1F5F9] bg-white px-4 py-4 lg:hidden dark:border-[#2A2578] dark:bg-[#0B0A23]">
 			{#each navLinks as link}
 				<a
 					href={link.href}
-					class="block rounded-lg px-4 py-3 text-sm text-[#334155] transition-colors duration-200 hover:bg-black/5 hover:text-[#22D3EE] dark:text-slate-300 dark:hover:bg-white/5"
+					class="block rounded-lg px-4 py-3 text-sm text-[#475569] transition-colors duration-200 hover:bg-black/5 hover:text-[#0891B2] dark:text-slate-300 dark:hover:bg-white/5"
 					on:click={closeMobileMenu}
 				>
 					{link.label}

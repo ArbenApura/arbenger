@@ -44,7 +44,7 @@
 <!-- SINGLE-LINE CTA — REPLACES THE BLOATED CONNECT SECTION -->
 <section class="border-t border-[#E2E8F0] py-20 dark:border-[#2A2578]/50">
 	<div use:reveal class="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 text-center sm:px-6 lg:px-8">
-		<p class="text-lg text-[#334155] dark:text-slate-300">
+		<p class="text-lg text-[#475569] dark:text-slate-300">
 			Got an idea? Want to collaborate? Just want to say hey?
 		</p>
 		<Button href="/contact" variant="primary">Let's talk</Button>

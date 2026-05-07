@@ -20,13 +20,13 @@
 		<div class="grid items-center gap-16 lg:grid-cols-2">
 			<!-- TEXT — PERSONAL, NOT CORPORATE -->
 			<div use:revealSlide={{ direction: 'left' }}>
-				<p class="font-mono text-sm text-[#22D3EE]">Who's behind this</p>
+				<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Who's behind this</p>
 
-				<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#161446] md:text-4xl dark:text-white">
+				<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#0F172A] md:text-4xl dark:text-white">
 					I'm Arben. I build tools for people who build things.
 				</h2>
 
-				<p class="mt-6 text-lg leading-relaxed text-[#334155] dark:text-slate-300">
+				<p class="mt-6 text-lg leading-relaxed text-[#475569] dark:text-slate-300">
 					Arbenger is just me -- a developer who got tired of waiting for the right tools to exist.
 					So I started making them. VS Code extensions, Chrome plugins, AI utilities, whatever
 					scratches the itch.
@@ -67,9 +67,9 @@
 
 					<!-- LOGO CONTAINER -->
 					<div
-						class="relative flex h-72 w-72 items-center justify-center rounded-full border border-[#E2E8F0] bg-white/60 shadow-[0_4px_15px_rgba(0,0,0,0.06)] backdrop-blur-sm dark:border-[#2A2578]/60 dark:bg-[#1E1A5E]/30 dark:shadow-none"
+						class="relative flex h-72 w-72 items-center justify-center rounded-full border border-[#F1F5F9] bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.06)] backdrop-blur-sm dark:border-[#2A2578]/60 dark:bg-[#1E1A5E]/30 dark:shadow-none"
 					>
-						<Logo size={112} class="animate-float text-[#161446] dark:text-white" />
+						<Logo size={112} class="animate-float text-[#0F172A] dark:text-white" />
 					</div>
 				</div>
 			</div>

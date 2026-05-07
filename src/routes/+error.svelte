@@ -10,12 +10,12 @@
 <section class="flex min-h-screen items-center justify-center">
 	<div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
 		<!-- ERROR CODE -->
-		<h1 class="font-display text-8xl font-bold tracking-tight text-[#161446] md:text-9xl dark:text-[#22D3EE]">
+		<h1 class="font-display text-8xl font-bold tracking-tight text-[#0F172A] md:text-9xl dark:text-[#22D3EE]">
 			{$page.status}
 		</h1>
 
 		<!-- ERROR MESSAGE -->
-		<p class="mt-6 text-lg text-[#334155] dark:text-slate-300">
+		<p class="mt-6 text-lg text-[#475569] dark:text-slate-300">
 			{$page.error?.message || 'Something went wrong'}
 		</p>
 

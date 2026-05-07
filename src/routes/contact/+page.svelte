@@ -26,13 +26,13 @@
 <!-- PAGE HERO -->
 <section class="relative pt-32 pb-16">
 	<div use:reveal class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<p class="font-mono text-sm text-[#22D3EE]">Contact</p>
+		<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Contact</p>
 
-		<h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-[#161446] md:text-5xl dark:text-white">
+		<h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
 			Say hey
 		</h1>
 
-		<p class="mt-6 max-w-2xl text-lg text-[#334155] dark:text-slate-300">
+		<p class="mt-6 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
 			Bug report, feature idea, collaboration pitch, or just want to talk shop --
 			I read everything.
 		</p>
@@ -43,20 +43,20 @@
 <section class="relative pb-24">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<!-- EMAIL — PRIMARY CONTACT -->
-		<div use:reveal={{ delay: 100 }} class="max-w-2xl rounded-xl border border-[#E2E8F0] bg-white/60 p-8 backdrop-blur-sm dark:border-[#2A2578] dark:bg-[#1E1A5E]/30">
+		<div use:reveal={{ delay: 100 }} class="max-w-2xl rounded-xl border border-[#F1F5F9] bg-white p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04),0_0_1px_rgba(0,0,0,0.06)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
 			<div class="flex items-center gap-4">
-				<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-[#22D3EE]/10">
-					<Mail class="size-6 text-[#22D3EE]" />
+				<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
+					<Mail class="size-6 text-[#0891B2] dark:text-[#22D3EE]" />
 				</div>
 				<div>
-					<h2 class="font-display text-lg font-bold tracking-tight text-[#161446] dark:text-white">Email is best</h2>
+					<h2 class="font-display text-lg font-bold tracking-tight text-[#0F172A] dark:text-white">Email is best</h2>
 					<p class="mt-1 text-sm text-[#64748B] dark:text-slate-400">I'll get back to you within a day or two.</p>
 				</div>
 			</div>
 
 			<a
 				href="mailto:contact@arbenger.com"
-				class="mt-6 inline-flex items-center gap-2 rounded-lg border border-[#22D3EE] px-5 py-3 text-sm font-medium text-[#22D3EE] transition-all duration-300 hover:bg-[#22D3EE]/10"
+				class="mt-6 inline-flex items-center gap-2 rounded-lg border border-[#0891B2] px-5 py-3 text-sm font-medium text-[#0891B2] transition-all duration-300 hover:bg-[#0891B2]/10 dark:border-[#22D3EE] dark:text-[#22D3EE] dark:hover:bg-[#22D3EE]/10"
 			>
 				<Mail class="size-4" />
 				contact@arbenger.com
@@ -73,7 +73,7 @@
 						href={social.url}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="flex items-center gap-3 rounded-lg border border-[#E2E8F0] px-5 py-3 text-[#334155] transition-all duration-300 hover:border-[#22D3EE]/50 hover:text-[#22D3EE] dark:border-[#2A2578] dark:text-slate-300"
+						class="flex items-center gap-3 rounded-lg border border-[#E2E8F0] bg-white px-5 py-3 text-[#475569] shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-[#0891B2]/50 hover:text-[#0891B2] hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)] dark:border-[#2A2578] dark:bg-transparent dark:text-slate-300 dark:shadow-none dark:hover:border-[#22D3EE]/50 dark:hover:text-[#22D3EE]"
 						aria-label={social.platform}
 					>
 						<svg class="size-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

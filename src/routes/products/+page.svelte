@@ -54,13 +54,13 @@
 <!-- PAGE HERO -->
 <section class="relative pt-32 pb-16">
 	<div use:reveal class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<p class="font-mono text-sm text-[#22D3EE]">Products</p>
+		<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Products</p>
 
-		<h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-[#161446] md:text-5xl dark:text-white">
+		<h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
 			Things I'm building
 		</h1>
 
-		<p class="mt-6 max-w-2xl text-lg text-[#334155] dark:text-slate-300">
+		<p class="mt-6 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
 			More shipping soon. I build in public -- follow along.
 		</p>
 	</div>
@@ -76,8 +76,8 @@
 					class={cn(
 						'rounded-lg px-4 py-2 font-mono text-sm transition-all duration-200',
 						activeFilter === filter.value
-							? 'bg-[#161446] text-white dark:bg-[#22D3EE] dark:text-[#0B0A23]'
-							: 'border border-[#E2E8F0] text-[#334155] hover:border-[#22D3EE]/50 hover:text-[#22D3EE] dark:border-[#2A2578] dark:text-slate-300',
+							? 'bg-[#0F172A] text-white shadow-[0_1px_2px_rgba(0,0,0,0.1)] dark:bg-[#22D3EE] dark:text-[#0B0A23] dark:shadow-none'
+							: 'border border-[#E2E8F0] text-[#475569] hover:border-[#0891B2]/50 hover:text-[#0891B2] dark:border-[#2A2578] dark:text-slate-300 dark:hover:border-[#22D3EE]/50 dark:hover:text-[#22D3EE]',
 					)}
 				>
 					{filter.label}
@@ -94,15 +94,15 @@
 			{#each filteredCategories as category, i (category.id)}
 				<div
 					use:reveal={{ delay: i * 80 }}
-					class="group flex items-center justify-between rounded-xl border border-[#E2E8F0] bg-white/60 px-8 py-6 backdrop-blur-sm transition-all duration-300 hover:border-[#22D3EE]/30 hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none dark:hover:shadow-[0_0_30px_rgba(34,211,238,0.06)]"
+					class="group flex items-center justify-between rounded-xl border border-[#F1F5F9] bg-white px-8 py-6 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(0,0,0,0.08),0_1px_4px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none dark:hover:shadow-[0_0_30px_rgba(34,211,238,0.06)]"
 				>
 					<div class="flex items-center gap-6">
 						<!-- CATEGORY ICON -->
-						<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#22D3EE]/10">
+						<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
 							{#if category.icon === 'chrome'}
 								<!-- INLINE SVG FOR CHROME — BRAND ICONS REMOVED IN LUCIDE V1+ -->
 								<svg
-									class="size-6 text-[#22D3EE]"
+									class="size-6 text-[#0891B2] dark:text-[#22D3EE]"
 									viewBox="0 0 24 24"
 									fill="none"
 									stroke="currentColor"
@@ -119,13 +119,13 @@
 									<path d="M17 12h4" />
 								</svg>
 							{:else}
-								<svelte:component this={ICON_MAP[category.icon]} class="size-6 text-[#22D3EE]" />
+								<svelte:component this={ICON_MAP[category.icon]} class="size-6 text-[#0891B2] dark:text-[#22D3EE]" />
 							{/if}
 						</div>
 
 						<!-- CATEGORY INFO -->
 						<div>
-							<h2 class="font-display text-lg font-bold tracking-tight text-[#161446] dark:text-white">
+							<h2 class="font-display text-lg font-bold tracking-tight text-[#0F172A] dark:text-white">
 								{category.name}
 							</h2>
 							<p class="mt-1 text-sm text-[#64748B] dark:text-slate-400">
