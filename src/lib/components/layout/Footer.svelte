@@ -26,7 +26,7 @@
 					<Logo size={32} class="text-[#161446] dark:text-white" />
 					<span class="font-display text-lg tracking-tight text-[#161446] dark:text-white">ARBENGER</span>
 				</a>
-				<p class="mt-4 text-sm text-[#64748B] dark:text-slate-400">Building tools for developers and creators.</p>
+				<p class="mt-4 text-sm text-[#64748B] dark:text-slate-400">Tools for people who build things.</p>
 			</div>
 
 			<!-- NAV LINKS -->

@@ -9,10 +9,6 @@
 	// IMPORTED STORES
 	import { isDark } from '$lib/stores/theme';
 
-	// IMPORTED COMPONENTS
-	import Badge from '$lib/components/ui/Badge.svelte';
-	import SectionLabel from '$lib/components/ui/SectionLabel.svelte';
-
 	// -- CONSTANTS -- //
 
 	const ICON_MAP: Record<string, typeof Code> = {
@@ -23,83 +19,65 @@
 	};
 </script>
 
-<!-- PRODUCT CATEGORIES SECTION — ALTERNATING BACKGROUND FOR LIGHT MODE SECTION SEPARATION -->
-<section class="relative overflow-hidden bg-[#F1F5F9] py-32 dark:bg-transparent">
-	<!-- SECTION BACKGROUND ACCENT -->
-	<div
-		class="pointer-events-none absolute top-0 right-0 h-125 w-125 rounded-full opacity-10 blur-3xl"
-		style="background: radial-gradient(circle, rgba(34, 211, 238, 0.3) 0%, transparent 70%);"
-		aria-hidden="true"
-	></div>
-
+<!-- PRODUCT CATEGORIES SECTION -->
+<section class="relative overflow-hidden py-32">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div use:reveal>
-			<SectionLabel label="PRODUCTS" />
-
-			<h2 class="font-display text-3xl font-bold tracking-tight text-[#161446] md:text-5xl dark:text-white">What we build</h2>
-			<p class="mt-4 max-w-2xl text-lg text-[#334155] dark:text-slate-300">
-				From browser extensions to AI-powered platforms, we build tools that solve real problems for developers
-				and creators across multiple ecosystems.
-			</p>
+		<!-- SECTION INTRO — LEFT-ALIGNED, NO SECTION LABEL -->
+		<div use:reveal class="max-w-2xl">
+			<p class="font-mono text-sm text-[#22D3EE]">What I'm working on</p>
+			<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#161446] md:text-5xl dark:text-white">
+				If the tool doesn't exist, I make it.
+			</h2>
 		</div>
 
-		<!-- CATEGORY GRID -->
-		<div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+		<!-- STACKED CATEGORY ROWS — EACH ONE UNIQUE, NOT A GRID -->
+		<div class="mt-20 space-y-4">
 			{#each categories as category, i}
-				<div
-					use:reveal={{ delay: i * 100 }}
-					class="group relative overflow-hidden rounded-xl border border-[#E2E8F0] bg-white p-8 shadow-[0_1px_3px_rgba(0,0,0,0.06)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-[#22D3EE]/30 hover:shadow-[0_8px_25px_rgba(0,0,0,0.08)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/50 dark:shadow-none dark:hover:shadow-[0_0_60px_rgba(34,211,238,0.08)]"
+				<a
+					href="/products"
+					use:reveal={{ delay: i * 80 }}
+					class="group flex items-center justify-between rounded-2xl border border-[#E2E8F0] bg-white/60 px-8 py-6 backdrop-blur-sm transition-all duration-500 hover:border-[#22D3EE]/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:border-[#2A2578]/60 dark:bg-[#1E1A5E]/20 dark:hover:border-[#22D3EE]/30 dark:hover:shadow-[0_0_40px_rgba(34,211,238,0.06)]"
 				>
-					<!-- HOVER GRADIENT — RADIAL-GRADIENT CANNOT BE EXPRESSED AS TAILWIND; isDark TERNARY FOR THEME-AWARE HOVER TINT -->
-					<div
-						class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-						style="background: radial-gradient(circle at 50% 0%, {$isDark ? 'rgba(34, 211, 238, 0.06)' : 'rgba(22, 20, 70, 0.03)'} 0%, transparent 60%);"
-						aria-hidden="true"
-					></div>
-
-					<!-- ICON -->
-					<div
-						class="relative mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-[#22D3EE]/10 transition-all duration-300 group-hover:bg-[#22D3EE]/20 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.15)]"
-					>
-						{#if category.icon === 'chrome'}
-							<svg
-								class="size-7 text-[#22D3EE]"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<rect x="3" y="3" width="18" height="18" rx="2" />
-								<path d="M7 7h10v10H7z" />
-							</svg>
-						{:else}
-							<svelte:component this={ICON_MAP[category.icon]} class="size-7 text-[#22D3EE]" />
-						{/if}
-					</div>
-
-					<!-- CONTENT -->
-					<h3 class="font-display relative text-xl font-bold tracking-tight text-[#161446] dark:text-white">
-						{category.name}
-					</h3>
-
-					<p class="relative mt-3 text-sm leading-relaxed text-[#334155] dark:text-slate-300">
-						{category.description}
-					</p>
-
-					<!-- FOOTER -->
-					<div class="relative mt-6 flex items-center justify-between">
-						<Badge variant="cyan">Coming soon</Badge>
-						<span
-							class="flex items-center gap-1 text-xs text-[#94A3B8] transition-colors duration-300 group-hover:text-[#22D3EE] dark:text-slate-500"
+					<div class="flex items-center gap-6">
+						<!-- ICON -->
+						<div
+							class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#22D3EE]/10 transition-all duration-300 group-hover:bg-[#22D3EE]/20 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.15)]"
 						>
-							View
-							<ArrowRight class="size-3 transition-transform duration-300 group-hover:translate-x-1" />
-						</span>
+							{#if category.icon === 'chrome'}
+								<svg
+									class="size-6 text-[#22D3EE]"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<rect x="3" y="3" width="18" height="18" rx="2" />
+									<path d="M7 7h10v10H7z" />
+								</svg>
+							{:else}
+								<svelte:component this={ICON_MAP[category.icon]} class="size-6 text-[#22D3EE]" />
+							{/if}
+						</div>
+
+						<!-- TEXT -->
+						<div>
+							<h3 class="font-display text-lg font-bold tracking-tight text-[#161446] dark:text-white">
+								{category.name}
+							</h3>
+							<p class="mt-1 text-sm text-[#64748B] dark:text-slate-400">
+								{category.description}
+							</p>
+						</div>
 					</div>
-				</div>
+
+					<!-- ARROW -->
+					<ArrowRight
+						class="size-5 shrink-0 text-[#94A3B8] transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#22D3EE] dark:text-slate-500"
+					/>
+				</a>
 			{/each}
 		</div>
 	</div>

@@ -16,11 +16,11 @@
 	// -- CONSTANTS -- //
 
 	const HERO_PHRASES = [
-		'of tomorrow',
 		'developers love',
-		'that ship fast',
-		'with purpose',
-		'that scale',
+		'that actually ship',
+		'I wish existed',
+		'worth using',
+		'that solve real problems',
 	];
 
 	// -- STATES -- //
@@ -41,7 +41,7 @@
 <svelte:window bind:scrollY />
 
 <!-- HERO SECTION -->
-<section class="relative flex min-h-screen items-center justify-center overflow-hidden">
+<section class="relative flex min-h-screen items-center overflow-hidden">
 	<!-- PARTICLE NETWORK BACKGROUND -->
 	<ParticleBackground />
 
@@ -74,29 +74,17 @@
 	></div>
 
 	<!-- HERO CONTENT -->
-	<div class="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-		<!-- TERMINAL BADGE -->
-		<div
-			class="mb-8 inline-flex items-center gap-2 rounded-full border border-[#E2E8F0] bg-white/80 px-4 py-2 backdrop-blur-sm transition-all duration-700 dark:border-[#2A2578] dark:bg-[#1E1A5E]/50"
-			class:opacity-0={!isVisible}
-			class:translate-y-4={!isVisible}
-			class:opacity-100={isVisible}
-			class:translate-y-0={isVisible}
-		>
-			<span class="animate-pulse-glow h-2 w-2 rounded-full bg-[#2DD4BF]"></span>
-			<span class="font-mono text-xs text-[#334155] dark:text-slate-300">SHIPPING NEW TOOLS</span>
-		</div>
-
+	<div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<!-- TAGLINE -->
 		<h1
-			class="font-display text-5xl font-bold tracking-tight text-[#161446] transition-all duration-1000 md:text-7xl lg:text-8xl dark:text-white"
+			class="font-display max-w-4xl text-6xl font-bold leading-[1.05] tracking-tight text-[#161446] transition-all duration-1000 md:text-8xl lg:text-9xl dark:text-white"
 			class:opacity-0={!isVisible}
 			class:translate-y-8={!isVisible}
 			class:opacity-100={isVisible}
 			class:translate-y-0={isVisible}
 			style="transition-delay: 200ms;"
 		>
-			Building the tools
+			I build things
 			<br />
 			<span
 				class="animate-gradient bg-clip-text text-transparent"
@@ -108,20 +96,19 @@
 
 		<!-- SUBTITLE -->
 		<p
-			class="mx-auto mt-8 max-w-2xl text-lg text-[#334155] transition-all duration-1000 md:text-xl dark:text-slate-300"
+			class="mt-8 max-w-xl text-lg text-[#334155] transition-all duration-1000 md:text-xl dark:text-slate-300"
 			class:opacity-0={!isVisible}
 			class:translate-y-8={!isVisible}
 			class:opacity-100={isVisible}
 			class:translate-y-0={isVisible}
 			style="transition-delay: 400ms;"
 		>
-			We craft AI-powered tools, developer extensions, and SaaS products that help creators and engineers work
-			smarter, build faster, and ship with confidence.
+			One person. Real products. No VC, no team of 50, no slide decks.
 		</p>
 
-		<!-- CTA BUTTONS -->
+		<!-- CTA BUTTON -->
 		<div
-			class="mt-12 flex flex-col items-center justify-center gap-4 transition-all duration-1000 sm:flex-row"
+			class="mt-12 transition-all duration-1000"
 			class:opacity-0={!isVisible}
 			class:translate-y-8={!isVisible}
 			class:opacity-100={isVisible}
@@ -129,20 +116,8 @@
 			style="transition-delay: 600ms;"
 		>
 			<Button href="/products" variant="primary" class="group relative overflow-hidden">
-				<span class="relative z-10">Explore Products</span>
+				<span class="relative z-10">See what I'm building</span>
 			</Button>
-			<Button href="/about" variant="secondary">About Us</Button>
-		</div>
-
-		<!-- SCROLL INDICATOR -->
-		<div
-			class="mt-20 flex flex-col items-center gap-2 transition-all duration-1000"
-			class:opacity-0={!isVisible}
-			class:opacity-100={isVisible}
-			style="transition-delay: 1000ms;"
-		>
-			<span class="font-mono text-xs text-[#94A3B8] dark:text-slate-500">SCROLL</span>
-			<div class="animate-pulse-glow h-8 w-[1px] bg-[#E2E8F0] dark:bg-[#2A2578]"></div>
 		</div>
 	</div>
 </section>

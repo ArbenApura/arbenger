@@ -1,27 +1,15 @@
 <script lang="ts">
-	// IMPORTED DEP-MODULES
-	import { Zap, Shield, Eye } from 'lucide-svelte';
-
 	// IMPORTED MODULES
 	import { reveal, revealSlide } from '$lib/actions/reveal';
 
 	// IMPORTED COMPONENTS
 	import Button from '$lib/components/ui/Button.svelte';
-	import SectionLabel from '$lib/components/ui/SectionLabel.svelte';
 	import Logo from '$lib/components/ui/Logo.svelte';
-
-	// -- CONSTANTS -- //
-
-	const STATS = [
-		{ value: '5+', label: 'Product Categories', icon: Zap },
-		{ value: '100%', label: 'Solo Built', icon: Shield },
-		{ value: '∞', label: 'Ideas in Pipeline', icon: Eye },
-	];
 </script>
 
 <!-- ABOUT TEASER SECTION -->
 <section class="relative overflow-hidden border-t border-[#E2E8F0] py-32 dark:border-[#2A2578]/50">
-	<!-- BACKGROUND ACCENTS -->
+	<!-- BACKGROUND ACCENT -->
 	<div
 		class="pointer-events-none absolute bottom-0 left-0 h-100 w-100 rounded-full opacity-10 blur-3xl"
 		style="background: radial-gradient(circle, rgba(45, 212, 191, 0.3) 0%, transparent 70%);"
@@ -29,30 +17,28 @@
 	></div>
 
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<!-- TOP: ABOUT TEXT -->
 		<div class="grid items-center gap-16 lg:grid-cols-2">
+			<!-- TEXT — PERSONAL, NOT CORPORATE -->
 			<div use:revealSlide={{ direction: 'left' }}>
-				<SectionLabel label="ABOUT" />
+				<p class="font-mono text-sm text-[#22D3EE]">Who's behind this</p>
 
-				<h2 class="font-display text-3xl font-bold tracking-tight text-[#161446] md:text-5xl dark:text-white">
-					Crafting digital tools
-					<br />
-					<span class="text-[#22D3EE]">with purpose</span>
+				<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#161446] md:text-4xl dark:text-white">
+					I'm Arben. I build tools for people who build things.
 				</h2>
 
 				<p class="mt-6 text-lg leading-relaxed text-[#334155] dark:text-slate-300">
-					Arbenger is a solo venture by Arben Apura, focused on building developer tools and creative products
-					that make a real difference. From AI-powered utilities to browser extensions, every product is built
-					with obsessive attention to performance, design, and developer experience.
+					Arbenger is just me -- a developer who got tired of waiting for the right tools to exist.
+					So I started making them. VS Code extensions, Chrome plugins, AI utilities, whatever
+					scratches the itch.
 				</p>
 
 				<p class="mt-4 text-[#64748B] dark:text-slate-400">
-					We don't chase trends. We identify real pain points, architect thoughtful solutions, and ship
-					products that developers actually want to use every day.
+					Currently obsessed with AI tooling and developer extensions. Everything here is solo-built,
+					shipped when it's ready, and designed for people who actually write code.
 				</p>
 
 				<div class="mt-10">
-					<Button href="/about" variant="secondary">Learn more about us</Button>
+					<Button href="/about" variant="secondary">More about me</Button>
 				</div>
 			</div>
 
@@ -87,26 +73,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-
-		<!-- STATS ROW -->
-		<div class="mt-20 grid gap-6 sm:grid-cols-3">
-			{#each STATS as stat, i}
-				<div
-					use:reveal={{ delay: i * 150 }}
-					class="group flex items-center gap-5 rounded-xl border border-[#E2E8F0] bg-white/60 p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] backdrop-blur-sm transition-all duration-300 hover:border-[#22D3EE]/20 dark:border-[#2A2578]/50 dark:bg-[#1E1A5E]/30 dark:shadow-none"
-				>
-					<div
-						class="flex h-12 w-12 items-center justify-center rounded-lg bg-[#22D3EE]/10 transition-colors duration-300 group-hover:bg-[#22D3EE]/20"
-					>
-						<svelte:component this={stat.icon} class="size-6 text-[#22D3EE]" />
-					</div>
-					<div>
-						<p class="font-display text-2xl font-bold text-[#161446] dark:text-white">{stat.value}</p>
-						<p class="text-sm text-[#64748B] dark:text-slate-400">{stat.label}</p>
-					</div>
-				</div>
-			{/each}
 		</div>
 	</div>
 </section>

@@ -8,7 +8,6 @@
 
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
-	import SectionLabel from '$lib/components/ui/SectionLabel.svelte';
 
 	// -- CONSTANTS -- //
 
@@ -27,71 +26,62 @@
 <!-- PAGE HERO -->
 <section class="relative pt-32 pb-16">
 	<div use:reveal class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<SectionLabel label="CONTACT" />
+		<p class="font-mono text-sm text-[#22D3EE]">Contact</p>
 
-		<h1 class="font-display text-4xl font-bold tracking-tight text-[#161446] md:text-5xl dark:text-white">Get in touch</h1>
+		<h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-[#161446] md:text-5xl dark:text-white">
+			Say hey
+		</h1>
 
 		<p class="mt-6 max-w-2xl text-lg text-[#334155] dark:text-slate-300">
-			Have a question, idea, or just want to say hello? Reach out through any of the channels below.
+			Bug report, feature idea, collaboration pitch, or just want to talk shop --
+			I read everything.
 		</p>
 	</div>
 </section>
 
-<!-- CONTACT CHANNELS -->
+<!-- CONTACT INFO -->
 <section class="relative pb-24">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="grid gap-8 md:grid-cols-2">
-			<!-- EMAIL -->
-			<div use:reveal={{ delay: 100 }} class="rounded-xl border border-[#E2E8F0] bg-white p-8 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E] dark:shadow-none">
-				<SectionLabel label="EMAIL" />
-
-				<div class="flex items-center gap-4">
-					<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-[#22D3EE]/10">
-						<Mail class="size-6 text-[#22D3EE]" />
-					</div>
-					<div>
-						<h2 class="font-display text-lg font-bold tracking-tight text-[#161446] dark:text-white">Email</h2>
-						<p class="mt-1 text-sm text-[#334155] dark:text-slate-300">Best for detailed inquiries</p>
-					</div>
+		<!-- EMAIL — PRIMARY CONTACT -->
+		<div use:reveal={{ delay: 100 }} class="max-w-2xl rounded-xl border border-[#E2E8F0] bg-white/60 p-8 backdrop-blur-sm dark:border-[#2A2578] dark:bg-[#1E1A5E]/30">
+			<div class="flex items-center gap-4">
+				<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-[#22D3EE]/10">
+					<Mail class="size-6 text-[#22D3EE]" />
 				</div>
-
-				<a
-					href="mailto:contact@arbenger.com"
-					class="mt-6 inline-flex items-center gap-2 rounded-lg border border-[#22D3EE] px-5 py-3 text-sm font-medium text-[#22D3EE] transition-all duration-300 hover:bg-[#22D3EE]/10"
-				>
-					<Mail class="size-4" />
-					contact@arbenger.com
-				</a>
+				<div>
+					<h2 class="font-display text-lg font-bold tracking-tight text-[#161446] dark:text-white">Email is best</h2>
+					<p class="mt-1 text-sm text-[#64748B] dark:text-slate-400">I'll get back to you within a day or two.</p>
+				</div>
 			</div>
 
-			<!-- SOCIAL LINKS -->
-			<div use:reveal={{ delay: 200 }} class="rounded-xl border border-[#E2E8F0] bg-white p-8 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E] dark:shadow-none">
-				<SectionLabel label="SOCIAL" />
+			<a
+				href="mailto:contact@arbenger.com"
+				class="mt-6 inline-flex items-center gap-2 rounded-lg border border-[#22D3EE] px-5 py-3 text-sm font-medium text-[#22D3EE] transition-all duration-300 hover:bg-[#22D3EE]/10"
+			>
+				<Mail class="size-4" />
+				contact@arbenger.com
+			</a>
+		</div>
 
-				<h2 class="font-display text-lg font-bold tracking-tight text-[#161446] dark:text-white">Social Media</h2>
-				<p class="mt-1 text-sm text-[#334155] dark:text-slate-300">Follow along and connect</p>
+		<!-- SOCIAL LINKS — SIMPLE INLINE LIST -->
+		<div use:reveal={{ delay: 200 }} class="mt-12">
+			<p class="font-mono text-sm text-[#64748B] dark:text-slate-400">Or find me here</p>
 
-				<div class="mt-6 flex flex-col gap-3">
-					{#each socialLinks as social}
-						<a
-							href={social.url}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="flex items-center gap-3 rounded-lg border border-[#E2E8F0] px-4 py-3 text-[#334155] shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-[#22D3EE]/50 hover:text-[#22D3EE] dark:border-[#2A2578] dark:text-slate-300 dark:shadow-none"
-							aria-label={social.platform}
-						>
-							<svg
-								class="size-5"
-								viewBox="0 0 24 24"
-								fill="currentColor"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path d={SOCIAL_ICONS[social.icon]} />
-							</svg>
-							<span class="text-sm font-medium">{social.platform}</span>
-						</a>
-					{/each}
-				</div>
+			<div class="mt-4 flex flex-wrap gap-4">
+				{#each socialLinks as social}
+					<a
+						href={social.url}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex items-center gap-3 rounded-lg border border-[#E2E8F0] px-5 py-3 text-[#334155] transition-all duration-300 hover:border-[#22D3EE]/50 hover:text-[#22D3EE] dark:border-[#2A2578] dark:text-slate-300"
+						aria-label={social.platform}
+					>
+						<svg class="size-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path d={SOCIAL_ICONS[social.icon]} />
+						</svg>
+						<span class="text-sm font-medium">{social.platform}</span>
+					</a>
+				{/each}
 			</div>
 		</div>
 	</div>
