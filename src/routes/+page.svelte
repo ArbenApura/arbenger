@@ -7,7 +7,7 @@
 	import JsonLd from '$lib/components/seo/JsonLd.svelte';
 	import Hero from '$lib/components/home/Hero.svelte';
 	import ProductCategories from '$lib/components/home/ProductCategories.svelte';
-	import TechStack from '$lib/components/home/TechStack.svelte';
+
 	import AboutTeaser from '$lib/components/home/AboutTeaser.svelte';
 	import Roadmap from '$lib/components/home/Roadmap.svelte';
 	import Newsletter from '$lib/components/home/Newsletter.svelte';
@@ -43,7 +43,6 @@
 <ProductCategories />
 
 <!-- TECH STACK -->
-<TechStack />
 
 <!-- ABOUT TEASER -->
 <AboutTeaser />
