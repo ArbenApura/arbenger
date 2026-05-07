@@ -81,7 +81,7 @@
 			</div>
 
 			<!-- DECORATIVE TERMINAL CARD -->
-			<div use:revealSlide={{ direction: 'right' }} class="rounded-xl border border-[#E2E8F0] bg-white p-6 dark:border-[#2A2578] dark:bg-[#1E1A5E]">
+			<div use:revealSlide={{ direction: 'right' }} class="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E] dark:shadow-none">
 				<div class="flex items-center gap-2">
 					<div class="h-3 w-3 rounded-full bg-red-500/50"></div>
 					<div class="h-3 w-3 rounded-full bg-yellow-500/50"></div>
@@ -117,7 +117,7 @@
 
 		<div class="mt-8 grid gap-8 md:grid-cols-3">
 			{#each MISSION_CARDS as card, i}
-				<div use:reveal={{ delay: i * 100 }} class="rounded-xl border border-[#E2E8F0] bg-white p-6 dark:border-[#2A2578] dark:bg-[#1E1A5E]">
+				<div use:reveal={{ delay: i * 100 }} class="rounded-xl border border-[#E2E8F0] bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E] dark:shadow-none">
 					<h3 class="font-display text-lg font-bold tracking-tight text-[#161446] dark:text-white">{card.title}</h3>
 					<p class="mt-3 text-sm text-[#334155] dark:text-slate-300">
 						{card.description}
@@ -141,7 +141,7 @@
 					href={social.url}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex items-center gap-3 rounded-lg border border-[#E2E8F0] px-5 py-3 text-[#334155] transition-all duration-300 hover:border-[#22D3EE]/50 hover:text-[#22D3EE] dark:border-[#2A2578] dark:text-slate-300"
+					class="flex items-center gap-3 rounded-lg border border-[#E2E8F0] px-5 py-3 text-[#334155] shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all duration-300 hover:border-[#22D3EE]/50 hover:text-[#22D3EE] dark:border-[#2A2578] dark:text-slate-300 dark:shadow-none"
 					aria-label={social.platform}
 				>
 					<svg class="size-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

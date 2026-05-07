@@ -19,8 +19,9 @@
 	{...href ? { href } : {}}
 	class={cn(
 		'block rounded-xl border border-[#E2E8F0] bg-white p-6 transition-all duration-300',
-		'dark:border-[#2A2578] dark:bg-[#1E1A5E]',
-		isHovered && 'translate-y-[-2px] shadow-[0_0_40px_rgba(34,211,238,0.1)]',
+		'shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)]',
+		'dark:border-[#2A2578] dark:bg-[#1E1A5E] dark:shadow-none',
+		isHovered && 'translate-y-[-2px] shadow-[0_8px_25px_rgba(0,0,0,0.08)] dark:shadow-[0_0_40px_rgba(34,211,238,0.1)]',
 		href && 'cursor-pointer',
 		className,
 	)}

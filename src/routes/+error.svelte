@@ -10,7 +10,7 @@
 <section class="flex min-h-screen items-center justify-center">
 	<div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
 		<!-- ERROR CODE -->
-		<h1 class="font-display text-8xl font-bold tracking-tight text-[#22D3EE] md:text-9xl">
+		<h1 class="font-display text-8xl font-bold tracking-tight text-[#161446] md:text-9xl dark:text-[#22D3EE]">
 			{$page.status}
 		</h1>
 

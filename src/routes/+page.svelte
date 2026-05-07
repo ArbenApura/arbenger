@@ -84,7 +84,7 @@
 						href={social.url}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="group flex items-center gap-3 rounded-xl border border-[#E2E8F0] bg-white/60 px-6 py-4 text-[#334155] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#22D3EE]/30 hover:text-[#22D3EE] hover:shadow-[0_0_30px_rgba(34,211,238,0.08)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:text-slate-300"
+						class="group flex items-center gap-3 rounded-xl border border-[#E2E8F0] bg-white/60 px-6 py-4 text-[#334155] shadow-[0_1px_3px_rgba(0,0,0,0.06)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#22D3EE]/30 hover:text-[#22D3EE] hover:shadow-[0_8px_25px_rgba(0,0,0,0.08)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:text-slate-300 dark:shadow-none dark:hover:shadow-[0_0_30px_rgba(34,211,238,0.08)]"
 						aria-label={social.platform}
 					>
 						<svg

@@ -81,7 +81,7 @@
 
 					<!-- LOGO CONTAINER -->
 					<div
-						class="relative flex h-72 w-72 items-center justify-center rounded-full border border-[#E2E8F0] bg-white/60 backdrop-blur-sm dark:border-[#2A2578]/60 dark:bg-[#1E1A5E]/30"
+						class="relative flex h-72 w-72 items-center justify-center rounded-full border border-[#E2E8F0] bg-white/60 shadow-[0_4px_15px_rgba(0,0,0,0.06)] backdrop-blur-sm dark:border-[#2A2578]/60 dark:bg-[#1E1A5E]/30 dark:shadow-none"
 					>
 						<Logo size={112} class="animate-float text-[#161446] dark:text-white" />
 					</div>
@@ -94,7 +94,7 @@
 			{#each STATS as stat, i}
 				<div
 					use:reveal={{ delay: i * 150 }}
-					class="group flex items-center gap-5 rounded-xl border border-[#E2E8F0] bg-white/60 p-6 backdrop-blur-sm transition-all duration-300 hover:border-[#22D3EE]/20 dark:border-[#2A2578]/50 dark:bg-[#1E1A5E]/30"
+					class="group flex items-center gap-5 rounded-xl border border-[#E2E8F0] bg-white/60 p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] backdrop-blur-sm transition-all duration-300 hover:border-[#22D3EE]/20 dark:border-[#2A2578]/50 dark:bg-[#1E1A5E]/30 dark:shadow-none"
 				>
 					<div
 						class="flex h-12 w-12 items-center justify-center rounded-lg bg-[#22D3EE]/10 transition-colors duration-300 group-hover:bg-[#22D3EE]/20"

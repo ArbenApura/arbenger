@@ -76,7 +76,7 @@
 					class={cn(
 						'rounded-lg px-4 py-2 font-mono text-sm transition-all duration-200',
 						activeFilter === filter.value
-							? 'bg-[#22D3EE] text-[#0B0A23]'
+							? 'bg-[#161446] text-white dark:bg-[#22D3EE] dark:text-[#0B0A23]'
 							: 'border border-[#E2E8F0] text-[#334155] hover:border-[#22D3EE]/50 hover:text-[#22D3EE] dark:border-[#2A2578] dark:text-slate-300',
 					)}
 				>

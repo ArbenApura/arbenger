@@ -5,6 +5,9 @@
 	// IMPORTED MODULES
 	import { browser } from '$app/environment';
 
+	// IMPORTED STORES
+	import { isDark } from '$lib/stores/theme';
+
 	// IMPORTED COMPONENTS
 	import Button from '$lib/components/ui/Button.svelte';
 	import Typewriter from '$lib/components/ui/Typewriter.svelte';
@@ -42,10 +45,10 @@
 	<!-- PARTICLE NETWORK BACKGROUND -->
 	<ParticleBackground />
 
-	<!-- GRID OVERLAY — RADIAL-GRADIENT DOTS CANNOT BE EXPRESSED AS TAILWIND -->
+	<!-- GRID OVERLAY — RADIAL-GRADIENT DOTS CANNOT BE EXPRESSED AS TAILWIND; isDark TERNARY FOR THEME-AWARE DOT COLOR -->
 	<div
 		class="pointer-events-none absolute inset-0 opacity-10"
-		style="background-image: radial-gradient(circle, #2A2578 1px, transparent 1px); background-size: 50px 50px;"
+		style="background-image: radial-gradient(circle, {$isDark ? '#2A2578' : '#CBD5E1'} 1px, transparent 1px); background-size: 50px 50px;"
 		aria-hidden="true"
 	></div>
 
@@ -56,16 +59,16 @@
 		aria-hidden="true"
 	></div>
 
-	<!-- FLOATING ORB DECORATIONS — PARALLAX SHIFT ON SCROLL -->
+	<!-- FLOATING ORB DECORATIONS — PARALLAX SHIFT ON SCROLL; isDark TERNARY FOR THEME-AWARE ORB COLORS -->
 	<div
 		class="animate-pulse-glow pointer-events-none absolute top-1/4 left-[10%] h-72 w-72 rounded-full opacity-20 blur-3xl"
-		style="background: radial-gradient(circle, rgba(34, 211, 238, 0.4) 0%, transparent 70%); transform: translateY({scrollY *
+		style="background: radial-gradient(circle, {$isDark ? 'rgba(34, 211, 238, 0.4)' : 'rgba(22, 20, 70, 0.08)'} 0%, transparent 70%); transform: translateY({scrollY *
 			-0.15}px);"
 		aria-hidden="true"
 	></div>
 	<div
 		class="animate-pulse-glow pointer-events-none absolute right-[10%] bottom-1/4 h-96 w-96 rounded-full opacity-15 blur-3xl"
-		style="background: radial-gradient(circle, rgba(45, 212, 191, 0.3) 0%, transparent 70%); transform: translateY({scrollY *
+		style="background: radial-gradient(circle, {$isDark ? 'rgba(45, 212, 191, 0.3)' : 'rgba(22, 20, 70, 0.06)'} 0%, transparent 70%); transform: translateY({scrollY *
 			-0.1}px); animation-delay: 1.5s;"
 		aria-hidden="true"
 	></div>

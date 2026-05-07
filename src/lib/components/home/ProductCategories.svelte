@@ -6,6 +6,9 @@
 	import { categories } from '$lib/data/products';
 	import { reveal } from '$lib/actions/reveal';
 
+	// IMPORTED STORES
+	import { isDark } from '$lib/stores/theme';
+
 	// IMPORTED COMPONENTS
 	import Badge from '$lib/components/ui/Badge.svelte';
 	import SectionLabel from '$lib/components/ui/SectionLabel.svelte';
@@ -20,8 +23,8 @@
 	};
 </script>
 
-<!-- PRODUCT CATEGORIES SECTION -->
-<section class="relative overflow-hidden py-32">
+<!-- PRODUCT CATEGORIES SECTION — ALTERNATING BACKGROUND FOR LIGHT MODE SECTION SEPARATION -->
+<section class="relative overflow-hidden bg-[#F1F5F9] py-32 dark:bg-transparent">
 	<!-- SECTION BACKGROUND ACCENT -->
 	<div
 		class="pointer-events-none absolute top-0 right-0 h-125 w-125 rounded-full opacity-10 blur-3xl"
@@ -45,12 +48,12 @@
 			{#each categories as category, i}
 				<div
 					use:reveal={{ delay: i * 100 }}
-					class="group relative overflow-hidden rounded-xl border border-[#E2E8F0] bg-white/80 p-8 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-[#22D3EE]/30 hover:shadow-[0_0_60px_rgba(34,211,238,0.08)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/50"
+					class="group relative overflow-hidden rounded-xl border border-[#E2E8F0] bg-white p-8 shadow-[0_1px_3px_rgba(0,0,0,0.06)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-[#22D3EE]/30 hover:shadow-[0_8px_25px_rgba(0,0,0,0.08)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/50 dark:shadow-none dark:hover:shadow-[0_0_60px_rgba(34,211,238,0.08)]"
 				>
-					<!-- HOVER GRADIENT — RADIAL-GRADIENT CANNOT BE EXPRESSED AS TAILWIND -->
+					<!-- HOVER GRADIENT — RADIAL-GRADIENT CANNOT BE EXPRESSED AS TAILWIND; isDark TERNARY FOR THEME-AWARE HOVER TINT -->
 					<div
 						class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-						style="background: radial-gradient(circle at 50% 0%, rgba(34, 211, 238, 0.06) 0%, transparent 60%);"
+						style="background: radial-gradient(circle at 50% 0%, {$isDark ? 'rgba(34, 211, 238, 0.06)' : 'rgba(22, 20, 70, 0.03)'} 0%, transparent 60%);"
 						aria-hidden="true"
 					></div>
 

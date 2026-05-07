@@ -42,7 +42,7 @@
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="grid gap-8 md:grid-cols-2">
 			<!-- EMAIL -->
-			<div use:reveal={{ delay: 100 }} class="rounded-xl border border-[#E2E8F0] bg-white p-8 dark:border-[#2A2578] dark:bg-[#1E1A5E]">
+			<div use:reveal={{ delay: 100 }} class="rounded-xl border border-[#E2E8F0] bg-white p-8 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E] dark:shadow-none">
 				<SectionLabel label="EMAIL" />
 
 				<div class="flex items-center gap-4">
@@ -65,7 +65,7 @@
 			</div>
 
 			<!-- SOCIAL LINKS -->
-			<div use:reveal={{ delay: 200 }} class="rounded-xl border border-[#E2E8F0] bg-white p-8 dark:border-[#2A2578] dark:bg-[#1E1A5E]">
+			<div use:reveal={{ delay: 200 }} class="rounded-xl border border-[#E2E8F0] bg-white p-8 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E] dark:shadow-none">
 				<SectionLabel label="SOCIAL" />
 
 				<h2 class="font-display text-lg font-bold tracking-tight text-[#161446] dark:text-white">Social Media</h2>
@@ -77,7 +77,7 @@
 							href={social.url}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="flex items-center gap-3 rounded-lg border border-[#E2E8F0] px-4 py-3 text-[#334155] transition-all duration-300 hover:border-[#22D3EE]/50 hover:text-[#22D3EE] dark:border-[#2A2578] dark:text-slate-300"
+							class="flex items-center gap-3 rounded-lg border border-[#E2E8F0] px-4 py-3 text-[#334155] shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-[#22D3EE]/50 hover:text-[#22D3EE] dark:border-[#2A2578] dark:text-slate-300 dark:shadow-none"
 							aria-label={social.platform}
 						>
 							<svg
