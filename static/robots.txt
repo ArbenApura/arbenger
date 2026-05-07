@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://arbenger.com/sitemap.xml
