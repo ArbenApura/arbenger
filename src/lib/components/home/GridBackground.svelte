@@ -9,10 +9,7 @@
 </script>
 
 <!-- ANIMATED DOT-GRID BACKGROUND -->
-<div
-	class={cn('pointer-events-none absolute inset-0 overflow-hidden', className)}
-	aria-hidden="true"
->
+<div class={cn('pointer-events-none absolute inset-0 overflow-hidden', className)} aria-hidden="true">
 	<!-- GRID PATTERN — background-image WITH RADIAL-GRADIENT DOTS CANNOT BE EXPRESSED AS A TAILWIND CLASS -->
 	<div
 		class="absolute inset-0 opacity-20"

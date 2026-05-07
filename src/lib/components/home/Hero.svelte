@@ -23,7 +23,7 @@
 			<br />
 			of tomorrow
 			<!-- BLINKING CURSOR -->
-			<span class="ml-1 inline-block h-[0.9em] w-[3px] translate-y-[0.05em] animate-blink bg-[#22D3EE]"></span>
+			<span class="animate-blink ml-1 inline-block h-[0.9em] w-[3px] translate-y-[0.05em] bg-[#22D3EE]"></span>
 		</h1>
 
 		<!-- SUBTITLE -->

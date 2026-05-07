@@ -27,14 +27,14 @@
 		{ label: 'Chrome', value: 'chrome-plugins' },
 		{ label: 'AI Tools', value: 'ai-tools' },
 		{ label: 'Misc', value: 'misc-tools' },
-		{ label: 'SaaS', value: 'saas' }
+		{ label: 'SaaS', value: 'saas' },
 	];
 
 	const ICON_MAP: Record<string, typeof Code> = {
 		code: Code,
 		brain: Brain,
 		wrench: Wrench,
-		rocket: Rocket
+		rocket: Rocket,
 	};
 
 	// -- STATES -- //
@@ -43,10 +43,7 @@
 
 	// -- REACTIVE STATES -- //
 
-	$: filteredCategories =
-		activeFilter === 'all'
-			? categories
-			: categories.filter((c) => c.id === activeFilter);
+	$: filteredCategories = activeFilter === 'all' ? categories : categories.filter((c) => c.id === activeFilter);
 </script>
 
 <MetaTags
@@ -60,9 +57,7 @@
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<SectionLabel label="PRODUCTS" />
 
-		<h1 class="font-display text-4xl font-bold tracking-tight text-white md:text-5xl">
-			Our Products
-		</h1>
+		<h1 class="font-display text-4xl font-bold tracking-tight text-white md:text-5xl">Our Products</h1>
 
 		<p class="mt-6 max-w-2xl text-lg text-slate-300">
 			Tools and products built for developers and creators. More coming soon.
@@ -81,7 +76,7 @@
 						'rounded-lg px-4 py-2 font-mono text-sm transition-all duration-200',
 						activeFilter === filter.value
 							? 'bg-[#22D3EE] text-[#0B0A23]'
-							: 'border border-[#2A2578] text-slate-300 hover:border-[#22D3EE]/50 hover:text-[#22D3EE]'
+							: 'border border-[#2A2578] text-slate-300 hover:border-[#22D3EE]/50 hover:text-[#22D3EE]',
 					)}
 				>
 					{filter.label}
@@ -101,7 +96,16 @@
 					<div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#22D3EE]/10">
 						{#if category.icon === 'chrome'}
 							<!-- INLINE SVG FOR CHROME — BRAND ICONS REMOVED IN LUCIDE V1+ -->
-							<svg class="size-6 text-[#22D3EE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+							<svg
+								class="size-6 text-[#22D3EE]"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
 								<rect x="3" y="3" width="18" height="18" rx="2" />
 								<path d="M7 7h10v10H7z" />
 								<path d="M12 3v4" />
@@ -128,7 +132,8 @@
 					<div class="mt-4 flex items-center justify-between">
 						<Badge variant="cyan">Coming soon</Badge>
 						<span class="text-xs text-slate-500">
-							{category.productCount} {category.productCount === 1 ? 'product' : 'products'}
+							{category.productCount}
+							{category.productCount === 1 ? 'product' : 'products'}
 						</span>
 					</div>
 				</Card>

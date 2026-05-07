@@ -23,14 +23,12 @@
 					<img src="/arbenger.svg" alt="" class="h-8 w-8" width="32" height="32" />
 					<span class="font-display text-lg tracking-tight text-white">ARBENGER</span>
 				</a>
-				<p class="mt-4 text-sm text-slate-400">
-					Building tools for developers and creators.
-				</p>
+				<p class="mt-4 text-sm text-slate-400">Building tools for developers and creators.</p>
 			</div>
 
 			<!-- NAV LINKS -->
 			<div>
-				<h3 class="font-display text-sm font-bold uppercase tracking-tight text-white">Navigation</h3>
+				<h3 class="font-display text-sm font-bold tracking-tight text-white uppercase">Navigation</h3>
 				<ul class="mt-4 space-y-2">
 					{#each navLinks as link}
 						<li>
@@ -47,7 +45,7 @@
 
 			<!-- SOCIAL LINKS -->
 			<div>
-				<h3 class="font-display text-sm font-bold uppercase tracking-tight text-white">Connect</h3>
+				<h3 class="font-display text-sm font-bold tracking-tight text-white uppercase">Connect</h3>
 				<div class="mt-4 flex gap-4">
 					{#each socialLinks as social}
 						<a
@@ -57,7 +55,12 @@
 							class="text-slate-400 transition-colors duration-200 hover:text-[#22D3EE]"
 							aria-label={social.platform}
 						>
-							<svg class="size-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<svg
+								class="size-5"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg"
+							>
 								<path d={SOCIAL_ICONS[social.icon]} />
 							</svg>
 						</a>

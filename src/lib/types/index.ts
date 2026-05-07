@@ -1,18 +1,8 @@
-export type ProductCategory =
-	| 'vscode-extensions'
-	| 'chrome-plugins'
-	| 'ai-tools'
-	| 'misc-tools'
-	| 'saas';
+export type ProductCategory = 'vscode-extensions' | 'chrome-plugins' | 'ai-tools' | 'misc-tools' | 'saas';
 
 export type ProductStatus = 'coming-soon' | 'live' | 'beta' | 'deprecated';
 
-export type ProductPlatform =
-	| 'vscode-marketplace'
-	| 'chrome-web-store'
-	| 'web'
-	| 'desktop'
-	| 'mobile';
+export type ProductPlatform = 'vscode-marketplace' | 'chrome-web-store' | 'web' | 'desktop' | 'mobile';
 
 export interface Product {
 	slug: string;

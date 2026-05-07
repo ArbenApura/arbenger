@@ -23,7 +23,7 @@
 		'border-[#E2E8F0] bg-white',
 		isHovered && 'translate-y-[-2px] shadow-[0_0_40px_rgba(34,211,238,0.1)]',
 		href && 'cursor-pointer',
-		className
+		className,
 	)}
 	on:mouseenter={() => (isHovered = true)}
 	on:mouseleave={() => (isHovered = false)}

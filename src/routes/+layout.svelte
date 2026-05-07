@@ -14,7 +14,7 @@
 		'@context': 'https://schema.org',
 		'@type': 'WebSite',
 		name: 'Arbenger',
-		url: 'https://arbenger.com'
+		url: 'https://arbenger.com',
 	}}
 />
 

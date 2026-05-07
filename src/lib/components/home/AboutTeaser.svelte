@@ -17,9 +17,9 @@
 				</h2>
 
 				<p class="mt-6 text-slate-300">
-					Arbenger is a solo venture by Arben Apura, focused on building developer tools
-					and creative products that make a difference. From AI-powered utilities to
-					browser extensions, every product is built with care and attention to detail.
+					Arbenger is a solo venture by Arben Apura, focused on building developer tools and creative products
+					that make a difference. From AI-powered utilities to browser extensions, every product is built with
+					care and attention to detail.
 				</p>
 
 				<div class="mt-8">
@@ -37,7 +37,9 @@
 					></div>
 
 					<!-- LOGO -->
-					<div class="relative flex h-64 w-64 items-center justify-center rounded-full border border-[#2A2578]">
+					<div
+						class="relative flex h-64 w-64 items-center justify-center rounded-full border border-[#2A2578]"
+					>
 						<img src="/arbenger.svg" alt="" class="h-24 w-24" width="96" height="96" />
 					</div>
 				</div>

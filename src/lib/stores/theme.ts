@@ -28,7 +28,7 @@ function createThemeStore() {
 				}
 				return next;
 			});
-		}
+		},
 	};
 }
 

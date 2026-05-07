@@ -31,17 +31,17 @@
 <!-- NAVBAR -->
 <nav
 	class={cn(
-		'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+		'fixed top-0 right-0 left-0 z-50 transition-all duration-300',
 		isScrolled
 			? 'border-b border-[#2A2578] bg-[#0B0A23]/80 backdrop-blur-lg dark:border-[#2A2578] dark:bg-[#0B0A23]/80'
-			: 'bg-transparent'
+			: 'bg-transparent',
 	)}
 >
 	<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 		<!-- LOGO + WORDMARK -->
 		<a href="/" class="flex items-center gap-3">
 			<img src="/arbenger.svg" alt="" class="h-8 w-8" width="32" height="32" />
-			<span class="font-display text-lg tracking-tight text-white dark:text-white text-[#161446]">
+			<span class="font-display text-lg tracking-tight text-[#161446] text-white dark:text-white">
 				ARBENGER
 			</span>
 		</a>

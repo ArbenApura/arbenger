@@ -28,9 +28,7 @@
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<SectionLabel label="CONTACT" />
 
-		<h1 class="font-display text-4xl font-bold tracking-tight text-white md:text-5xl">
-			Get in touch
-		</h1>
+		<h1 class="font-display text-4xl font-bold tracking-tight text-white md:text-5xl">Get in touch</h1>
 
 		<p class="mt-6 max-w-2xl text-lg text-slate-300">
 			Have a question, idea, or just want to say hello? Reach out through any of the channels below.
@@ -81,7 +79,12 @@
 							class="flex items-center gap-3 rounded-lg border border-[#2A2578] px-4 py-3 text-slate-300 transition-all duration-300 hover:border-[#22D3EE]/50 hover:text-[#22D3EE]"
 							aria-label={social.platform}
 						>
-							<svg class="size-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<svg
+								class="size-5"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg"
+							>
 								<path d={SOCIAL_ICONS[social.icon]} />
 							</svg>
 							<span class="text-sm font-medium">{social.platform}</span>
