@@ -1,4 +1,6 @@
+// IMPORTED DEP-MODULES
 import { writable } from 'svelte/store';
+// IMPORTED MODULES
 import { browser } from '$app/environment';
 
 // PERSISTED TO localStorage KEY: arbenger-theme
