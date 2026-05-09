@@ -29,7 +29,7 @@
 		<div use:reveal class="max-w-2xl">
 			<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Products</p>
 			<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
-				What we're building
+				What's here
 			</h2>
 		</div>
 
