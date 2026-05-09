@@ -11,8 +11,8 @@
 </script>
 
 <MetaTags
-	title="About Arbenger | Company & Founder"
-	description="Learn about Arbenger and our mission to build AI tools, developer extensions, and SaaS products."
+	title="About | Arbenger"
+	description="What Arbenger does and how we approach building software tools."
 	url="https://arbenger.com/about"
 />
 
@@ -40,107 +40,97 @@
 		</h1>
 
 		<p class="mt-6 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			We build developer tools, AI products, and SaaS platforms.
-			Quality software, shipped fast.
+			We make software tools. Here's what that looks like.
 		</p>
 	</div>
 </section>
 
-<!-- FOUNDER SECTION -->
+<!-- WHAT WE DO SECTION -->
 <section class="relative py-16">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="grid items-start gap-12 lg:grid-cols-2">
-			<!-- FOUNDER INFO -->
+			<!-- COMPANY INFO -->
 			<div use:revealSlide={{ direction: 'left' }}>
-				<h2 class="font-display text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">Arben Apura</h2>
-				<p class="mt-2 font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Founder & Developer</p>
+				<h2 class="font-display text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">What we do</h2>
 
 				<p class="mt-6 text-[#475569] dark:text-slate-300">
-					Arbenger started because too many developer tools were almost right but not quite.
-					The VS Code extension that was 80% there. The AI wrapper that missed the point.
-					The SaaS app that felt like it was built by people who never used their own product.
-				</p>
-
-				<p class="mt-4 text-[#475569] dark:text-slate-300">
-					Every product exists because we needed it first. If it solves our problem well,
-					it will probably solve yours too.
-				</p>
-
-				<p class="mt-4 text-[#64748B] dark:text-slate-400">
-					Stack: TypeScript, Svelte, Python, and the best AI models available.
-					Philosophy: ship it, use it, fix it, repeat.
+					Arbenger builds VS Code extensions, Chrome plugins, AI tools, and web apps.
+					Each product covers a different need, but they share the same approach —
+					keep it clean, keep it useful.
 				</p>
 			</div>
 
-			<!-- DECORATIVE TERMINAL CARD -->
+			<!-- CATEGORY INFO CARD -->
 			<div use:revealSlide={{ direction: 'right' }} class="rounded-xl border border-[#E2E8F0] bg-white p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04),0_0_1px_rgba(0,0,0,0.06)] dark:border-[#2A2578] dark:bg-[#1E1A5E] dark:shadow-none">
-				<div class="flex items-center gap-2">
-					<div class="h-3 w-3 rounded-full bg-[#EF4444]"></div>
-					<div class="h-3 w-3 rounded-full bg-[#F59E0B]"></div>
-					<div class="h-3 w-3 rounded-full bg-[#22C55E]"></div>
-				</div>
-				<div class="mt-4 font-mono text-sm text-[#475569] dark:text-slate-300">
-					<p><span class="text-[#0891B2] dark:text-[#22D3EE]">$</span> whoami</p>
-					<p class="mt-1 text-[#0F172A] dark:text-white">arben-apura</p>
-					<p class="mt-3"><span class="text-[#0891B2] dark:text-[#22D3EE]">$</span> cat role.txt</p>
-					<p class="mt-1 text-[#0F172A] dark:text-white">founder @ arbenger</p>
-					<p class="mt-3"><span class="text-[#0891B2] dark:text-[#22D3EE]">$</span> cat stack.txt</p>
-					<p class="mt-1 text-[#0F172A] dark:text-white">TypeScript, Svelte, AI/ML, Extensions</p>
-					<p class="mt-3"><span class="text-[#0891B2] dark:text-[#22D3EE]">$</span> cat philosophy.txt</p>
-					<p class="mt-1 text-[#0F172A] dark:text-white">if it doesn't exist, build it</p>
-					<p class="mt-3">
-						<span class="text-[#0891B2] dark:text-[#22D3EE]">$</span>
-						<span class="animate-blink">_</span>
-					</p>
-				</div>
+				<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Product categories</p>
+				<ul class="mt-4 space-y-3 text-sm text-[#475569] dark:text-slate-300">
+					<li class="flex items-center gap-3">
+						<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
+							<svg class="size-4 text-[#0891B2] dark:text-[#22D3EE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+						</span>
+						VS Code Extensions
+					</li>
+					<li class="flex items-center gap-3">
+						<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
+							<svg class="size-4 text-[#0891B2] dark:text-[#22D3EE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M7 7h10v10H7z" /></svg>
+						</span>
+						Chrome Plugins
+					</li>
+					<li class="flex items-center gap-3">
+						<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
+							<svg class="size-4 text-[#0891B2] dark:text-[#22D3EE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3 4 4.5 4.5 0 0 1-3-4"/><path d="M12 18v4"/></svg>
+						</span>
+						AI Tools
+					</li>
+					<li class="flex items-center gap-3">
+						<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
+							<svg class="size-4 text-[#0891B2] dark:text-[#22D3EE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+						</span>
+						Misc Tools
+					</li>
+					<li class="flex items-center gap-3">
+						<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
+							<svg class="size-4 text-[#0891B2] dark:text-[#22D3EE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+						</span>
+						SaaS Products
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- HOW WE WORK SECTION -->
+<!-- WHAT TO EXPECT SECTION -->
 <section class="relative border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div use:reveal>
 			<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Our approach</p>
-			<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">Principles over process.</h2>
+			<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">What to expect.</h2>
 		</div>
 
-		<!-- ASYMMETRIC LAYOUT — NOT A 3-COLUMN CARD GRID -->
+		<!-- 3-CARD GRID: 1 LARGE + 2 SMALL -->
 		<div class="mt-12 grid gap-8 md:grid-cols-5">
 			<!-- LARGE CARD -->
 			<div use:reveal={{ delay: 100 }} class="rounded-xl border border-[#F1F5F9] bg-white p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] md:col-span-3 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
-				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">We use what we build</h3>
+				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">Does what it says</h3>
 				<p class="mt-3 text-[#475569] dark:text-slate-300">
-					Every tool starts as something we need. If we're not using it daily, it's not ready to ship.
-					That's the bar. No hypothetical users, no assumed workflows. Real usage, real feedback, real iteration.
+					No hidden complexity. If a tool says it does something, that's what it does.
 				</p>
 			</div>
 
 			<!-- SMALL CARD -->
 			<div use:reveal={{ delay: 200 }} class="rounded-xl border border-[#F1F5F9] bg-white p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] md:col-span-2 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
-				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">Ship small, ship often</h3>
+				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">Kept up to date</h3>
 				<p class="mt-3 text-[#475569] dark:text-slate-300">
-					No six-month stealth modes. Build the core, ship it, learn from it.
-					The best version is the one people can actually use.
+					Products get regular updates and fixes.
 				</p>
 			</div>
 
 			<!-- SMALL CARD -->
 			<div use:reveal={{ delay: 300 }} class="rounded-xl border border-[#F1F5F9] bg-white p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] md:col-span-2 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
-				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">Every line has intent</h3>
+				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">Feedback welcome</h3>
 				<p class="mt-3 text-[#475569] dark:text-slate-300">
-					We care about craft. Every line of code, every interaction, every pixel is deliberate.
-					No shortcuts, no "good enough." Quality is the standard.
-				</p>
-			</div>
-
-			<!-- LARGE CARD -->
-			<div use:reveal={{ delay: 400 }} class="rounded-xl border border-[#F1F5F9] bg-white p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] md:col-span-3 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
-				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">Build in public</h3>
-				<p class="mt-3 text-[#475569] dark:text-slate-300">
-					We share what we're working on, what's broken, and what we're learning.
-					Transparency keeps us honest and helps other developers doing the same thing.
+					Something not right? Let us know. That's how things get better.
 				</p>
 			</div>
 		</div>
@@ -151,7 +141,7 @@
 <section class="relative border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]">
 	<div use:reveal class="mx-auto flex max-w-7xl flex-col items-start gap-6 px-4 sm:px-6 lg:px-8">
 		<p class="text-lg text-[#475569] dark:text-slate-300">
-			Have a question or want to collaborate?
+			Got a question?
 		</p>
 		<Button href="/contact" variant="secondary">Get in touch</Button>
 	</div>
