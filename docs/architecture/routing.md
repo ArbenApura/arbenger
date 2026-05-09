@@ -110,7 +110,7 @@ Note: Theme initialization (dark class on `<html>`) happens in `app.html` via an
 
 Same links as navbar, plus:
 - Legal links: Privacy Policy, Terms of Service, Cookie Policy
-- Social links: GitHub, Twitter/X, LinkedIn
+- Social links: GitHub
 
 ### Internal Links (In-Page)
 

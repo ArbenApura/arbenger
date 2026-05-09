@@ -69,8 +69,7 @@ import MetaTags from '$lib/components/seo/MetaTags.svelte';
   "logo": "https://arbenger.com/arbenger.svg",
   "description": "Extensions, plugins, AI tools, and web applications.",
   "sameAs": [
-    "https://github.com/arbenger",
-    "https://twitter.com/arbenger"
+    "https://github.com/arbenger"
   ]
 }
 ```

@@ -18,7 +18,7 @@ All notable decisions, changes, and milestones for arbenger.com are documented h
 ### GitHub Profile
 
 - **Profile repo:** `Arbenger/Arbenger` (special README repo)
-- **Profile fields:** Name: "Arben Apura", Bio: "Founder of Arbenger", Company: "@Arbenger", Website: arbenger.com, Twitter: arbenger
+- **Profile fields:** Name: "Arben Apura", Bio: "Founder of Arbenger", Company: "@Arbenger", Website: arbenger.com
 - **README:** Company-focused (not personal) with social link badges in brand colors (#0B0A23 bg, #22D3EE accent)
 
 ---

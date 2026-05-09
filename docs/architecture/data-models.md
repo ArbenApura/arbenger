@@ -188,8 +188,6 @@ export interface SocialLink {
 ```typescript
 export const socialLinks: SocialLink[] = [
   { platform: 'GitHub', url: 'https://github.com/arbenger', icon: 'github' },
-  { platform: 'Twitter', url: 'https://twitter.com/arbenger', icon: 'twitter' },
-  { platform: 'LinkedIn', url: 'https://linkedin.com/company/arbenger', icon: 'linkedin' }
 ];
 ```
 
