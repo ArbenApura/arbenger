@@ -16,11 +16,11 @@
 	// -- CONSTANTS -- //
 
 	const HERO_PHRASES = [
-		'developers need',
-		'that ship fast',
-		'worth building',
-		'that just work',
-		'for the modern stack',
+		'and do it well',
+		'without the bloat',
+		"you'll keep coming back to",
+		'that stay out of your way',
+		'worth your time',
 	];
 
 	// -- STATES -- //
@@ -86,7 +86,7 @@
 				class:translate-y-0={isVisible}
 				style="transition-delay: 200ms;"
 			>
-				Building the tools
+				Tools that do the job
 				<br />
 				<span class="text-[#0891B2] dark:text-[#22D3EE]">
 					<Typewriter phrases={HERO_PHRASES} typingSpeed={70} deletingSpeed={35} pauseDuration={2500} />
@@ -102,7 +102,7 @@
 				class:translate-y-0={isVisible}
 				style="transition-delay: 400ms;"
 			>
-				Developer tools, AI products, and SaaS platforms built for speed, quality, and real-world use.
+				Extensions, plugins, AI tools, and web apps. Take a look around.
 			</p>
 
 			<!-- CTA BUTTON -->
@@ -115,7 +115,7 @@
 				style="transition-delay: 600ms;"
 			>
 				<Button href="/products" variant="primary" class="group relative overflow-hidden">
-					<span class="relative z-10">Explore Products</span>
+					<span class="relative z-10">See What's Available</span>
 				</Button>
 			</div>
 		</div>
