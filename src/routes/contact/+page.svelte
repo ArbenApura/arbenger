@@ -19,7 +19,7 @@
 
 <MetaTags
 	title="Contact | Arbenger"
-	description="Get in touch with Arbenger. Reach out via email or connect on social media."
+	description="Reach out to Arbenger. We'd like to hear from you."
 	url="https://arbenger.com/contact"
 />
 
@@ -29,11 +29,11 @@
 		<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Contact</p>
 
 		<h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
-			Get in Touch
+			Say Hello
 		</h1>
 
 		<p class="mt-6 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			Bug report, feature idea, or collaboration pitch -- we'd love to hear from you.
+			Question, idea, or just want to talk — we're here.
 		</p>
 	</div>
 </section>
@@ -49,7 +49,7 @@
 				</div>
 				<div>
 					<h2 class="font-display text-lg font-bold tracking-tight text-[#0F172A] dark:text-white">Email</h2>
-					<p class="mt-1 text-sm text-[#64748B] dark:text-slate-400">We'll get back to you within a day or two.</p>
+					<p class="mt-1 text-sm text-[#64748B] dark:text-slate-400">We'll get back to you as soon as we can.</p>
 				</div>
 			</div>
 
