@@ -27,8 +27,8 @@
 <Breadcrumbs pageName="Contact" pageUrl="https://arbenger.com/contact" />
 
 <!-- PAGE HERO -->
-<section class="relative pt-32 pb-16">
-	<div use:reveal class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden pt-32 pb-16">
+	<div use:reveal class="mx-auto max-w-7xl px-6 lg:px-8">
 		<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Contact</p>
 
 		<h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
@@ -42,10 +42,10 @@
 </section>
 
 <!-- CONTACT INFO -->
-<section class="relative pb-24">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden pb-24">
+	<div class="mx-auto max-w-7xl px-6 lg:px-8">
 		<!-- EMAIL — PRIMARY CONTACT -->
-		<div use:reveal={{ delay: 100 }} class="max-w-2xl rounded-xl border border-[#F1F5F9] bg-white p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04),0_0_1px_rgba(0,0,0,0.06)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
+		<div use:reveal={{ delay: 100 }} class="max-w-2xl rounded-xl border border-[#F1F5F9] bg-white p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04),0_0_1px_rgba(0,0,0,0.06)] sm:p-8 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
 			<div class="flex items-center gap-4">
 				<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
 					<Mail class="size-6 text-[#0891B2] dark:text-[#22D3EE]" />

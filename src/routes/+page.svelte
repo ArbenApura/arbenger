@@ -53,8 +53,8 @@
 <GeometricDivider />
 
 <!-- CONNECT CTA -->
-<section class="py-20">
-	<div use:reveal class="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 text-center sm:px-6 lg:px-8">
+<section class="overflow-hidden py-20">
+	<div use:reveal class="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 text-center lg:px-8">
 		<p class="text-lg text-[#475569] dark:text-slate-300">
 			Got a question? We're around.
 		</p>

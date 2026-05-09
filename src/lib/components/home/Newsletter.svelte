@@ -5,7 +5,7 @@
 
 <!-- NEWSLETTER SECTION -->
 <section class="relative overflow-hidden border-t border-[#E2E8F0] py-24 dark:border-[#2A2578]/50">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div class="mx-auto max-w-7xl px-6 lg:px-8">
 		<div use:reveal class="mx-auto max-w-xl text-center">
 			<!-- HEADING -->
 			<h2 class="font-display text-3xl font-bold tracking-tight text-[#0F172A] md:text-4xl dark:text-white">

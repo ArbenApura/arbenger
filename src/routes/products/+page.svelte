@@ -57,8 +57,8 @@
 <Breadcrumbs pageName="Products" pageUrl="https://arbenger.com/products" />
 
 <!-- PAGE HERO -->
-<section class="relative pt-32 pb-16">
-	<div use:reveal class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden pt-32 pb-16">
+	<div use:reveal class="mx-auto max-w-7xl px-6 lg:px-8">
 		<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Products</p>
 
 		<h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
@@ -72,8 +72,8 @@
 </section>
 
 <!-- FILTER TABS -->
-<section class="relative pb-8">
-	<div use:reveal={{ delay: 100 }} class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden pb-8">
+	<div use:reveal={{ delay: 100 }} class="mx-auto max-w-7xl px-6 lg:px-8">
 		<div class="flex flex-wrap gap-2">
 			{#each FILTERS as filter}
 				<button
@@ -93,17 +93,17 @@
 </section>
 
 <!-- PRODUCT LIST -->
-<section class="relative pb-24">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden pb-24">
+	<div class="mx-auto max-w-7xl px-6 lg:px-8">
 		<div class="space-y-4">
 			{#each filteredCategories as category, i (category.id)}
 				<div
 					use:reveal={{ delay: i * 80 }}
-					class="group flex items-center justify-between rounded-xl border border-[#F1F5F9] bg-white px-8 py-6 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(0,0,0,0.08),0_1px_4px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none dark:hover:shadow-[0_0_30px_rgba(34,211,238,0.06)]"
+					class="group flex items-center justify-between rounded-xl border border-[#F1F5F9] bg-white px-4 py-5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 sm:px-8 sm:py-6 hover:shadow-[0_4px_16px_rgba(0,0,0,0.08),0_1px_4px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none dark:hover:shadow-[0_0_30px_rgba(34,211,238,0.06)]"
 				>
-					<div class="flex items-center gap-6">
+					<div class="flex items-center gap-3 sm:gap-6">
 						<!-- CATEGORY ICON -->
-						<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
+						<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg sm:h-12 sm:w-12 bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
 							{#if category.icon === 'chrome'}
 								<!-- INLINE SVG FOR CHROME — BRAND ICONS REMOVED IN LUCIDE V1+ -->
 								<svg

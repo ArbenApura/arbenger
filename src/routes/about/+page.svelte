@@ -35,7 +35,7 @@
 		</svg>
 	</div>
 
-	<div use:reveal class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div use:reveal class="relative mx-auto max-w-7xl px-6 lg:px-8">
 		<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">About</p>
 
 		<h1 class="font-display mt-4 max-w-3xl text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
@@ -49,8 +49,8 @@
 </section>
 
 <!-- WHAT WE DO SECTION -->
-<section class="relative py-16">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden py-16">
+	<div class="mx-auto max-w-7xl px-6 lg:px-8">
 		<div class="grid items-start gap-12 lg:grid-cols-2">
 			<!-- COMPANY INFO -->
 			<div use:revealSlide={{ direction: 'left' }}>
@@ -64,7 +64,7 @@
 			</div>
 
 			<!-- CATEGORY INFO CARD -->
-			<div use:revealSlide={{ direction: 'right' }} class="rounded-xl border border-[#E2E8F0] bg-white p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04),0_0_1px_rgba(0,0,0,0.06)] dark:border-[#2A2578] dark:bg-[#1E1A5E] dark:shadow-none">
+			<div use:revealSlide={{ direction: 'right' }} class="rounded-xl border border-[#E2E8F0] bg-white p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04),0_0_1px_rgba(0,0,0,0.06)] sm:p-6 dark:border-[#2A2578] dark:bg-[#1E1A5E] dark:shadow-none">
 				<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Product categories</p>
 				<ul class="mt-4 space-y-3 text-sm text-[#475569] dark:text-slate-300">
 					<li class="flex items-center gap-3">
@@ -104,8 +104,8 @@
 </section>
 
 <!-- WHAT TO EXPECT SECTION -->
-<section class="relative border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]">
+	<div class="mx-auto max-w-7xl px-6 lg:px-8">
 		<div use:reveal>
 			<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Our approach</p>
 			<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">What to expect.</h2>
@@ -114,7 +114,7 @@
 		<!-- 3-CARD GRID: 1 LARGE + 2 SMALL -->
 		<div class="mt-12 grid gap-8 md:grid-cols-5">
 			<!-- LARGE CARD -->
-			<div use:reveal={{ delay: 100 }} class="rounded-xl border border-[#F1F5F9] bg-white p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] md:col-span-3 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
+			<div use:reveal={{ delay: 100 }} class="rounded-xl border border-[#F1F5F9] bg-white p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] sm:p-8 md:col-span-3 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
 				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">Does what it says</h3>
 				<p class="mt-3 text-[#475569] dark:text-slate-300">
 					No hidden complexity. If a tool says it does something, that's what it does.
@@ -122,7 +122,7 @@
 			</div>
 
 			<!-- SMALL CARD -->
-			<div use:reveal={{ delay: 200 }} class="rounded-xl border border-[#F1F5F9] bg-white p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] md:col-span-2 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
+			<div use:reveal={{ delay: 200 }} class="rounded-xl border border-[#F1F5F9] bg-white p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] sm:p-8 md:col-span-2 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
 				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">Kept up to date</h3>
 				<p class="mt-3 text-[#475569] dark:text-slate-300">
 					Products get regular updates and fixes.
@@ -130,7 +130,7 @@
 			</div>
 
 			<!-- SMALL CARD -->
-			<div use:reveal={{ delay: 300 }} class="rounded-xl border border-[#F1F5F9] bg-white p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] md:col-span-2 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
+			<div use:reveal={{ delay: 300 }} class="rounded-xl border border-[#F1F5F9] bg-white p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] sm:p-8 md:col-span-2 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
 				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">Feedback welcome</h3>
 				<p class="mt-3 text-[#475569] dark:text-slate-300">
 					Something not right? Let us know. That's how things get better.
@@ -141,8 +141,8 @@
 </section>
 
 <!-- CTA -->
-<section class="relative border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]">
-	<div use:reveal class="mx-auto flex max-w-7xl flex-col items-start gap-6 px-4 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]">
+	<div use:reveal class="mx-auto flex max-w-7xl flex-col items-start gap-6 px-6 lg:px-8">
 		<p class="text-lg text-[#475569] dark:text-slate-300">
 			Got a question?
 		</p>

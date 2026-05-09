@@ -82,11 +82,11 @@
 
 	<!-- MOBILE MENU DRAWER -->
 	{#if isMobileMenuOpen}
-		<div class="border-t border-[#F1F5F9] bg-white px-4 py-4 lg:hidden dark:border-[#2A2578] dark:bg-[#0B0A23]">
+		<div class="border-t border-[#E2E8F0] bg-white/95 px-6 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-xl lg:hidden dark:border-[#2A2578] dark:bg-[#0B0A23]/95 dark:shadow-[0_8px_24px_rgba(0,0,0,0.4)]">
 			{#each navLinks as link}
 				<a
 					href={link.href}
-					class="block rounded-lg px-4 py-3 text-sm text-[#475569] transition-colors duration-200 hover:bg-black/5 hover:text-[#0891B2] dark:text-slate-300 dark:hover:bg-white/5"
+					class="block rounded-lg px-4 py-3.5 text-base font-medium text-[#0F172A] transition-colors duration-200 hover:bg-[#0891B2]/10 hover:text-[#0891B2] dark:text-white dark:hover:bg-[#22D3EE]/10 dark:hover:text-[#22D3EE]"
 					on:click={closeMobileMenu}
 				>
 					{link.label}

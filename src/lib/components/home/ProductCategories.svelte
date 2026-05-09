@@ -23,8 +23,8 @@
 </script>
 
 <!-- PRODUCT CATEGORIES SECTION -->
-<section class="relative overflow-hidden py-32">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden py-16 md:py-32">
+	<div class="mx-auto max-w-7xl px-6 lg:px-8">
 		<!-- SECTION INTRO — LEFT-ALIGNED, NO SECTION LABEL -->
 		<div use:reveal class="max-w-2xl">
 			<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Products</p>
@@ -39,12 +39,12 @@
 				<a
 					href="/products"
 					use:reveal={{ delay: i * 80 }}
-					class="group flex items-center justify-between rounded-2xl border border-[#F1F5F9] bg-white px-8 py-6 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_4px_16px_rgba(0,0,0,0.08),0_1px_4px_rgba(0,0,0,0.04)] dark:border-[#2A2578]/60 dark:bg-[#1E1A5E]/20 dark:shadow-none dark:hover:border-[#22D3EE]/30 dark:hover:shadow-[0_0_40px_rgba(34,211,238,0.06)]"
+					class="group flex items-center justify-between rounded-2xl border border-[#F1F5F9] bg-white px-4 py-5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-500 sm:px-8 sm:py-6 hover:shadow-[0_4px_16px_rgba(0,0,0,0.08),0_1px_4px_rgba(0,0,0,0.04)] dark:border-[#2A2578]/60 dark:bg-[#1E1A5E]/20 dark:shadow-none dark:hover:border-[#22D3EE]/30 dark:hover:shadow-[0_0_40px_rgba(34,211,238,0.06)]"
 				>
-					<div class="flex items-center gap-6">
+					<div class="flex items-center gap-3 sm:gap-6">
 						<!-- ICON -->
 						<div
-							class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#0891B2]/10 transition-all duration-300 group-hover:bg-[#0891B2]/20 group-hover:shadow-[0_0_20px_rgba(8,145,178,0.15)] dark:bg-[#22D3EE]/10 dark:group-hover:bg-[#22D3EE]/20 dark:group-hover:shadow-[0_0_20px_rgba(34,211,238,0.15)]"
+							class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0891B2]/10 transition-all duration-300 sm:h-12 sm:w-12 group-hover:bg-[#0891B2]/20 group-hover:shadow-[0_0_20px_rgba(8,145,178,0.15)] dark:bg-[#22D3EE]/10 dark:group-hover:bg-[#22D3EE]/20 dark:group-hover:shadow-[0_0_20px_rgba(34,211,238,0.15)]"
 						>
 							{#if category.icon === 'chrome'}
 								<svg

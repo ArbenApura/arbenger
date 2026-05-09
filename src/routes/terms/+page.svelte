@@ -16,8 +16,8 @@
 <Breadcrumbs pageName="Terms of Service" pageUrl="https://arbenger.com/terms" />
 
 <!-- PAGE HERO -->
-<section class="relative pt-32 pb-16">
-	<div use:reveal class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden pt-32 pb-16">
+	<div use:reveal class="mx-auto max-w-7xl px-6 lg:px-8">
 		<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Legal</p>
 
 		<h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
@@ -29,8 +29,8 @@
 </section>
 
 <!-- TERMS CONTENT -->
-<section class="relative pb-24">
-	<div use:reveal class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden pb-24">
+	<div use:reveal class="mx-auto max-w-3xl px-6 lg:px-8">
 		<p class="text-[#475569] leading-relaxed dark:text-slate-300">
 			These terms apply to your use of arbenger.com and any products, tools, or extensions we offer.
 			By using this site, you agree to these terms. If you don't agree, that's fine -- but please don't

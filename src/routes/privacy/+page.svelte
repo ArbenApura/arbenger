@@ -16,8 +16,8 @@
 <Breadcrumbs pageName="Privacy Policy" pageUrl="https://arbenger.com/privacy" />
 
 <!-- PAGE HERO -->
-<section class="relative pt-32 pb-16">
-	<div use:reveal class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden pt-32 pb-16">
+	<div use:reveal class="mx-auto max-w-7xl px-6 lg:px-8">
 		<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Legal</p>
 
 		<h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
@@ -29,8 +29,8 @@
 </section>
 
 <!-- POLICY CONTENT -->
-<section class="relative pb-24">
-	<div use:reveal class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden pb-24">
+	<div use:reveal class="mx-auto max-w-3xl px-6 lg:px-8">
 		<p class="text-[#475569] leading-relaxed dark:text-slate-300">
 			Arbenger ("we," "us," or "our") respects your privacy. This policy explains what information we collect,
 			how we use it, and what choices you have. We keep it short and clear on purpose.
