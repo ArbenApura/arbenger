@@ -49,7 +49,7 @@
 
 <MetaTags
 	title="Products | Arbenger"
-	description="Explore Arbenger's catalog of AI tools, VS Code extensions, Chrome plugins, and SaaS products for developers and creators."
+	description="Browse Arbenger's catalog — VS Code extensions, Chrome plugins, AI tools, and web apps."
 	url="https://arbenger.com/products"
 />
 
@@ -63,7 +63,7 @@
 		</h1>
 
 		<p class="mt-6 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			More products coming soon.
+			Everything in one place. More on the way.
 		</p>
 	</div>
 </section>
