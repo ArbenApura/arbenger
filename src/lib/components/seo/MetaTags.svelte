@@ -27,6 +27,7 @@
 
 	<!-- TWITTER CARD -->
 	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@arbenger" />
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
 	<meta name="twitter:image" content={image} />
