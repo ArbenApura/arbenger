@@ -34,6 +34,7 @@ Every page must use the `MetaTags.svelte` component with these props:
 | Tag | Requirement |
 |-----|-------------|
 | `twitter:card` | `summary_large_image` |
+| `twitter:site` | `@arbenger` (hardcoded in MetaTags component) |
 | `twitter:title` | Same as og:title |
 | `twitter:description` | Same as og:description |
 | `twitter:image` | Same as og:image |
@@ -101,6 +102,31 @@ import MetaTags from '$lib/components/seo/MetaTags.svelte';
     "price": "0",
     "priceCurrency": "USD"
   }
+}
+```
+
+### BreadcrumbList (All Inner Pages)
+
+Every page except the homepage must include a BreadcrumbList using the `Breadcrumbs.svelte` component:
+
+```svelte
+<script lang="ts">
+// IMPORTED COMPONENTS
+import Breadcrumbs from '$lib/components/seo/Breadcrumbs.svelte';
+</script>
+
+<Breadcrumbs pageName="About" pageUrl="https://arbenger.com/about" />
+```
+
+This renders JSON-LD structured data that helps Google display breadcrumb trails in search results:
+
+```json
+{
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://arbenger.com" },
+    { "@type": "ListItem", "position": 2, "name": "About", "item": "https://arbenger.com/about" }
+  ]
 }
 ```
 
@@ -178,8 +204,8 @@ Server-rendered SvelteKit route at `/sitemap.xml` that returns XML content type.
 ### Requirements
 
 - Lists all indexable pages with absolute URLs
-- Includes `<lastmod>` dates (ISO 8601 format)
-- Updates automatically when pages are added
+- Includes static `<lastmod>` dates (ISO 8601 format) — update per-page when content changes
+- New pages must be added to the `PAGES` array in `src/routes/sitemap.xml/+server.ts`
 - Referenced in `robots.txt`
 
 ### Format
