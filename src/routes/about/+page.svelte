@@ -7,6 +7,7 @@
 
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
+	import Breadcrumbs from '$lib/components/seo/Breadcrumbs.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
 </script>
 
@@ -15,6 +16,8 @@
 	description="Arbenger builds VS Code extensions, Chrome plugins, AI tools, and web apps. Learn about our approach to making software tools that stay out of your way."
 	url="https://arbenger.com/about"
 />
+
+<Breadcrumbs pageName="About" pageUrl="https://arbenger.com/about" />
 
 <!-- PAGE HERO -->
 <section class="relative overflow-hidden pt-32 pb-16">

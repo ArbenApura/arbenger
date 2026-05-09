@@ -12,6 +12,7 @@
 
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
+	import Breadcrumbs from '$lib/components/seo/Breadcrumbs.svelte';
 	import Badge from '$lib/components/ui/Badge.svelte';
 	import CategoryIllustration from '$lib/components/ui/CategoryIllustration.svelte';
 	import EmptyStateIllustration from '$lib/components/ui/EmptyStateIllustration.svelte';
@@ -52,6 +53,8 @@
 	description="Browse Arbenger's full product catalog. VS Code extensions, Chrome plugins, AI tools, and web applications — all in one place. More coming soon."
 	url="https://arbenger.com/products"
 />
+
+<Breadcrumbs pageName="Products" pageUrl="https://arbenger.com/products" />
 
 <!-- PAGE HERO -->
 <section class="relative pt-32 pb-16">

@@ -8,6 +8,7 @@
 
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
+	import Breadcrumbs from '$lib/components/seo/Breadcrumbs.svelte';
 
 	// -- CONSTANTS -- //
 
@@ -22,6 +23,8 @@
 	description="Reach out to Arbenger. We'd like to hear from you."
 	url="https://arbenger.com/contact"
 />
+
+<Breadcrumbs pageName="Contact" pageUrl="https://arbenger.com/contact" />
 
 <!-- PAGE HERO -->
 <section class="relative pt-32 pb-16">
