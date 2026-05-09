@@ -18,8 +18,8 @@
 </script>
 
 <MetaTags
-	title="Contact | Arbenger"
-	description="Reach out to Arbenger. We'd like to hear from you."
+	title="Contact Arbenger — Questions, Ideas & Feedback"
+	description="Get in touch with the Arbenger team. Have a question, feedback, or idea? Reach out via email or find us on GitHub, Twitter, and LinkedIn."
 	url="https://arbenger.com/contact"
 />
 

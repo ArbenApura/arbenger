@@ -48,8 +48,8 @@
 </script>
 
 <MetaTags
-	title="Products | Arbenger"
-	description="Browse Arbenger's catalog — VS Code extensions, Chrome plugins, AI tools, and web apps."
+	title="Products — Extensions, Plugins & AI Tools | Arbenger"
+	description="Browse Arbenger's full product catalog. VS Code extensions, Chrome plugins, AI tools, and web applications — all in one place. More coming soon."
 	url="https://arbenger.com/products"
 />
 

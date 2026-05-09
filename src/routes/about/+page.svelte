@@ -11,8 +11,8 @@
 </script>
 
 <MetaTags
-	title="About | Arbenger"
-	description="What Arbenger does and how we approach building software tools."
+	title="About Arbenger — Who We Are & What We Build"
+	description="Arbenger builds VS Code extensions, Chrome plugins, AI tools, and web apps. Learn about our approach to making software tools that stay out of your way."
 	url="https://arbenger.com/about"
 />
 
