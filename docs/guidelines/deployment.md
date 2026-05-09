@@ -13,7 +13,9 @@ This document covers the complete deployment pipeline for arbenger.com: from loc
 | Node.js | 20 LTS |
 | Package manager | Yarn 1.x (Classic) |
 | Git | Latest |
-| GitHub account | Repository for arbenger.com |
+| GitHub account | Repository: `Arbenger/arbenger.com` (private) |
+| GitHub CLI | `gh` (installed via `winget install GitHub.cli`) |
+| SSH key | ed25519 key at `~/.ssh/id_ed25519`, added to GitHub |
 | Cloudflare account | Free tier sufficient for launch |
 | Domain | arbenger.com (purchased on Hostinger) |
 
@@ -24,8 +26,8 @@ This document covers the complete deployment pipeline for arbenger.com: from loc
 ### Setup
 
 ```bash
-git clone <repo-url>
-cd arbenger
+git clone git@github.com:Arbenger/arbenger.com.git
+cd arbenger.com
 yarn install
 yarn dev
 ```

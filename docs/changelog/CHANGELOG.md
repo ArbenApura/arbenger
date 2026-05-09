@@ -4,6 +4,25 @@ All notable decisions, changes, and milestones for arbenger.com are documented h
 
 ---
 
+## 2026-05-09 — GitHub Setup & Profile
+
+### GitHub Repository
+
+- **Repo created:** `Arbenger/arbenger.com` (private) via `gh repo create`
+- **Authentication:** SSH with ed25519 key (`~/.ssh/id_ed25519`)
+- **GitHub CLI:** Installed via `winget install GitHub.cli`, added to user PATH
+- **Remote:** `git@github.com:Arbenger/arbenger.com.git` (SSH protocol)
+- **Branch:** `main` (renamed from `master`)
+- **History cleanup:** Stripped all `Co-Authored-By` trailer lines from commit history via `git filter-branch`
+
+### GitHub Profile
+
+- **Profile repo:** `Arbenger/Arbenger` (special README repo)
+- **Profile fields:** Name: "Arben Apura", Bio: "Founder of Arbenger", Company: "@Arbenger", Website: arbenger.com, Twitter: arbenger
+- **README:** Company-focused (not personal) with social link badges in brand colors (#0B0A23 bg, #22D3EE accent)
+
+---
+
 ## 2026-05-09 — Cloudflare Pages Deployment & Domain Setup
 
 ### Deployment
