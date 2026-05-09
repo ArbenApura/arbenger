@@ -4,6 +4,25 @@ All notable decisions, changes, and milestones for arbenger.com are documented h
 
 ---
 
+## 2026-05-09 — Cloudflare Pages Deployment & Domain Setup
+
+### Deployment
+
+- **Site deployed** to Cloudflare Pages at `arbenger.com`
+- **Cloudflare Pages project** created as `arbenger` with production URL `arbenger.pages.dev`
+- **Domain connected:** Nameservers changed from Hostinger (`artemis.dns-parking.com`, `hermes.dns-parking.com`) to Cloudflare (`celeste.ns.cloudflare.com`, `jack.ns.cloudflare.com`)
+- **Custom domain** `arbenger.com` attached to Pages project with proxied CNAME
+- **Deploy script added:** `yarn deploy` — builds and deploys to production in one command
+- **`wrangler.toml` created** with `nodejs_compat` compatibility flag (required for SvelteKit's `node:async_hooks` usage) and `pages_build_output_dir`
+- **`--branch main` flag** added to deploy command — without it, deployments went to preview instead of production because the local branch name didn't match Cloudflare's production branch setting
+
+### Files Changed
+
+- `package.json` — added `deploy` script, added `@types/node` dev dependency
+- `wrangler.toml` — created with `nodejs_compat` flag, updated from `[pages]` section to `pages_build_output_dir` top-level key
+
+---
+
 ## 2026-05-09 — Content Rewrite, Language Selector & Performance Cleanup
 
 ### Language Selector

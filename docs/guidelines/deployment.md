@@ -39,6 +39,7 @@ yarn dev
 | `yarn preview` | Preview production build locally |
 | `yarn check` | Run svelte-check for type errors |
 | `yarn format` | Run Prettier across all files |
+| `yarn deploy` | Build and deploy to Cloudflare Pages (production) |
 
 ### Dev Server Port
 
@@ -154,65 +155,84 @@ Set via `.node-version` file in project root:
 
 ---
 
-## 5. Cloudflare Pages Setup
+## 5. Wrangler Configuration
 
-### Step 1: Connect Repository
+The project includes a `wrangler.toml` for Cloudflare Pages configuration:
 
-1. Log into Cloudflare Dashboard → Pages
-2. Click "Create a project" → "Connect to Git"
-3. Select the GitHub repository
-4. Configure build settings:
-   - **Build command:** `yarn build`
-   - **Build output directory:** `.svelte-kit/cloudflare`
-   - **Root directory:** `/` (default)
-   - **Node.js version:** Set `NODE_VERSION` environment variable to `20`
+```toml
+name = "arbenger"
+compatibility_date = "2026-05-09"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".svelte-kit/cloudflare"
+```
 
-### Step 2: Deploy
-
-- Push to `main` branch triggers automatic production deployment
-- Pull requests generate preview deployments with unique URLs
-- Build logs visible in Cloudflare Dashboard
-
-### Step 3: Verify
-
-After first deploy:
-1. Visit the `*.pages.dev` URL to verify the site works
-2. Check all pages render correctly
-3. Test dark/light theme toggle
-4. Verify responsive design on mobile
+Key settings:
+- **`nodejs_compat`** — Required because SvelteKit uses `node:async_hooks` internally. Without this flag, the Worker throws runtime errors.
+- **`pages_build_output_dir`** — Points Wrangler to the adapter-cloudflare output directory.
 
 ---
 
-## 6. DNS Configuration
+## 6. Cloudflare Pages Setup
 
-### Option A: Transfer Nameservers (Recommended)
+### Option A: CLI Deploy (Current Setup)
 
-This gives full Cloudflare proxy benefits: CDN, DDoS protection, analytics, SSL.
+The project is configured for direct CLI deployment via Wrangler:
 
-1. In Cloudflare Dashboard → add site `arbenger.com`
-2. Cloudflare provides two nameservers (e.g., `ns1.cloudflare.com`, `ns2.cloudflare.com`)
-3. In Hostinger Dashboard → DNS/Nameservers → replace Hostinger nameservers with Cloudflare's
-4. Wait for propagation (up to 24 hours, usually faster)
-5. In Cloudflare Dashboard → verify domain is active
+```bash
+yarn deploy
+```
 
-### Option B: CNAME (If Keeping Hostinger Nameservers)
+This runs `vite build && wrangler pages deploy .svelte-kit/cloudflare --project-name arbenger --branch main`.
 
-1. In Hostinger DNS settings, add a CNAME record:
-   - Name: `@` (or `arbenger.com`)
-   - Target: `<project>.pages.dev`
-2. Add another CNAME for `www`:
-   - Name: `www`
-   - Target: `<project>.pages.dev`
+The `--branch main` flag is required because the local branch name may differ from Cloudflare's production branch. Without it, deployments go to preview instead of production.
+
+### Option B: Git Integration
+
+1. Log into Cloudflare Dashboard → Workers & Pages → Create → Import an existing Git repository
+2. Select the GitHub repository and choose **SvelteKit** as the framework preset
+3. Cloudflare auto-detects the build command and output directory
+4. Every push to `main` triggers automatic production deployment
+5. Pull requests generate preview deployments with unique URLs
+
+### Verify
+
+After deploy:
+1. Visit `https://arbenger.com` to verify the site works
+2. Check the `*.pages.dev` preview URL as well
+3. Check all pages render correctly
+4. Test dark/light theme toggle
+5. Verify responsive design on mobile
+
+---
+
+## 7. DNS Configuration
+
+### Nameservers (Completed)
+
+The domain `arbenger.com` is registered on Hostinger with nameservers pointed to Cloudflare:
+
+| Nameserver |
+|------------|
+| `celeste.ns.cloudflare.com` |
+| `jack.ns.cloudflare.com` |
+
+The Hostinger nameservers (`artemis.dns-parking.com`, `hermes.dns-parking.com`) were replaced during initial setup.
+
+### DNS Records
+
+Cloudflare manages DNS. The Pages custom domain creates a CNAME record automatically:
+
+| Type | Name | Content | Proxy |
+|------|------|---------|-------|
+| CNAME | `arbenger.com` | `arbenger.pages.dev` | Proxied |
 
 ### Custom Domain in Cloudflare Pages
 
-1. In Cloudflare Pages → project settings → Custom domains
-2. Add `arbenger.com`
-3. Add `www.arbenger.com` with redirect to `arbenger.com`
+Custom domain `arbenger.com` is attached to the `arbenger` Pages project. Cloudflare created the DNS record automatically — do not manually add CNAME records for `*.pages.dev` before associating in the Pages dashboard (causes 522 errors).
 
 ---
 
-## 7. SSL & Security
+## 8. SSL & Security
 
 | Setting | Value |
 |---------|-------|
@@ -227,7 +247,7 @@ All configured in Cloudflare Dashboard → SSL/TLS and Speed settings.
 
 ---
 
-## 8. Domain Redirects
+## 9. Domain Redirects
 
 | From | To | Type |
 |------|-----|------|
@@ -239,15 +259,21 @@ Configured via Cloudflare Page Rules or Redirect Rules.
 
 ---
 
-## 9. Deployment Pipeline
+## 10. Deployment Pipeline
 
-### Production
+### Production (CLI)
+
+```
+yarn deploy → vite build → wrangler pages deploy → Live at arbenger.com
+```
+
+Typical build time: 20-35 seconds.
+
+### Production (Git Integration — if configured)
 
 ```
 Push to main → Cloudflare detects → yarn install → yarn build → Deploy to edge (300+ locations)
 ```
-
-Typical build time: 30-60 seconds.
 
 ### Preview
 
@@ -264,7 +290,7 @@ Cloudflare Pages keeps deployment history. To rollback:
 
 ---
 
-## 10. Monitoring
+## 11. Monitoring
 
 ### Build Failures
 
@@ -283,7 +309,7 @@ Cloudflare Pages has 99.99% uptime SLA. No additional monitoring needed for laun
 
 ---
 
-## 11. Post-Launch Checklist
+## 12. Post-Launch Checklist
 
 After the first production deployment:
 
