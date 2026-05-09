@@ -1,6 +1,6 @@
 # Data Models
 
-**Last updated:** 2026-05-08
+**Last updated:** 2026-05-09
 
 This document defines the TypeScript interfaces and data structures used across arbenger.com. All data types live in `src/lib/types/index.ts`.
 
@@ -65,53 +65,44 @@ export const categories: ProductCategoryInfo[] = [
   {
     id: 'vscode-extensions',
     name: 'VS Code Extensions',
-    description: 'Developer tools and productivity extensions for Visual Studio Code.',
+    description: 'Tools and add-ons for Visual Studio Code.',
     icon: 'code',
     productCount: 0
   },
   {
     id: 'chrome-plugins',
     name: 'Chrome Plugins',
-    description: 'Browser extensions that enhance your web experience.',
+    description: 'Browser extensions that work inside Chrome.',
     icon: 'chrome',
     productCount: 0
   },
   {
     id: 'ai-tools',
     name: 'AI Tools',
-    description: 'Intelligent tools powered by artificial intelligence.',
+    description: 'Software that uses AI to get things done.',
     icon: 'brain',
     productCount: 0
   },
   {
     id: 'misc-tools',
     name: 'Misc Tools',
-    description: 'Converters, formatters, and everyday utilities.',
+    description: 'Converters, formatters, and other small utilities.',
     icon: 'wrench',
     productCount: 0
   },
   {
     id: 'saas',
     name: 'SaaS Products',
-    description: 'Full-featured applications for teams and individuals.',
+    description: 'Web apps you can use from anywhere.',
     icon: 'rocket',
     productCount: 0
   }
 ];
 
-export const products: Product[] = [
-  // PRODUCTS ADDED HERE AS THEY LAUNCH
-  // {
-  //   slug: 'ai-wiki-reader',
-  //   name: 'AI Wiki Reader',
-  //   description: 'An AI-powered tool for reading and summarizing wiki content.',
-  //   category: 'saas',
-  //   status: 'coming-soon',
-  //   platform: 'web',
-  //   tags: ['ai', 'reading', 'wiki'],
-  //   featured: true
-  // }
-];
+export const products: Product[] = [];
+```
+
+Note: The commented-out example product ("AI Wiki Reader") was removed as part of the 2026-05-09 content rewrite to avoid naming specific unreleased products.
 ```
 
 ### Adding a New Product

@@ -1,6 +1,6 @@
 # SEO Standards
 
-**Last updated:** 2026-05-08
+**Last updated:** 2026-05-09
 
 This document defines the SEO requirements for every page on arbenger.com. All pages must meet these standards before deployment. No page ships without proper meta tags, structured data, and heading hierarchy.
 
@@ -14,8 +14,8 @@ Every page must use the `MetaTags.svelte` component with these props:
 
 | Tag | Requirement | Example |
 |-----|-------------|---------|
-| `<title>` | Unique, 50-60 chars, primary keyword near start, brand at end | `AI Tools & Developer Products \| Arbenger` |
-| `<meta name="description">` | Unique, 150-160 chars, includes keyword, has value proposition | `Arbenger builds AI tools, VS Code extensions, Chrome plugins, and SaaS products for developers and creators.` |
+| `<title>` | Unique, 50-60 chars, primary keyword near start, brand at end | `Arbenger — Extensions, Plugins, AI Tools & Web Apps` |
+| `<meta name="description">` | Unique, 150-160 chars, includes keyword, has value proposition | `Extensions, plugins, AI tools, and web apps. Browse what's available at Arbenger.` |
 | `<link rel="canonical">` | Self-referencing absolute URL | `https://arbenger.com/products` |
 
 ### OpenGraph Tags
@@ -47,8 +47,8 @@ import MetaTags from '$lib/components/seo/MetaTags.svelte';
 </script>
 
 <MetaTags
-  title="AI Tools & Developer Products | Arbenger"
-  description="Arbenger builds AI tools, VS Code extensions, Chrome plugins, and SaaS products for developers and creators."
+  title="Arbenger — Extensions, Plugins, AI Tools & Web Apps"
+  description="Extensions, plugins, AI tools, and web apps. Browse what's available at Arbenger."
   url="https://arbenger.com"
   image="https://arbenger.com/og-image.png"
 />
@@ -67,7 +67,7 @@ import MetaTags from '$lib/components/seo/MetaTags.svelte';
   "name": "Arbenger",
   "url": "https://arbenger.com",
   "logo": "https://arbenger.com/arbenger.svg",
-  "description": "Building AI tools, developer extensions, and SaaS products.",
+  "description": "Extensions, plugins, AI tools, and web applications.",
   "sameAs": [
     "https://github.com/arbenger",
     "https://twitter.com/arbenger"
@@ -136,10 +136,10 @@ import JsonLd from '$lib/components/seo/JsonLd.svelte';
 
 | Page | H1 Content | Primary Keyword |
 |------|-----------|-----------------|
-| `/` | Company tagline (e.g., "Building the tools of tomorrow") | Arbenger, tools |
+| `/` | "Tools that do the job" (with typewriter extension) | Arbenger, tools |
 | `/about` | "About Arbenger" | Arbenger, company |
-| `/products` | "Products" or "Our Products" | Products, tools |
-| `/contact` | "Contact" or "Get in Touch" | Contact |
+| `/products` | "Our Products" | Products, tools |
+| `/contact` | "Say Hello" | Contact |
 | `/products/[slug]` | Product name | Product-specific keyword |
 
 ---
@@ -277,9 +277,9 @@ For a company/product site, these trust signals must be present:
 | Signal | Implementation |
 |--------|---------------|
 | **Experience** | Product descriptions showing real usage, screenshots, demos |
-| **Expertise** | About page with founder credentials and technical background |
+| **Expertise** | About page with company overview and product category information |
 | **Authoritativeness** | Links to published products on official platforms (VS Code Marketplace, Chrome Web Store) |
-| **Trustworthiness** | Contact information, HTTPS, privacy policy (future), professional design |
+| **Trustworthiness** | Contact information, HTTPS, privacy policy, terms of service, cookie policy, professional design |
 
 ---
 

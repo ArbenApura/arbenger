@@ -1,6 +1,6 @@
 # Component Conventions
 
-**Last updated:** 2026-05-08
+**Last updated:** 2026-05-09
 
 This document defines how to build Svelte components for arbenger.com. It supplements the svelte-guidelines skill (which covers syntax rules) with project-specific patterns and architectural decisions.
 
@@ -31,7 +31,7 @@ All components use **Svelte 4 syntax**. This is mandatory, no exceptions.
 |------|------|---------|
 | Layout components | `src/lib/components/layout/` | Navbar.svelte, Footer.svelte |
 | Reusable UI primitives | `src/lib/components/ui/` | Button.svelte, Card.svelte |
-| Page-specific sections | `src/lib/components/[page]/` | home/Hero.svelte, home/ProductCategories.svelte |
+| Page-specific sections | `src/lib/components/[page]/` | home/Hero.svelte, home/ProductCategories.svelte, home/AboutTeaser.svelte |
 | SEO utilities | `src/lib/components/seo/` | MetaTags.svelte, JsonLd.svelte |
 | Stores | `src/lib/stores/` | theme.ts |
 | Utilities | `src/lib/utils/` | cn.ts |
@@ -317,6 +317,18 @@ export const isDark = writable(true);
 - Persisted to `localStorage` key `arbenger-theme`
 - Only imported in components where `dark:` Tailwind variants cannot express the value
 - Most components should use `dark:` variants instead
+
+### Removed Components
+
+The following components were part of the original build but have been removed:
+
+| Component | Removed On | Reason |
+|-----------|-----------|--------|
+| `Roadmap.svelte` | 2026-05-09 | Roadmap section removed from homepage; component file still exists but is unused and not imported anywhere |
+
+### Typewriter Component Notes
+
+`Typewriter.svelte` uses an `inline-grid` overlay technique to prevent layout shift. The hidden sizer reserves the width/height of the longest phrase. The visible text must NOT use `whitespace-nowrap` — both sizer and visible text must wrap identically so the container height stays constant as phrases cycle.
 
 ### Future Stores
 

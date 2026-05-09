@@ -1,6 +1,6 @@
 # Routing Architecture
 
-**Last updated:** 2026-05-08
+**Last updated:** 2026-05-09
 
 This document defines the URL structure, rendering strategy, and route planning for arbenger.com.
 
@@ -27,10 +27,13 @@ SvelteKit file-based routing. All routes live under `src/routes/`. The adapter i
 
 | Route | File | Purpose | H1 |
 |-------|------|---------|-----|
-| `/` | `src/routes/+page.svelte` | Homepage | Company tagline |
+| `/` | `src/routes/+page.svelte` | Homepage | "Tools that do the job" (+ typewriter) |
 | `/about` | `src/routes/about/+page.svelte` | About page | "About Arbenger" |
-| `/products` | `src/routes/products/+page.svelte` | Product catalog | "Products" |
-| `/contact` | `src/routes/contact/+page.svelte` | Contact info | "Get in Touch" |
+| `/products` | `src/routes/products/+page.svelte` | Product catalog | "Our Products" |
+| `/contact` | `src/routes/contact/+page.svelte` | Contact info | "Say Hello" |
+| `/privacy` | `src/routes/privacy/+page.svelte` | Privacy policy | "Privacy Policy" |
+| `/terms` | `src/routes/terms/+page.svelte` | Terms of service | "Terms of Service" |
+| `/cookies` | `src/routes/cookies/+page.svelte` | Cookie policy | "Cookie Policy" |
 
 ### Future Routes
 
@@ -59,27 +62,36 @@ SvelteKit file-based routing. All routes live under `src/routes/`. The adapter i
 
 ```
 src/routes/
-  +layout.svelte          ← Root layout (Navbar + Footer + theme init + fonts)
+  +layout.svelte          ← Root layout (Navbar + Footer + CookieBanner + JSON-LD)
   +layout.ts              ← prerender = true (default for all child routes)
   +page.svelte            ← Homepage
+  +error.svelte           ← Custom error page (404, 500)
   about/
     +page.svelte          ← About page (inherits root layout)
   products/
     +page.svelte          ← Product catalog (inherits root layout)
     [slug]/
-      +page.svelte        ← Individual product (inherits root layout)
+      +page.svelte        ← Individual product (inherits root layout) — future
   contact/
     +page.svelte          ← Contact page (inherits root layout)
+  privacy/
+    +page.svelte          ← Privacy policy (inherits root layout)
+  terms/
+    +page.svelte          ← Terms of service (inherits root layout)
+  cookies/
+    +page.svelte          ← Cookie policy (inherits root layout)
+  sitemap.xml/
+    +server.ts            ← Dynamic XML sitemap (SSR)
 ```
 
 The root layout provides:
-- `<html>` with `lang="en"` and theme class (`dark`)
-- Font preloading in `<svelte:head>`
 - Navbar component (sticky, transparent → blur on scroll)
-- `<main>` wrapper
-- Footer component
-- `svelte-sonner` Toaster component
+- `<main>` wrapper with skip-to-content accessibility link
+- Footer component (4-column: logo/tagline, navigation, legal, social)
+- CookieBanner component (localStorage-persisted consent)
 - Sitewide JSON-LD (WebSite schema)
+
+Note: Theme initialization (dark class on `<html>`) happens in `app.html` via an inline script to prevent FOUC. Font preloading is also in `app.html`.
 
 ---
 
@@ -96,14 +108,17 @@ The root layout provides:
 
 ### Footer Navigation
 
-Same links as navbar, plus social links (GitHub, Twitter/X, LinkedIn).
+Same links as navbar, plus:
+- Legal links: Privacy Policy, Terms of Service, Cookie Policy
+- Social links: GitHub, Twitter/X, LinkedIn
 
 ### Internal Links (In-Page)
 
 | From | To | Context |
 |------|----|---------|
-| Homepage hero CTA | `/products` | "Explore Products" button |
+| Homepage hero CTA | `/products` | "See What's Available" button |
 | Homepage about teaser | `/about` | "Learn more" link |
+| Homepage bottom CTA | `/contact` | "Get in Touch" button |
 | Homepage product cards | `/products` | Category card clicks |
 | Product catalog cards | `/products/[slug]` | Individual product links (future) |
 

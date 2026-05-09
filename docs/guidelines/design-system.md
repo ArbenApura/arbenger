@@ -1,6 +1,6 @@
 # Arbenger Design System
 
-**Last updated:** 2026-05-08
+**Last updated:** 2026-05-09
 
 This document defines the complete visual language for arbenger.com. All components, pages, and future additions must follow these specifications. When in doubt, refer back to the aesthetic direction and verify against the color, typography, and spacing tokens defined here.
 
@@ -193,6 +193,17 @@ Cards and section dividers use a gradient border effect. Implementation uses a w
 - Applied to a small rectangular element after hero headline
 - Color: cyan-400
 
+### Scrollbar Theming
+
+Custom scrollbar styles adapt to the current theme. Both standard (`scrollbar-color` for Firefox) and WebKit (`::-webkit-scrollbar` for Chrome/Edge/Safari) properties are defined in `src/app.css`.
+
+| Property | Light Mode | Dark Mode |
+|----------|-----------|-----------|
+| Track | `#F1F5F9` | `#0B0A23` |
+| Thumb | `#CBD5E1` | `#312E81` |
+| Thumb hover | `#94A3B8` | `#4338CA` |
+| Width | 8px | 8px |
+
 ### Scroll Reveal
 
 - Animation: fade in + translate up 20px
@@ -202,12 +213,17 @@ Cards and section dividers use a gradient border effect. Implementation uses a w
 - Triggered by `IntersectionObserver` when element enters viewport
 - Runs once only (no re-trigger on scroll back up)
 
-### Stroke-Draw Icons
+### Floating Orbital Shapes (About Teaser)
 
-- Category icons use line-art style
-- CSS `stroke-dasharray` and `stroke-dashoffset` animation
-- Duration: 800ms per icon
-- Triggered on first view via `IntersectionObserver`
+The About teaser section features an animated Arbenger logo surrounded by orbital rings and three floating abstract shapes. These shapes are purely decorative and theme-aware (use `isDark` ternary for fill/stroke colors).
+
+| Shape | Position | Description |
+|-------|----------|-------------|
+| Faceted gem | Top-right | Diamond outline with internal facet lines and apex dot |
+| Stacked rings | Bottom-left | Three concentric circles with a solid core |
+| Constellation triangle | Bottom-right | Three connected nodes forming a triangle |
+
+All shapes use the site's teal/cyan accent palette (`#22D3EE` dark / `#0891B2` light) at low opacity (0.2–0.4). They animate with `animate-float` at staggered delays (0.5s, 1.5s, 2.5s).
 
 ---
 
@@ -301,7 +317,7 @@ Example markup:
 
 - Background: `bg-[#0B0A23]` with `border-t border-[#2A2578]`
 - Padding: `py-12 lg:py-16`
-- Three-column grid on desktop, stacked on mobile
+- Four-column grid on desktop, stacked on mobile
 - Text: slate-400 for body, white for headings
 - Social icons: slate-400, hover cyan-400
 - Copyright: `text-sm`, slate-400

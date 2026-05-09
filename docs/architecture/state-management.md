@@ -1,6 +1,6 @@
 # State Management
 
-**Last updated:** 2026-05-08
+**Last updated:** 2026-05-09
 
 This document defines how state is managed across arbenger.com. The base site has minimal state requirements — theme preference is the primary concern.
 
@@ -82,16 +82,17 @@ export const isDark = createThemeStore();
 
 ### Initialization Flow
 
-1. `app.html` includes inline script to set `dark` class before paint (prevents flash):
+1. `app.html` includes inline script to set `dark` class before paint (prevents FOUC):
    ```html
    <script>
-     if (localStorage.getItem('arbenger-theme') !== 'light') {
+     if (localStorage.getItem('arbenger-theme') === 'dark') {
        document.documentElement.classList.add('dark');
      }
    </script>
    ```
-2. `+layout.svelte` initializes the store on mount, syncing with the class already set
+2. The `isDark` store initializes from `localStorage` on creation (browser-safe via `$app/environment`)
 3. `ThemeToggle.svelte` calls `isDark.toggle()` on click
+4. Cookie consent is stored separately via `localStorage` key `arbenger-cookies-consent` (managed by `CookieBanner.svelte`)
 
 ### Usage in Components
 

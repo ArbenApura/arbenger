@@ -1,6 +1,6 @@
 # Deployment Guide
 
-**Last updated:** 2026-05-08
+**Last updated:** 2026-05-09
 
 This document covers the complete deployment pipeline for arbenger.com: from local development to production on Cloudflare Pages.
 
@@ -11,7 +11,7 @@ This document covers the complete deployment pipeline for arbenger.com: from loc
 | Requirement | Version / Detail |
 |-------------|-----------------|
 | Node.js | 20 LTS |
-| npm | 10+ (bundled with Node 20) |
+| Package manager | Yarn 1.x (Classic) |
 | Git | Latest |
 | GitHub account | Repository for arbenger.com |
 | Cloudflare account | Free tier sufficient for launch |
@@ -26,20 +26,23 @@ This document covers the complete deployment pipeline for arbenger.com: from loc
 ```bash
 git clone <repo-url>
 cd arbenger
-npm install
-npm run dev
+yarn install
+yarn dev
 ```
 
 ### Commands
 
 | Command | Purpose |
 |---------|---------|
-| `npm run dev` | Start development server with HMR |
-| `npm run build` | Production build |
-| `npm run preview` | Preview production build locally |
-| `npm run check` | Run svelte-check for type errors |
-| `npm run format` | Run Prettier across all files |
-| `npm run lint` | Run linting (if configured) |
+| `yarn dev` | Start development server on port 8000 |
+| `yarn build` | Production build |
+| `yarn preview` | Preview production build locally |
+| `yarn check` | Run svelte-check for type errors |
+| `yarn format` | Run Prettier across all files |
+
+### Dev Server Port
+
+The dev server is configured to always run on **port 8000** (not the Vite default 5173). This is set in the `dev` script in `package.json`: `"dev": "vite dev --port 8000"`.
 
 ### Environment Variables
 
@@ -149,7 +152,7 @@ Set via `.node-version` file in project root:
 2. Click "Create a project" → "Connect to Git"
 3. Select the GitHub repository
 4. Configure build settings:
-   - **Build command:** `npm run build`
+   - **Build command:** `yarn build`
    - **Build output directory:** `.svelte-kit/cloudflare`
    - **Root directory:** `/` (default)
    - **Node.js version:** Set `NODE_VERSION` environment variable to `20`
@@ -231,7 +234,7 @@ Configured via Cloudflare Page Rules or Redirect Rules.
 ### Production
 
 ```
-Push to main → Cloudflare detects → npm install → npm run build → Deploy to edge (300+ locations)
+Push to main → Cloudflare detects → yarn install → yarn build → Deploy to edge (300+ locations)
 ```
 
 Typical build time: 30-60 seconds.
@@ -277,7 +280,7 @@ After the first production deployment:
 - [ ] Site loads at `https://arbenger.com`
 - [ ] `www.arbenger.com` redirects to `arbenger.com`
 - [ ] HTTP redirects to HTTPS
-- [ ] All 4 pages render correctly
+- [ ] All 7 pages render correctly (home, about, products, contact, privacy, terms, cookies)
 - [ ] Theme toggle works (dark/light)
 - [ ] Mobile responsive (test on real device)
 - [ ] Favicon displays correctly
