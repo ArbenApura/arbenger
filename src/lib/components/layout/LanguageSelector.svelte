@@ -9,6 +9,10 @@
 	// IMPORTED STORES
 	import { locale } from '$lib/stores/locale';
 
+	// -- OPTIONAL PROPS -- //
+
+	export let direction: 'up' | 'down' = 'down';
+
 	// -- CONSTANTS -- //
 
 	// INLINE SVG FLAG PATHS — SIMPLIFIED DESIGNS FOR SMALL DISPLAY SIZES
@@ -106,12 +110,12 @@
 		<svg class="h-4 w-5 shrink-0 overflow-hidden rounded-[2px]" viewBox={FLAGS[activeLocale.flag]?.viewBox || '0 0 24 16'}>
 			{@html FLAGS[activeLocale.flag]?.content || ''}
 		</svg>
-		<ChevronDown class="size-3.5 transition-transform duration-200" style="transform: rotate({isOpen ? 180 : 0}deg);" />
+		<ChevronDown class="size-3.5 transition-transform duration-200" style="transform: rotate({direction === 'up' ? (isOpen ? 0 : 180) : (isOpen ? 180 : 0)}deg);" />
 	</button>
 
 	<!-- DROPDOWN MENU -->
 	{#if isOpen}
-		<div class="absolute right-0 z-50 mt-2 w-52 rounded-xl border border-[#E2E8F0] bg-white py-1 shadow-[0_4px_16px_rgba(0,0,0,0.08),0_1px_4px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E] dark:shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
+		<div class="absolute right-0 z-50 w-52 rounded-xl border border-[#E2E8F0] bg-white py-1 shadow-[0_4px_16px_rgba(0,0,0,0.08),0_1px_4px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E] dark:shadow-[0_4px_16px_rgba(0,0,0,0.3)] {direction === 'up' ? 'bottom-full mb-2' : 'top-full mt-2'}">
 			{#each locales as loc}
 				<button
 					on:click={() => loc.enabled && selectLocale(loc.code)}

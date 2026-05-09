@@ -109,7 +109,7 @@
 			<p class="text-sm text-[#64748B] dark:text-slate-400">
 				&copy; {CURRENT_YEAR} Arbenger. All rights reserved.
 			</p>
-			<LanguageSelector />
+			<LanguageSelector direction="up" />
 		</div>
 	</div>
 </footer>

@@ -6,11 +6,38 @@ html {
 	overflow-x: hidden;
 }
 
-* {
+a,
+button,
+select,
+summary,
+label[for],
+input[type='checkbox'],
+input[type='radio'],
+input[type='submit'],
+input[type='reset'],
+input[type='button'],
+[role='button'],
+[role='link'],
+[role='tab'],
+[role='menuitem'],
+[onclick] {
+	cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+[aria-disabled='true'] {
+	cursor: default;
+}
+
+*,
+html {
 	scrollbar-color: #CBD5E1 #F1F5F9;
 	scrollbar-width: thin;
 }
 
+.dark,
 .dark * {
 	scrollbar-color: #312E81 #0B0A23;
 }
@@ -33,15 +60,18 @@ html {
 	background: #94A3B8;
 }
 
+.dark::-webkit-scrollbar-track,
 .dark ::-webkit-scrollbar-track {
 	background: #0B0A23;
 }
 
+.dark::-webkit-scrollbar-thumb,
 .dark ::-webkit-scrollbar-thumb {
 	background: #312E81;
 	border-radius: 4px;
 }
 
+.dark::-webkit-scrollbar-thumb:hover,
 .dark ::-webkit-scrollbar-thumb:hover {
 	background: #4338CA;
 }
