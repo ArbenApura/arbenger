@@ -1,0 +1,70 @@
+{
+  "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v11/terminal-keeper.json",
+  "theme": "tribe",
+  "active": "default",
+  "activateOnStartup": true,
+  "keepExistingTerminals": false,
+  "sessions": {
+    "default": [
+      {
+        "name": "CLAUDE",
+        "icon": "star-full",
+        "color": "terminal.ansiRed",
+        "autoExecuteCommands": false,
+        "commands": [
+          "claude"
+        ]
+      },
+      {
+        "name": "DRIZZLE STUDIO",
+        "icon": "database",
+        "color": "terminal.ansiYellow",
+        "autoExecuteCommands": false,
+        "commands": [
+          "npx drizzle-kit studio"
+        ]
+      },
+      {
+        "name": "DEV SERVER",
+        "icon": "server-process",
+        "color": "terminal.ansiBlue",
+        "autoExecuteCommands": true,
+        "commands": [
+          "yarn dev"
+        ]
+      },
+      {
+        "name": "PACKAGES",
+        "icon": "package",
+        "color": "terminal.ansiBlue",
+        "commands": []
+      },
+      {
+        "name": "GIT",
+        "icon": "github",
+        "color": "terminal.ansiBlue",
+        "commands": []
+      },
+      {
+        "name": "COMMANDS",
+        "icon": "run",
+        "color": "terminal.ansiBlue",
+        "commands": []
+      },
+      {
+        "name": "CAPACITOR PROJECT",
+        "icon": "device-mobile",
+        "color": "terminal.ansiGreen",
+        "cwd": "./capacitor",
+        "commands": []
+      },
+      {
+        "name": "CAPCITOR PLUGIN",
+        "icon": "plug",
+        "color": "terminal.ansiGreen",
+        "cwd": "./capacitor/plugins",
+        "commands": []
+      }
+    ]
+  }
+}

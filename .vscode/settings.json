@@ -1,0 +1,41 @@
+{
+    "editor.tabSize": 4,
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.inlineSuggest.enabled": true,
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "tailwindCSS.emmetCompletions": true,
+    "tailwindCSS.classAttributes": [
+        "class",
+        "className"
+    ],
+    "[svelte]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "typescript.updateImportsOnPaste.enabled": false,
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/.svelte-kit": true,
+        "**/.git": true,
+        "**/vite.config.ts.timestamp*": true,
+        "yarn.lock": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/.svelte-kit": true
+    },
+    "files.watcherExclude": {
+        "**/node_modules/**": true,
+        "**/.svelte-kit/**": true,
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true
+    },
+    "svelte.plugin.svelte.compilerWarnings": {
+        "css-unused-selector": "ignore",
+        "unused-export-let": "ignore"
+    }
+}
