@@ -4,6 +4,7 @@
 
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
+	import Breadcrumbs from '$lib/components/seo/Breadcrumbs.svelte';
 </script>
 
 <MetaTags
@@ -11,6 +12,8 @@
 	description="Terms governing your use of Arbenger's website, products, tools, and extensions."
 	url="https://arbenger.com/terms"
 />
+
+<Breadcrumbs pageName="Terms of Service" pageUrl="https://arbenger.com/terms" />
 
 <!-- PAGE HERO -->
 <section class="relative pt-32 pb-16">

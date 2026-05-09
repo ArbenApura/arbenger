@@ -4,6 +4,7 @@
 
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
+	import Breadcrumbs from '$lib/components/seo/Breadcrumbs.svelte';
 </script>
 
 <MetaTags
@@ -11,6 +12,8 @@
 	description="How Arbenger collects, uses, and protects your information. Plain-language privacy policy."
 	url="https://arbenger.com/privacy"
 />
+
+<Breadcrumbs pageName="Privacy Policy" pageUrl="https://arbenger.com/privacy" />
 
 <!-- PAGE HERO -->
 <section class="relative pt-32 pb-16">
