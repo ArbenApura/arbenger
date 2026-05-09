@@ -6,6 +6,11 @@
 	import Button from '$lib/components/ui/Button.svelte';
 </script>
 
+<svelte:head>
+	<meta name="robots" content="noindex" />
+	<title>{$page.status} | Arbenger</title>
+</svelte:head>
+
 <!-- ERROR PAGE -->
 <section class="flex min-h-screen items-center justify-center">
 	<div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
