@@ -1,0 +1,21 @@
+{
+	"name": "Arbenger",
+	"short_name": "Arbenger",
+	"description": "Extensions, plugins, AI tools, and web apps.",
+	"start_url": "/",
+	"display": "browser",
+	"background_color": "#F8FAFC",
+	"theme_color": "#0891B2",
+	"icons": [
+		{
+			"src": "/arbenger.svg",
+			"type": "image/svg+xml",
+			"sizes": "any"
+		},
+		{
+			"src": "/arbenger.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		}
+	]
+}
