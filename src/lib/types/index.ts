@@ -52,3 +52,10 @@ export interface SocialLink {
 	url: string;
 	icon: string;
 }
+
+export interface Locale {
+	code: string;
+	label: string;
+	flag: string;
+	enabled: boolean;
+}

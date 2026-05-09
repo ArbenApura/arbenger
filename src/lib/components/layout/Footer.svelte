@@ -4,6 +4,7 @@
 
 	// IMPORTED COMPONENTS
 	import Logo from '$lib/components/ui/Logo.svelte';
+	import LanguageSelector from '$lib/components/layout/LanguageSelector.svelte';
 
 	// -- CONSTANTS -- //
 
@@ -103,11 +104,12 @@
 			</div>
 		</div>
 
-		<!-- COPYRIGHT -->
-		<div class="mt-12 border-t border-[#E2E8F0] pt-8 dark:border-[#2A2578]">
+		<!-- COPYRIGHT + LANGUAGE -->
+		<div class="mt-12 flex items-center justify-between border-t border-[#E2E8F0] pt-8 dark:border-[#2A2578]">
 			<p class="text-sm text-[#64748B] dark:text-slate-400">
 				&copy; {CURRENT_YEAR} Arbenger. All rights reserved.
 			</p>
+			<LanguageSelector />
 		</div>
 	</div>
 </footer>

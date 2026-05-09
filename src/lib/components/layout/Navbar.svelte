@@ -8,6 +8,7 @@
 
 	// IMPORTED COMPONENTS
 	import ThemeToggle from '$lib/components/layout/ThemeToggle.svelte';
+	import LanguageSelector from '$lib/components/layout/LanguageSelector.svelte';
 	import Logo from '$lib/components/ui/Logo.svelte';
 
 	// -- STATES -- //
@@ -57,11 +58,13 @@
 					{link.label}
 				</a>
 			{/each}
+			<LanguageSelector />
 			<ThemeToggle />
 		</div>
 
 		<!-- MOBILE MENU BUTTON -->
 		<div class="flex items-center gap-2 lg:hidden">
+			<LanguageSelector />
 			<ThemeToggle />
 			<button
 				on:click={() => (isMobileMenuOpen = !isMobileMenuOpen)}

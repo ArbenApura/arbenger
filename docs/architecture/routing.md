@@ -162,4 +162,4 @@ When adding a new page:
 5. Verify heading hierarchy (one H1, logical nesting)
 6. Test on both dark and light themes
 7. Test responsive layout (mobile, tablet, desktop)
-8. Run `npm run check` for TypeScript errors
+8. Run `yarn check` for TypeScript errors

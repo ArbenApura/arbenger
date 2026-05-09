@@ -25,7 +25,8 @@ This document defines how state is managed across arbenger.com. The base site ha
 
 | Store | File | Type | Persisted | Purpose |
 |-------|------|------|-----------|---------|
-| `isDark` | `src/lib/stores/theme.ts` | `Writable<boolean>` | Yes (`localStorage`) | Theme preference |
+| `isDark` | `src/lib/stores/theme.ts` | `Writable<boolean>` | Yes (`localStorage`: `arbenger-theme`) | Theme preference |
+| `locale` | `src/lib/stores/locale.ts` | `Writable<string>` | Yes (`localStorage`: `arbenger-locale`) | Locale/language preference |
 
 ### Future Stores (planned, not implemented)
 
@@ -113,6 +114,63 @@ import { isDark } from '$lib/stores/theme';
 <!-- FADE GRADIENT — linear-gradient() WITH THEME-DEPENDENT COLOR REQUIRES isDark STORE -->
 <div style="background: linear-gradient(to bottom, transparent, {$isDark ? '#0B0A23' : '#F8FAFC'});">
 ```
+
+---
+
+## 3b. Locale Store (Detailed)
+
+### Implementation
+
+```typescript
+// src/lib/stores/locale.ts
+import { writable } from 'svelte/store';
+import { browser } from '$app/environment';
+import { defaultLocale } from '$lib/data/locales';
+
+// PERSISTED TO localStorage KEY: arbenger-locale
+
+function createLocaleStore() {
+  const initial = browser
+    ? localStorage.getItem('arbenger-locale') || defaultLocale
+    : defaultLocale;
+
+  const { subscribe, set } = writable<string>(initial);
+
+  return {
+    subscribe,
+    set: (code: string) => {
+      if (browser) {
+        localStorage.setItem('arbenger-locale', code);
+        document.documentElement.setAttribute('lang', code);
+      }
+      set(code);
+    },
+  };
+}
+
+export const locale = createLocaleStore();
+```
+
+### Key Differences from Theme Store
+
+- Type is `string` (locale code like `'en-US'`) not `boolean`
+- No `toggle()` method — uses `set(code)` directly
+- Side effect sets `<html lang="">` attribute instead of toggling a class
+- Default value comes from `defaultLocale` constant in `src/lib/data/locales.ts`
+
+### Locale Data
+
+Available locales are defined in `src/lib/data/locales.ts`. Each locale has:
+- `code` — BCP 47 language tag (e.g., `'en-US'`, `'es'`, `'ja'`)
+- `label` — display name in that language (e.g., `'Español'`)
+- `flag` — key for the inline SVG flag in `LanguageSelector.svelte`
+- `enabled` — whether the locale is selectable (disabled locales show "Soon" badge)
+
+Currently only `en-US` is enabled. To add a new language, add the locale to the `locales` array and set `enabled: true`.
+
+### No Translation Layer
+
+The locale store currently only tracks the user's language preference and sets the `<html lang>` attribute. There is no translation system (`t()` function, JSON string files, or i18n library). When translations are needed, wire up a translation layer that reads from the `locale` store.
 
 ---
 

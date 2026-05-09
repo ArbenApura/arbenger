@@ -4,7 +4,30 @@ All notable decisions, changes, and milestones for arbenger.com are documented h
 
 ---
 
-## 2026-05-09 — Content Rewrite & Performance Cleanup
+## 2026-05-09 — Content Rewrite, Language Selector & Performance Cleanup
+
+### Language Selector
+
+Added a language/locale selector with country flag icons to the navbar and footer.
+
+- **Placement:** Navbar (desktop + mobile controls, next to theme toggle) and footer (copyright bar, right-aligned)
+- **Active locale:** English (US) with US flag — sets `<html lang="en-US">`
+- **Coming soon locales:** Spanish, French, Japanese — shown in dropdown with "Soon" badge, disabled
+- **Dropdown behavior:** Opens on click, closes on click-outside or Escape key
+- **Persistence:** Locale preference saved to `localStorage` key `arbenger-locale`
+- **Flags:** Inline SVG country flags (US, Spain, France, Japan) — no external library
+- **Store:** `src/lib/stores/locale.ts` — mirrors `theme.ts` pattern (custom writable, SSR-safe, sets `<html lang="">` attribute)
+
+#### Files Created
+- `src/lib/components/layout/LanguageSelector.svelte` — dropdown component with flags, click-outside, keyboard support
+- `src/lib/stores/locale.ts` — locale store persisted to localStorage
+- `src/lib/data/locales.ts` — locale definitions (code, label, flag key, enabled status)
+
+#### Files Modified
+- `src/lib/types/index.ts` — added `Locale` interface
+- `src/lib/components/layout/Navbar.svelte` — added `<LanguageSelector />` in desktop and mobile controls
+- `src/lib/components/layout/Footer.svelte` — added `<LanguageSelector />` in copyright bar (flex layout)
+- `src/app.html` — changed `lang="en"` to `lang="en-US"`
 
 ### Content Rewrite
 
@@ -52,12 +75,15 @@ Rewrote all page copy to be neutral, general-audience, and claim-free. The site 
 - **About teaser floating icons:** Replaced tech-specific logos (SvelteKit flame, TypeScript badge, AI brain circuit) with abstract geometric shapes (faceted gem, stacked rings, constellation triangle) — theme-aware, neutral
 - **Typewriter component:** Removed `whitespace-nowrap` from visible text to fix layout shift when cycling between short and long phrases
 
-### Performance
+### Performance & Tooling
 
 - **Removed unused dependencies:** `tsparticles-slim` and `@tsparticles/svelte` (~2MB on disk) were listed in package.json but never imported — the particle background uses a custom canvas implementation
 - **Scrollbar theming:** Added theme-aware scrollbar styles (both `scrollbar-color` for Firefox and `::-webkit-scrollbar` for Chrome/Edge/Safari) in `app.css`
 - **Font preloading:** Already in place (verified)
 - **Build output:** ~95 KB gzipped total JS across all routes, 8.3 KB CSS
+- **Package manager:** Migrated from npm to Yarn Classic (1.x). `package-lock.json` removed, `yarn.lock` added. All docs and commands updated to use `yarn`.
+- **Added `@types/node`:** Installed as dev dependency to fix "Cannot find type definition file for 'node'" TypeScript error
+- **Added `wrangler`:** Installed as dev dependency (required peer dependency of `@sveltejs/adapter-cloudflare`)
 
 ### Files Changed
 
@@ -65,14 +91,20 @@ Rewrote all page copy to be neutral, general-audience, and claim-free. The site 
 - `src/lib/components/home/ProductCategories.svelte` — section heading
 - `src/lib/components/home/AboutTeaser.svelte` — heading, body, floating icons
 - `src/lib/components/ui/Typewriter.svelte` — layout shift fix
-- `src/lib/components/layout/Footer.svelte` — tagline
+- `src/lib/components/layout/Footer.svelte` — tagline, language selector in copyright bar
+- `src/lib/components/layout/Navbar.svelte` — language selector in desktop and mobile controls
+- `src/lib/components/layout/LanguageSelector.svelte` — new component
+- `src/lib/stores/locale.ts` — new store
+- `src/lib/data/locales.ts` — new data file
 - `src/lib/data/products.ts` — category descriptions
+- `src/lib/types/index.ts` — added Locale interface
 - `src/routes/+page.svelte` — meta, JSON-LD, remove Roadmap, CTA
 - `src/routes/about/+page.svelte` — full rewrite (founder → company, 4 cards → 3)
 - `src/routes/products/+page.svelte` — subtitle, meta
 - `src/routes/contact/+page.svelte` — heading, subtitle, response text, meta
 - `src/app.css` — scrollbar theming
-- `package.json` — removed tsparticles dependencies
+- `src/app.html` — lang attribute changed to `en-US`
+- `package.json` — removed tsparticles, added wrangler + @types/node, using yarn
 
 ### Documents Created
 

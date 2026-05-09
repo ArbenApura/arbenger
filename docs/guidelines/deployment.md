@@ -44,6 +44,16 @@ yarn dev
 
 The dev server is configured to always run on **port 8000** (not the Vite default 5173). This is set in the `dev` script in `package.json`: `"dev": "vite dev --port 8000"`.
 
+### Key Dev Dependencies
+
+| Package | Purpose |
+|---------|---------|
+| `@sveltejs/adapter-cloudflare` | Cloudflare Pages deployment adapter |
+| `wrangler` | Required peer dependency of adapter-cloudflare |
+| `@types/node` | Node.js type definitions for TypeScript |
+| `tailwindcss` + `@tailwindcss/vite` | Tailwind CSS v4 with Vite plugin |
+| `svelte-check` | TypeScript + Svelte type checking |
+
 ### Environment Variables
 
 No environment variables are needed for the base site. Future variables will be documented here as they are added.

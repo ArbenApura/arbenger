@@ -2,6 +2,46 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+* {
+	scrollbar-color: #CBD5E1 #F1F5F9;
+	scrollbar-width: thin;
+}
+
+.dark * {
+	scrollbar-color: #312E81 #0B0A23;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #CBD5E1;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #94A3B8;
+}
+
+.dark ::-webkit-scrollbar-track {
+	background: #0B0A23;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+	background: #312E81;
+	border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+	background: #4338CA;
+}
+
 @font-face {
 	font-family: 'Space Mono';
 	src: url('/fonts/SpaceMono-Bold.woff2') format('woff2');

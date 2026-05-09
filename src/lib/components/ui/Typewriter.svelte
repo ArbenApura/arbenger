@@ -81,7 +81,7 @@
 	<!-- HIDDEN SIZER — RESERVES WIDTH OF LONGEST PHRASE -->
 	<span class="invisible col-start-1 row-start-1" aria-hidden="true">{longestPhrase}_</span>
 	<!-- VISIBLE TYPED TEXT — OVERLAYS THE SIZER -->
-	<span class="col-start-1 row-start-1 whitespace-nowrap">
+	<span class="col-start-1 row-start-1">
 		{displayText}<span class="animate-blink inline-block h-[0.85em] w-[3px] translate-y-[0.1em] bg-[#22D3EE]" aria-hidden="true"></span>
 	</span>
 </span>

@@ -425,7 +425,7 @@ Every page uses the `MetaTags.svelte` component with:
 ### Cloudflare Pages
 
 - Repository connected: GitHub → Cloudflare Pages
-- Build command: `npm run build`
+- Build command: `yarn build`
 - Build output: `.svelte-kit/cloudflare`
 - Node.js version: 20 LTS (set via `.node-version`)
 - Auto-deploy: push to `main` triggers production build

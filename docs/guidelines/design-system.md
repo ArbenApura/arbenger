@@ -301,6 +301,17 @@ Example markup:
 </p>
 ```
 
+### Language Selector
+
+- **Trigger button:** Inline SVG flag (20×14px, `rounded-[2px]`) + `ChevronDown` icon (3.5 size)
+- **Button styling:** Same as ThemeToggle — `rounded-lg p-2`, same hover/dark colors
+- **Dropdown panel:** `w-52 rounded-xl`, white bg (`dark:bg-[#1E1A5E]`), border + shadow
+- **Active locale:** Checkmark icon in `#0891B2` / `#22D3EE`
+- **Disabled locales:** Muted text (`#94A3B8`), "Soon" pill badge, `cursor-default`
+- **Flags:** Inline SVG, no emoji, no library — stored as path strings in the component
+- **Close behavior:** Click outside or Escape key
+- **Placement:** Navbar (desktop controls + mobile controls), footer (copyright bar)
+
 ### Navbar
 
 - **Default (at top):** Transparent background, no border
@@ -310,6 +321,7 @@ Example markup:
 - Wordmark: Space Mono, `text-lg`, `tracking-tight`, white
 - Nav links: Satoshi, `text-sm`, slate-300, hover cyan-400
 - Active link: cyan-400, underline offset
+- Language selector: Flag + chevron button, `rounded-lg`, ghost style, opens dropdown
 - Theme toggle: Icon button, `rounded-lg`, ghost style
 - Mobile: Hamburger icon, opens slide-in drawer from right
 

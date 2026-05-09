@@ -66,32 +66,36 @@
 						style="background: radial-gradient(circle, rgba(34, 211, 238, 0.3) 0%, transparent 70%);"
 					></div>
 
-					<!-- FLOATING TECH STACK ICONS -->
-					<!-- SVELTEKIT FLAME -->
+					<!-- FLOATING ABSTRACT SHAPES -->
+					<!-- FACETED GEM — TOP RIGHT -->
 					<div class="animate-float absolute -top-10 -right-6" style="animation-delay: 0.5s;" aria-hidden="true">
-						<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8">
-							<path d="M 24 4 C 18 2 12 6 10 10 C 8 14 10 18 12 20 C 10 18 9 15 10 12 C 11 8 16 5 20 6 C 24 7 26 12 24 16 C 22 20 16 22 14 20 C 16 22 20 22 22 18 C 26 14 26 8 24 4 Z" fill="#FF3E00" opacity="0.7" />
+						<svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-9 w-9">
+							<path d="M18 3L30 14L18 33L6 14Z" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="1" opacity="0.35" fill="none" />
+							<path d="M6 14H30" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.7" opacity="0.2" />
+							<path d="M18 3L14 14L18 33" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.5" opacity="0.15" />
+							<path d="M18 3L22 14L18 33" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.5" opacity="0.15" />
+							<circle cx="18" cy="3" r="1.5" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.4" />
 						</svg>
 					</div>
 
-					<!-- TYPESCRIPT BADGE -->
+					<!-- STACKED RINGS — BOTTOM LEFT -->
 					<div class="animate-float absolute -bottom-8 -left-8" style="animation-delay: 1.5s;" aria-hidden="true">
-						<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7">
-							<rect x="2" y="2" width="28" height="28" rx="4" fill="#3178C6" opacity="0.7" />
-							<text x="16" y="22" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="sans-serif" opacity="0.9">TS</text>
+						<svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8">
+							<circle cx="17" cy="17" r="12" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="1" opacity="0.3" fill="none" />
+							<circle cx="17" cy="17" r="7" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.8" opacity="0.2" fill="none" />
+							<circle cx="17" cy="17" r="2.5" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.25" />
 						</svg>
 					</div>
 
-					<!-- AI BRAIN CIRCUIT -->
+					<!-- CONSTELLATION TRIANGLE — BOTTOM RIGHT -->
 					<div class="animate-float absolute -right-12 bottom-8" style="animation-delay: 2.5s;" aria-hidden="true">
-						<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7">
-							<circle cx="16" cy="16" r="10" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="1.5" opacity="0.5" />
-							<circle cx="16" cy="10" r="2" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.6" />
-							<circle cx="10" cy="18" r="2" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.6" />
-							<circle cx="22" cy="18" r="2" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.6" />
-							<line x1="16" y1="10" x2="10" y2="18" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="1" opacity="0.4" />
-							<line x1="16" y1="10" x2="22" y2="18" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="1" opacity="0.4" />
-							<line x1="10" y1="18" x2="22" y2="18" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="1" opacity="0.4" />
+						<svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8">
+							<line x1="17" y1="5" x2="5" y2="27" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.7" opacity="0.25" />
+							<line x1="5" y1="27" x2="29" y2="27" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.7" opacity="0.25" />
+							<line x1="29" y1="27" x2="17" y2="5" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.7" opacity="0.25" />
+							<circle cx="17" cy="5" r="2" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.4" />
+							<circle cx="5" cy="27" r="1.5" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.3" />
+							<circle cx="29" cy="27" r="1.5" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.3" />
 						</svg>
 					</div>
 
