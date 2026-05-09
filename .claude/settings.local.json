@@ -1,6 +1,9 @@
 {
-	"permissions": {
-		"allow": [],
-		"additionalDirectories": []
-	}
+  "permissions": {
+    "allow": [],
+    "additionalDirectories": []
+  },
+  "enabledPlugins": {
+    "marketing-skills@marketingskills": true
+  }
 }

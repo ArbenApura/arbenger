@@ -9,7 +9,7 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"deploy": "vite build && wrangler pages deploy .svelte-kit/cloudflare --project-name arbenger"
+		"deploy": "vite build && wrangler pages deploy .svelte-kit/cloudflare --project-name arbenger --branch main"
 	},
 	"type": "module",
 	"dependencies": {
