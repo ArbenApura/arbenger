@@ -1,24 +1,30 @@
 <script lang="ts">
 	// IMPORTED STORES
 	import { isDark } from '$lib/stores/theme';
+
+	// -- REACTIVE STATES -- //
+
+	$: gridColor = $isDark ? 'rgba(34, 211, 238, 0.3)' : 'rgba(8, 145, 178, 0.35)';
 </script>
 
-<!-- GEOMETRIC DIVIDER — ANGULAR CHEVRON PATTERN MATCHING THE "A" LOGO ANGLE -->
-<div class="relative w-full overflow-hidden" aria-hidden="true">
-	<svg viewBox="0 0 1200 50" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full" preserveAspectRatio="none" style="height: 50px;">
-		<!-- CHEVRON LINES -->
-		<path d="M 0 48 L 200 25 L 400 48" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.5" opacity="0.15" fill="none" />
-		<path d="M 200 48 L 400 25 L 600 48" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.5" opacity="0.2" fill="none" />
-		<path d="M 400 48 L 600 25 L 800 48" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.5" opacity="0.15" fill="none" />
-		<path d="M 600 48 L 800 25 L 1000 48" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.5" opacity="0.2" fill="none" />
-		<path d="M 800 48 L 1000 25 L 1200 48" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.5" opacity="0.15" fill="none" />
-		<!-- CENTER ACCENT LINE -->
-		<path d="M 0 25 L 1200 25" stroke={$isDark ? '#22D3EE' : '#0891B2'} stroke-width="0.3" opacity="0.1" />
-		<!-- DOT ACCENTS AT PEAKS -->
-		<circle cx="200" cy="25" r="2" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.2" />
-		<circle cx="400" cy="25" r="1.5" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.15" />
-		<circle cx="600" cy="25" r="2.5" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.25" />
-		<circle cx="800" cy="25" r="1.5" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.15" />
-		<circle cx="1000" cy="25" r="2" fill={$isDark ? '#22D3EE' : '#0891B2'} opacity="0.2" />
-	</svg>
-</div>
+<!-- GEOMETRIC DIVIDER — 3D DIAMOND MESH IN PERSPECTIVE -->
+<section class="relative overflow-hidden py-32">
+	<!-- PERSPECTIVE CONTAINER — perspective CREATES 3D VIEWING CONTEXT, NOT EXPRESSIBLE AS TAILWIND -->
+	<div class="pointer-events-none absolute inset-0" style="perspective: 800px;" aria-hidden="true">
+		<!-- DIAMOND GRID — repeating-linear-gradient AT ±45° WITH rotateX FOR 3D DEPTH -->
+		<div
+			class="absolute inset-x-0 -top-[500%] bottom-0 origin-bottom"
+			style="transform: rotateX(70deg); background-image: repeating-linear-gradient(45deg, {gridColor} 0px, transparent 1px, transparent 50px), repeating-linear-gradient(-45deg, {gridColor} 0px, transparent 1px, transparent 50px);"
+		></div>
+	</div>
+
+	<!-- TOP EDGE FADE -->
+	<div class="pointer-events-none absolute inset-x-0 top-0 z-[1] h-20 bg-gradient-to-b from-[#F1F5F9] to-transparent dark:from-[#0B0A23]"></div>
+	<!-- BOTTOM EDGE FADE -->
+	<div class="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-20 bg-gradient-to-t from-[#F1F5F9] to-transparent dark:from-[#0B0A23]"></div>
+
+	<!-- CONTENT -->
+	<div class="relative z-10">
+		<slot />
+	</div>
+</section>
