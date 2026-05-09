@@ -32,8 +32,8 @@ All components use **Svelte 4 syntax**. This is mandatory, no exceptions.
 | Layout components | `src/lib/components/layout/` | Navbar.svelte, Footer.svelte, ThemeToggle.svelte, LanguageSelector.svelte, CookieBanner.svelte |
 | Reusable UI primitives | `src/lib/components/ui/` | Button.svelte, Card.svelte |
 | Page-specific sections | `src/lib/components/[page]/` | home/Hero.svelte, home/ProductCategories.svelte, home/AboutTeaser.svelte |
-| SEO utilities | `src/lib/components/seo/` | MetaTags.svelte, JsonLd.svelte |
-| Stores | `src/lib/stores/` | theme.ts, locale.ts |
+| SEO utilities | `src/lib/components/seo/` | MetaTags.svelte, JsonLd.svelte, Breadcrumbs.svelte |
+| Stores | `src/lib/stores/` | theme.ts, locale.ts, viewport.ts |
 | Utilities | `src/lib/utils/` | cn.ts |
 | Data | `src/lib/data/` | products.ts, navigation.ts, locales.ts |
 | Types | `src/lib/types/` | index.ts |

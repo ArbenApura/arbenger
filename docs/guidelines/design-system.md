@@ -213,17 +213,9 @@ Custom scrollbar styles adapt to the current theme. Both standard (`scrollbar-co
 - Triggered by `IntersectionObserver` when element enters viewport
 - Runs once only (no re-trigger on scroll back up)
 
-### Floating Orbital Shapes (About Teaser)
+### Floating Orbital Logo (About Teaser)
 
-The About teaser section features an animated Arbenger logo surrounded by orbital rings and three floating abstract shapes. These shapes are purely decorative and theme-aware (use `isDark` ternary for fill/stroke colors).
-
-| Shape | Position | Description |
-|-------|----------|-------------|
-| Faceted gem | Top-right | Diamond outline with internal facet lines and apex dot |
-| Stacked rings | Bottom-left | Three concentric circles with a solid core |
-| Constellation triangle | Bottom-right | Three connected nodes forming a triangle |
-
-All shapes use the site's teal/cyan accent palette (`#22D3EE` dark / `#0891B2` light) at low opacity (0.2–0.4). They animate with `animate-float` at staggered delays (0.5s, 1.5s, 2.5s).
+The About teaser section features an animated Arbenger logo (210px) inside a large circular container (`h-120 w-120` / 480px), surrounded by orbital rings. The container has a frosted glass appearance with `backdrop-blur-sm` and themed borders/backgrounds. The logo uses `animate-float` for gentle vertical movement. Two orbital ring divs animate with `spin` at 20s and 30s infinite durations, with an orbital dot following the outer ring's path.
 
 ---
 
@@ -275,7 +267,7 @@ All shapes use the site's teal/cyan accent palette (`#22D3EE` dark / `#0891B2` l
 - Background: `bg-[#1E1A5E]` (navy-800)
 - Border: `border border-[#2A2578]` (navy-700)
 - Border radius: `rounded-xl`
-- Padding: `p-6`
+- Padding: `p-4 sm:p-6` (tighter on mobile)
 - Hover: `translate-y-[-2px]` + glow shadow + border brightens toward cyan
 - Transition: `transition-all duration-300`
 

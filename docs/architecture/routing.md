@@ -53,8 +53,7 @@ SvelteKit file-based routing. All routes live under `src/routes/`. The adapter i
 | `/robots.txt` | `static/robots.txt` | Search engine directives |
 | `/arbenger.svg` | `static/arbenger.svg` | Logo (SVG) |
 | `/arbenger.png` | `static/arbenger.png` | Logo (PNG) |
-| `/favicon.ico` | `static/favicon.ico` | Browser tab icon |
-| `/og-image.png` | `static/og-image.png` | Default OpenGraph image |
+| `/site.webmanifest` | `static/site.webmanifest` | Web app manifest |
 
 ---
 

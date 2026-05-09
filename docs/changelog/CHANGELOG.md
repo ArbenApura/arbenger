@@ -4,6 +4,79 @@ All notable decisions, changes, and milestones for arbenger.com are documented h
 
 ---
 
+## 2026-05-09 — SEO Fixes, Mobile Responsiveness & Performance
+
+### SEO Improvements
+
+- **MetaTags component:** Added `twitter:site` meta tag (`@arbenger`)
+- **Title tags expanded:** About → "About Arbenger — Who We Are & What We Build", Products → "Products — Extensions, Plugins & AI Tools | Arbenger", Contact → "Contact Arbenger — Questions, Ideas & Feedback"
+- **Meta descriptions improved** on about, products, contact pages (expanded from 50-86 chars to 130-150 chars)
+- **Error page:** Added `noindex` meta tag and dynamic `<title>` tag
+- **Sitemap:** Changed from dynamic `new Date()` to static per-page `lastmod` dates
+- **BreadcrumbList JSON-LD:** New `Breadcrumbs.svelte` component added to all 6 inner pages
+- **Web app manifest:** Created `static/site.webmanifest`, added `apple-touch-icon` and manifest links to `app.html`
+
+### Mobile Responsiveness
+
+- **Global overflow fix:** Added `overflow-x: hidden` on `<html>` element
+- **Section overflow:** Added `overflow-hidden` to all `<section>` elements across every page (fixes `revealSlide` animation overflow)
+- **Mobile padding:** Increased from `px-4` (16px) to `px-6` (24px) site-wide
+- **Card padding:** Changed from `px-8` to `px-4 sm:px-8` on category cards (ProductCategories, Products page)
+- **About teaser section padding:** `py-32` → `py-16 md:py-32`
+- **ProductCategories section padding:** `py-32` → `py-16 md:py-32`
+
+### Performance
+
+- **ParticleBackground:** Disabled canvas animation on mobile (< 768px) and when `prefers-reduced-motion` is set; reduced particle count from 60 to 30 on tablets (< 1024px); static gradient mesh + constellation fallback on mobile
+- **Hero parallax:** Disabled scroll-bound `translateY` on mobile
+- **Hero orbs:** Reduced from `h-72 w-72` / `h-96 w-96` to `h-48 w-48` / `h-56 w-56` on mobile
+- **CSS animations:** Added global `prefers-reduced-motion` media query that kills all animations and transitions
+- **Particle colors in light mode:** Bumped line opacity from 0.03 to 0.12, dot opacity from 0.3 to 0.6, changed color from near-black to brand cyan
+
+### New Components & Stores
+
+- **`src/lib/components/seo/Breadcrumbs.svelte`** — Reusable BreadcrumbList JSON-LD component (takes `pageName` and `pageUrl` props)
+- **`src/lib/stores/viewport.ts`** — Reactive viewport stores using `matchMedia`: `isMobile` (max-width: 767px), `prefersReducedMotion` (prefers-reduced-motion: reduce)
+
+### Visual Changes
+
+- **Hero constellation graphic:** Redesigned as Arbenger logo-shaped constellation with dense line mesh, matching the `arbenger.svg` silhouette
+- **Hero gradient contrast:** Increased light mode gradient visibility (orbs, grid dots, noise texture)
+- **AboutTeaser logo:** Enlarged from h-72/w-72 (288px) to h-120/w-120 (480px), Logo size from 112px to 210px
+- **Mobile menu:** Improved contrast — bolder text (`text-base font-medium`), stronger hover states, backdrop blur, shadow
+
+### Other
+
+- **Social links:** Removed Twitter and LinkedIn from navigation data and Organization JSON-LD; only GitHub remains
+- **SEO standards doc:** Updated with Breadcrumbs component docs, twitter:site tag, static lastmod guidance
+
+### Files Changed
+
+- `src/app.css` — overflow-x:hidden, prefers-reduced-motion
+- `src/app.html` — manifest + apple-touch-icon links
+- `src/lib/components/seo/Breadcrumbs.svelte` — NEW
+- `src/lib/components/seo/MetaTags.svelte` — twitter:site
+- `src/lib/stores/viewport.ts` — NEW
+- `src/lib/components/home/ParticleBackground.svelte` — mobile disable, viewport store, fallback
+- `src/lib/components/home/Hero.svelte` — new constellation SVG, parallax/orb mobile fixes, viewport store
+- `src/lib/components/home/AboutTeaser.svelte` — bigger logo, responsive padding
+- `src/lib/components/home/ProductCategories.svelte` — responsive padding/gaps
+- `src/lib/components/layout/Navbar.svelte` — mobile menu redesign
+- `src/lib/components/layout/Footer.svelte` — padding update
+- `src/lib/components/home/Newsletter.svelte` — padding update
+- `src/routes/+page.svelte` — overflow-hidden, padding
+- `src/routes/+error.svelte` — noindex + title
+- `src/routes/about/+page.svelte` — title, description, breadcrumbs, overflow-hidden, padding, card padding
+- `src/routes/products/+page.svelte` — title, description, breadcrumbs, overflow-hidden, padding, card padding
+- `src/routes/contact/+page.svelte` — title, description, breadcrumbs, overflow-hidden, padding, card padding
+- `src/routes/privacy/+page.svelte` — breadcrumbs, overflow-hidden, padding
+- `src/routes/terms/+page.svelte` — breadcrumbs, overflow-hidden, padding
+- `src/routes/cookies/+page.svelte` — breadcrumbs, overflow-hidden, padding
+- `src/routes/sitemap.xml/+server.ts` — static lastmod dates
+- `static/site.webmanifest` — NEW
+
+---
+
 ## 2026-05-09 — GitHub Setup & Profile
 
 ### GitHub Repository

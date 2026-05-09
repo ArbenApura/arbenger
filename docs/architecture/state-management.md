@@ -27,6 +27,7 @@ This document defines how state is managed across arbenger.com. The base site ha
 |-------|------|------|-----------|---------|
 | `isDark` | `src/lib/stores/theme.ts` | `Writable<boolean>` | Yes (`localStorage`: `arbenger-theme`) | Theme preference |
 | `locale` | `src/lib/stores/locale.ts` | `Writable<string>` | Yes (`localStorage`: `arbenger-locale`) | Locale/language preference |
+| `isMobile`, `prefersReducedMotion` | `src/lib/stores/viewport.ts` | `Readable<boolean>` | No | Reactive media query listeners for mobile breakpoint (max-width: 767px) and reduced motion preference |
 
 ### Future Stores (planned, not implemented)
 
