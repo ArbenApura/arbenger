@@ -26,17 +26,16 @@
 				<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">About</p>
 
 				<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#0F172A] md:text-4xl dark:text-white">
-					Built by developers, for developers.
+					Less noise, more function.
 				</h2>
 
 				<p class="mt-6 text-lg leading-relaxed text-[#475569] dark:text-slate-300">
-					Arbenger exists because the right tools often don't. We build VS Code extensions,
-					Chrome plugins, AI utilities, and SaaS products that solve real problems.
+					Arbenger makes extensions, plugins, AI tools, and web apps.
+					Each one is built to do its job and get out of the way.
 				</p>
 
 				<p class="mt-4 text-[#64748B] dark:text-slate-400">
-					Our current focus is AI tooling and developer extensions. Everything we ship is
-					designed for people who actually write code.
+					Curious? Browse the catalog or say hello.
 				</p>
 
 				<div class="mt-10">
