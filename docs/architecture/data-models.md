@@ -172,9 +172,10 @@ export interface NavLink {
 // src/lib/data/navigation.ts (or inline in layout)
 
 export const navLinks: NavLink[] = [
-  { label: 'Products', href: '/products' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' }
+  { label: 'Products', href: '/products/' },
+  { label: 'Blog', href: '/blog/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Contact', href: '/contact/' },
 ];
 ```
 
@@ -245,7 +246,80 @@ Locale data is used by `LanguageSelector.svelte` (navbar + footer) and `locale` 
 
 ---
 
-## 6. Image Resizer Data (Route-Local)
+## 6. Blog Data
+
+### Interfaces
+
+```typescript
+// src/lib/types/index.ts
+
+export type BlogCategory = 'tutorial' | 'devlog' | 'release' | 'opinion';
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;           // ISO 8601: '2026-05-10'
+  updatedDate?: string;   // ISO 8601, for Article schema dateModified
+  category: BlogCategory;
+  tags: string[];
+  readTime: number;       // minutes, integer
+  coverImage?: string;    // absolute URL or /path from static/
+  featured: boolean;
+}
+
+export interface BlogCategoryInfo {
+  id: BlogCategory;
+  label: string;
+}
+```
+
+### Data
+
+```typescript
+// src/lib/data/blog.ts
+
+export const POSTS_PER_PAGE = 9;
+
+export const blogCategories: BlogCategoryInfo[] = [
+  { id: 'tutorial', label: 'Tutorials' },
+  { id: 'devlog', label: 'Dev Logs' },
+  { id: 'release', label: 'Releases' },
+  { id: 'opinion', label: 'Opinion' },
+];
+
+export const blogPosts: BlogPost[] = [
+  {
+    slug: 'how-to-use-image-resizer',
+    title: 'How to Use Arbenger Image Resizer — The Complete Guide',
+    description: 'Learn how to resize, crop, and batch-convert images directly in your browser...',
+    date: '2026-05-10',
+    category: 'tutorial',
+    tags: ['image-resizer', 'guide', 'tools'],
+    readTime: 8,
+    featured: true,
+  },
+];
+```
+
+### Helper Functions
+
+| Function | Purpose |
+|----------|---------|
+| `sortedPosts` | Pre-sorted array (newest first) |
+| `getPostBySlug(slug)` | Find a post by its slug |
+| `getCategoryLabel(id)` | Get display label for a category ID |
+| `formatPostDate(iso)` | Format ISO date as "Month Day, Year" (en-US locale) |
+
+### Adding a New Blog Post
+
+1. Add the post object to `blogPosts` array in `src/lib/data/blog.ts`
+2. Create content file at `src/routes/blog/[slug]/_posts/{slug}.svelte`
+3. Sitemap, listing page, and `[slug]` route auto-update from the registry
+
+---
+
+## 7. Image Resizer Data (Route-Local)
 
 These types are defined in `src/routes/products/(utilities)/image-resizer/_lib/store.ts`, not in the shared `src/lib/types/` file, because they are only used by the image resizer tool.
 
@@ -364,7 +438,7 @@ type ResizeError = {
 
 ---
 
-## 7. Theme Data
+## 8. Theme Data
 
 ### Type
 
@@ -378,15 +452,18 @@ The theme store is a simple `writable<boolean>` (`isDark`). See `src/lib/stores/
 
 ---
 
-## 8. Data Flow
+## 9. Data Flow
 
 ```
 src/lib/data/products.ts     → Product catalog data (static)
+src/lib/data/blog.ts         → Blog post registry (static)
        ↓
 src/lib/types/index.ts       → TypeScript interfaces
        ↓
 src/routes/+page.svelte      → Homepage (featured products)
 src/routes/products/+page.svelte  → Full catalog grid
+src/routes/blog/+page.svelte → Blog listing (filtered, paginated)
+src/routes/blog/[slug]/      → Blog post (loaded via import.meta.glob)
        ↓
 src/lib/components/           → UI components receive typed props
 ```

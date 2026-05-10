@@ -79,7 +79,7 @@
 			<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 				{#each liveProducts as product, i}
 					<a
-						href={product.externalUrl || `/products/${product.slug}`}
+						href={product.externalUrl || `/products/${product.slug}/`}
 						use:reveal={{ delay: i * 80 }}
 						class="group relative flex flex-col overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white p-6 transition-all duration-300 hover:border-[#0891B2]/40 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:border-[#2A2578]/60 dark:bg-[#1E1A5E]/20 dark:hover:border-[#22D3EE]/40 dark:hover:shadow-[0_8px_30px_rgba(34,211,238,0.06)]"
 					>
@@ -228,7 +228,7 @@
 					<!-- NESTED PRODUCTS -->
 					{#each products.filter((p) => p.category === category.id) as product}
 						<a
-							href={product.externalUrl || `/products/${product.slug}`}
+							href={product.externalUrl || `/products/${product.slug}/`}
 							class="mt-3 flex items-center justify-between rounded-xl border border-[#F1F5F9] bg-[#F8FAFC] px-3.5 py-2.5 transition-all duration-200 hover:border-[#0891B2]/20 hover:bg-white dark:border-[#2A2578]/30 dark:bg-[#0B0A23]/30 dark:hover:border-[#22D3EE]/20 dark:hover:bg-[#1E1A5E]/30"
 						>
 							<span class="text-xs font-medium text-[#334155] dark:text-slate-300">{product.name}</span>

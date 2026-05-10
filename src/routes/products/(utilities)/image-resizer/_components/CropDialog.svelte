@@ -134,8 +134,8 @@
 		if (e.key === 'Enter') handleApply();
 	}
 
-	function lockScroll() { document.body.style.overflow = 'hidden'; }
-	function unlockScroll() { document.body.style.overflow = ''; }
+	function lockScroll() { document.documentElement.style.overflow = 'hidden'; document.body.style.overflow = 'hidden'; }
+	function unlockScroll() { document.documentElement.style.overflow = ''; document.body.style.overflow = ''; }
 
 	// -- REACTIVE STATEMENTS -- //
 

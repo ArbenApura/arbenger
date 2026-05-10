@@ -47,13 +47,20 @@ Product tool routes use SvelteKit **group routes** via `(utilities)/`. The group
 - `_components/` — route-local components (underscore prefix tells SvelteKit to ignore for routing)
 - `_lib/` — route-local store and worker files
 
+### Blog Routes (Pre-rendered, Dynamic)
+
+| Route | File | Purpose | H1 |
+|-------|------|---------|-----|
+| `/blog` | `src/routes/blog/+page.svelte` | Blog listing with category filters and pagination | "Tutorials & Dev Logs" |
+| `/blog/[slug]` | `src/routes/blog/[slug]/+page.svelte` | Blog post shell (loads content via `import.meta.glob`) | Post title (dynamic) |
+
+Blog post routes use a dynamic `[slug]` parameter with `entries()` export in `+page.ts` to enumerate all slugs at build time for prerendering. Post content lives in `_posts/*.svelte` files inside the `[slug]` route directory, loaded eagerly via `import.meta.glob('./_posts/*.svelte', { eager: true })`.
+
 ### Future Routes
 
 | Route | File | Rendering | Purpose |
 |-------|------|-----------|---------|
 | `/products/[slug]` | `src/routes/products/[slug]/+page.svelte` | Pre-rendered (from product data) | Individual product pages |
-| `/blog` | `src/routes/blog/+page.svelte` | Pre-rendered | Blog listing |
-| `/blog/[slug]` | `src/routes/blog/[slug]/+page.svelte` | Pre-rendered | Blog posts |
 | `/api/*` | `src/routes/api/*/+server.ts` | SSR (API endpoints) | Backend API routes |
 | `/sitemap.xml` | `src/routes/sitemap.xml/+server.ts` | SSR | Dynamic XML sitemap |
 
@@ -97,6 +104,13 @@ src/routes/
           worker.ts
     [slug]/
       +page.svelte        ← Individual product (inherits root layout) — future
+  blog/
+    +page.svelte          ← Blog listing (category filters, pagination)
+    [slug]/
+      +page.ts            ← entries() + load() for prerendering
+      +page.svelte        ← Post shell (SEO, header, content loader)
+      _posts/             ← Blog post content files
+        how-to-use-image-resizer.svelte
   contact/
     +page.svelte          ← Contact page (inherits root layout)
   privacy/
@@ -129,6 +143,7 @@ Note: Theme initialization (dark class on `<html>`) happens in `app.html` via an
 |-------|-------|------------|
 | Home | `/` | Always (logo click) |
 | Products | `/products` | Always |
+| Blog | `/blog` | Always |
 | About | `/about` | Always |
 | Contact | `/contact` | Always |
 
@@ -150,6 +165,10 @@ Same links as navbar, plus:
 | Products live spotlight | `/products/image-resizer` | Live product card "Open tool" link |
 | Products category grid | `/products/image-resizer` | Nested product link in Utilities category |
 | Image resizer breadcrumb | `/`, `/products` | Visual breadcrumb navigation |
+| Image resizer Guide link | `/blog/how-to-use-image-resizer` | "Guide" link in top bar + "New here? Read the guide" in upload zone |
+| Blog listing cards | `/blog/[slug]` | Blog post card links |
+| Blog post back link | `/blog` | "Back to all posts" link |
+| Blog post CTA | `/products/image-resizer` | "Open Image Resizer" button in guide post |
 | Product catalog cards | `/products/[slug]` | Individual product links (future) |
 
 ---

@@ -18,7 +18,7 @@
 	} from './_lib/store';
 	import { cn } from '$lib/utils/cn';
 	// IMPORTED DEP-COMPONENTS
-	import { Crop, LogOut, Shield } from 'lucide-svelte';
+	import { BookOpen, Crop, LogOut, Shield } from 'lucide-svelte';
 	// IMPORTED COMPONENTS
 	import ConfirmDialog from '$lib/components/ui/ConfirmDialog.svelte';
 	import JsonLd from '$lib/components/seo/JsonLd.svelte';
@@ -132,7 +132,7 @@
 <MetaTags
 	title="Free Image Resizer — Resize, Crop & Convert Online | Arbenger"
 	description="Resize, crop, and batch-convert images to PNG, JPEG, or WebP — directly in your browser. No uploads, no signups. 100% private and free."
-	url="{SITE_URL}/products/image-resizer"
+	url="{SITE_URL}/products/image-resizer/"
 />
 
 <JsonLd
@@ -140,7 +140,7 @@
 		'@context': 'https://schema.org',
 		'@type': 'WebApplication',
 		name: 'Arbenger Image Resizer',
-		url: `${SITE_URL}/products/image-resizer`,
+		url: `${SITE_URL}/products/image-resizer/`,
 		applicationCategory: 'UtilitiesApplication',
 		operatingSystem: 'Any',
 		offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
@@ -154,12 +154,12 @@
 		'@type': 'BreadcrumbList',
 		itemListElement: [
 			{ '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-			{ '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE_URL}/products` },
+			{ '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE_URL}/products/` },
 			{
 				'@type': 'ListItem',
 				position: 3,
 				name: 'Image Resizer',
-				item: `${SITE_URL}/products/image-resizer`,
+				item: `${SITE_URL}/products/image-resizer/`,
 			},
 		],
 	}}
@@ -176,10 +176,19 @@
 			<span class="text-[#0F172A] dark:text-white">Image Resizer</span>
 		</nav>
 
-		<span class="flex items-center gap-1 text-[10px] text-[#94A3B8] dark:text-slate-500">
-			<Shield size={10} class="text-[#0891B2] dark:text-[#22D3EE]" />
-			100% local — images never leave your browser
-		</span>
+		<div class="flex items-center gap-3">
+			<a
+				href="/blog/how-to-use-image-resizer/"
+				class="flex items-center gap-1 text-[10px] text-[#0891B2] transition-colors hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80"
+			>
+				<BookOpen size={10} />
+				Guide
+			</a>
+			<span class="flex items-center gap-1 text-[10px] text-[#94A3B8] dark:text-slate-500">
+				<Shield size={10} class="text-[#0891B2] dark:text-[#22D3EE]" />
+				100% local — images never leave your browser
+			</span>
+		</div>
 	</div>
 
 	<h1 class="sr-only">Free Online Image Resizer — Resize, Crop & Convert</h1>

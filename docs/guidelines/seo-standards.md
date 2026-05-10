@@ -107,6 +107,30 @@ Used on interactive tool pages like the image resizer:
 }
 ```
 
+### Article (Blog Post Pages)
+
+Used on individual blog post pages:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Use Arbenger Image Resizer — The Complete Guide",
+  "description": "Learn how to resize, crop, and batch-convert images...",
+  "datePublished": "2026-05-10",
+  "dateModified": "2026-05-10",
+  "author": { "@type": "Organization", "name": "Arbenger", "url": "https://arbenger.com" },
+  "publisher": {
+    "@type": "Organization", "name": "Arbenger", "url": "https://arbenger.com",
+    "logo": { "@type": "ImageObject", "url": "https://arbenger.com/arbenger.svg" }
+  },
+  "url": "https://arbenger.com/blog/how-to-use-image-resizer/",
+  "timeRequired": "PT8M"
+}
+```
+
+Blog post pages also include a 3-level `BreadcrumbList` (Home > Blog > Post Title) using the `Breadcrumbs.svelte` component with the `items` array prop.
+
 ### SoftwareApplication (Per Product Page — Future)
 
 ```json
@@ -137,6 +161,12 @@ import Breadcrumbs from '$lib/components/seo/Breadcrumbs.svelte';
 </script>
 
 <Breadcrumbs pageName="About" pageUrl="https://arbenger.com/about" />
+
+<!-- FOR 3-LEVEL BREADCRUMBS (e.g. BLOG POSTS) -->
+<Breadcrumbs items={[
+  { name: 'Blog', url: 'https://arbenger.com/blog/' },
+  { name: 'Post Title', url: 'https://arbenger.com/blog/post-slug/' },
+]} />
 ```
 
 This renders JSON-LD structured data that helps Google display breadcrumb trails in search results:
@@ -187,6 +217,8 @@ import JsonLd from '$lib/components/seo/JsonLd.svelte';
 | `/products` | "Products" | Products, tools |
 | `/contact` | "Say Hello" | Contact |
 | `/products/image-resizer` | "Free Online Image Resizer — Resize, Crop & Convert" (sr-only) | Image resizer, resize, crop, convert |
+| `/blog` | "Tutorials & Dev Logs" | Blog, tutorials, guides |
+| `/blog/[slug]` | Post title (dynamic) | Post-specific keywords |
 | `/products/[slug]` | Product name | Product-specific keyword |
 
 ---
@@ -211,8 +243,8 @@ import JsonLd from '$lib/components/seo/JsonLd.svelte';
 | `/products/image-resizer` | Image Resizer tool |
 | `/products/[slug]` | Individual product (future) |
 | `/contact` | Contact page |
-| `/blog` | Blog listing (future) |
-| `/blog/[slug]` | Blog post (future) |
+| `/blog` | Blog listing |
+| `/blog/[slug]` | Blog post |
 | `/sitemap.xml` | XML sitemap |
 
 ---
@@ -242,6 +274,10 @@ Server-rendered SvelteKit route at `/sitemap.xml` that returns XML content type.
 | `/terms` | 0.3 | yearly | 2026-05-08 |
 | `/cookies` | 0.3 | yearly | 2026-05-08 |
 | `/products/image-resizer` | 0.7 | weekly | 2026-05-09 |
+| `/blog` | 0.8 | weekly | 2026-05-10 |
+| `/blog/how-to-use-image-resizer` | 0.7 | monthly | 2026-05-10 |
+
+Note: Blog post URLs are auto-generated in the sitemap from `sortedPosts` in `src/lib/data/blog.ts`. New posts appear in the sitemap automatically.
 
 ### Format
 
@@ -325,7 +361,15 @@ Products (/products)
 
 Image Resizer (/products/image-resizer)
   ├── / (via breadcrumb nav)
-  └── /products (via breadcrumb nav)
+  ├── /products (via breadcrumb nav)
+  └── /blog/how-to-use-image-resizer (via Guide link + UploadZone link)
+
+Blog (/blog)
+  └── /blog/[slug] (via post cards)
+
+Blog Post (/blog/[slug])
+  ├── /blog (via category link + back link)
+  └── /products/image-resizer (via CTA in guide post)
 
 All pages → All pages (via navbar + footer)
 ```

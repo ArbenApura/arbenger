@@ -330,6 +330,9 @@ User clicks Apply → setImageCrop(id, cropData)
 | JSON-LD #1 | WebApplication schema |
 | JSON-LD #2 | BreadcrumbList: Home → Products → Image Resizer |
 | Visual breadcrumb | `Home / Products / Image Resizer` in top bar |
+| Guide link | "Guide" link (BookOpen icon) in top bar → `/blog/how-to-use-image-resizer/` |
+| UploadZone guide link | "New here? Read the guide" → `/blog/how-to-use-image-resizer/` |
+| Blog post | "How to Use Arbenger Image Resizer — The Complete Guide" at `/blog/how-to-use-image-resizer/` |
 | Canonical | `https://arbenger.com/products/image-resizer` |
 | Sitemap | Priority 0.7, weekly changefreq |
 

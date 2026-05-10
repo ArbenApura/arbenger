@@ -32,12 +32,13 @@ All components use **Svelte 4 syntax**. This is mandatory, no exceptions.
 | Layout components | `src/lib/components/layout/` | Navbar.svelte, Footer.svelte, ThemeToggle.svelte, LanguageSelector.svelte, CookieBanner.svelte |
 | Reusable UI primitives | `src/lib/components/ui/` | Button.svelte, Card.svelte, Select.svelte, ColorPicker.svelte, ConfirmDialog.svelte |
 | Page-specific sections | `src/lib/components/[page]/` | home/Hero.svelte, home/ProductCategories.svelte, home/AboutTeaser.svelte, home/FeaturedTool.svelte |
+| Blog components | `src/lib/components/blog/` | BlogCard.svelte, BlogPagination.svelte, ReadingProgress.svelte |
 | SEO utilities | `src/lib/components/seo/` | MetaTags.svelte, JsonLd.svelte, Breadcrumbs.svelte |
 | Route-local components | `src/routes/[route]/_components/` | products/(utilities)/image-resizer/_components/UploadZone.svelte |
 | Route-local stores/workers | `src/routes/[route]/_lib/` | products/(utilities)/image-resizer/_lib/store.ts, worker.ts |
 | Shared stores | `src/lib/stores/` | theme.ts, locale.ts, viewport.ts |
 | Utilities | `src/lib/utils/` | cn.ts |
-| Data | `src/lib/data/` | products.ts, navigation.ts, locales.ts |
+| Data | `src/lib/data/` | products.ts, navigation.ts, locales.ts, blog.ts |
 | Types | `src/lib/types/` | index.ts |
 
 ### Naming Conventions

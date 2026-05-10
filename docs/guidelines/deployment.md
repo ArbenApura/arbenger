@@ -327,7 +327,7 @@ After the first production deployment:
 - [ ] Site loads at `https://arbenger.com`
 - [ ] `www.arbenger.com` redirects to `arbenger.com`
 - [ ] HTTP redirects to HTTPS
-- [ ] All 8 pages render correctly (home, about, products, contact, privacy, terms, cookies, products/image-resizer)
+- [ ] All 10 pages render correctly (home, about, products, contact, privacy, terms, cookies, products/image-resizer, blog, blog/how-to-use-image-resizer)
 - [ ] Theme toggle works (dark/light)
 - [ ] Mobile responsive (test on real device)
 - [ ] Favicon displays correctly

@@ -95,6 +95,15 @@
 		PNG, JPG, WebP, GIF, BMP, SVG
 	</p>
 
+	<!-- GUIDE LINK -->
+	<a
+		href="/blog/how-to-use-image-resizer/"
+		class="mt-4 text-[10px] text-[#0891B2] transition-colors hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80"
+		on:click|stopPropagation
+	>
+		New here? Read the guide
+	</a>
+
 	<input
 		bind:this={fileInput}
 		type="file"

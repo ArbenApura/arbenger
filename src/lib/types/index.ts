@@ -59,3 +59,23 @@ export interface Locale {
 	flag: string;
 	enabled: boolean;
 }
+
+export type BlogCategory = 'tutorial' | 'devlog' | 'release' | 'opinion';
+
+export interface BlogPost {
+	slug: string;
+	title: string;
+	description: string;
+	date: string;
+	updatedDate?: string;
+	category: BlogCategory;
+	tags: string[];
+	readTime: number;
+	coverImage?: string;
+	featured: boolean;
+}
+
+export interface BlogCategoryInfo {
+	id: BlogCategory;
+	label: string;
+}

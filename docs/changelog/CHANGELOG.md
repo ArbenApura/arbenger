@@ -4,6 +4,71 @@ All notable decisions, changes, and milestones for arbenger.com are documented h
 
 ---
 
+## 2026-05-10 — Blog System & Image Resizer Guide
+
+### Blog System (NEW)
+
+- **Scalable blog architecture** with dynamic `[slug]` route, `entries()` for prerendering, and `import.meta.glob` for eager content loading
+- **Blog listing page** at `/blog/` with category filter pills, 3-column post grid, pagination component
+- **Dynamic post route** at `/blog/[slug]/` with post shell (SEO header, reading progress bar, content loader, back link)
+- **First blog post:** "How to Use Arbenger Image Resizer — The Complete Guide" — 8-section tutorial with SVG illustrations, CSS mockups, format comparison table, fit mode diagrams, batch workflow, presets reference, and pro tips
+
+### Blog Data & Types
+
+- **`src/lib/types/index.ts`:** Added `BlogPost`, `BlogCategory` (`'tutorial' | 'devlog' | 'release' | 'opinion'`), `BlogCategoryInfo` interfaces
+- **`src/lib/data/blog.ts`:** Blog registry with `blogPosts` array, `blogCategories`, `sortedPosts`, `getPostBySlug()`, `getCategoryLabel()`, `formatPostDate()`, `POSTS_PER_PAGE = 9`
+
+### Blog Components
+
+- **`src/lib/components/blog/BlogCard.svelte`** — Post card for listing page with category badge, title, description, tags, date, read time, hover animation
+- **`src/lib/components/blog/BlogPagination.svelte`** — Prev/next + numbered page controls with `cn()` dynamic styling
+- **`src/lib/components/blog/ReadingProgress.svelte`** — Fixed 2px progress bar at top of viewport, tracks scroll position
+
+### SEO Changes
+
+- **Blog listing title:** "Blog — Tutorials, Guides & Dev Logs | Arbenger"
+- **Blog listing meta description:** "Tutorials, deep dives, and behind-the-scenes on the tools we build. Learn how to use Arbenger products and follow our engineering journey."
+- **Blog post title pattern:** "{post.title} | Arbenger Blog"
+- **Blog post og:type:** `article`
+- **Blog post JSON-LD:** `Article` schema with headline, description, datePublished, dateModified, author (Organization), publisher, timeRequired
+- **Blog post breadcrumbs:** 3-level BreadcrumbList (Home > Blog > Post Title)
+- **Breadcrumbs component extended:** Now accepts `items` array prop for N-level breadcrumbs (backward-compatible with `pageName`/`pageUrl`)
+- **Sitemap:** Blog URLs auto-generated from `sortedPosts` import — `/blog/` (priority 0.8, weekly) and all post URLs (priority 0.7, monthly)
+
+### Navigation Changes
+
+- **"Blog" link added** to `navLinks` in `src/lib/data/navigation.ts` — appears in Navbar and Footer between Products and About
+- **Image resizer top bar:** Added "Guide" link (BookOpen icon) pointing to `/blog/how-to-use-image-resizer/`
+- **UploadZone:** Added "New here? Read the guide" link below format info
+
+### Files Created
+
+- `src/lib/data/blog.ts` — Blog data registry
+- `src/lib/components/blog/BlogCard.svelte` — Post card component
+- `src/lib/components/blog/BlogPagination.svelte` — Pagination controls
+- `src/lib/components/blog/ReadingProgress.svelte` — Reading progress bar
+- `src/routes/blog/+page.svelte` — Blog listing page
+- `src/routes/blog/[slug]/+page.ts` — Dynamic route with `entries()` and `load()`
+- `src/routes/blog/[slug]/+page.svelte` — Post shell (SEO, header, content loader)
+- `src/routes/blog/[slug]/_posts/how-to-use-image-resizer.svelte` — First blog post content
+
+### Files Modified
+
+- `src/lib/types/index.ts` — Added blog types
+- `src/lib/data/navigation.ts` — Added Blog link
+- `src/lib/components/seo/Breadcrumbs.svelte` — Extended with `items` prop for N-level support
+- `src/routes/sitemap.xml/+server.ts` — Auto-generates blog post URLs from registry
+- `src/routes/products/(utilities)/image-resizer/+page.svelte` — Added Guide link in top bar
+- `src/routes/products/(utilities)/image-resizer/_components/UploadZone.svelte` — Added guide link
+
+### How to Add a New Blog Post
+
+1. Add metadata object to `blogPosts` array in `src/lib/data/blog.ts`
+2. Create content `.svelte` file in `src/routes/blog/[slug]/_posts/{slug}.svelte`
+3. Sitemap, listing, and routing update automatically
+
+---
+
 ## 2026-05-10 — Image Resizer Tool, New UI Components & Products Page Redesign
 
 ### Image Resizer Tool (NEW)
