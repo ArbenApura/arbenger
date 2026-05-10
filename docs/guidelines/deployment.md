@@ -1,6 +1,6 @@
 # Deployment Guide
 
-**Last updated:** 2026-05-09
+**Last updated:** 2026-05-10
 
 This document covers the complete deployment pipeline for arbenger.com: from local development to production on Cloudflare Pages.
 
@@ -46,6 +46,15 @@ yarn dev
 ### Dev Server Port
 
 The dev server is configured to always run on **port 8000** (not the Vite default 5173). This is set in the `dev` script in `package.json`: `"dev": "vite dev --port 8000"`.
+
+### Key Dependencies
+
+| Package | Purpose |
+|---------|---------|
+| `jszip` | Batch ZIP download in image resizer tool |
+| `svelte-sonner` | Toast notification library (`<Toaster>` in root layout) |
+| `lucide-svelte` | Icon library |
+| `clsx` + `tailwind-merge` | Dynamic class composition (`cn()` utility) |
 
 ### Key Dev Dependencies
 
@@ -318,7 +327,7 @@ After the first production deployment:
 - [ ] Site loads at `https://arbenger.com`
 - [ ] `www.arbenger.com` redirects to `arbenger.com`
 - [ ] HTTP redirects to HTTPS
-- [ ] All 7 pages render correctly (home, about, products, contact, privacy, terms, cookies)
+- [ ] All 8 pages render correctly (home, about, products, contact, privacy, terms, cookies, products/image-resizer)
 - [ ] Theme toggle works (dark/light)
 - [ ] Mobile responsive (test on real device)
 - [ ] Favicon displays correctly

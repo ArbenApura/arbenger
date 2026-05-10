@@ -37,7 +37,7 @@
 		<div class="mt-20 space-y-4">
 			{#each categories as category, i}
 				<a
-					href="/products"
+					href="/products/"
 					use:reveal={{ delay: i * 80 }}
 					class="group flex items-center justify-between rounded-2xl border border-[#F1F5F9] bg-white px-4 py-5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-500 sm:px-8 sm:py-6 hover:shadow-[0_4px_16px_rgba(0,0,0,0.08),0_1px_4px_rgba(0,0,0,0.04)] dark:border-[#2A2578]/60 dark:bg-[#1E1A5E]/20 dark:shadow-none dark:hover:border-[#22D3EE]/30 dark:hover:shadow-[0_0_40px_rgba(34,211,238,0.06)]"
 				>

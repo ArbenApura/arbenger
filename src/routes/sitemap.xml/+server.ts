@@ -10,6 +10,7 @@ const PAGES = [
 	{ path: '/privacy', priority: '0.3', changefreq: 'yearly', lastmod: '2026-05-08' },
 	{ path: '/terms', priority: '0.3', changefreq: 'yearly', lastmod: '2026-05-08' },
 	{ path: '/cookies', priority: '0.3', changefreq: 'yearly', lastmod: '2026-05-08' },
+	{ path: '/products/image-resizer', priority: '0.7', changefreq: 'weekly', lastmod: '2026-05-09' },
 ];
 
 export const GET: RequestHandler = async () => {

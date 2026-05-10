@@ -1,6 +1,8 @@
 <script lang="ts">
 	// IMPORTED DEP-MODULES
 	import { Menu, X } from 'lucide-svelte';
+	import { slide } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 
 	// IMPORTED MODULES
 	import { cn } from '$lib/utils/cn';
@@ -34,8 +36,8 @@
 <nav
 	class={cn(
 		'fixed top-0 right-0 left-0 z-50 border-b transition-all duration-300',
-		isScrolled
-			? 'border-[#F1F5F9] bg-white/90 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-lg dark:border-[#2A2578] dark:bg-[#0B0A23]/80 dark:shadow-none'
+		isScrolled || isMobileMenuOpen
+			? 'border-[#F1F5F9] bg-white/95 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-lg dark:border-[#2A2578] dark:bg-[#0B0A23]/95 dark:shadow-none'
 			: 'border-transparent bg-transparent',
 	)}
 >
@@ -82,7 +84,10 @@
 
 	<!-- MOBILE MENU DRAWER -->
 	{#if isMobileMenuOpen}
-		<div class="border-t border-[#E2E8F0] bg-white/95 px-6 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-xl lg:hidden dark:border-[#2A2578] dark:bg-[#0B0A23]/95 dark:shadow-[0_8px_24px_rgba(0,0,0,0.4)]">
+		<div
+			transition:slide={{ duration: 200, easing: cubicOut }}
+			class="border-t border-[#E2E8F0] bg-white/95 px-6 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-xl lg:hidden dark:border-[#2A2578] dark:bg-[#0B0A23]/95 dark:shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
+		>
 			{#each navLinks as link}
 				<a
 					href={link.href}

@@ -1,6 +1,8 @@
 <script lang="ts">
 	// IMPORTED DEP-MODULES
 	import { onMount, onDestroy } from 'svelte';
+	import { fly } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 	import { ChevronDown, Check } from 'lucide-svelte';
 
 	// IMPORTED MODULES
@@ -115,7 +117,9 @@
 
 	<!-- DROPDOWN MENU -->
 	{#if isOpen}
-		<div class="absolute right-0 z-50 w-52 rounded-xl border border-[#E2E8F0] bg-white py-1 shadow-[0_4px_16px_rgba(0,0,0,0.08),0_1px_4px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E] dark:shadow-[0_4px_16px_rgba(0,0,0,0.3)] {direction === 'up' ? 'bottom-full mb-2' : 'top-full mt-2'}">
+		<div
+			transition:fly={{ y: direction === 'up' ? 8 : -8, duration: 180, easing: cubicOut }}
+			class="absolute right-0 z-50 w-52 rounded-xl border border-[#E2E8F0] bg-white py-1 shadow-[0_4px_16px_rgba(0,0,0,0.08),0_1px_4px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E] dark:shadow-[0_4px_16px_rgba(0,0,0,0.3)] {direction === 'up' ? 'bottom-full mb-2' : 'top-full mt-2'}">
 			{#each locales as loc}
 				<button
 					on:click={() => loc.enabled && selectLocale(loc.code)}

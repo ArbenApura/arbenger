@@ -128,7 +128,7 @@
 				class:translate-y-0={isVisible}
 				style="transition-delay: 600ms;"
 			>
-				<Button href="/products" variant="primary" class="group relative overflow-hidden">
+				<Button href="/products/" variant="primary" class="group relative overflow-hidden">
 					<span class="relative z-10">See What's Available</span>
 				</Button>
 			</div>

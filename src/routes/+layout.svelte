@@ -2,13 +2,13 @@
 	// IMPORTED MODULES
 	import '../app.css';
 
+	// IMPORTED DEP-COMPONENTS
+	import { Toaster } from 'svelte-sonner';
 	// IMPORTED COMPONENTS
-	import Navbar from '$lib/components/layout/Navbar.svelte';
-	import Footer from '$lib/components/layout/Footer.svelte';
 	import CookieBanner from '$lib/components/layout/CookieBanner.svelte';
+	import Footer from '$lib/components/layout/Footer.svelte';
+	import Navbar from '$lib/components/layout/Navbar.svelte';
 	import JsonLd from '$lib/components/seo/JsonLd.svelte';
-
-
 </script>
 
 <!-- SITEWIDE JSON-LD -->
@@ -38,3 +38,4 @@
 
 <Footer />
 <CookieBanner />
+<Toaster richColors closeButton position="bottom-right" />

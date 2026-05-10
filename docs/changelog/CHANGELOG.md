@@ -4,6 +4,117 @@ All notable decisions, changes, and milestones for arbenger.com are documented h
 
 ---
 
+## 2026-05-10 — Image Resizer Tool, New UI Components & Products Page Redesign
+
+### Image Resizer Tool (NEW)
+
+- **Full client-side image resizer** at `/products/image-resizer`
+- **Route structure:** SvelteKit group route at `src/routes/products/(utilities)/image-resizer/`
+- **Components (route-local):** `_components/UploadZone.svelte`, `PreviewCanvas.svelte`, `ThumbnailStrip.svelte`, `ResizeControls.svelte`, `InfoPanel.svelte`, `BatchImageList.svelte`, `CropDialog.svelte`
+- **Store:** `_lib/store.ts` — manages image entries, resize settings, batch settings, crop data, processing state, worker lifecycle
+- **Worker:** `_lib/worker.ts` — OffscreenCanvas-based Web Worker for non-blocking resize operations with crop, fit mode (stretch/contain/cover), and format conversion
+- **Features:** Single and batch mode, drag-and-drop upload, clipboard paste, interactive crop dialog, resize with aspect lock, format conversion (PNG/JPEG/WebP), fit modes (stretch/contain/cover), background color fill, batch auto-naming with patterns (sequential/prefix/suffix/template), batch ZIP download via `jszip`, scale presets, dimension presets (social media, screens, app icons)
+- **Privacy:** All processing happens client-side — no server uploads, no data leaves the browser
+- **Pre-rendered:** `+page.ts` exports `prerender = true`
+
+### New Reusable UI Components
+
+- **`src/lib/components/ui/Select.svelte`** — Custom dropdown select with grouped options (`SelectGroup[]`), per-option icons, hint text, disabled options, fly animation, keyboard support, click-outside close. Exports `SelectOption`, `SelectGroup`, `SelectItems` types via `context="module"`.
+- **`src/lib/components/ui/ColorPicker.svelte`** — HSV/RGB/HEX color picker with interactive saturation-value canvas, hue slider canvas, preset color swatches, portal-based popover positioning, hex/rgb/hsv input modes, fly animation. Uses `Pipette` icon from lucide-svelte.
+- **`src/lib/components/ui/ConfirmDialog.svelte`** — Reusable confirmation modal with three variants (`danger`, `warning`, `default`), customizable title/message/labels/icon, fade+fly transitions, backdrop click to cancel, scroll lock, dispatches `confirm` and `cancel` events.
+
+### Route & File Structure Changes
+
+- **Category rename:** `misc-tools` display name changed from "Misc Tools" to "Utilities"
+- **Route pattern:** Product routes use SvelteKit group routes — `src/routes/products/(utilities)/image-resizer/` renders at URL `/products/image-resizer` (no `/utilities/` in URL)
+- **Route-local pattern adopted:** Image resizer components live in `_components/` and store/worker live in `_lib/` inside the route directory, not in shared `src/lib/` folders
+- **Deleted directories:** `src/lib/components/tools/` (moved to route-local `_components/`), `src/lib/stores/image-resizer.ts` (moved to route-local `_lib/store.ts`), `src/lib/workers/` (moved to route-local `_lib/worker.ts`)
+
+### Landing Page Changes
+
+- **New `FeaturedTool.svelte` component** added to homepage between ProductCategories and AboutTeaser sections
+- **Content:** "Now available" section intro, "Try our first tool" heading, Image Resizer card with description, feature pills (100% Local, Batch Processing, Crop & Resize, Format Conversion), UI miniature mockup, "Open Image Resizer" CTA
+- **Homepage section order:** Hero → ProductCategories → FeaturedTool → AboutTeaser → Newsletter → Connect CTA
+
+### Products Page Redesign
+
+- **Live products spotlight:** New section at top showing cards for products with `status: 'live'` — card grid with status badge, description, tags, and "Open tool" link
+- **Category grid:** 3-column grid with nested product links inside each category card
+- **Filter pills:** Changed from `rounded-lg` to `rounded-full`
+- **Empty categories:** Dashed borders, muted colors, "Coming soon" placeholder
+- **Utilities category:** Sorted first in the categories array with `productCount: 1`
+- **Removed dependencies:** `CategoryIllustration` and `EmptyStateIllustration` components no longer imported (still exist in `src/lib/components/ui/` but unused on products page)
+- **Title updated:** "Products — Utilities, Extensions & AI Tools | Arbenger"
+- **Description updated:** "Browse Arbenger's product catalog. Free browser-based utilities, VS Code extensions, Chrome plugins, AI tools, and web apps. Try what's live now."
+
+### SEO Changes
+
+- **Image resizer H1:** `<h1 class="sr-only">Free Online Image Resizer — Resize, Crop & Convert</h1>` (screen-reader only)
+- **Image resizer title:** "Free Image Resizer — Resize, Crop & Convert Online | Arbenger"
+- **Image resizer meta description:** "Resize, crop, and batch-convert images to PNG, JPEG, or WebP — directly in your browser. No uploads, no signups. 100% private and free."
+- **WebApplication JSON-LD:** `@type: WebApplication`, `applicationCategory: UtilitiesApplication`, free offer
+- **BreadcrumbList JSON-LD:** Home → Products → Image Resizer (3-level)
+- **About page meta description:** "Arbenger builds extensions, plugins, AI tools, and web apps. Learn about our approach to clean, focused software."
+- **Contact page meta description:** "Have a question, idea, or feedback? Get in touch with Arbenger via email or social. We'd love to hear from you."
+- **Products page meta description:** Updated to reflect live products and utilities
+- **Sitemap:** `/products/image-resizer` added with priority 0.7 and weekly changefreq
+
+### UI Improvements
+
+- **Navbar mobile menu:** Slide animation, solid background when menu is open
+- **Language selector:** Fly animation on dropdown
+- **Select dropdowns:** Fly animation (`svelte/transition`) with `cubicOut` easing
+- **ConfirmDialog:** Fade + fly animation, scroll lock on body when open
+- **Toaster:** `svelte-sonner` `<Toaster>` added to root `+layout.svelte` with `richColors`, `closeButton`, `position="bottom-right"`
+- **Toast notifications:** All user feedback in image resizer centralized through `svelte-sonner` toast (success, error, warning, info, promise)
+
+### Dependencies
+
+- **`jszip` (^3.10.1)** — Added for batch ZIP download in image resizer
+- **`svelte-sonner` (^0.3.28)** — Toast notification library, `<Toaster>` added to root layout
+
+### Product Data Changes
+
+- **`src/lib/data/products.ts`:** Utilities category moved to first position, `productCount` set to 1, description updated to "Image tools, code formatters, converters, and other browser-based utilities."
+- **Image Resizer product entry added:** slug `image-resizer`, category `misc-tools`, status `live`, platform `web`, tags `['image', 'resize', 'converter', 'free']`
+
+### Files Created
+
+- `src/routes/products/(utilities)/image-resizer/+page.svelte` — Image resizer page
+- `src/routes/products/(utilities)/image-resizer/+page.ts` — Prerender config
+- `src/routes/products/(utilities)/image-resizer/_components/UploadZone.svelte`
+- `src/routes/products/(utilities)/image-resizer/_components/PreviewCanvas.svelte`
+- `src/routes/products/(utilities)/image-resizer/_components/ThumbnailStrip.svelte`
+- `src/routes/products/(utilities)/image-resizer/_components/ResizeControls.svelte`
+- `src/routes/products/(utilities)/image-resizer/_components/InfoPanel.svelte`
+- `src/routes/products/(utilities)/image-resizer/_components/BatchImageList.svelte`
+- `src/routes/products/(utilities)/image-resizer/_components/CropDialog.svelte`
+- `src/routes/products/(utilities)/image-resizer/_lib/store.ts`
+- `src/routes/products/(utilities)/image-resizer/_lib/worker.ts`
+- `src/lib/components/ui/Select.svelte`
+- `src/lib/components/ui/ColorPicker.svelte`
+- `src/lib/components/ui/ConfirmDialog.svelte`
+- `src/lib/components/home/FeaturedTool.svelte`
+
+### Files Modified
+
+- `src/routes/+page.svelte` — Added FeaturedTool import and section
+- `src/routes/+layout.svelte` — Added `svelte-sonner` Toaster component
+- `src/routes/products/+page.svelte` — Full redesign with live products spotlight, category grid, filter pills, nested product links
+- `src/routes/sitemap.xml/+server.ts` — Added `/products/image-resizer` entry
+- `src/lib/data/products.ts` — Utilities category first, productCount updated, Image Resizer product added
+- `src/lib/components/layout/Navbar.svelte` — Mobile menu slide animation, solid bg
+- `src/lib/components/layout/LanguageSelector.svelte` — Fly animation on dropdown
+- `package.json` — Added `jszip` and `svelte-sonner` dependencies
+
+### Files Deleted
+
+- `src/lib/components/tools/` — Entire directory (moved to route-local `_components/`)
+- `src/lib/stores/image-resizer.ts` — Moved to route-local `_lib/store.ts`
+- `src/lib/workers/` — Entire directory (moved to route-local `_lib/worker.ts`)
+
+---
+
 ## 2026-05-09 — SEO Fixes, Mobile Responsiveness & Performance
 
 ### SEO Improvements

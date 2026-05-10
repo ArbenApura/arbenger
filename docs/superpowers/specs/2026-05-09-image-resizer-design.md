@@ -79,7 +79,7 @@ A fully client-side image resizer tool — the first Misc Tool on Arbenger. User
 ┌─────────────────────────────────────────────────┐
 │ [thumb1] [thumb2] [thumb3] [+ Add]              │  Thumbnail strip
 ├────────────────────────────┬────────────────────┤
-│                            │ > RESIZE           │
+│                            │ Resize             │
 │                            │ W [____] × H [____]│
 │                            │ 🔗 Lock aspect      │
 │     Preview Canvas         │ ↔ Swap              │
@@ -87,14 +87,14 @@ A fully client-side image resizer tool — the first Misc Tool on Arbenger. User
 │      for before/after)     │ Presets: [dropdown] │
 │                            │ Fit max: [____]     │
 │                            ├────────────────────┤
-│                            │ > OUTPUT           │
+│                            │ Output             │
 │                            │ Format: [PNG ▾]    │
 │                            │ Quality: [===●──]  │
 │                            │ Algorithm: [▾]     │
 │                            │ Fill color: [■]    │
 │                            │ Filename: [____]   │
 │                            ├────────────────────┤
-│                            │ > INFO             │
+│                            │ Info               │
 │                            │ Original: 1920×1080│
 │                            │ New: 1280×720      │
 │                            │ Size: ~245 KB      │
@@ -200,10 +200,10 @@ All controls are interconnected — changing one updates the others. Scale % ↔
 - Handle: circular grab indicator with cyan glow
 - Drag or click anywhere to move divider
 - Default position: 50%
-- Labels above: "Original" (left) / "Resized" (right) in JetBrains Mono, text-xs, slate-400
+- Labels above: "Original" (left) / "Resized" (right) in Satoshi, text-xs, slate-400
 
 ### Info Panel
-- Three rows, label + value in JetBrains Mono:
+- Three rows, label + value in Satoshi with tabular-nums:
   - `Original` — `1920 × 1080 · PNG · 2.4 MB`
   - `Resized` — `1280 × 720 · JPEG · ~245 KB`
   - `Reduction` — `↓ 89%` in teal-400 (or `↑ 150%` in slate-400 if larger)
@@ -226,7 +226,7 @@ Every async operation has explicit visual feedback:
 | Operation | Loading State |
 |-----------|--------------|
 | File reading | Skeleton placeholder in thumbnail strip with pulse animation |
-| Resize processing | Spinner overlay on preview canvas + "Resizing..." label (JetBrains Mono) |
+| Resize processing | Spinner overlay on preview canvas + "Resizing..." label |
 | Export/download | Button shows spinner + "Preparing..." text, disabled |
 | Batch ZIP | Progress bar + "Processing 3 / 7..." text |
 | Paste detection | Toast: "Image pasted" |
@@ -309,7 +309,7 @@ type BatchProgress = {
 
 ## 10. Privacy
 
-- One-line text at top: `> Your images never leave your browser. All processing happens locally.` — JetBrains Mono, text-sm, slate-400, cyan `>` prefix
+- One-line text at top with lock icon: "Your images never leave your browser. All processing happens locally." — Satoshi, text-xs, slate-400
 - Zero network requests from the tool (verifiable in DevTools Network tab)
 - No analytics on image content, dimensions, or filenames
 - Images held in memory only — released on page navigation or "Clear all"
@@ -338,17 +338,18 @@ No other new dependencies. Canvas API, Web Workers, and OffscreenCanvas are all 
 
 ---
 
-## 13. Branding Compliance
+## 13. Styling
 
-All styling follows the design system:
+Tool pages use a clean, practical design — not the "Terminal Meets Luxury" aesthetic used on marketing pages. No terminal-style section labels, no monospaced labels, no `>` prompt prefixes.
 
-- **Section labels:** Terminal-style `> RESIZE`, `> OUTPUT`, `> INFO` — JetBrains Mono, text-sm, uppercase, tracking-widest, slate-400
-- **Cards/panels:** navy-800 bg, navy-700 border, rounded-xl
-- **Inputs:** rounded-lg, navy-700 border, proper focus rings
-- **Buttons:** Primary (cyan bg, navy text), Secondary (cyan border, cyan text)
-- **Typography:** Space Mono for page title (breadcrumb only), Satoshi for labels, JetBrains Mono for data values
-- **Effects:** Glow on active thumbnail, hover transitions on all interactive elements
+- **Section headings:** Satoshi, text-sm, font-semibold, simple heading text
+- **Labels:** Satoshi, text-xs, font-medium, slate colors
+- **Cards/panels:** rounded-xl, subtle borders, themed bg
+- **Inputs:** rounded-lg, border, proper focus rings with brand accent
+- **Buttons:** Primary (cyan bg, navy/white text), Secondary (cyan border)
+- **Effects:** Glow on active thumbnail, hover transitions
 - **Dark/light:** Full theme support via Tailwind `dark:` variants
+- **Layout:** min-h-screen with pt-24 to clear fixed navbar, flex-col to fill viewport
 
 ---
 

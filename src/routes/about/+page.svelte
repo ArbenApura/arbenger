@@ -13,11 +13,11 @@
 
 <MetaTags
 	title="About Arbenger — Who We Are & What We Build"
-	description="Arbenger builds VS Code extensions, Chrome plugins, AI tools, and web apps. Learn about our approach to making software tools that stay out of your way."
-	url="https://arbenger.com/about"
+	description="Arbenger builds extensions, plugins, AI tools, and web apps. Learn about our approach to clean, focused software."
+	url="https://arbenger.com/about/"
 />
 
-<Breadcrumbs pageName="About" pageUrl="https://arbenger.com/about" />
+<Breadcrumbs pageName="About" pageUrl="https://arbenger.com/about/" />
 
 <!-- PAGE HERO -->
 <section class="relative overflow-hidden pt-32 pb-16">
@@ -69,6 +69,12 @@
 				<ul class="mt-4 space-y-3 text-sm text-[#475569] dark:text-slate-300">
 					<li class="flex items-center gap-3">
 						<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
+							<svg class="size-4 text-[#0891B2] dark:text-[#22D3EE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+						</span>
+						Utilities
+					</li>
+					<li class="flex items-center gap-3">
+						<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
 							<svg class="size-4 text-[#0891B2] dark:text-[#22D3EE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
 						</span>
 						VS Code Extensions
@@ -84,12 +90,6 @@
 							<svg class="size-4 text-[#0891B2] dark:text-[#22D3EE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3 4 4.5 4.5 0 0 1-3-4"/><path d="M12 18v4"/></svg>
 						</span>
 						AI Tools
-					</li>
-					<li class="flex items-center gap-3">
-						<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
-							<svg class="size-4 text-[#0891B2] dark:text-[#22D3EE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-						</span>
-						Misc Tools
 					</li>
 					<li class="flex items-center gap-3">
 						<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
@@ -146,6 +146,6 @@
 		<p class="text-lg text-[#475569] dark:text-slate-300">
 			Got a question?
 		</p>
-		<Button href="/contact" variant="secondary">Get in touch</Button>
+		<Button href="/contact/" variant="secondary">Get in touch</Button>
 	</div>
 </section>

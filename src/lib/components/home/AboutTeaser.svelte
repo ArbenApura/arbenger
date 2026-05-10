@@ -90,7 +90,7 @@
 				<p class="mt-4 text-[#64748B] dark:text-slate-400">Curious? Browse the catalog or say hello.</p>
 
 				<div class="mt-10">
-					<Button href="/about" variant="secondary">Learn more</Button>
+					<Button href="/about/" variant="secondary">Learn more</Button>
 				</div>
 			</div>
 		</div>

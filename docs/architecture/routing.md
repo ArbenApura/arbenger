@@ -1,6 +1,6 @@
 # Routing Architecture
 
-**Last updated:** 2026-05-09
+**Last updated:** 2026-05-10
 
 This document defines the URL structure, rendering strategy, and route planning for arbenger.com.
 
@@ -29,11 +29,23 @@ SvelteKit file-based routing. All routes live under `src/routes/`. The adapter i
 |-------|------|---------|-----|
 | `/` | `src/routes/+page.svelte` | Homepage | "Tools that do the job" (+ typewriter) |
 | `/about` | `src/routes/about/+page.svelte` | About page | "About Arbenger" |
-| `/products` | `src/routes/products/+page.svelte` | Product catalog | "Our Products" |
+| `/products` | `src/routes/products/+page.svelte` | Product catalog | "Products" |
 | `/contact` | `src/routes/contact/+page.svelte` | Contact info | "Say Hello" |
 | `/privacy` | `src/routes/privacy/+page.svelte` | Privacy policy | "Privacy Policy" |
 | `/terms` | `src/routes/terms/+page.svelte` | Terms of service | "Terms of Service" |
 | `/cookies` | `src/routes/cookies/+page.svelte` | Cookie policy | "Cookie Policy" |
+
+### Product Routes (Pre-rendered, Group Routes)
+
+| Route | File | Purpose | H1 |
+|-------|------|---------|-----|
+| `/products/image-resizer` | `src/routes/products/(utilities)/image-resizer/+page.svelte` | Image resizer tool | "Free Online Image Resizer — Resize, Crop & Convert" (sr-only) |
+
+Product tool routes use SvelteKit **group routes** via `(utilities)/`. The group name is excluded from the URL — e.g., `products/(utilities)/image-resizer/` renders at `/products/image-resizer`. Each product tool route contains:
+- `+page.svelte` — page component
+- `+page.ts` — prerender config (`export const prerender = true`)
+- `_components/` — route-local components (underscore prefix tells SvelteKit to ignore for routing)
+- `_lib/` — route-local store and worker files
 
 ### Future Routes
 
@@ -42,7 +54,6 @@ SvelteKit file-based routing. All routes live under `src/routes/`. The adapter i
 | `/products/[slug]` | `src/routes/products/[slug]/+page.svelte` | Pre-rendered (from product data) | Individual product pages |
 | `/blog` | `src/routes/blog/+page.svelte` | Pre-rendered | Blog listing |
 | `/blog/[slug]` | `src/routes/blog/[slug]/+page.svelte` | Pre-rendered | Blog posts |
-| `/tools/[slug]` | `src/routes/tools/[slug]/+page.svelte` | SSR (interactive tools) | Online tools |
 | `/api/*` | `src/routes/api/*/+server.ts` | SSR (API endpoints) | Backend API routes |
 | `/sitemap.xml` | `src/routes/sitemap.xml/+server.ts` | SSR | Dynamic XML sitemap |
 
@@ -61,7 +72,7 @@ SvelteKit file-based routing. All routes live under `src/routes/`. The adapter i
 
 ```
 src/routes/
-  +layout.svelte          ← Root layout (Navbar + Footer + CookieBanner + JSON-LD)
+  +layout.svelte          ← Root layout (Navbar + Footer + CookieBanner + Toaster + JSON-LD)
   +layout.ts              ← prerender = true (default for all child routes)
   +page.svelte            ← Homepage
   +error.svelte           ← Custom error page (404, 500)
@@ -69,6 +80,21 @@ src/routes/
     +page.svelte          ← About page (inherits root layout)
   products/
     +page.svelte          ← Product catalog (inherits root layout)
+    (utilities)/           ← SvelteKit group route (excluded from URL)
+      image-resizer/
+        +page.svelte      ← Image resizer tool
+        +page.ts          ← prerender = true
+        _components/       ← Route-local components
+          UploadZone.svelte
+          PreviewCanvas.svelte
+          ThumbnailStrip.svelte
+          ResizeControls.svelte
+          InfoPanel.svelte
+          BatchImageList.svelte
+          CropDialog.svelte
+        _lib/              ← Route-local store and worker
+          store.ts
+          worker.ts
     [slug]/
       +page.svelte        ← Individual product (inherits root layout) — future
   contact/
@@ -88,6 +114,7 @@ The root layout provides:
 - `<main>` wrapper with skip-to-content accessibility link
 - Footer component (4-column: logo/tagline, navigation, legal, social)
 - CookieBanner component (localStorage-persisted consent)
+- Toaster component (`svelte-sonner`) — positioned bottom-right, rich colors, close button
 - Sitewide JSON-LD (WebSite schema)
 
 Note: Theme initialization (dark class on `<html>`) happens in `app.html` via an inline script to prevent FOUC. Font preloading is also in `app.html`.
@@ -116,9 +143,13 @@ Same links as navbar, plus:
 | From | To | Context |
 |------|----|---------|
 | Homepage hero CTA | `/products` | "See What's Available" button |
+| Homepage FeaturedTool CTA | `/products/image-resizer` | "Open Image Resizer" button |
 | Homepage about teaser | `/about` | "Learn more" link |
 | Homepage bottom CTA | `/contact` | "Get in Touch" button |
 | Homepage product cards | `/products` | Category card clicks |
+| Products live spotlight | `/products/image-resizer` | Live product card "Open tool" link |
+| Products category grid | `/products/image-resizer` | Nested product link in Utilities category |
+| Image resizer breadcrumb | `/`, `/products` | Visual breadcrumb navigation |
 | Product catalog cards | `/products/[slug]` | Individual product links (future) |
 
 ---

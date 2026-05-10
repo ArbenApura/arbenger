@@ -20,11 +20,11 @@
 
 <MetaTags
 	title="Contact Arbenger — Questions, Ideas & Feedback"
-	description="Reach out to Arbenger. We'd like to hear from you."
-	url="https://arbenger.com/contact"
+	description="Have a question, idea, or feedback? Get in touch with Arbenger via email or social. We'd love to hear from you."
+	url="https://arbenger.com/contact/"
 />
 
-<Breadcrumbs pageName="Contact" pageUrl="https://arbenger.com/contact" />
+<Breadcrumbs pageName="Contact" pageUrl="https://arbenger.com/contact/" />
 
 <!-- PAGE HERO -->
 <section class="relative overflow-hidden pt-32 pb-16">

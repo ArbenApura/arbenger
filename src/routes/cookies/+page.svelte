@@ -10,10 +10,10 @@
 <MetaTags
 	title="Cookie Policy | Arbenger"
 	description="How Arbenger uses cookies and similar technologies. Learn about your choices and how to manage preferences."
-	url="https://arbenger.com/cookies"
+	url="https://arbenger.com/cookies/"
 />
 
-<Breadcrumbs pageName="Cookie Policy" pageUrl="https://arbenger.com/cookies" />
+<Breadcrumbs pageName="Cookie Policy" pageUrl="https://arbenger.com/cookies/" />
 
 <!-- PAGE HERO -->
 <section class="relative overflow-hidden pt-32 pb-16">
@@ -119,9 +119,9 @@
 		<h2 class="font-display mt-12 text-xl font-bold text-[#0F172A] dark:text-white">Related Policies</h2>
 		<p class="mt-4 text-[#475569] leading-relaxed dark:text-slate-300">
 			See also our
-			<a href="/privacy" class="text-[#0891B2] underline hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80">Privacy Policy</a>
+			<a href="/privacy/" class="text-[#0891B2] underline hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80">Privacy Policy</a>
 			and
-			<a href="/terms" class="text-[#0891B2] underline hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80">Terms of Service</a>.
+			<a href="/terms/" class="text-[#0891B2] underline hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80">Terms of Service</a>.
 		</p>
 
 		<!-- CONTACT US -->

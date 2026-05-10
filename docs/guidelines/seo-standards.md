@@ -1,6 +1,6 @@
 # SEO Standards
 
-**Last updated:** 2026-05-09
+**Last updated:** 2026-05-10
 
 This document defines the SEO requirements for every page on arbenger.com. All pages must meet these standards before deployment. No page ships without proper meta tags, structured data, and heading hierarchy.
 
@@ -86,6 +86,27 @@ import MetaTags from '$lib/components/seo/MetaTags.svelte';
 }
 ```
 
+### WebApplication (Product Tool Pages)
+
+Used on interactive tool pages like the image resizer:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Arbenger Image Resizer",
+  "url": "https://arbenger.com/products/image-resizer",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Free browser-based image resizer with crop, batch processing, and format conversion. No uploads — 100% private."
+}
+```
+
 ### SoftwareApplication (Per Product Page — Future)
 
 ```json
@@ -163,8 +184,9 @@ import JsonLd from '$lib/components/seo/JsonLd.svelte';
 |------|-----------|-----------------|
 | `/` | "Tools that do the job" (with typewriter extension) | Arbenger, tools |
 | `/about` | "About Arbenger" | Arbenger, company |
-| `/products` | "Our Products" | Products, tools |
+| `/products` | "Products" | Products, tools |
 | `/contact` | "Say Hello" | Contact |
+| `/products/image-resizer` | "Free Online Image Resizer — Resize, Crop & Convert" (sr-only) | Image resizer, resize, crop, convert |
 | `/products/[slug]` | Product name | Product-specific keyword |
 
 ---
@@ -186,11 +208,11 @@ import JsonLd from '$lib/components/seo/JsonLd.svelte';
 | `/` | Homepage |
 | `/about` | About page |
 | `/products` | Product catalog |
+| `/products/image-resizer` | Image Resizer tool |
 | `/products/[slug]` | Individual product (future) |
 | `/contact` | Contact page |
 | `/blog` | Blog listing (future) |
 | `/blog/[slug]` | Blog post (future) |
-| `/tools/[slug]` | Online tools (future) |
 | `/sitemap.xml` | XML sitemap |
 
 ---
@@ -208,6 +230,19 @@ Server-rendered SvelteKit route at `/sitemap.xml` that returns XML content type.
 - New pages must be added to the `PAGES` array in `src/routes/sitemap.xml/+server.ts`
 - Referenced in `robots.txt`
 
+### Current Pages
+
+| Path | Priority | Changefreq | Last Modified |
+|------|----------|------------|---------------|
+| `/` | 1.0 | weekly | 2026-05-09 |
+| `/products` | 0.8 | weekly | 2026-05-09 |
+| `/about` | 0.6 | monthly | 2026-05-09 |
+| `/contact` | 0.5 | monthly | 2026-05-09 |
+| `/privacy` | 0.3 | yearly | 2026-05-08 |
+| `/terms` | 0.3 | yearly | 2026-05-08 |
+| `/cookies` | 0.3 | yearly | 2026-05-08 |
+| `/products/image-resizer` | 0.7 | weekly | 2026-05-09 |
+
 ### Format
 
 ```xml
@@ -215,13 +250,13 @@ Server-rendered SvelteKit route at `/sitemap.xml` that returns XML content type.
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://arbenger.com</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://arbenger.com/products</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -242,7 +277,29 @@ Sitemap: https://arbenger.com/sitemap.xml
 
 ---
 
-## 7. Internal Linking
+## 7. Per-Page SEO Reference
+
+### Image Resizer (`/products/image-resizer`)
+
+| Element | Value |
+|---------|-------|
+| Title | "Free Image Resizer — Resize, Crop & Convert Online \| Arbenger" |
+| Meta description | "Resize, crop, and batch-convert images to PNG, JPEG, or WebP — directly in your browser. No uploads, no signups. 100% private and free." |
+| H1 | "Free Online Image Resizer — Resize, Crop & Convert" (sr-only) |
+| JSON-LD #1 | `WebApplication` — name, url, applicationCategory, operatingSystem, offers, description |
+| JSON-LD #2 | `BreadcrumbList` — Home → Products → Image Resizer (3-level) |
+| Breadcrumb nav | Visual breadcrumb in top bar: Home / Products / Image Resizer |
+| Canonical URL | `https://arbenger.com/products/image-resizer` |
+| Sitemap priority | 0.7, weekly changefreq |
+
+Notes:
+- The H1 uses `sr-only` class because the tool UI itself serves as the primary visual heading
+- Uses `WebApplication` instead of `SoftwareApplication` since it runs entirely in the browser
+- BreadcrumbList is rendered via inline `JsonLd` component (not the `Breadcrumbs.svelte` helper) to support a 3-level hierarchy (Home → Products → Image Resizer)
+
+---
+
+## 8. Internal Linking
 
 ### Rules
 
@@ -257,16 +314,25 @@ Sitemap: https://arbenger.com/sitemap.xml
 ```
 Homepage (/)
   ├── /products (via navbar + product categories section)
+  ├── /products/image-resizer (via FeaturedTool section CTA)
   ├── /about (via navbar + about teaser section)
   ├── /contact (via navbar + footer)
   └── /products/[slug] (via product cards — future)
+
+Products (/products)
+  ├── /products/image-resizer (via live products spotlight + category nested link)
+  └── /products/[slug] (via category nested links — future)
+
+Image Resizer (/products/image-resizer)
+  ├── / (via breadcrumb nav)
+  └── /products (via breadcrumb nav)
 
 All pages → All pages (via navbar + footer)
 ```
 
 ---
 
-## 8. Images
+## 9. Images
 
 ### SEO Requirements
 
@@ -282,7 +348,7 @@ All pages → All pages (via navbar + footer)
 
 ---
 
-## 9. Performance Targets (SEO-Adjacent)
+## 10. Performance Targets (SEO-Adjacent)
 
 Google uses Core Web Vitals as ranking signals. These targets must be met:
 
@@ -295,7 +361,7 @@ Google uses Core Web Vitals as ranking signals. These targets must be met:
 
 ---
 
-## 10. E-E-A-T Signals
+## 11. E-E-A-T Signals
 
 For a company/product site, these trust signals must be present:
 
@@ -308,7 +374,7 @@ For a company/product site, these trust signals must be present:
 
 ---
 
-## 11. Pre-Launch SEO Checklist
+## 12. Pre-Launch SEO Checklist
 
 Before deploying any page, verify:
 

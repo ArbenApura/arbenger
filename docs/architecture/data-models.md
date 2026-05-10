@@ -1,6 +1,6 @@
 # Data Models
 
-**Last updated:** 2026-05-09
+**Last updated:** 2026-05-10
 
 This document defines the TypeScript interfaces and data structures used across arbenger.com. All data types live in `src/lib/types/index.ts`.
 
@@ -63,6 +63,13 @@ import type { ProductCategoryInfo, Product } from '$lib/types';
 
 export const categories: ProductCategoryInfo[] = [
   {
+    id: 'misc-tools',
+    name: 'Utilities',
+    description: 'Image tools, code formatters, converters, and other browser-based utilities.',
+    icon: 'wrench',
+    productCount: 1
+  },
+  {
     id: 'vscode-extensions',
     name: 'VS Code Extensions',
     description: 'Tools and add-ons for Visual Studio Code.',
@@ -84,13 +91,6 @@ export const categories: ProductCategoryInfo[] = [
     productCount: 0
   },
   {
-    id: 'misc-tools',
-    name: 'Misc Tools',
-    description: 'Converters, formatters, and other small utilities.',
-    icon: 'wrench',
-    productCount: 0
-  },
-  {
     id: 'saas',
     name: 'SaaS Products',
     description: 'Web apps you can use from anywhere.',
@@ -99,11 +99,22 @@ export const categories: ProductCategoryInfo[] = [
   }
 ];
 
-export const products: Product[] = [];
+export const products: Product[] = [
+  {
+    slug: 'image-resizer',
+    name: 'Image Resizer',
+    description: 'Resize, crop, and convert images in your browser. Batch processing, presets, and zero uploads.',
+    category: 'misc-tools',
+    status: 'live',
+    platform: 'web',
+    externalUrl: '/products/image-resizer',
+    tags: ['image', 'resize', 'converter', 'free'],
+    featured: false
+  }
+];
 ```
 
-Note: The commented-out example product ("AI Wiki Reader") was removed as part of the 2026-05-09 content rewrite to avoid naming specific unreleased products.
-```
+Note: The `misc-tools` category is sorted first because it has live products. The category `id` remains `misc-tools` for backwards compatibility, but the display `name` is "Utilities".
 
 ### Adding a New Product
 
@@ -234,7 +245,126 @@ Locale data is used by `LanguageSelector.svelte` (navbar + footer) and `locale` 
 
 ---
 
-## 6. Theme Data
+## 6. Image Resizer Data (Route-Local)
+
+These types are defined in `src/routes/products/(utilities)/image-resizer/_lib/store.ts`, not in the shared `src/lib/types/` file, because they are only used by the image resizer tool.
+
+### Core Types
+
+```typescript
+export type ImageFormat = 'image/png' | 'image/jpeg' | 'image/webp';
+export type ResizeAlgorithm = 'smooth' | 'pixelated';
+export type FitMode = 'stretch' | 'contain' | 'cover';
+export type ProcessingState = 'idle' | 'loading' | 'resizing' | 'downloading' | 'exporting';
+export type NamingPattern = 'sequential' | 'prefix-original' | 'original-suffix' | 'number-only' | 'template';
+```
+
+### Interfaces
+
+```typescript
+export interface CropData {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+export interface ImageEntry {
+  id: string;
+  file: File;
+  originalWidth: number;
+  originalHeight: number;
+  originalSize: number;
+  thumbnailUrl: string;
+  bitmap: ImageBitmap | null;
+}
+
+export interface ResizeSettings {
+  width: number;
+  height: number;
+  lockAspect: boolean;
+  fitMode: FitMode;
+  format: ImageFormat;
+  quality: number;
+  algorithm: ResizeAlgorithm;
+  bgColor: string;
+  bgTransparent: boolean;
+  filename: string;
+}
+
+export interface ResizeResult {
+  blob: Blob;
+  width: number;
+  height: number;
+  size: number;
+  url: string;
+}
+
+export interface BatchResizeSettings {
+  width: number;
+  height: number;
+  lockAspect: boolean;
+  fitMode: FitMode;
+  format: ImageFormat;
+  quality: number;
+  algorithm: ResizeAlgorithm;
+  bgColor: string;
+  bgTransparent: boolean;
+}
+```
+
+### Preset Data
+
+```typescript
+export interface PresetGroup {
+  label: string;
+  presets: { label: string; width: number; height: number }[];
+}
+```
+
+Preset groups: Social Media (Instagram, Twitter/X, YouTube, LinkedIn, Facebook), Screens (HD, Full HD, 4K), App Icons (16-512px).
+
+Scale options: 25%, 50%, 75%, 100%, 125%, 150%, 200%, 300%.
+
+### Worker Message Types
+
+The worker (`_lib/worker.ts`) uses its own local types for the message protocol:
+
+```typescript
+type ResizeRequest = {
+  type: 'resize';
+  id: string;
+  bitmap: ImageBitmap;
+  width: number;
+  height: number;
+  format: 'image/png' | 'image/jpeg' | 'image/webp';
+  quality: number;
+  smoothing: boolean;
+  smoothingQuality: 'low' | 'medium' | 'high';
+  bgColor: string | null;
+  fitMode: FitMode;
+  crop: CropData | null;
+};
+
+type ResizeResult = {
+  type: 'result';
+  id: string;
+  blob: Blob;
+  width: number;
+  height: number;
+  size: number;
+};
+
+type ResizeError = {
+  type: 'error';
+  id: string;
+  message: string;
+};
+```
+
+---
+
+## 7. Theme Data
 
 ### Type
 
@@ -248,7 +378,7 @@ The theme store is a simple `writable<boolean>` (`isDark`). See `src/lib/stores/
 
 ---
 
-## 7. Data Flow
+## 8. Data Flow
 
 ```
 src/lib/data/products.ts     → Product catalog data (static)

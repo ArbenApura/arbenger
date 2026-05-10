@@ -8,6 +8,7 @@
 	import Hero from '$lib/components/home/Hero.svelte';
 	import ProductCategories from '$lib/components/home/ProductCategories.svelte';
 
+	import FeaturedTool from '$lib/components/home/FeaturedTool.svelte';
 	import AboutTeaser from '$lib/components/home/AboutTeaser.svelte';
 	import Newsletter from '$lib/components/home/Newsletter.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
@@ -41,7 +42,8 @@
 <!-- PRODUCT CATEGORIES -->
 <ProductCategories />
 
-<!-- TECH STACK -->
+<!-- FEATURED TOOL -->
+<FeaturedTool />
 
 <!-- ABOUT TEASER -->
 <AboutTeaser />
@@ -55,6 +57,6 @@
 		<p class="text-lg text-[#475569] dark:text-slate-300">
 			Got a question? We're around.
 		</p>
-		<Button href="/contact" variant="primary">Get in Touch</Button>
+		<Button href="/contact/" variant="primary">Get in Touch</Button>
 	</div>
 </GeometricDivider>

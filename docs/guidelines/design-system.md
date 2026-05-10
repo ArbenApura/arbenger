@@ -1,6 +1,6 @@
 # Arbenger Design System
 
-**Last updated:** 2026-05-09
+**Last updated:** 2026-05-10
 
 This document defines the complete visual language for arbenger.com. All components, pages, and future additions must follow these specifications. When in doubt, refer back to the aesthetic direction and verify against the color, typography, and spacing tokens defined here.
 
@@ -293,11 +293,44 @@ Example markup:
 </p>
 ```
 
+### Select (`Select.svelte`)
+
+- **Trigger:** Button with selected item label, optional leading icon, `ChevronDown` suffix
+- **Dropdown:** `fly` transition with `cubicOut` easing, positioned below trigger
+- **Options:** Flat list (`SelectOption[]`) or grouped (`SelectGroup[]`) with group labels
+- **Per-option features:** Optional icon, hint text, disabled state, checkmark on selected
+- **Keyboard:** Click-outside and Escape to close
+- **Styling:** `rounded-xl` dropdown panel, white bg (`dark:bg-[#1E1A5E]`), border + shadow
+- **Exported types:** `SelectOption`, `SelectGroup`, `SelectItems` (via `context="module"`)
+- **Used in:** Image resizer controls (format, fit mode, presets)
+
+### ColorPicker (`ColorPicker.svelte`)
+
+- **Trigger:** Color swatch button showing current value
+- **Popover:** Portal-based positioning, `fly` transition, click-outside to close
+- **Canvas controls:** Saturation-value canvas (2D gradient), hue slider canvas (1D rainbow)
+- **Input modes:** HEX, RGB, HSV — toggle between modes
+- **Presets:** 16 default color swatches (customizable via `presets` prop)
+- **Events:** Dispatches `change` with hex string value
+- **Styling:** `rounded-xl` popover, themed backgrounds
+- **Used in:** Image resizer background color selection
+
+### ConfirmDialog (`ConfirmDialog.svelte`)
+
+- **Trigger:** Controlled by `open` prop (bind:open)
+- **Variants:** `danger` (red), `warning` (amber), `default` (cyan/brand)
+- **Content:** Customizable icon, title, message, confirm/cancel labels
+- **Transitions:** Backdrop `fade`, dialog `fly` (from bottom), `cubicOut` easing
+- **Behavior:** Backdrop click to cancel, scroll lock when open
+- **Events:** Dispatches `confirm` and `cancel`
+- **Styling:** Centered modal, `rounded-2xl`, themed backgrounds, variant-colored confirm button
+- **Used in:** Image resizer clear-all confirmation
+
 ### Language Selector
 
 - **Trigger button:** Inline SVG flag (20×14px, `rounded-[2px]`) + `ChevronDown` icon (3.5 size)
 - **Button styling:** Same as ThemeToggle — `rounded-lg p-2`, same hover/dark colors
-- **Dropdown panel:** `w-52 rounded-xl`, white bg (`dark:bg-[#1E1A5E]`), border + shadow
+- **Dropdown panel:** `w-52 rounded-xl`, white bg (`dark:bg-[#1E1A5E]`), border + shadow, `fly` transition
 - **Active locale:** Checkmark icon in `#0891B2` / `#22D3EE`
 - **Disabled locales:** Muted text (`#94A3B8`), "Soon" pill badge, `cursor-default`
 - **Flags:** Inline SVG, no emoji, no library — stored as path strings in the component

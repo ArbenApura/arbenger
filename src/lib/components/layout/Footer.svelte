@@ -53,7 +53,7 @@
 				<ul class="mt-4 space-y-2">
 					<li>
 						<a
-							href="/privacy"
+							href="/privacy/"
 							class="text-sm text-[#64748B] transition-colors duration-200 hover:text-[#0891B2] dark:text-slate-400 dark:hover:text-[#22D3EE]"
 						>
 							Privacy Policy
@@ -61,7 +61,7 @@
 					</li>
 					<li>
 						<a
-							href="/terms"
+							href="/terms/"
 							class="text-sm text-[#64748B] transition-colors duration-200 hover:text-[#0891B2] dark:text-slate-400 dark:hover:text-[#22D3EE]"
 						>
 							Terms of Service
@@ -69,7 +69,7 @@
 					</li>
 					<li>
 						<a
-							href="/cookies"
+							href="/cookies/"
 							class="text-sm text-[#64748B] transition-colors duration-200 hover:text-[#0891B2] dark:text-slate-400 dark:hover:text-[#22D3EE]"
 						>
 							Cookie Policy

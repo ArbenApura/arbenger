@@ -1,6 +1,6 @@
 # Component Conventions
 
-**Last updated:** 2026-05-09
+**Last updated:** 2026-05-10
 
 This document defines how to build Svelte components for arbenger.com. It supplements the svelte-guidelines skill (which covers syntax rules) with project-specific patterns and architectural decisions.
 
@@ -30,10 +30,12 @@ All components use **Svelte 4 syntax**. This is mandatory, no exceptions.
 | Type | Path | Example |
 |------|------|---------|
 | Layout components | `src/lib/components/layout/` | Navbar.svelte, Footer.svelte, ThemeToggle.svelte, LanguageSelector.svelte, CookieBanner.svelte |
-| Reusable UI primitives | `src/lib/components/ui/` | Button.svelte, Card.svelte |
-| Page-specific sections | `src/lib/components/[page]/` | home/Hero.svelte, home/ProductCategories.svelte, home/AboutTeaser.svelte |
+| Reusable UI primitives | `src/lib/components/ui/` | Button.svelte, Card.svelte, Select.svelte, ColorPicker.svelte, ConfirmDialog.svelte |
+| Page-specific sections | `src/lib/components/[page]/` | home/Hero.svelte, home/ProductCategories.svelte, home/AboutTeaser.svelte, home/FeaturedTool.svelte |
 | SEO utilities | `src/lib/components/seo/` | MetaTags.svelte, JsonLd.svelte, Breadcrumbs.svelte |
-| Stores | `src/lib/stores/` | theme.ts, locale.ts, viewport.ts |
+| Route-local components | `src/routes/[route]/_components/` | products/(utilities)/image-resizer/_components/UploadZone.svelte |
+| Route-local stores/workers | `src/routes/[route]/_lib/` | products/(utilities)/image-resizer/_lib/store.ts, worker.ts |
+| Shared stores | `src/lib/stores/` | theme.ts, locale.ts, viewport.ts |
 | Utilities | `src/lib/utils/` | cn.ts |
 | Data | `src/lib/data/` | products.ts, navigation.ts, locales.ts |
 | Types | `src/lib/types/` | index.ts |
@@ -318,6 +320,31 @@ export const isDark = writable(true);
 - Only imported in components where `dark:` Tailwind variants cannot express the value
 - Most components should use `dark:` variants instead
 
+### Route-Local Pattern
+
+For self-contained product tools (like the image resizer), components, stores, and workers live inside the route directory rather than in shared `src/lib/` folders:
+
+```
+src/routes/products/(utilities)/image-resizer/
+  +page.svelte              ← Page component
+  +page.ts                  ← Prerender config
+  _components/              ← Route-local components (SvelteKit ignores _ prefix)
+    UploadZone.svelte
+    PreviewCanvas.svelte
+    ThumbnailStrip.svelte
+    ResizeControls.svelte
+    InfoPanel.svelte
+    BatchImageList.svelte
+    CropDialog.svelte
+  _lib/                     ← Route-local store and worker
+    store.ts
+    worker.ts
+```
+
+**When to use route-local vs shared:**
+- **Route-local (`_components/`, `_lib/`):** Components and stores that are only used by a single product/tool page. Keeps the feature self-contained.
+- **Shared (`src/lib/components/ui/`):** Reusable primitives used across multiple pages (Select, ColorPicker, ConfirmDialog, Button, etc.).
+
 ### Removed Components
 
 The following components were part of the original build but have been removed:
@@ -325,6 +352,9 @@ The following components were part of the original build but have been removed:
 | Component | Removed On | Reason |
 |-----------|-----------|--------|
 | `Roadmap.svelte` | 2026-05-09 | Roadmap section removed from homepage; component file still exists but is unused and not imported anywhere |
+| `src/lib/components/tools/` | 2026-05-10 | Entire directory deleted — moved to route-local `_components/` inside the image resizer route |
+| `src/lib/stores/image-resizer.ts` | 2026-05-10 | Moved to route-local `_lib/store.ts` |
+| `src/lib/workers/` | 2026-05-10 | Entire directory deleted — moved to route-local `_lib/worker.ts` |
 
 ### Typewriter Component Notes
 

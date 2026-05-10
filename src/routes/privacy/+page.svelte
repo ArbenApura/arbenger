@@ -10,10 +10,10 @@
 <MetaTags
 	title="Privacy Policy | Arbenger"
 	description="How Arbenger collects, uses, and protects your information. Plain-language privacy policy."
-	url="https://arbenger.com/privacy"
+	url="https://arbenger.com/privacy/"
 />
 
-<Breadcrumbs pageName="Privacy Policy" pageUrl="https://arbenger.com/privacy" />
+<Breadcrumbs pageName="Privacy Policy" pageUrl="https://arbenger.com/privacy/" />
 
 <!-- PAGE HERO -->
 <section class="relative overflow-hidden pt-32 pb-16">
@@ -128,9 +128,9 @@
 		<h2 class="font-display mt-12 text-xl font-bold text-[#0F172A] dark:text-white">Related Policies</h2>
 		<p class="mt-4 text-[#475569] leading-relaxed dark:text-slate-300">
 			For details on how we use cookies, see our
-			<a href="/cookies" class="text-[#0891B2] underline hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80">Cookie Policy</a>.
+			<a href="/cookies/" class="text-[#0891B2] underline hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80">Cookie Policy</a>.
 			For terms governing your use of this site, see our
-			<a href="/terms" class="text-[#0891B2] underline hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80">Terms of Service</a>.
+			<a href="/terms/" class="text-[#0891B2] underline hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80">Terms of Service</a>.
 		</p>
 
 		<!-- CONTACT US -->

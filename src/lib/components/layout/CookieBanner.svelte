@@ -40,7 +40,7 @@
 			<p class="text-sm text-[#475569] dark:text-slate-300">
 				This site uses cookies to improve your experience.
 				<a
-					href="/cookies"
+					href="/cookies/"
 					class="text-[#0891B2] underline hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80"
 				>
 					Learn more

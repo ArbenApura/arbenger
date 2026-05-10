@@ -1,6 +1,6 @@
 # State Management
 
-**Last updated:** 2026-05-09
+**Last updated:** 2026-05-10
 
 This document defines how state is managed across arbenger.com. The base site has minimal state requirements — theme preference is the primary concern.
 
@@ -14,14 +14,15 @@ This document defines how state is managed across arbenger.com. The base site ha
 
 1. **Minimal global state.** Most state lives in individual components as local `let` variables.
 2. **Stores for shared state only.** Only use a store when multiple unrelated components need the same value.
-3. **Persist only what matters.** Only theme preference is persisted to `localStorage`. All other state is ephemeral.
+3. **Persist only what matters.** Only theme and locale preferences are persisted to `localStorage`. All other state is ephemeral.
 4. **Typed stores.** All stores have explicit TypeScript types.
+5. **Route-local stores for tools.** Self-contained product tools (e.g., image resizer) keep their stores inside the route directory (`_lib/store.ts`) rather than in shared `src/lib/stores/`.
 
 ---
 
 ## 2. Store Inventory
 
-### Launch Stores
+### Shared Stores (Global)
 
 | Store | File | Type | Persisted | Purpose |
 |-------|------|------|-----------|---------|
@@ -29,13 +30,55 @@ This document defines how state is managed across arbenger.com. The base site ha
 | `locale` | `src/lib/stores/locale.ts` | `Writable<string>` | Yes (`localStorage`: `arbenger-locale`) | Locale/language preference |
 | `isMobile`, `prefersReducedMotion` | `src/lib/stores/viewport.ts` | `Readable<boolean>` | No | Reactive media query listeners for mobile breakpoint (max-width: 767px) and reduced motion preference |
 
+### Route-Local Stores (Image Resizer)
+
+All image resizer state is in `src/routes/products/(utilities)/image-resizer/_lib/store.ts`:
+
+| Store | Type | Purpose |
+|-------|------|---------|
+| `images` | `Writable<ImageEntry[]>` | List of loaded image entries |
+| `activeImageId` | `Writable<string \| null>` | Currently selected image ID |
+| `activeImage` | `Derived<ImageEntry \| null>` | Derived from `images` + `activeImageId` |
+| `settings` | `Writable<ResizeSettings>` | Current resize settings for active image |
+| `result` | `Writable<ResizeResult \| null>` | Resize result for active image |
+| `processingState` | `Writable<ProcessingState>` | Current processing state (`idle`, `loading`, `resizing`, `downloading`, `exporting`) |
+| `hasImages` | `Derived<boolean>` | Whether any images are loaded |
+| `imageCount` | `Derived<number>` | Count of loaded images |
+| `isBatchMode` | `Derived<boolean>` | True when more than one image is loaded |
+| `batchSettings` | `Writable<BatchResizeSettings>` | Shared resize settings for batch export |
+| `batchProgress` | `Writable<{ current: number; total: number } \| null>` | Batch processing progress |
+| `filenameRevision` | `Writable<number>` | Incremented when filenames change (triggers reactivity in dependent components) |
+| `cropRevision` | `Writable<number>` | Incremented when crop data changes (triggers reactivity in dependent components) |
+
+The image resizer also maintains per-image state via `Map` objects (not stores) inside the store module:
+- `imageSettingsMap` — `Map<string, ResizeSettings>` — per-image resize settings
+- `imageCropMap` — `Map<string, CropData | null>` — per-image crop region
+- `imageResultMap` — `Map<string, ResizeResult>` — per-image resize results
+
+### Toast Notifications
+
+Toast notifications are managed by `svelte-sonner`. The `<Toaster>` component is mounted in the root `+layout.svelte` with `richColors`, `closeButton`, and `position="bottom-right"`. Components dispatch toasts via:
+
+```typescript
+import { toast } from 'svelte-sonner';
+
+toast.success('Image loaded');
+toast.error('Resize failed');
+toast.warning('Unsupported file skipped');
+toast.info('Crop removed');
+toast.promise(resizePromise, {
+  loading: 'Resizing...',
+  success: 'Done',
+  error: 'Failed'
+});
+```
+
 ### Future Stores (planned, not implemented)
 
 | Store | File | Type | Persisted | Purpose |
 |-------|------|------|-----------|---------|
 | `activeCategory` | `src/lib/stores/products.ts` | `Writable<ProductCategory \| 'all'>` | No | Product catalog filter state |
 | `isMobileMenuOpen` | `src/lib/stores/ui.ts` | `Writable<boolean>` | No | Mobile menu visibility |
-| `toastQueue` | N/A (svelte-sonner manages) | N/A | No | Toast notifications |
 
 ---
 
