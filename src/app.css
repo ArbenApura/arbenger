@@ -76,6 +76,17 @@ html {
 	background: #4338CA;
 }
 
+/* NUMBER INPUT SPINNERS — HIDE NATIVE, USE CLEAN APPEARANCE */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+
 @font-face {
 	font-family: 'Space Mono';
 	src: url('/fonts/SpaceMono-Bold.woff2') format('woff2');

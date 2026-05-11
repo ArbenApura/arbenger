@@ -1,6 +1,6 @@
 # Routing Architecture
 
-**Last updated:** 2026-05-10
+**Last updated:** 2026-05-11
 
 This document defines the URL structure, rendering strategy, and route planning for arbenger.com.
 
@@ -40,6 +40,7 @@ SvelteKit file-based routing. All routes live under `src/routes/`. The adapter i
 | Route | File | Purpose | H1 |
 |-------|------|---------|-----|
 | `/products/image-resizer` | `src/routes/products/(utilities)/image-resizer/+page.svelte` | Image resizer tool | "Free Online Image Resizer — Resize, Crop & Convert" (sr-only) |
+| `/products/image-compressor` | `src/routes/products/(utilities)/image-compressor/+page.svelte` | Image compressor tool | "Free Online Image Compressor — Reduce File Size Without Quality Loss" (sr-only) |
 
 Product tool routes use SvelteKit **group routes** via `(utilities)/`. The group name is excluded from the URL — e.g., `products/(utilities)/image-resizer/` renders at `/products/image-resizer`. Each product tool route contains:
 - `+page.svelte` — page component
@@ -56,13 +57,25 @@ Product tool routes use SvelteKit **group routes** via `(utilities)/`. The group
 
 Blog post routes use a dynamic `[slug]` parameter with `entries()` export in `+page.ts` to enumerate all slugs at build time for prerendering. Post content lives in `_posts/*.svelte` files inside the `[slug]` route directory, loaded eagerly via `import.meta.glob('./_posts/*.svelte', { eager: true })`.
 
+### API Routes (Server-Rendered)
+
+| Route | File | Methods | Purpose |
+|-------|------|---------|---------|
+| `/api/stats/` | `src/routes/api/stats/+server.ts` | GET, POST | Usage stats — GET returns `{ totalProcessed }`, POST atomically increments count via upsert |
+
+API routes are server-rendered (not prerendered). They run as Cloudflare Worker functions and access platform bindings (Hyperdrive) via `platform.env`. They are excluded from the sitemap and have no SEO concerns.
+
+### Other Server Routes
+
+| Route | File | Rendering | Purpose |
+|-------|------|-----------|---------|
+| `/sitemap.xml` | `src/routes/sitemap.xml/+server.ts` | Pre-rendered | XML sitemap (generated at build time) |
+
 ### Future Routes
 
 | Route | File | Rendering | Purpose |
 |-------|------|-----------|---------|
 | `/products/[slug]` | `src/routes/products/[slug]/+page.svelte` | Pre-rendered (from product data) | Individual product pages |
-| `/api/*` | `src/routes/api/*/+server.ts` | SSR (API endpoints) | Backend API routes |
-| `/sitemap.xml` | `src/routes/sitemap.xml/+server.ts` | SSR | Dynamic XML sitemap |
 
 ### Static Files
 
@@ -92,13 +105,24 @@ src/routes/
         +page.svelte      ← Image resizer tool
         +page.ts          ← prerender = true
         _components/       ← Route-local components
-          UploadZone.svelte
           PreviewCanvas.svelte
           ThumbnailStrip.svelte
           ResizeControls.svelte
           InfoPanel.svelte
           BatchImageList.svelte
           CropDialog.svelte
+        _lib/              ← Route-local store and worker
+          store.ts
+          worker.ts
+      image-compressor/
+        +page.svelte      ← Image compressor tool
+        +page.ts          ← prerender = true
+        _components/       ← Route-local components
+          CompareSlider.svelte
+          CompressControls.svelte
+          CompressInfoPanel.svelte
+          BatchImageList.svelte
+          ThumbnailStrip.svelte
         _lib/              ← Route-local store and worker
           store.ts
           worker.ts
@@ -111,6 +135,7 @@ src/routes/
       +page.svelte        ← Post shell (SEO, header, content loader)
       _posts/             ← Blog post content files
         how-to-use-image-resizer.svelte
+        how-to-use-image-compressor.svelte
   contact/
     +page.svelte          ← Contact page (inherits root layout)
   privacy/
@@ -119,8 +144,11 @@ src/routes/
     +page.svelte          ← Terms of service (inherits root layout)
   cookies/
     +page.svelte          ← Cookie policy (inherits root layout)
+  api/
+    stats/
+      +server.ts          ← Usage stats API (GET + POST, server-rendered)
   sitemap.xml/
-    +server.ts            ← Dynamic XML sitemap (SSR)
+    +server.ts            ← XML sitemap (pre-rendered at build time)
 ```
 
 The root layout provides:

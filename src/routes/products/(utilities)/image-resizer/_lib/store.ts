@@ -160,6 +160,7 @@ export const result = writable<ResizeResult | null>(null);
 export const processingState = writable<ProcessingState>('idle');
 export const batchProgress = writable<{ current: number; total: number } | null>(null);
 export const batchExported = writable(false);
+export const batchResultSize = writable<number | null>(null);
 export const filenameRevision = writable(0);
 export const cropRevision = writable(0);
 
@@ -228,30 +229,11 @@ function minDelay<T>(promise: Promise<T>, ms: number = 1000): Promise<T> {
 }
 
 async function fileToBitmap(file: File): Promise<ImageBitmap> {
-	if (file.type !== 'image/svg+xml') {
-		return createImageBitmap(file);
-	}
+	return createImageBitmap(file);
+}
 
-	const url = URL.createObjectURL(file);
-	try {
-		const img = new Image();
-		img.src = url;
-		await new Promise<void>((resolve, reject) => {
-			img.onload = () => resolve();
-			img.onerror = () => reject(new Error('Failed to load SVG'));
-		});
-
-		const w = img.naturalWidth || 300;
-		const h = img.naturalHeight || 150;
-		const canvas = document.createElement('canvas');
-		canvas.width = w;
-		canvas.height = h;
-		const ctx = canvas.getContext('2d')!;
-		ctx.drawImage(img, 0, 0, w, h);
-		return createImageBitmap(canvas);
-	} finally {
-		URL.revokeObjectURL(url);
-	}
+function fileKey(f: File): string {
+	return `${f.name}:${f.size}:${f.lastModified}`;
 }
 
 export async function addImages(files: FileList | File[]): Promise<void> {
@@ -260,21 +242,26 @@ export async function addImages(files: FileList | File[]): Promise<void> {
 	const validTypes = [
 		'image/png',
 		'image/jpeg',
-		'image/webp',
-		'image/gif',
-		'image/bmp',
-		'image/svg+xml'
+		'image/webp'
 	];
 
-	const results: { valid: ImageEntry[]; rejected: number; largeCount: number } = {
+	const existing = new Set(get(images).map((img) => fileKey(img.file)));
+
+	const results: { valid: ImageEntry[]; rejected: number; largeCount: number; duplicates: number } = {
 		valid: [],
 		rejected: 0,
-		largeCount: 0
+		largeCount: 0,
+		duplicates: 0
 	};
 
 	for (const file of fileArray) {
 		if (!validTypes.includes(file.type)) {
 			results.rejected++;
+			continue;
+		}
+
+		if (existing.has(fileKey(file))) {
+			results.duplicates++;
 			continue;
 		}
 
@@ -298,6 +285,7 @@ export async function addImages(files: FileList | File[]): Promise<void> {
 			};
 
 			results.valid.push(entry);
+			existing.add(fileKey(file));
 			imageSettingsMap.set(id, defaultSettings(entry));
 		} catch {
 			results.rejected++;
@@ -306,6 +294,10 @@ export async function addImages(files: FileList | File[]): Promise<void> {
 
 	if (results.rejected > 0) {
 		toast.warning(`${results.rejected} unsupported file${results.rejected > 1 ? 's' : ''} skipped`);
+	}
+
+	if (results.duplicates > 0) {
+		toast.info(`${results.duplicates} duplicate${results.duplicates > 1 ? 's' : ''} skipped`);
 	}
 
 	if (results.largeCount > 0) {
@@ -323,7 +315,7 @@ export async function addImages(files: FileList | File[]): Promise<void> {
 
 		const count = results.valid.length;
 		toast.success(`${count} image${count > 1 ? 's' : ''} loaded`);
-	} else if (results.rejected === 0) {
+	} else if (results.rejected === 0 && results.duplicates === 0) {
 		toast.error('No images found');
 	}
 }
@@ -409,6 +401,7 @@ export function clearAll(silent = false): void {
 	result.set(null);
 	processingState.set('idle');
 	batchExported.set(false);
+	batchResultSize.set(null);
 	if (count > 0 && !silent) {
 		toast.success('All images cleared');
 	}
@@ -628,6 +621,7 @@ export async function performResize(): Promise<void> {
 		loading: `Resizing to ${s.width}×${s.height}...`,
 		success: () => {
 			const r = get(result);
+			trackStats(1);
 			return `Done — ${s.width}×${s.height}${r ? ` · ${formatBytes(r.size)}` : ''}`;
 		},
 		error: 'Resize failed'
@@ -797,62 +791,77 @@ export async function downloadResult(): Promise<void> {
 	toast.success(`Downloaded · ${formatBytes(r.size)}`);
 }
 
-export async function downloadAllAsZip(): Promise<void> {
+const batchBlobs = new Map<string, { blob: Blob; filename: string; ext: string }>();
+
+export async function performBatchResize(): Promise<void> {
 	const list = get(images);
 	if (list.length < 2) return;
 
-	processingState.set('exporting');
+	processingState.set('resizing');
+	batchBlobs.clear();
+	const bs = get(batchSettings);
 
-	const zipPromise = minDelay(doBatchZip(list)).finally(() => {
+	const resizePromise = minDelay((async () => {
+		batchProgress.set({ current: 0, total: list.length });
+		let totalSize = 0;
+
+		for (let i = 0; i < list.length; i++) {
+			batchProgress.set({ current: i + 1, total: list.length });
+			const img = list[i];
+			const perImageSettings = imageSettingsMap.get(img.id);
+			const filename = perImageSettings?.filename ?? img.file.name.replace(/\.[^.]+$/, '');
+
+			const resizeS: ResizeSettings = { ...bs, filename };
+			const bitmap = await fileToBitmap(img.file);
+			const bgColor = bs.format === 'image/jpeg' ? bs.bgColor : bs.bgTransparent ? null : bs.bgColor;
+			const imgCrop = getImageCrop(img.id);
+			const blob = await resizeToBlob(bitmap, resizeS, bgColor, imgCrop);
+			const ext = getExtension(bs.format);
+
+			batchBlobs.set(img.id, { blob, filename, ext });
+			totalSize += blob.size;
+		}
+
+		batchResultSize.set(totalSize);
+		trackStats(list.length);
+	})()).finally(() => {
 		processingState.set('idle');
 		batchProgress.set(null);
 	});
 
-	toast.promise(zipPromise, {
-		loading: `Processing ${list.length} images...`,
-		success: 'ZIP downloaded',
-		error: 'Export failed'
+	toast.promise(resizePromise, {
+		loading: `Resizing ${list.length} images...`,
+		success: `${list.length} images resized`,
+		error: 'Resize failed'
 	});
 
-	return zipPromise;
+	return resizePromise;
 }
 
-async function doBatchZip(list: ImageEntry[]): Promise<void> {
-	batchProgress.set({ current: 0, total: list.length });
+export async function downloadBatchZip(zipName = 'resized-images'): Promise<void> {
+	if (batchBlobs.size === 0) return;
 
-	const { default: JSZip } = await import('jszip');
-	const zip = new JSZip();
-	const bs = get(batchSettings);
+	processingState.set('exporting');
 
-	for (let i = 0; i < list.length; i++) {
-		batchProgress.set({ current: i + 1, total: list.length });
-		const img = list[i];
-		const perImageSettings = imageSettingsMap.get(img.id);
-		const filename = perImageSettings?.filename ?? img.file.name.replace(/\.[^.]+$/, '');
+	const zipPromise = minDelay((async () => {
+		const { default: JSZip } = await import('jszip');
+		const zip = new JSZip();
 
-		const resizeS: ResizeSettings = {
-			...bs,
-			filename
-		};
+		for (const [, { blob, filename, ext }] of batchBlobs) {
+			zip.file(`${filename}${ext}`, blob);
+		}
 
-		const bitmap = await fileToBitmap(img.file);
+		const zipBlob = await zip.generateAsync({ type: 'blob' });
+		const a = document.createElement('a');
+		a.href = URL.createObjectURL(zipBlob);
+		a.download = `${zipName}.zip`;
+		a.click();
+		URL.revokeObjectURL(a.href);
+		batchExported.set(true);
+	})());
 
-		const bgColor =
-			bs.format === 'image/jpeg' ? bs.bgColor : bs.bgTransparent ? null : bs.bgColor;
-
-		const imgCrop = getImageCrop(img.id);
-		const blob = await resizeToBlob(bitmap, resizeS, bgColor, imgCrop);
-		const ext = getExtension(bs.format);
-		zip.file(`${filename}${ext}`, blob);
-	}
-
-	const zipBlob = await zip.generateAsync({ type: 'blob' });
-	const a = document.createElement('a');
-	a.href = URL.createObjectURL(zipBlob);
-	a.download = `resized-images-${Date.now()}.zip`;
-	a.click();
-	URL.revokeObjectURL(a.href);
-	batchExported.set(true);
+	zipPromise.finally(() => processingState.set('idle'));
+	return zipPromise;
 }
 
 async function resizeToBlob(
@@ -917,6 +926,28 @@ export function destroyWorker(): void {
 		worker.terminate();
 		worker = null;
 	}
+}
+
+export const totalProcessed = writable<number | null>(null);
+
+export function fetchStats(): void {
+	if (!browser) return;
+	fetch('/api/stats/')
+		.then((r) => r.json())
+		.then((d) => totalProcessed.set(d.totalProcessed ?? null))
+		.catch(() => {});
+}
+
+function trackStats(count: number): void {
+	if (!browser) return;
+	fetch('/api/stats/', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ toolId: 'image-resizer', count }),
+		keepalive: true
+	})
+		.then(() => fetchStats())
+		.catch(() => {});
 }
 
 export function formatBytes(bytes: number): string {

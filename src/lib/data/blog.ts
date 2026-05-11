@@ -22,6 +22,17 @@ export const blogPosts: BlogPost[] = [
 		readTime: 8,
 		featured: true,
 	},
+	{
+		slug: 'how-to-use-image-compressor',
+		title: 'How to Use Arbenger Image Compressor — The Complete Guide',
+		description:
+			'Learn how to compress PNG, JPEG, and WebP images directly in your browser. Step-by-step guide covering quality mode, target size, before/after comparison, batch compression, and more.',
+		date: '2026-05-11',
+		category: 'tutorial',
+		tags: ['image-compressor', 'guide', 'tools'],
+		readTime: 7,
+		featured: true,
+	},
 ];
 
 export const sortedPosts = [...blogPosts].sort(

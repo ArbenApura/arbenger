@@ -1,6 +1,6 @@
 # State Management
 
-**Last updated:** 2026-05-10
+**Last updated:** 2026-05-11
 
 This document defines how state is managed across arbenger.com. The base site has minimal state requirements — theme preference is the primary concern.
 
@@ -54,6 +54,42 @@ The image resizer also maintains per-image state via `Map` objects (not stores) 
 - `imageSettingsMap` — `Map<string, ResizeSettings>` — per-image resize settings
 - `imageCropMap` — `Map<string, CropData | null>` — per-image crop region
 - `imageResultMap` — `Map<string, ResizeResult>` — per-image resize results
+
+### Route-Local Stores (Image Compressor)
+
+All image compressor state is in `src/routes/products/(utilities)/image-compressor/_lib/store.ts`:
+
+| Store | Type | Purpose |
+|-------|------|---------|
+| `images` | `Writable<ImageEntry[]>` | List of loaded image entries |
+| `activeImageId` | `Writable<string \| null>` | Currently selected image ID |
+| `activeImage` | `Derived<ImageEntry \| null>` | Derived from `images` + `activeImageId` |
+| `settings` | `Writable<CompressSettings>` | Current compression settings (quality, format, filename, qualityMode, targetSize, targetUnit) |
+| `result` | `Writable<CompressResult \| null>` | Compression result for active image |
+| `processingState` | `Writable<ProcessingState>` | Current state (`idle`, `loading`, `compressing`, `exporting`) |
+| `hasImages` | `Derived<boolean>` | Whether any images are loaded |
+| `imageCount` | `Derived<number>` | Count of loaded images |
+| `isBatchMode` | `Derived<boolean>` | True when more than one image is loaded |
+| `batchProgress` | `Writable<{ current: number; total: number } \| null>` | Batch processing progress |
+| `batchExported` | `Writable<boolean>` | Whether batch ZIP has been exported |
+| `filenameRevision` | `Writable<number>` | Incremented when filenames change (triggers reactivity) |
+| `totalProcessed` | `Writable<number \| null>` | Lifetime count from `/api/stats/?toolId=image-compressor` |
+
+The image compressor also maintains per-image state via `Map` objects:
+- `imageResultMap` — `Map<string, CompressResult>` — per-image compression results
+- `imageSettingsMap` — `Map<string, CompressSettings>` — per-image settings (including filename)
+
+PNG compression uses `upng-js` for color quantization (quality slider maps to color count). The Web Worker (`worker.ts`) handles both canvas-based JPEG/WebP compression and UPNG-based PNG compression off the main thread.
+
+### Stats Store and Functions (Shared)
+
+Both image resizer and image compressor `store.ts` export stores and functions for stats tracking:
+
+| Export | Type | Purpose |
+|--------|------|---------|
+| `totalProcessed` | `Writable<number \| null>` | Lifetime count from `/api/stats/`. Subscribed to by `+page.svelte` for the stats UI section. |
+| `fetchStats()` | Function | Fetches `GET /api/stats/` and updates the `totalProcessed` store. Called on mount and after each resize. |
+| `trackStats(count)` | Function (internal) | `POST /api/stats/` with `keepalive: true`, then calls `fetchStats()` to refresh the displayed count. Called after single resize and batch zip. |
 
 ### Toast Notifications
 
@@ -288,9 +324,9 @@ $: if (isMenuOpen) {
 
 ## 6. Data Loading
 
-### Current (Base Site)
+### Static Data (Most Pages)
 
-All data is static imports. No load functions needed:
+Most data is static imports. No load functions needed:
 
 ```svelte
 <script lang="ts">
@@ -298,6 +334,18 @@ All data is static imports. No load functions needed:
 import { products, categories } from '$lib/data/products';
 </script>
 ```
+
+### Dynamic Data (Stats)
+
+The image resizer page calls `fetchStats()` on mount, which populates the `totalProcessed` writable store:
+
+```typescript
+onMount(() => {
+  fetchStats(); // fetches GET /api/stats/ → updates totalProcessed store
+});
+```
+
+After each resize, `trackStats(count)` POSTs the increment then calls `fetchStats()` again to refresh the displayed count. This is a client-side store pattern, not a SvelteKit load function, because the stats are non-critical and should not block page rendering.
 
 ### Future (Dynamic Data)
 

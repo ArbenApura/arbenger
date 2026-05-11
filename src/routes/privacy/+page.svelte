@@ -24,7 +24,7 @@
 			Privacy Policy
 		</h1>
 
-		<p class="mt-4 text-sm text-[#64748B] dark:text-slate-400">Last updated: May 8, 2026</p>
+		<p class="mt-4 text-sm text-[#64748B] dark:text-slate-400">Last updated: May 10, 2026</p>
 	</div>
 </section>
 
@@ -45,6 +45,12 @@
 			<li>
 				<strong class="text-[#0F172A] dark:text-white">Theme preference</strong> -- We store your light/dark mode
 				choice in your browser's localStorage. This never leaves your device.
+			</li>
+			<li>
+				<strong class="text-[#0F172A] dark:text-white">Anonymous usage statistics</strong> -- Some tools (like
+				our Image Resizer) send an anonymous counter when you complete an action (e.g., resizing an image).
+				This records only the number of actions -- no personal data, no image data, no IP address, and no
+				user identifier. The count is stored in an external database to display aggregate lifetime stats.
 			</li>
 			<li>
 				<strong class="text-[#0F172A] dark:text-white">Analytics data</strong> -- We may add privacy-friendly
@@ -73,9 +79,10 @@
 		<!-- DATA STORAGE AND SECURITY -->
 		<h2 class="font-display mt-12 text-xl font-bold text-[#0F172A] dark:text-white">Data Storage and Security</h2>
 		<p class="mt-4 text-[#475569] leading-relaxed dark:text-slate-300">
-			Your theme preference stays in your browser -- we never see it. If we collect any server-side data in the
-			future, we'll use reasonable security measures to protect it. No system is 100% secure, but we take it
-			seriously.
+			Your theme preference stays in your browser -- we never see it. Anonymous usage counts are stored in a
+			PostgreSQL database hosted by Neon, accessed through Cloudflare's Hyperdrive connection pooling. This
+			data contains no personal information -- only aggregate action counts per tool. We use reasonable
+			security measures to protect all stored data. No system is 100% secure, but we take it seriously.
 		</p>
 
 		<!-- THIRD-PARTY SERVICES -->
@@ -88,6 +95,11 @@
 				<strong class="text-[#0F172A] dark:text-white">Cloudflare</strong> -- For hosting and CDN. Cloudflare may
 				collect some technical data (like IP addresses) as part of delivering the site. See
 				<a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" class="text-[#0891B2] underline hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80">Cloudflare's privacy policy</a>.
+			</li>
+			<li>
+				<strong class="text-[#0F172A] dark:text-white">Neon</strong> -- Database provider used to store anonymous,
+				aggregate usage counts (e.g., total images resized). No personal data is stored in this database. See
+				<a href="https://neon.tech/privacy-policy" target="_blank" rel="noopener noreferrer" class="text-[#0891B2] underline hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80">Neon's privacy policy</a>.
 			</li>
 			<li>
 				<strong class="text-[#0F172A] dark:text-white">Analytics</strong> -- We may add a privacy-friendly

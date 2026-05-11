@@ -3,35 +3,30 @@
 	import { onDestroy, onMount } from 'svelte';
 	// IMPORTED MODULES
 	import { beforeNavigate, goto } from '$app/navigation';
-	import type { CropData } from './_lib/store';
 	import {
 		activeImage,
 		addImages,
 		clearAll,
-		cropRevision,
 		destroyWorker,
 		fetchStats,
-		hasImageCrop,
 		hasImages,
 		hasUnprocessedImages,
 		isBatchMode,
-		setImageCrop,
 		totalProcessed,
 	} from './_lib/store';
 	import { cn } from '$lib/utils/cn';
 	// IMPORTED DEP-COMPONENTS
-	import { AlertTriangle, BookOpen, Crop, Globe, LogOut, Shield, Zap } from 'lucide-svelte';
+	import { AlertTriangle, BookOpen, Globe, LogOut, Shield, Zap } from 'lucide-svelte';
 	// IMPORTED COMPONENTS
 	import ConfirmDialog from '$lib/components/ui/ConfirmDialog.svelte';
 	import JsonLd from '$lib/components/seo/JsonLd.svelte';
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
-	import BatchImageList from './_components/BatchImageList.svelte';
-	import CropDialog from './_components/CropDialog.svelte';
-	import InfoPanel from './_components/InfoPanel.svelte';
-	import PreviewCanvas from './_components/PreviewCanvas.svelte';
-	import ResizeControls from './_components/ResizeControls.svelte';
-	import ThumbnailStrip from './_components/ThumbnailStrip.svelte';
 	import UploadZone from '$lib/components/ui/UploadZone.svelte';
+	import BatchImageList from './_components/BatchImageList.svelte';
+	import CompareSlider from './_components/CompareSlider.svelte';
+	import CompressControls from './_components/CompressControls.svelte';
+	import CompressInfoPanel from './_components/CompressInfoPanel.svelte';
+	import ThumbnailStrip from './_components/ThumbnailStrip.svelte';
 
 	// -- CONSTANTS -- //
 
@@ -39,32 +34,11 @@
 
 	// -- STATES -- //
 
-	let cropDialogOpen = false;
-	let cropDialogImage: typeof $activeImage = null;
-	let cropDialogRef: CropDialog;
-
 	let leaveDialogOpen = false;
 	let pendingLeaveUrl = '';
 	let browserWarnings: string[] = [];
 
 	// -- FUNCTIONS -- //
-
-	function openCropDialog(img: typeof $activeImage) {
-		if (!img) return;
-		cropDialogImage = img;
-		cropDialogRef?.show(img);
-	}
-
-	function handleCropApply(e: CustomEvent<CropData>) {
-		if (!cropDialogImage) return;
-		const crop = e.detail;
-		const isFullImage =
-			crop.x === 0 &&
-			crop.y === 0 &&
-			crop.width === cropDialogImage.originalWidth &&
-			crop.height === cropDialogImage.originalHeight;
-		setImageCrop(cropDialogImage.id, isFullImage ? null : crop);
-	}
 
 	async function handleFiles(e: CustomEvent<FileList | File[]>) {
 		await addImages(e.detail);
@@ -140,21 +114,21 @@
 </script>
 
 <MetaTags
-	title="Free Image Resizer — Resize, Crop & Convert Online | Arbenger"
-	description="Resize, crop, and batch-convert images to PNG, JPEG, or WebP — directly in your browser. No uploads, no signups. 100% private and free."
-	url="{SITE_URL}/products/image-resizer/"
+	title="Free Image Compressor — Compress PNG, JPEG, WebP Online | Arbenger"
+	description="Compress PNG, JPEG, and WebP images up to 90% smaller. Quality slider, target size mode, and live before/after preview. No uploads — 100% private and free."
+	url="{SITE_URL}/products/image-compressor/"
 />
 
 <JsonLd
 	schema={{
 		'@context': 'https://schema.org',
 		'@type': 'WebApplication',
-		name: 'Arbenger Image Resizer',
-		url: `${SITE_URL}/products/image-resizer/`,
+		name: 'Arbenger Image Compressor',
+		url: `${SITE_URL}/products/image-compressor/`,
 		applicationCategory: 'UtilitiesApplication',
 		operatingSystem: 'Any',
 		offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-		description: 'Free browser-based image resizer with crop, batch processing, and format conversion. No uploads — 100% private.',
+		description: 'Free browser-based image compressor with quality slider, target size mode, and live before/after preview. No uploads — 100% private.',
 	}}
 />
 
@@ -168,8 +142,8 @@
 			{
 				'@type': 'ListItem',
 				position: 3,
-				name: 'Image Resizer',
-				item: `${SITE_URL}/products/image-resizer/`,
+				name: 'Image Compressor',
+				item: `${SITE_URL}/products/image-compressor/`,
 			},
 		],
 	}}
@@ -183,12 +157,12 @@
 			<span class="mx-1">/</span>
 			<a href="/products/" class="transition-colors hover:text-[#0891B2] dark:hover:text-[#22D3EE]">Products</a>
 			<span class="mx-1">/</span>
-			<span class="text-[#0F172A] dark:text-white">Image Resizer</span>
+			<span class="text-[#0F172A] dark:text-white">Image Compressor</span>
 		</nav>
 
 		<div class="flex items-center gap-3">
 			<a
-				href="/blog/how-to-use-image-resizer/"
+				href="/blog/how-to-use-image-compressor/"
 				class="flex items-center gap-1 text-[10px] text-[#0891B2] transition-colors hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80"
 			>
 				<BookOpen size={10} />
@@ -212,12 +186,17 @@
 		</div>
 	{/if}
 
-	<h1 class="sr-only">Free Online Image Resizer — Resize, Crop & Convert</h1>
+	<h1 class="sr-only">Free Online Image Compressor — Reduce File Size Without Quality Loss</h1>
 
 	{#if !$hasImages}
 		<!-- UPLOAD ZONE -->
 		<div class="flex flex-1 items-center justify-center py-6 lg:py-10">
-			<UploadZone on:files={handleFiles} class="w-full max-w-2xl lg:min-h-[560px]" guideHref="/blog/how-to-use-image-resizer/" />
+			<UploadZone
+				on:files={handleFiles}
+				class="w-full max-w-2xl lg:min-h-[560px]"
+				accept=".png,.jpg,.jpeg,.webp"
+				formatHint="PNG, JPG, WebP"
+			/>
 		</div>
 	{:else if !$isBatchMode}
 		<!-- SINGLE IMAGE MODE -->
@@ -228,42 +207,31 @@
 			/>
 
 			<div class="flex flex-1 gap-4">
-				<div class="relative min-w-0 flex-1 flex flex-col">
-					<PreviewCanvas />
-					{#if $activeImage}
-						<button
-							class={cn(
-								'absolute top-3 right-3 z-10 flex items-center gap-1.5 rounded-lg border px-3 py-2 text-xs font-semibold shadow-sm backdrop-blur-md transition-all',
-								$cropRevision >= 0 && hasImageCrop($activeImage.id)
-									? 'border-[#0891B2]/30 bg-[#0891B2]/20 text-[#0891B2] dark:border-[#22D3EE]/30 dark:bg-[#22D3EE]/20 dark:text-[#22D3EE]'
-									: 'border-[#E2E8F0] bg-white/80 text-[#334155] hover:border-[#0891B2]/30 hover:bg-white hover:text-[#0891B2] dark:border-[#2A2578] dark:bg-[#0B0A23]/80 dark:text-slate-300 dark:hover:border-[#22D3EE]/30 dark:hover:text-[#22D3EE]',
-							)}
-							on:click={() => openCropDialog($activeImage)}
-						>
-							<Crop size={12} />
-							{$cropRevision >= 0 && hasImageCrop($activeImage.id) ? 'Cropped' : 'Crop'}
-						</button>
-					{/if}
+				<!-- COMPARE SLIDER PREVIEW -->
+				<div class="relative flex min-w-0 flex-1 flex-col">
+					<CompareSlider />
 				</div>
 
+				<!-- DESKTOP SIDEBAR -->
 				<div
 					class="w-[360px] shrink-0 overflow-y-auto rounded-xl border border-[#E2E8F0] bg-white max-lg:hidden dark:border-[#2A2578] dark:bg-[#1E1A5E]/20"
 				>
 					<div class="flex flex-col gap-4 p-4">
-						<ResizeControls />
+						<CompressControls />
 						<div class="border-t border-[#F1F5F9] dark:border-[#2A2578]/50" />
-						<InfoPanel />
+						<CompressInfoPanel />
 					</div>
 				</div>
 			</div>
 
+			<!-- MOBILE CONTROLS -->
 			<div
 				class="rounded-xl border border-[#E2E8F0] bg-white p-4 lg:hidden dark:border-[#2A2578] dark:bg-[#1E1A5E]/20"
 			>
 				<div class="flex flex-col gap-4">
-					<ResizeControls />
+					<CompressControls />
 					<div class="border-t border-[#F1F5F9] dark:border-[#2A2578]/50" />
-					<InfoPanel />
+					<CompressInfoPanel />
 				</div>
 			</div>
 		</div>
@@ -277,7 +245,6 @@
 				<BatchImageList
 					on:addFiles={(e) => handleFiles(new CustomEvent('files', { detail: e.detail }))}
 					on:clearAll={clearAll}
-					on:crop={(e) => openCropDialog(e.detail)}
 				/>
 			</div>
 
@@ -286,9 +253,9 @@
 				class="w-[360px] shrink-0 overflow-y-auto rounded-xl border border-[#E2E8F0] bg-white max-lg:hidden dark:border-[#2A2578] dark:bg-[#1E1A5E]/20"
 			>
 				<div class="flex flex-col gap-4 p-4">
-					<ResizeControls batch />
+					<CompressControls batch />
 					<div class="border-t border-[#F1F5F9] dark:border-[#2A2578]/50" />
-					<InfoPanel batch />
+					<CompressInfoPanel batch />
 				</div>
 			</div>
 		</div>
@@ -298,9 +265,9 @@
 			class="mt-3 rounded-xl border border-[#E2E8F0] bg-white p-4 lg:hidden dark:border-[#2A2578] dark:bg-[#1E1A5E]/20"
 		>
 			<div class="flex flex-col gap-4">
-				<ResizeControls batch />
+				<CompressControls batch />
 				<div class="border-t border-[#F1F5F9] dark:border-[#2A2578]/50" />
-				<InfoPanel batch />
+				<CompressInfoPanel batch />
 			</div>
 		</div>
 	{/if}
@@ -316,7 +283,7 @@
 			<div class="relative">
 				<!-- EYEBROW LABEL -->
 				<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">
-					Images resized worldwide
+					Images compressed worldwide
 				</p>
 
 				<!-- BIG NUMBER -->
@@ -355,24 +322,17 @@
 
 	<!-- RELATED TOOL -->
 	<div class="mt-4 flex items-center justify-center gap-2 text-xs text-[#94A3B8] dark:text-slate-500">
-		<span>Need to compress instead?</span>
-		<a href="/products/image-compressor/" class="font-medium text-[#0891B2] transition-colors hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80">
-			Try Image Compressor
+		<span>Need to resize instead?</span>
+		<a href="/products/image-resizer/" class="font-medium text-[#0891B2] transition-colors hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80">
+			Try Image Resizer
 		</a>
 	</div>
 </div>
 
-<CropDialog
-	bind:this={cropDialogRef}
-	bind:open={cropDialogOpen}
-	image={cropDialogImage}
-	on:apply={handleCropApply}
-/>
-
 <!-- LEAVE PAGE CONFIRMATION -->
 <ConfirmDialog
 	bind:open={leaveDialogOpen}
-	title="Leave Image Resizer?"
+	title="Leave Image Compressor?"
 	message="You have images that haven't been processed yet. They'll be lost if you leave."
 	confirmLabel="Leave"
 	cancelLabel="Stay"

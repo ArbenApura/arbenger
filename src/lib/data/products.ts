@@ -7,7 +7,7 @@ export const categories: ProductCategoryInfo[] = [
 		name: 'Utilities',
 		description: 'Image tools, code formatters, converters, and other browser-based utilities.',
 		icon: 'wrench',
-		productCount: 1,
+		productCount: 2,
 	},
 	{
 		id: 'vscode-extensions',
@@ -49,6 +49,18 @@ export const products: Product[] = [
 		platform: 'web',
 		externalUrl: '/products/image-resizer',
 		tags: ['image', 'resize', 'converter', 'free'],
+		featured: false,
+	},
+	{
+		slug: 'image-compressor',
+		name: 'Image Compressor',
+		description:
+			'Compress PNG, JPEG, and WebP images up to 90% smaller. Quality slider, target size mode, and live before/after preview.',
+		category: 'misc-tools',
+		status: 'live',
+		platform: 'web',
+		externalUrl: '/products/image-compressor',
+		tags: ['image', 'compress', 'optimize', 'free'],
 		featured: false,
 	},
 ];

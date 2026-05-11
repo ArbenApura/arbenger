@@ -1,6 +1,6 @@
 # Data Models
 
-**Last updated:** 2026-05-10
+**Last updated:** 2026-05-11
 
 This document defines the TypeScript interfaces and data structures used across arbenger.com. All data types live in `src/lib/types/index.ts`.
 
@@ -67,7 +67,7 @@ export const categories: ProductCategoryInfo[] = [
     name: 'Utilities',
     description: 'Image tools, code formatters, converters, and other browser-based utilities.',
     icon: 'wrench',
-    productCount: 1
+    productCount: 2
   },
   {
     id: 'vscode-extensions',
@@ -109,6 +109,17 @@ export const products: Product[] = [
     platform: 'web',
     externalUrl: '/products/image-resizer',
     tags: ['image', 'resize', 'converter', 'free'],
+    featured: false
+  },
+  {
+    slug: 'image-compressor',
+    name: 'Image Compressor',
+    description: 'Compress PNG, JPEG, and WebP images up to 90% smaller. Quality slider, target size mode, and live before/after preview.',
+    category: 'misc-tools',
+    status: 'live',
+    platform: 'web',
+    externalUrl: '/products/image-compressor',
+    tags: ['image', 'compress', 'optimize', 'free'],
     featured: false
   }
 ];
@@ -438,7 +449,65 @@ type ResizeError = {
 
 ---
 
-## 8. Theme Data
+## 8. Stats Data (Server-Side)
+
+These types are defined in `src/lib/server/db/schema.ts` using Drizzle ORM. They represent the database schema, not client-side TypeScript interfaces.
+
+### Drizzle Schema
+
+```typescript
+// src/lib/server/db/schema.ts
+import { pgTable, text, bigint, timestamp } from 'drizzle-orm/pg-core';
+
+export const toolStats = pgTable('tool_stats', {
+  toolId: text('tool_id').primaryKey(),
+  totalProcessed: bigint('total_processed', { mode: 'number' }).notNull().default(0),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow()
+});
+```
+
+### Database Client
+
+```typescript
+// src/lib/server/db/index.ts
+import { drizzle } from 'drizzle-orm/postgres-js';
+import postgres from 'postgres';
+
+export function createDb(connectionString: string) {
+  const sql = postgres(connectionString, { prepare: false });
+  return drizzle(sql, { schema });
+}
+```
+
+The `prepare: false` option is required because Cloudflare Hyperdrive pools connections across Worker invocations, and prepared statements are connection-specific.
+
+### API Response Shape
+
+```typescript
+// GET /api/stats/
+{ totalProcessed: number }
+
+// POST /api/stats/ (request body)
+{ toolId?: string; count?: number }
+
+// POST /api/stats/ (response)
+{ success: boolean }
+```
+
+### Security
+
+- **`toolId` allowlist** — POST rejects any `toolId` not in `ALLOWED_TOOL_IDS` (`Set(['image-resizer', 'image-compressor'])`) with 400. GET also accepts `?toolId=` query param (defaults to `'image-resizer'`)
+- **Count cap** — `count` is clamped to `[1, 10000]` server-side
+- **Error handling** — Both GET and POST wrap DB calls in try/catch, returning generic `{ error: 'Service unavailable' }` (503) on failure
+- **Rate limiting** — Cloudflare WAF rule: 10 requests per 10 seconds per IP on `POST /api/stats/`
+
+### Client-Side Tracking
+
+The image resizer exports `totalProcessed` (a `Writable<number | null>` store) and `fetchStats()` from `store.ts`. On mount, the page calls `fetchStats()` to populate the store. After each resize, `trackStats(count)` POSTs the increment then calls `fetchStats()` to refresh the displayed count.
+
+---
+
+## 9. Theme Data
 
 ### Type
 
@@ -452,11 +521,12 @@ The theme store is a simple `writable<boolean>` (`isDark`). See `src/lib/stores/
 
 ---
 
-## 9. Data Flow
+## 10. Data Flow
 
 ```
-src/lib/data/products.ts     → Product catalog data (static)
-src/lib/data/blog.ts         → Blog post registry (static)
+STATIC (build time):
+src/lib/data/products.ts     → Product catalog data
+src/lib/data/blog.ts         → Blog post registry
        ↓
 src/lib/types/index.ts       → TypeScript interfaces
        ↓
@@ -466,11 +536,12 @@ src/routes/blog/+page.svelte → Blog listing (filtered, paginated)
 src/routes/blog/[slug]/      → Blog post (loaded via import.meta.glob)
        ↓
 src/lib/components/           → UI components receive typed props
+
+DYNAMIC (runtime):
+Client (store.ts trackStats)  → POST /api/stats/  → Hyperdrive → Neon PostgreSQL
+Client (page onMount fetch)   → GET /api/stats/   → Hyperdrive → Neon PostgreSQL
 ```
 
-Data is **static at build time** for the base site. No database, no API calls. Products are defined in TypeScript files and imported directly into route components.
+Most data is **static at build time**. Products and blog posts are defined in TypeScript files and imported directly into route components.
 
-When dynamic data is needed (future), the pattern extends:
-- `+page.server.ts` load functions fetch from database/API
-- Same TypeScript interfaces used for type safety
-- Components receive data via the same props
+The stats system is the first **dynamic data path**: the image resizer page fetches the lifetime count on mount via `GET /api/stats/` and tracks each resize via `POST /api/stats/`. Both requests flow through Cloudflare Hyperdrive to Neon PostgreSQL. The API endpoint (`src/routes/api/stats/+server.ts`) uses Drizzle ORM for type-safe queries.

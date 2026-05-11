@@ -3,7 +3,12 @@
 declare namespace App {
 	interface Platform {
 		env?: {
-			[key: string]: string;
+			HYPERDRIVE: Hyperdrive;
+			[key: string]: string | Hyperdrive;
 		};
 	}
+}
+
+interface Hyperdrive {
+	connectionString: string;
 }

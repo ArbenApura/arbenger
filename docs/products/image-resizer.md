@@ -1,6 +1,6 @@
 # Image Resizer
 
-**Last updated:** 2026-05-10
+**Last updated:** 2026-05-11
 
 Comprehensive documentation for the Arbenger Image Resizer — a fully client-side image resizing, cropping, and format conversion tool.
 
@@ -8,7 +8,7 @@ Comprehensive documentation for the Arbenger Image Resizer — a fully client-si
 
 ## 1. Overview
 
-The Image Resizer is Arbenger's first live product. It allows users to resize, crop, and convert images entirely in the browser with no server uploads, no signups, and no tracking.
+The Image Resizer is one of Arbenger's live products. It allows users to resize, crop, and convert images entirely in the browser with no server uploads, no signups, and no tracking.
 
 | Property | Value |
 |----------|-------|
@@ -48,7 +48,6 @@ src/routes/products/(utilities)/image-resizer/
   +page.svelte                    ← Main page component
   +page.ts                       ← export const prerender = true
   _components/
-    UploadZone.svelte             ← Drag-drop + click-to-upload zone
     PreviewCanvas.svelte          ← Image preview with resize result overlay
     ThumbnailStrip.svelte         ← Horizontal thumbnail strip for multi-image navigation
     ResizeControls.svelte         ← Width/height inputs, format, quality, fit mode, presets
@@ -75,6 +74,7 @@ The image resizer uses these components from `src/lib/components/ui/`:
 
 | Component | Usage |
 |-----------|-------|
+| `UploadZone.svelte` | Drag-drop + click-to-upload zone (shared component) |
 | `Select.svelte` | Format selector, fit mode selector, preset groups |
 | `ColorPicker.svelte` | Background color picker for contain/JPEG modes |
 | `ConfirmDialog.svelte` | Clear-all confirmation dialog, leave-page guard |
@@ -221,9 +221,9 @@ If `OffscreenCanvas` is not supported (older browsers), the store falls back to 
 
 ## 5. Components
 
-### UploadZone
+### UploadZone (shared)
 
-Drop zone for initial image upload. Supports drag-and-drop, click-to-browse, and shows supported format info. Dispatches `files` event with `FileList | File[]`.
+Shared component at `src/lib/components/ui/UploadZone.svelte`. Drop zone for initial image upload. Supports drag-and-drop, click-to-browse, and shows supported format info. Dispatches `files` event with `FileList | File[]`. Accepts `accept`, `formatHint`, `guideHref` props.
 
 ### PreviewCanvas
 
@@ -335,6 +335,8 @@ User clicks Apply → setImageCrop(id, cropData)
 | Blog post | "How to Use Arbenger Image Resizer — The Complete Guide" at `/blog/how-to-use-image-resizer/` |
 | Canonical | `https://arbenger.com/products/image-resizer` |
 | Sitemap | Priority 0.7, weekly changefreq |
+| Cross-link | "Need to compress instead? Try Image Compressor" link at page bottom |
+| Browser warning | Amber banner when `createImageBitmap`, `OffscreenCanvas`, or `Worker` is missing |
 
 ---
 
@@ -347,11 +349,9 @@ User clicks Apply → setImageCrop(id, cropData)
 | PNG | `image/png` | 50 MB |
 | JPEG | `image/jpeg` | 50 MB |
 | WebP | `image/webp` | 50 MB |
-| GIF | `image/gif` | 50 MB |
-| BMP | `image/bmp` | 50 MB |
 | SVG | `image/svg+xml` | 50 MB |
 
-Files over 50 MB trigger a warning toast but are still processed. Unsupported formats are silently rejected with a warning count.
+Files over 50 MB trigger a warning toast but are still processed. Unsupported formats are rejected with a warning count. Duplicate uploads (matched by `name + size + lastModified`) are automatically skipped with a toast notification.
 
 ### Output
 

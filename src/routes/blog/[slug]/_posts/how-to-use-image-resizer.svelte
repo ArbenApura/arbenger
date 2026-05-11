@@ -103,7 +103,7 @@
 				<div class="rounded-lg bg-[#0891B2] px-4 py-1.5 text-[10px] font-medium text-white shadow-sm dark:bg-[#22D3EE] dark:text-[#0B0A23]">
 					Browse Files
 				</div>
-				<p class="text-[8px] text-[#94A3B8] dark:text-slate-500">PNG, JPG, WebP, GIF, BMP, SVG</p>
+				<p class="text-[8px] text-[#94A3B8] dark:text-slate-500">PNG, JPG, WebP</p>
 			</div>
 			<p class="font-display text-sm font-bold text-[#0F172A] dark:text-white">Click to Browse</p>
 			<p class="mt-1 text-xs text-[#64748B] dark:text-slate-400">Click the zone to open your file picker</p>
@@ -128,7 +128,7 @@
 	<div class="mt-8 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-5 dark:border-[#2A2578] dark:bg-[#1E1A5E]/20">
 		<p class="font-display text-sm font-bold text-[#0F172A] dark:text-white">Supported Input Formats</p>
 		<div class="mt-3 flex flex-wrap gap-2">
-			{#each ['PNG', 'JPEG', 'WebP', 'GIF', 'BMP', 'SVG'] as fmt}
+			{#each ['PNG', 'JPEG', 'WebP'] as fmt}
 				<span class="rounded-lg bg-white px-3 py-1.5 font-mono text-xs text-[#0F172A] shadow-sm dark:bg-[#2A2578]/50 dark:text-white">
 					{fmt}
 				</span>

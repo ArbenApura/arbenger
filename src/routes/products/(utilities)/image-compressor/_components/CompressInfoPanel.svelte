@@ -3,46 +3,46 @@
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	// IMPORTED MODULES
+	import { cn } from '$lib/utils/cn';
 	import {
 		activeImage,
 		result,
-		settings,
-		batchSettings,
 		processingState,
+		imageCount,
 		batchProgress,
 		batchResultSize,
-		imageCount,
-		images,
+		settings,
 		formatBytes,
 		formatName,
-		performResize,
+		getOutputFormat,
+		performCompress,
 		downloadResult,
-		performBatchResize,
-		downloadBatchZip
+		performBatchCompress,
+		downloadBatchZip,
+		images
 	} from '../_lib/store';
-	import { cn } from '$lib/utils/cn';
 	// IMPORTED DEP-COMPONENTS
-	import { Download, Archive, Loader2, Play } from 'lucide-svelte';
+	import { Download, Loader2, Archive, Play } from 'lucide-svelte';
 
 	// -- OPTIONAL PROPS -- //
 
-	export let batch: boolean = false;
+	export let batch = false;
 
 	// -- STATES -- //
 
 	let zipDialogOpen = false;
-	let zipFilename = 'resized-images';
+	let zipFilename = 'compressed-images';
 
 	// -- FUNCTIONS -- //
 
 	function openZipDialog() {
-		zipFilename = 'resized-images';
+		zipFilename = 'compressed-images';
 		zipDialogOpen = true;
 	}
 
 	function handleZipConfirm() {
 		zipDialogOpen = false;
-		downloadBatchZip(zipFilename || 'resized-images');
+		downloadBatchZip(zipFilename || 'compressed-images');
 	}
 
 	function handleZipCancel() {
@@ -68,99 +68,173 @@
 
 	// -- REACTIVE STATES -- //
 
-	$: reduction = !batch && $activeImage && $result
+	$: outputFormat = $activeImage ? getOutputFormat($activeImage, $settings) : '';
+	$: reduction = $result && $activeImage
 		? Math.round((1 - $result.size / $activeImage.originalSize) * 100)
-		: null;
-
-	$: reductionLabel = reduction !== null
-		? reduction > 0
-			? `↓ ${reduction}%`
-			: `↑ ${Math.abs(reduction)}%`
-		: null;
-
+		: 0;
 	$: isProcessing = $processingState !== 'idle';
 	$: totalOriginalSize = $images.reduce((sum, img) => sum + img.originalSize, 0);
 	$: batchReduction = $batchResultSize !== null && totalOriginalSize > 0
 		? Math.round((1 - $batchResultSize / totalOriginalSize) * 100)
 		: null;
+	$: targetBytes = $settings.targetSize * ($settings.targetUnit === 'MB' ? 1024 * 1024 : 1024);
+	$: targetExceedsOriginal = $settings.qualityMode === 'target-size' && $activeImage !== null && targetBytes >= $activeImage.originalSize;
 </script>
 
-{#if batch}
-	<!-- BATCH MODE -->
-	<div class="space-y-3">
+{#if !batch}
+	<!-- SINGLE MODE INFO -->
+	<div class="flex flex-col gap-3">
+		{#if $activeImage}
+			<!-- STATS GRID -->
+			<div class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 text-xs">
+				<span class="text-[#94A3B8] dark:text-slate-500">Original</span>
+				<span class="text-right font-medium text-[#0F172A] dark:text-white">
+					{formatBytes($activeImage.originalSize)} · {formatName($activeImage.file.type)}
+				</span>
+
+				<span class="text-[#94A3B8] dark:text-slate-500">Dimensions</span>
+				<span class="text-right font-medium text-[#0F172A] dark:text-white">
+					{$activeImage.originalWidth}×{$activeImage.originalHeight}
+				</span>
+
+				{#if $result}
+					<span class="text-[#94A3B8] dark:text-slate-500">Compressed</span>
+					<span class="text-right font-medium text-[#0891B2] dark:text-[#22D3EE]">
+						{formatBytes($result.size)} · {formatName(outputFormat)}
+					</span>
+
+					<span class="text-[#94A3B8] dark:text-slate-500">Reduction</span>
+					<span class={cn(
+						'text-right font-semibold',
+						reduction > 0 ? 'text-[#10B981]' : reduction < 0 ? 'text-[#F59E0B]' : 'text-[#94A3B8] dark:text-slate-500'
+					)}>
+						{#if reduction > 0}
+							{reduction}% smaller
+						{:else if reduction < 0}
+							{Math.abs(reduction)}% larger
+						{:else}
+							Already optimized
+						{/if}
+					</span>
+				{/if}
+			</div>
+		{/if}
+
+		<!-- PROGRESS BAR -->
+		{#if $batchProgress}
+			<div class="overflow-hidden rounded-full bg-[#E2E8F0] dark:bg-[#2A2578]/50">
+				<div
+					class="h-1 rounded-full bg-[#0891B2] transition-all duration-300 dark:bg-[#22D3EE]"
+					style="width: {($batchProgress.current / $batchProgress.total) * 100}%;"
+				/>
+			</div>
+		{/if}
+
+		<!-- ACTION BUTTONS -->
+		<div class="flex flex-col gap-2">
+			<button
+				class={cn(
+					'flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all',
+					'bg-[#0891B2] text-white hover:brightness-110 dark:bg-[#22D3EE] dark:text-[#0B0A23]',
+					(isProcessing || targetExceedsOriginal) && 'pointer-events-none opacity-50'
+				)}
+				disabled={isProcessing || !$activeImage || targetExceedsOriginal}
+				on:click={performCompress}
+			>
+				{#if $processingState === 'compressing'}
+					<Loader2 size={14} class="animate-spin" />
+					Compressing...
+				{:else if $result}
+					Re-compress
+				{:else}
+					Compress
+				{/if}
+			</button>
+
+			{#if $result}
+				<button
+					class="flex items-center justify-center gap-2 rounded-lg border border-[#E2E8F0] px-4 py-2.5 text-sm font-medium text-[#0F172A] transition-all hover:bg-[#F8FAFC] dark:border-[#2A2578] dark:text-white dark:hover:bg-[#1E1A5E]/30"
+					on:click={downloadResult}
+				>
+					<Download size={14} />
+					Download
+				</button>
+			{/if}
+		</div>
+	</div>
+{:else}
+	<!-- BATCH MODE INFO -->
+	<div class="flex flex-col gap-3">
 		<div class="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
 			<span class="text-[#94A3B8] dark:text-slate-500">Images</span>
 			<span class="text-right tabular-nums text-[#334155] dark:text-slate-300">{$imageCount}</span>
-
-			<span class="text-[#94A3B8] dark:text-slate-500">Target</span>
-			<span class="text-right tabular-nums text-[#334155] dark:text-slate-300">
-				{$batchSettings.width}×{$batchSettings.height} · {formatName($batchSettings.format)}
-			</span>
 
 			<span class="text-[#94A3B8] dark:text-slate-500">Original</span>
 			<span class="text-right tabular-nums text-[#334155] dark:text-slate-300">{formatBytes(totalOriginalSize)}</span>
 
 			{#if $batchResultSize !== null}
-				<span class="text-[#94A3B8] dark:text-slate-500">Resized</span>
+				<span class="text-[#94A3B8] dark:text-slate-500">Compressed</span>
 				<span class="text-right tabular-nums text-[#0891B2] dark:text-[#22D3EE]">{formatBytes($batchResultSize)}</span>
 
-				<span class="text-[#94A3B8] dark:text-slate-500">Change</span>
+				<span class="text-[#94A3B8] dark:text-slate-500">Reduction</span>
 				<span class={cn(
 					'text-right font-semibold tabular-nums',
-					batchReduction !== null && batchReduction > 0 ? 'text-[#2DD4BF]' : 'text-[#94A3B8] dark:text-slate-500'
+					batchReduction !== null && batchReduction > 0 ? 'text-[#10B981]' : 'text-[#94A3B8] dark:text-slate-500'
 				)}>
 					{#if batchReduction !== null && batchReduction > 0}
 						{batchReduction}% smaller
 					{:else if batchReduction !== null && batchReduction < 0}
 						{Math.abs(batchReduction)}% larger
 					{:else}
-						Same size
+						Already optimized
 					{/if}
 				</span>
 			{/if}
 		</div>
 
+		<!-- PROGRESS BAR -->
 		{#if $batchProgress}
 			<div class="space-y-1.5">
 				<div class="flex justify-between text-xs text-[#94A3B8] dark:text-slate-500">
 					<span>Processing</span>
 					<span class="tabular-nums">{$batchProgress.current} / {$batchProgress.total}</span>
 				</div>
-				<div class="h-1.5 overflow-hidden rounded-full bg-[#E2E8F0] dark:bg-[#2A2578]">
+				<div class="h-1.5 overflow-hidden rounded-full bg-[#E2E8F0] dark:bg-[#2A2578]/50">
 					<div
 						class="h-full rounded-full bg-[#0891B2] transition-[width] duration-75 dark:bg-[#22D3EE]"
-						style="width: {($batchProgress.current / $batchProgress.total) * 100}%"
+						style="width: {($batchProgress.current / $batchProgress.total) * 100}%;"
 					/>
 				</div>
 			</div>
 		{/if}
 
+		<!-- ACTION BUTTONS -->
 		<div class="space-y-2">
 			<button
 				class={cn(
-					'flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-200',
+					'flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all',
 					'bg-[#0891B2] text-white hover:brightness-110 dark:bg-[#22D3EE] dark:text-[#0B0A23]',
 					isProcessing && 'pointer-events-none opacity-70'
 				)}
 				disabled={isProcessing}
-				on:click={performBatchResize}
+				on:click={performBatchCompress}
 			>
-				{#if $processingState === 'resizing'}
-					<Loader2 size={16} class="animate-spin" />
-					{$batchProgress ? `${$batchProgress.current}/${$batchProgress.total}` : 'Resizing...'}
+				{#if $processingState === 'compressing'}
+					<Loader2 size={14} class="animate-spin" />
+					{$batchProgress ? `${$batchProgress.current}/${$batchProgress.total}` : 'Compressing...'}
 				{:else if $batchResultSize !== null}
-					<Play size={16} />
-					Re-resize All
+					<Play size={14} />
+					Re-compress All
 				{:else}
-					<Play size={16} />
-					Resize All
+					<Play size={14} />
+					Compress All
 				{/if}
 			</button>
 
 			{#if $batchResultSize !== null}
 				<button
 					class={cn(
-						'flex w-full items-center justify-center gap-2 rounded-lg border px-4 py-2 text-xs font-medium transition-all duration-200',
+						'flex w-full items-center justify-center gap-2 rounded-lg border px-4 py-2 text-xs font-medium transition-all',
 						'border-[#E2E8F0] text-[#64748B] hover:border-[#0891B2] hover:text-[#0891B2]',
 						'dark:border-[#2A2578] dark:text-slate-400 dark:hover:border-[#22D3EE] dark:hover:text-[#22D3EE]',
 						isProcessing && 'pointer-events-none opacity-70'
@@ -173,106 +247,6 @@
 				</button>
 			{/if}
 		</div>
-	</div>
-{:else}
-	<!-- SINGLE MODE -->
-	{#if $activeImage}
-		<div class="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
-			<span class="text-[#94A3B8] dark:text-slate-500">Original</span>
-			<span class="text-right tabular-nums text-[#334155] dark:text-slate-300">
-				{$activeImage.originalWidth}×{$activeImage.originalHeight} · {formatBytes($activeImage.originalSize)}
-			</span>
-
-			<span class="text-[#94A3B8] dark:text-slate-500">New</span>
-			<span class="text-right tabular-nums text-[#334155] dark:text-slate-300">
-				{$settings.width}×{$settings.height} · {formatName($settings.format)}
-				{#if $result} · {formatBytes($result.size)}{/if}
-			</span>
-
-			{#if reductionLabel}
-				<span class="text-[#94A3B8] dark:text-slate-500">Change</span>
-				<span class={cn(
-					'text-right text-xs font-semibold tabular-nums',
-					reduction !== null && reduction > 0 ? 'text-[#2DD4BF]' : 'text-[#94A3B8]'
-				)}>
-					{reductionLabel}
-				</span>
-			{/if}
-		</div>
-	{/if}
-
-	{#if $batchProgress}
-		<div class="space-y-1.5">
-			<div class="flex justify-between text-xs text-[#94A3B8] dark:text-slate-500">
-				<span>Processing</span>
-				<span class="tabular-nums">{$batchProgress.current} / {$batchProgress.total}</span>
-			</div>
-			<div class="h-1.5 overflow-hidden rounded-full bg-[#E2E8F0] dark:bg-[#2A2578]">
-				<div
-					class="h-full rounded-full bg-[#0891B2] transition-[width] duration-75 dark:bg-[#22D3EE]"
-					style="width: {($batchProgress.current / $batchProgress.total) * 100}%"
-				/>
-			</div>
-		</div>
-	{/if}
-
-	<div class="space-y-2">
-		{#if !$result}
-			<button
-				class={cn(
-					'flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-200',
-					'bg-[#0891B2] text-white hover:brightness-110 dark:bg-[#22D3EE] dark:text-[#0B0A23]',
-					isProcessing && 'pointer-events-none opacity-70'
-				)}
-				disabled={isProcessing || !$activeImage}
-				on:click={performResize}
-			>
-				{#if $processingState === 'resizing'}
-					<Loader2 size={16} class="animate-spin" />
-					Resizing...
-				{:else}
-					<Play size={16} />
-					Resize
-				{/if}
-			</button>
-		{:else}
-			<button
-				class={cn(
-					'flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-200',
-					'bg-[#0891B2] text-white hover:brightness-110 dark:bg-[#22D3EE] dark:text-[#0B0A23]',
-					isProcessing && 'pointer-events-none opacity-70'
-				)}
-				disabled={isProcessing}
-				on:click={performResize}
-			>
-				{#if $processingState === 'resizing'}
-					<Loader2 size={16} class="animate-spin" />
-					Resizing...
-				{:else}
-					<Play size={16} />
-					Re-resize
-				{/if}
-			</button>
-
-			<button
-				class={cn(
-					'flex w-full items-center justify-center gap-2 rounded-lg border px-4 py-2 text-xs font-medium transition-all duration-200',
-					'border-[#E2E8F0] text-[#64748B] hover:border-[#0891B2] hover:text-[#0891B2]',
-					'dark:border-[#2A2578] dark:text-slate-400 dark:hover:border-[#22D3EE] dark:hover:text-[#22D3EE]',
-					isProcessing && 'pointer-events-none opacity-70'
-				)}
-				disabled={isProcessing}
-				on:click={downloadResult}
-			>
-				{#if $processingState === 'downloading'}
-					<Loader2 size={14} class="animate-spin" />
-					Downloading...
-				{:else}
-					<Download size={14} />
-					Download
-				{/if}
-			</button>
-		{/if}
 	</div>
 {/if}
 
@@ -303,10 +277,10 @@
 			</div>
 
 			<div class="mt-4">
-				<label for="zip-filename-resizer" class="mb-1.5 block text-[11px] font-medium text-[#94A3B8] dark:text-slate-500">Filename</label>
+				<label for="zip-filename" class="mb-1.5 block text-[11px] font-medium text-[#94A3B8] dark:text-slate-500">Filename</label>
 				<div class="flex items-center gap-0">
 					<input
-						id="zip-filename-resizer"
+						id="zip-filename"
 						type="text"
 						bind:value={zipFilename}
 						on:keydown={handleZipKeydown}

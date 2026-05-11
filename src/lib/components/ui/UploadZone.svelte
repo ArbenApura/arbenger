@@ -11,9 +11,13 @@
 	let className: string = '';
 	export { className as class };
 
-	// -- CONSTANTS -- //
+	export let accept: string = '.png,.jpg,.jpeg,.webp';
 
-	const ACCEPT = '.png,.jpg,.jpeg,.webp,.gif,.bmp,.svg';
+	export let guideHref: string = '';
+
+	export let guideLabel: string = 'New here? Read the guide';
+
+	export let formatHint: string = 'PNG, JPG, WebP';
 
 	// -- STATES -- //
 
@@ -92,22 +96,24 @@
 	</button>
 
 	<p class="mt-3 text-xs text-[#94A3B8] dark:text-slate-400">
-		PNG, JPG, WebP, GIF, BMP, SVG
+		{formatHint}
 	</p>
 
 	<!-- GUIDE LINK -->
-	<a
-		href="/blog/how-to-use-image-resizer/"
-		class="mt-4 text-[10px] text-[#0891B2] transition-colors hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80"
-		on:click|stopPropagation
-	>
-		New here? Read the guide
-	</a>
+	{#if guideHref}
+		<a
+			href={guideHref}
+			class="mt-4 text-[10px] text-[#0891B2] transition-colors hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80"
+			on:click|stopPropagation
+		>
+			{guideLabel}
+		</a>
+	{/if}
 
 	<input
 		bind:this={fileInput}
 		type="file"
-		accept={ACCEPT}
+		{accept}
 		multiple
 		class="hidden"
 		on:change={handleFileSelect}

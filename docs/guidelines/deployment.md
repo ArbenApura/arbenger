@@ -1,6 +1,6 @@
 # Deployment Guide
 
-**Last updated:** 2026-05-10
+**Last updated:** 2026-05-11
 
 This document covers the complete deployment pipeline for arbenger.com: from local development to production on Cloudflare Pages.
 
@@ -51,10 +51,15 @@ The dev server is configured to always run on **port 8000** (not the Vite defaul
 
 | Package | Purpose |
 |---------|---------|
-| `jszip` | Batch ZIP download in image resizer tool |
+| `jszip` | Batch ZIP download in image resizer and compressor tools |
+| `upng-js` | PNG compression via color quantization in image compressor |
 | `svelte-sonner` | Toast notification library (`<Toaster>` in root layout) |
 | `lucide-svelte` | Icon library |
 | `clsx` + `tailwind-merge` | Dynamic class composition (`cn()` utility) |
+| `drizzle-orm` | Type-safe ORM for PostgreSQL |
+| `postgres` | PostgreSQL client (postgres.js) for Cloudflare Hyperdrive |
+| `@neondatabase/serverless` | Neon serverless driver (used by drizzle-kit for migrations) |
+| `nanoid` | Unique ID generation |
 
 ### Key Dev Dependencies
 
@@ -65,14 +70,25 @@ The dev server is configured to always run on **port 8000** (not the Vite defaul
 | `@types/node` | Node.js type definitions for TypeScript |
 | `tailwindcss` + `@tailwindcss/vite` | Tailwind CSS v4 with Vite plugin |
 | `svelte-check` | TypeScript + Svelte type checking |
+| `drizzle-kit` | Schema migrations and Drizzle Studio |
+| `dotenv` | Load `.env` in `drizzle.config.ts` |
 
 ### Environment Variables
 
-No environment variables are needed for the base site. Future variables will be documented here as they are added.
+| Variable | File | Purpose | Required |
+|----------|------|---------|----------|
+| `DATABASE_URL` | `.env` | Neon PostgreSQL connection string (used by `drizzle-kit` for migrations/studio) | Yes (for db commands) |
+| `DATABASE_URL` | `.dev.vars` | Same connection string (used by Cloudflare's local dev platform proxy) | Yes (for local dev) |
 
-| Variable | Purpose | Required |
-|----------|---------|----------|
-| (none for launch) | — | — |
+Both `.env` and `.dev.vars` are gitignored. Production uses the Hyperdrive binding configured in `wrangler.toml`.
+
+### Database Commands
+
+| Command | Purpose |
+|---------|---------|
+| `yarn db:generate` | Generate Drizzle migration files from schema changes |
+| `yarn db:migrate` | Apply pending migrations to the database |
+| `yarn db:studio` | Open Drizzle Studio (visual database browser) |
 
 ---
 
@@ -91,7 +107,7 @@ const config = {
     adapter: adapter({
       routes: {
         include: ['/*'],
-        exclude: ['<all>']
+        exclude: ['<build>', '<files>', '<prerendered>']
       }
     })
   }
@@ -99,6 +115,8 @@ const config = {
 
 export default config;
 ```
+
+The `exclude` list ensures pre-rendered pages are served as static assets while non-prerendered routes (like `/api/stats/`) are handled by the Cloudflare Worker runtime.
 
 ### Pre-rendering
 
@@ -109,7 +127,7 @@ Base pages are pre-rendered at build time for maximum performance:
 export const prerender = true;
 ```
 
-Individual routes can opt out of pre-rendering by setting `export const prerender = false` when they need SSR.
+Individual routes can opt out of pre-rendering by setting `export const prerender = false` when they need SSR. Server endpoints (`+server.ts`) without an explicit `prerender = true` are automatically server-rendered.
 
 ### Vite Config
 
@@ -175,11 +193,27 @@ name = "arbenger"
 compatibility_date = "2026-05-09"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".svelte-kit/cloudflare"
+
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "<hyperdrive-config-id>"
+localConnectionString = "<neon-connection-string-for-local-dev>"
 ```
 
 Key settings:
 - **`nodejs_compat`** — Required because SvelteKit uses `node:async_hooks` internally. Without this flag, the Worker throws runtime errors.
 - **`pages_build_output_dir`** — Points Wrangler to the adapter-cloudflare output directory.
+- **`[[hyperdrive]]`** — Cloudflare Hyperdrive binding for PostgreSQL connection pooling. The `id` references the Hyperdrive config created via `npx wrangler hyperdrive create`. The `localConnectionString` is used during local dev/builds (production uses the Hyperdrive-managed connection).
+
+### Database Infrastructure
+
+| Service | Purpose |
+|---------|---------|
+| **Neon PostgreSQL** | Serverless Postgres database (AWS Singapore) |
+| **Cloudflare Hyperdrive** | Connection pooling proxy between Workers and Neon |
+| **Drizzle ORM** | Type-safe query builder and migration tool |
+
+The database client (`src/lib/server/db/index.ts`) uses `postgres` (postgres.js) with `prepare: false` (required for Hyperdrive since prepared statements are connection-specific). The schema is defined in `src/lib/server/db/schema.ts` and migrations live in `drizzle/`.
 
 ---
 
@@ -327,7 +361,9 @@ After the first production deployment:
 - [ ] Site loads at `https://arbenger.com`
 - [ ] `www.arbenger.com` redirects to `arbenger.com`
 - [ ] HTTP redirects to HTTPS
-- [ ] All 10 pages render correctly (home, about, products, contact, privacy, terms, cookies, products/image-resizer, blog, blog/how-to-use-image-resizer)
+- [ ] All 12 pages render correctly (home, about, products, contact, privacy, terms, cookies, products/image-resizer, products/image-compressor, blog, blog/how-to-use-image-resizer, blog/how-to-use-image-compressor)
+- [ ] `/api/stats/` returns JSON (GET returns `{ totalProcessed: N }`, accepts `?toolId=` param)
+- [ ] Image resizer and compressor stats counters display at page bottom
 - [ ] Theme toggle works (dark/light)
 - [ ] Mobile responsive (test on real device)
 - [ ] Favicon displays correctly

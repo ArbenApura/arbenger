@@ -1,6 +1,6 @@
 # SEO Standards
 
-**Last updated:** 2026-05-10
+**Last updated:** 2026-05-11
 
 This document defines the SEO requirements for every page on arbenger.com. All pages must meet these standards before deployment. No page ships without proper meta tags, structured data, and heading hierarchy.
 
@@ -217,6 +217,7 @@ import JsonLd from '$lib/components/seo/JsonLd.svelte';
 | `/products` | "Products" | Products, tools |
 | `/contact` | "Say Hello" | Contact |
 | `/products/image-resizer` | "Free Online Image Resizer — Resize, Crop & Convert" (sr-only) | Image resizer, resize, crop, convert |
+| `/products/image-compressor` | "Free Online Image Compressor — Reduce File Size Without Quality Loss" (sr-only) | Image compressor, compress, optimize |
 | `/blog` | "Tutorials & Dev Logs" | Blog, tutorials, guides |
 | `/blog/[slug]` | Post title (dynamic) | Post-specific keywords |
 | `/products/[slug]` | Product name | Product-specific keyword |
@@ -241,6 +242,7 @@ import JsonLd from '$lib/components/seo/JsonLd.svelte';
 | `/about` | About page |
 | `/products` | Product catalog |
 | `/products/image-resizer` | Image Resizer tool |
+| `/products/image-compressor` | Image Compressor tool |
 | `/products/[slug]` | Individual product (future) |
 | `/contact` | Contact page |
 | `/blog` | Blog listing |
@@ -274,8 +276,10 @@ Server-rendered SvelteKit route at `/sitemap.xml` that returns XML content type.
 | `/terms` | 0.3 | yearly | 2026-05-08 |
 | `/cookies` | 0.3 | yearly | 2026-05-08 |
 | `/products/image-resizer` | 0.7 | weekly | 2026-05-09 |
+| `/products/image-compressor` | 0.7 | weekly | 2026-05-10 |
 | `/blog` | 0.8 | weekly | 2026-05-10 |
 | `/blog/how-to-use-image-resizer` | 0.7 | monthly | 2026-05-10 |
+| `/blog/how-to-use-image-compressor` | 0.7 | monthly | 2026-05-11 |
 
 Note: Blog post URLs are auto-generated in the sitemap from `sortedPosts` in `src/lib/data/blog.ts`. New posts appear in the sitemap automatically.
 
@@ -333,6 +337,23 @@ Notes:
 - Uses `WebApplication` instead of `SoftwareApplication` since it runs entirely in the browser
 - BreadcrumbList is rendered via inline `JsonLd` component (not the `Breadcrumbs.svelte` helper) to support a 3-level hierarchy (Home → Products → Image Resizer)
 
+### Image Compressor (`/products/image-compressor`)
+
+| Element | Value |
+|---------|-------|
+| Title | "Free Image Compressor — Compress PNG, JPEG, WebP Online \| Arbenger" |
+| Meta description | "Compress PNG, JPEG, and WebP images up to 90% smaller. Quality slider, target size mode, and live before/after preview. No uploads — 100% private and free." |
+| H1 | "Free Online Image Compressor — Reduce File Size Without Quality Loss" (sr-only) |
+| JSON-LD #1 | `WebApplication` — name, url, applicationCategory, operatingSystem, offers, description |
+| JSON-LD #2 | `BreadcrumbList` — Home → Products → Image Compressor (3-level) |
+| Breadcrumb nav | Visual breadcrumb in top bar: Home / Products / Image Compressor |
+| Canonical URL | `https://arbenger.com/products/image-compressor` |
+| Sitemap priority | 0.7, weekly changefreq |
+
+Notes:
+- Same sr-only H1 and WebApplication JSON-LD pattern as image resizer
+- Cross-links to image resizer at page bottom ("Need to resize instead?")
+
 ---
 
 ## 8. Internal Linking
@@ -350,26 +371,36 @@ Notes:
 ```
 Homepage (/)
   ├── /products (via navbar + product categories section)
-  ├── /products/image-resizer (via FeaturedTool section CTA)
+  ├── /products/image-resizer (via FeaturedTool card CTA)
+  ├── /products/image-compressor (via FeaturedTool card CTA)
   ├── /about (via navbar + about teaser section)
   ├── /contact (via navbar + footer)
   └── /products/[slug] (via product cards — future)
 
 Products (/products)
   ├── /products/image-resizer (via live products spotlight + category nested link)
+  ├── /products/image-compressor (via live products spotlight + category nested link)
   └── /products/[slug] (via category nested links — future)
 
 Image Resizer (/products/image-resizer)
   ├── / (via breadcrumb nav)
   ├── /products (via breadcrumb nav)
-  └── /blog/how-to-use-image-resizer (via Guide link + UploadZone link)
+  ├── /blog/how-to-use-image-resizer (via Guide link + UploadZone link)
+  └── /products/image-compressor (via cross-link at page bottom)
+
+Image Compressor (/products/image-compressor)
+  ├── / (via breadcrumb nav)
+  ├── /products (via breadcrumb nav)
+  ├── /blog/how-to-use-image-compressor (via Guide link)
+  └── /products/image-resizer (via cross-link at page bottom)
 
 Blog (/blog)
   └── /blog/[slug] (via post cards)
 
 Blog Post (/blog/[slug])
   ├── /blog (via category link + back link)
-  └── /products/image-resizer (via CTA in guide post)
+  ├── /products/image-resizer (via CTA in resizer guide post)
+  └── /products/image-compressor (via CTA in compressor guide post)
 
 All pages → All pages (via navbar + footer)
 ```

@@ -1,6 +1,6 @@
 # Arbenger Design System
 
-**Last updated:** 2026-05-10
+**Last updated:** 2026-05-11
 
 This document defines the complete visual language for arbenger.com. All components, pages, and future additions must follow these specifications. When in doubt, refer back to the aesthetic direction and verify against the color, typography, and spacing tokens defined here.
 
@@ -8,9 +8,9 @@ This document defines the complete visual language for arbenger.com. All compone
 
 ## 1. Aesthetic Direction
 
-**"Terminal Meets Luxury"**
+**"Clean, Dark-First, Typographic"**
 
-The site borrows from developer terminal aesthetics — monospaced headings, cursor-blink animations, code-block styled cards, terminal-prompt section labels — but executes them with premium refinement. The result is dark, futuristic, unmistakably technical, and polished enough to convey trust and quality.
+The site uses monospaced display headings for structure and character, smooth sans-serif body text for readability, and dark mode as the default with a carefully paired light mode. Subtle cyan accents, restrained glow effects, and generous whitespace create a modern, confident aesthetic without being flashy.
 
 ### Key Principles
 
@@ -94,16 +94,16 @@ Use `font-display: swap` with calculated `size-adjust` on fallback fonts to prev
 | body-lg | `text-lg` | 18px | 1.6 | Satoshi | 400 | Lead paragraphs, descriptions |
 | body | `text-base` | 16px | 1.6 | Satoshi | 400 | Default body text |
 | body-sm | `text-sm` | 14px | 1.5 | Satoshi | 400 | Captions, secondary text |
-| label | `text-sm` | 14px | 1.4 | JetBrains Mono | 500 | Terminal-style labels, badges, stats |
+| label | `text-sm` | 14px | 1.4 | JetBrains Mono | 500 | Mono labels, badges, stats |
 | code | `text-sm` | 14px | 1.5 | JetBrains Mono | 400 | Inline code, technical values |
 
 ### Typography Rules
 
 1. **Headings** always use Space Mono bold. No exceptions.
 2. **Body text** always uses Satoshi. No exceptions.
-3. **Terminal-style labels** (section prompts like `> PRODUCTS`) use JetBrains Mono at `text-sm`, uppercase, with `tracking-widest`.
+3. **Mono labels** (section eyebrows like `Blog`, `About`, `Legal`) use JetBrains Mono at `text-sm` with `font-mono`.
 4. **Never mix font roles.** A heading in Satoshi or body text in Space Mono is incorrect.
-5. **Letter spacing:** Headings use `tracking-tight` (-0.025em). Terminal labels use `tracking-widest` (0.1em). Body text uses default tracking.
+5. **Letter spacing:** Headings use `tracking-tight` (-0.025em). Mono labels use `tracking-widest` (0.1em). Body text uses default tracking.
 
 ---
 
@@ -279,18 +279,15 @@ The About teaser section features an animated Arbenger logo (210px) inside a lar
 - Padding: `px-3 py-1`
 - Border radius: `rounded-full`
 
-### Section Labels (Terminal Prompt)
+### Section Eyebrow Labels
 
-- Prefix: `>` character in cyan-400, separated by a space
-- Text: JetBrains Mono, `text-sm`, uppercase, `tracking-widest`
-- Color: slate-400
-- Margin bottom: `mb-8` before section content
+- Text: JetBrains Mono, `text-sm`, `font-mono`
+- Color: `text-[#0891B2] dark:text-[#22D3EE]`
+- No prefix character — plain text only (e.g. `Blog`, `About`, `Legal`)
 
 Example markup:
 ```svelte
-<p class="mb-8 font-mono text-sm uppercase tracking-widest text-slate-400">
-  <span class="text-[#22D3EE]">></span> PRODUCTS
-</p>
+<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Blog</p>
 ```
 
 ### Select (`Select.svelte`)
@@ -302,7 +299,7 @@ Example markup:
 - **Keyboard:** Click-outside and Escape to close
 - **Styling:** `rounded-xl` dropdown panel, white bg (`dark:bg-[#1E1A5E]`), border + shadow
 - **Exported types:** `SelectOption`, `SelectGroup`, `SelectItems` (via `context="module"`)
-- **Used in:** Image resizer controls (format, fit mode, presets)
+- **Used in:** Image resizer controls (format, fit mode, presets), image compressor controls (format, target unit, naming pattern)
 
 ### ColorPicker (`ColorPicker.svelte`)
 
@@ -324,7 +321,7 @@ Example markup:
 - **Behavior:** Backdrop click to cancel, scroll lock when open
 - **Events:** Dispatches `confirm` and `cancel`
 - **Styling:** Centered modal, `rounded-2xl`, themed backgrounds, variant-colored confirm button
-- **Used in:** Image resizer clear-all confirmation
+- **Used in:** Image resizer and image compressor clear-all confirmation
 
 ### Language Selector
 

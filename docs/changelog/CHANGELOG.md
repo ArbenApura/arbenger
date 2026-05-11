@@ -4,6 +4,159 @@ All notable decisions, changes, and milestones for arbenger.com are documented h
 
 ---
 
+## 2026-05-11 — Image Compressor Tool & Cross-Tool Improvements
+
+### Image Compressor Tool (NEW)
+
+- **Full compression tool** at `/products/image-compressor/` with single-image and batch modes
+- **Quality slider** — controls JPEG/WebP quality (0-100) and PNG color quantization (via `upng-js` library)
+- **Target size mode** — binary search over quality/cnum to fit a maximum file size budget
+- **Before/after comparison slider** — zoomable up to 2000% with scroll wheel, pinch-to-zoom on mobile, pan when zoomed
+- **Format conversion** — same format, JPEG, PNG, or WebP output
+- **Batch mode** — shared settings, auto-naming panel (5 patterns: sequential, prefix-original, original-suffix, number-only, custom template), per-row editable filenames, drag-to-reorder, ZIP export
+- **Smart result capping** — if compression produces a larger file (same format), keeps the original automatically
+- **Web Worker** — all compression (JPEG/WebP via OffscreenCanvas, PNG via UPNG) runs off the main thread
+- **Filename control** — editable filename in single mode, batch naming panel in batch mode
+- **Stats tracking** — uses `/api/stats/?toolId=image-compressor` (GET now accepts `toolId` query param)
+- **Browser compatibility warning** — amber banner when `createImageBitmap`, `OffscreenCanvas`, or `Worker` is missing
+
+### Cross-Tool Improvements
+
+- **Duplicate upload detection** — both image resizer and image compressor detect and skip duplicate files (matched by `name + size + lastModified`)
+- **Shared UploadZone** — moved from `image-resizer/_components/UploadZone.svelte` to `src/lib/components/ui/UploadZone.svelte`
+- **Browser compatibility warning** — added to both image resizer and image compressor pages
+- **Format support cleanup** — removed GIF and BMP input support from both tools (PNG, JPEG, WebP, SVG only)
+- **AVIF removed** — removed AVIF output support (canvas API unreliable, WASM encoder too slow)
+
+### Blog
+
+- **New post:** "How to Use Arbenger Image Compressor — The Complete Guide" at `/blog/how-to-use-image-compressor/`
+- **Updated post:** "How to Use Arbenger Image Resizer" — updated supported formats (removed GIF, BMP references)
+
+### New Dependencies
+
+| Package | Type | Purpose |
+|---------|------|---------|
+| `upng-js` | Runtime | PNG compression via color quantization |
+| `@types/upng-js` | Dev | TypeScript types for upng-js |
+
+### API Changes
+
+- **`GET /api/stats/`** — now accepts `?toolId=` query param (defaults to `'image-resizer'` for backwards compatibility)
+- **`ALLOWED_TOOL_IDS`** — expanded to `Set(['image-resizer', 'image-compressor'])`
+
+### Files Created
+
+- `src/routes/products/(utilities)/image-compressor/+page.svelte`
+- `src/routes/products/(utilities)/image-compressor/+page.ts`
+- `src/routes/products/(utilities)/image-compressor/_lib/store.ts`
+- `src/routes/products/(utilities)/image-compressor/_lib/worker.ts`
+- `src/routes/products/(utilities)/image-compressor/_components/CompareSlider.svelte`
+- `src/routes/products/(utilities)/image-compressor/_components/CompressControls.svelte`
+- `src/routes/products/(utilities)/image-compressor/_components/CompressInfoPanel.svelte`
+- `src/routes/products/(utilities)/image-compressor/_components/BatchImageList.svelte`
+- `src/routes/products/(utilities)/image-compressor/_components/ThumbnailStrip.svelte`
+- `src/lib/components/ui/UploadZone.svelte`
+- `src/lib/server/db/index.ts`
+- `src/lib/server/db/schema.ts`
+- `src/routes/api/stats/+server.ts`
+- `src/routes/blog/[slug]/_posts/how-to-use-image-compressor.svelte`
+- `drizzle.config.ts`
+
+### Homepage
+
+- **FeaturedTool redesigned** — changed from single-card layout ("Try our first tool") to two-column grid ("Free browser-based image tools") showcasing both Image Resizer and Image Compressor with miniature UI mockups
+- **Image Compressor miniature** — compare slider mockup with SVG landscape, quality slider, labels
+- **Image Resizer miniature** — dimension inputs, resize arrow, format/quality row
+
+### SEO Fixes
+
+- **Meta description/JSON-LD** — removed stale "lossy, glossy, lossless" references from compressor page, updated to "Quality slider, target size mode, and live before/after preview"
+- **Cross-linking** — added "Need to resize/compress instead?" links between the two tool pages
+- **products.ts description** — updated compressor description to match actual features
+
+### Files Modified
+
+- `src/lib/components/home/FeaturedTool.svelte` — redesigned to show both tools in 2-column grid
+- `src/lib/data/products.ts` — added image-compressor product entry, `productCount: 2`, updated description
+- `src/lib/data/blog.ts` — added image-compressor blog post entry
+- `src/routes/products/(utilities)/image-resizer/_lib/store.ts` — added duplicate detection, removed GIF/BMP from valid types
+- `src/routes/products/(utilities)/image-resizer/+page.svelte` — added browser compatibility warning
+- `src/routes/products/(utilities)/image-resizer/_components/BatchImageList.svelte` — updated accept formats
+- `src/routes/products/(utilities)/image-resizer/_components/ThumbnailStrip.svelte` — updated accept formats
+- `src/routes/api/stats/+server.ts` — GET now accepts `?toolId=` query param
+- `src/routes/sitemap.xml/+server.ts` — added `/products/image-compressor/` entry
+- `src/routes/blog/[slug]/_posts/how-to-use-image-resizer.svelte` — updated supported formats (removed GIF, BMP)
+- `package.json` — added `upng-js`, `@types/upng-js`
+
+### Files Deleted
+
+- `src/routes/products/(utilities)/image-resizer/_components/UploadZone.svelte` — moved to shared UI
+
+---
+
+## 2026-05-10 — Stats Tracking System & Image Resizer UI Updates
+
+### Stats Tracking Infrastructure (NEW)
+
+- **PostgreSQL database** via Neon (serverless, AWS Singapore region) with Cloudflare Hyperdrive connection pooling
+- **Drizzle ORM** for type-safe queries and migrations (`drizzle-orm/postgres-js` driver)
+- **`tool_stats` table** — `tool_id` (text PK), `total_processed` (bigint), `updated_at` (timestamptz)
+- **API endpoint** at `/api/stats/` — `GET` returns current count, `POST` atomically increments via upsert (`INSERT ... ON CONFLICT DO UPDATE`). Includes `toolId` allowlist validation, count cap (10,000), and try/catch with generic 503 errors
+- **Reactive stats tracking** in image resizer `store.ts` — `trackStats()` calls `POST /api/stats/` with `keepalive: true` after each resize, then calls `fetchStats()` to refresh the displayed count. `totalProcessed` is a shared writable store subscribed to by the page
+- **Stats UI section** on `/products/image-resizer/` — shows lifetime count with eyebrow label, large Space Mono number, description, and trust badges (Shield, Zap, Globe icons). Auto-refreshes after each resize
+- **Cloudflare WAF rate-limit rule** on `POST /api/stats/` — 10 requests per 10 seconds per IP, blocks for 10 seconds
+
+### Configuration Changes
+
+- **`wrangler.toml`** — Added `[[hyperdrive]]` binding (`HYPERDRIVE`, ID `acbab25e300b4604a76b4fec2c49f266`) with `localConnectionString` for local dev
+- **`svelte.config.js`** — Changed adapter `exclude` from `['<all>']` to `['<build>', '<files>', '<prerendered>']` to allow Worker-rendered API routes
+- **`src/app.d.ts`** — Added `Hyperdrive` interface and typed `HYPERDRIVE` binding on `App.Platform.env`
+- **`tsconfig.json`** — Added `"types": ["node"]` to compiler options
+- **`.gitignore`** — Added `.dev.vars`
+- **`package.json`** — Added `db:generate`, `db:migrate`, `db:studio` scripts
+
+### New Dependencies
+
+| Package | Type | Purpose |
+|---------|------|---------|
+| `drizzle-orm` | runtime | Type-safe ORM for PostgreSQL |
+| `postgres` | runtime | PostgreSQL client (postgres.js) for Hyperdrive TCP proxy |
+| `@neondatabase/serverless` | runtime | Neon serverless driver (used by drizzle-kit for migrations) |
+| `nanoid` | runtime | Unique ID generation |
+| `drizzle-kit` | dev | Schema migrations and Drizzle Studio |
+| `dotenv` | dev | Load `.env` in `drizzle.config.ts` |
+
+### Files Created
+
+- `src/lib/server/db/schema.ts` — Drizzle schema (`toolStats` table)
+- `src/lib/server/db/index.ts` — Database client factory (`createDb()` using postgres.js)
+- `src/routes/api/stats/+server.ts` — GET + POST endpoint for stats
+- `drizzle.config.ts` — Drizzle Kit configuration (loads `.env` via dotenv)
+- `drizzle/0000_sturdy_alex_power.sql` — Initial migration (applied to Neon)
+- `.env` — `DATABASE_URL` for local tooling (gitignored)
+- `.dev.vars` — `DATABASE_URL` for Cloudflare local dev (gitignored)
+
+### Files Modified
+
+- `wrangler.toml` — Hyperdrive binding
+- `svelte.config.js` — Adapter exclude list
+- `src/app.d.ts` — Platform types
+- `tsconfig.json` — Node types
+- `package.json` — New deps + db scripts
+- `src/routes/products/(utilities)/image-resizer/_lib/store.ts` — Added `trackStats()` function, called after single resize and batch zip
+- `src/routes/products/(utilities)/image-resizer/+page.svelte` — Added stats UI section, repositioned crop button as overlay on preview canvas, added `py-6 lg:py-10` to upload zone wrapper, `lg:min-h-[560px]` on upload zone
+- `src/routes/privacy/+page.svelte` — Added anonymous usage statistics disclosure, Neon as third-party service, updated data storage section, updated date to May 10
+
+### Image Resizer UI Changes
+
+- **Crop button** repositioned from below preview to overlay at top-right of preview canvas with `backdrop-blur-md`, border, and hover-to-cyan transition
+- **Preview wrapper** changed to `flex flex-col` so preview stretches to match sidebar height
+- **Upload zone** spacing: added `py-6 lg:py-10` wrapper padding and `lg:min-h-[560px]` on wide screens
+- **Stats section** at page bottom: card with navy-950 dark background, single cyan glow, eyebrow label (JetBrains Mono), large number (Space Mono), description, three trust badges with vertical dividers
+
+---
+
 ## 2026-05-10 — Blog System & Image Resizer Guide
 
 ### Blog System (NEW)
@@ -409,7 +562,7 @@ Rewrote all page copy to be neutral, general-audience, and claim-free. The site 
 - **Adapter:** `@sveltejs/adapter-cloudflare` (SSR-ready from day one)
 - **Deployment:** Cloudflare Pages, connected to GitHub, auto-deploy on push to main
 - **Domain:** arbenger.com purchased on Hostinger, nameservers to be transferred to Cloudflare
-- **Design direction:** "Terminal meets luxury" — dark futuristic aesthetic with monospaced headings, glow effects, grid backgrounds
+- **Design direction:** Clean, dark-first, typographic — monospaced display headings, subtle cyan accents, generous whitespace
 - **Typography:** Space Mono (headings), Satoshi (body), JetBrains Mono (accents) — all self-hosted
 - **Color palette:** Derived from logo color `#161446` (navy), with cyan-400 and teal-400 accents
 - **Routing:** Nested routes under arbenger.com (no subdomains), all base pages pre-rendered

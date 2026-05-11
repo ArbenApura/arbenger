@@ -10,19 +10,16 @@
 		updateImageFilename,
 		applyBatchNaming,
 		getImageFilename,
-		hasImageCrop,
-		getImageCrop,
-		formatBytes,
 		processingState,
 		filenameRevision,
-		cropRevision
+		formatBytes
 	} from '../_lib/store';
-	import type { NamingPattern, ImageEntry } from '../_lib/store';
+	import type { NamingPattern } from '../_lib/store';
 	// IMPORTED DEP-COMPONENTS
-	import { GripVertical, X, Plus, Trash2, Wand2, Crop } from 'lucide-svelte';
+	import { GripVertical, X, Plus, Trash2, ChevronDown, Wand2 } from 'lucide-svelte';
 	// IMPORTED COMPONENTS
-	import Select from '$lib/components/ui/Select.svelte';
 	import ConfirmDialog from '$lib/components/ui/ConfirmDialog.svelte';
+	import Select from '$lib/components/ui/Select.svelte';
 	import type { SelectOption } from '$lib/components/ui/Select.svelte';
 
 	// -- CONSTANTS -- //
@@ -30,7 +27,7 @@
 	const namingOptions: SelectOption[] = [
 		{ value: 'sequential', label: 'Prefix + Number', hint: 'photo-1, photo-2' },
 		{ value: 'prefix-original', label: 'Prefix + Original', hint: 'photo-name' },
-		{ value: 'original-suffix', label: 'Original + Suffix', hint: 'name_resized' },
+		{ value: 'original-suffix', label: 'Original + Suffix', hint: 'name_compressed' },
 		{ value: 'number-only', label: 'Number Only', hint: '1, 2, 3' },
 		{ value: 'template', label: 'Custom Template', hint: '{name}_{n}' }
 	];
@@ -41,14 +38,16 @@
 	let showClearConfirm = false;
 	let dragFromIndex: number | null = null;
 	let dragOverIndex: number | null = null;
-	let namingPattern: string = 'sequential';
-	let namingPrefix: string = 'photo';
-	let namingTemplate: string = '{name}_{n}';
+	let listEl: HTMLDivElement;
+	let showScrollHint = false;
 	let showNaming = false;
+	let namingPattern: string = 'sequential';
+	let namingPrefix: string = 'compressed';
+	let namingTemplate: string = '{name}_{n}';
 
 	// -- FUNCTIONS -- //
 
-	const dispatch = createEventDispatcher<{ addFiles: FileList; clearAll: void; crop: ImageEntry }>();
+	const dispatch = createEventDispatcher<{ addFiles: FileList; clearAll: void }>();
 
 	function handleAdd(e: Event) {
 		const input = e.target as HTMLInputElement;
@@ -58,18 +57,13 @@
 		}
 	}
 
-	function handleDragStart(e: DragEvent, index: number) {
-		dragFromIndex = index;
-		if (e.dataTransfer) {
-			e.dataTransfer.effectAllowed = 'move';
-			e.dataTransfer.setData('text/plain', String(index));
-		}
+	function handleDragStart(i: number) {
+		dragFromIndex = i;
 	}
 
-	function handleDragOver(e: DragEvent, index: number) {
+	function handleDragOver(e: DragEvent, i: number) {
 		e.preventDefault();
-		if (e.dataTransfer) e.dataTransfer.dropEffect = 'move';
-		dragOverIndex = index;
+		dragOverIndex = i;
 	}
 
 	function handleDragLeave() {
@@ -88,15 +82,6 @@
 	function handleDragEnd() {
 		dragFromIndex = null;
 		dragOverIndex = null;
-	}
-
-	let listEl: HTMLDivElement;
-	let showScrollHint = false;
-
-	function checkScroll() {
-		if (!listEl) return;
-		const { scrollTop, scrollHeight, clientHeight } = listEl;
-		showScrollHint = scrollHeight > clientHeight && scrollTop < scrollHeight - clientHeight - 10;
 	}
 
 	function handleTouchStart(index: number) {
@@ -143,46 +128,16 @@
 		return getImageFilename(id);
 	}
 
-	const cropThumbUrls = new Map<string, string>();
-
-	function getCropThumbUrl(img: typeof $images[0], _rev: number): string | null {
-		const crop = getImageCrop(img.id);
-		if (!crop) {
-			const old = cropThumbUrls.get(img.id);
-			if (old) { URL.revokeObjectURL(old); cropThumbUrls.delete(img.id); }
-			return null;
-		}
-		const key = `${img.id}-${crop.x}-${crop.y}-${crop.width}-${crop.height}`;
-		if (cropThumbUrls.has(key)) return cropThumbUrls.get(key)!;
-
-		const el = new Image();
-		el.src = img.thumbnailUrl;
-		const gen = () => {
-			const canvas = document.createElement('canvas');
-			canvas.width = crop.width;
-			canvas.height = crop.height;
-			const ctx = canvas.getContext('2d')!;
-			ctx.drawImage(el, crop.x, crop.y, crop.width, crop.height, 0, 0, crop.width, crop.height);
-			canvas.toBlob((blob) => {
-				if (blob) {
-					const old = cropThumbUrls.get(img.id);
-					if (old) URL.revokeObjectURL(old);
-					cropThumbUrls.set(key, URL.createObjectURL(blob));
-					cropThumbUrls.set(img.id, cropThumbUrls.get(key)!);
-					images.update((l) => l);
-				}
-			});
-		};
-		if (el.complete) gen();
-		else el.onload = gen;
-		return null;
+	function checkScroll() {
+		if (!listEl) return;
+		showScrollHint = listEl.scrollHeight > listEl.clientHeight &&
+			listEl.scrollTop + listEl.clientHeight < listEl.scrollHeight - 20;
 	}
 
-	$: if ($images && listEl) {
-		requestAnimationFrame(checkScroll);
-	}
+	$: if ($images) setTimeout(checkScroll, 50);
 </script>
 
+<!-- BATCH IMAGE LIST -->
 <div class="flex min-h-0 flex-1 flex-col">
 	<!-- TOOLBAR -->
 	<div class="flex items-center gap-2 border-b border-[#E2E8F0] px-3 py-2 dark:border-[#2A2578]">
@@ -238,7 +193,7 @@
 					<input
 						type="text"
 						bind:value={namingPrefix}
-						placeholder={namingPattern === 'sequential' ? 'photo' : 'resized'}
+						placeholder={namingPattern === 'sequential' ? 'photo' : 'compressed'}
 						class={cn(
 							'w-full rounded-lg border bg-white px-3 py-2 text-sm transition-colors',
 							'border-[#E2E8F0] text-[#0F172A] placeholder:text-[#CBD5E1] focus:border-[#0891B2] focus:outline-none focus:ring-1 focus:ring-[#0891B2]',
@@ -251,7 +206,7 @@
 			{#if namingPattern === 'template'}
 				<div class="min-w-0 flex-1">
 					<span class="mb-1 block text-[11px] font-medium text-[#94A3B8] dark:text-slate-500">
-						Template <span class="text-[#CBD5E1] dark:text-slate-600">{'{name}'} {'{n}'} {'{w}'} {'{h}'}</span>
+						Template <span class="text-[#CBD5E1] dark:text-slate-600">{'{name}'} {'{n}'}</span>
 					</span>
 					<input
 						type="text"
@@ -275,7 +230,7 @@
 		</div>
 	{/if}
 
-	<!-- DESKTOP HEADER ROW (hidden on mobile) -->
+	<!-- DESKTOP HEADER ROW -->
 	<div class="hidden items-center gap-2 border-b border-[#E2E8F0] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-[#94A3B8] md:flex dark:border-[#2A2578] dark:text-slate-500">
 		<span class="w-5" />
 		<span class="w-4 text-center">#</span>
@@ -283,7 +238,7 @@
 		<span class="min-w-0 flex-1">Output name</span>
 		<span class="w-24 text-right">Orig. size</span>
 		<span class="w-28 text-right">Orig. dims</span>
-		<span class="w-16" />
+		<span class="w-8" />
 	</div>
 
 	<!-- IMAGE ROWS -->
@@ -293,18 +248,18 @@
 			<!-- DESKTOP ROW -->
 			<div
 				data-row-index={i}
+				role="listitem"
 				class={cn(
 					'group hidden items-center gap-2 border-b border-[#F1F5F9] px-3 py-2 transition-colors md:flex dark:border-[#2A2578]/30',
-					dragOverIndex === i && 'border-t-2 border-t-[#0891B2] dark:border-t-[#22D3EE]',
-					dragFromIndex === i && 'opacity-40'
+					dragFromIndex === i && 'opacity-40',
+					dragOverIndex === i && 'border-t-2 border-t-[#0891B2] dark:border-t-[#22D3EE]'
 				)}
 				draggable="true"
-				on:dragstart={(e) => handleDragStart(e, i)}
+				on:dragstart={() => handleDragStart(i)}
 				on:dragover={(e) => handleDragOver(e, i)}
 				on:dragleave={handleDragLeave}
 				on:drop={(e) => handleDrop(e, i)}
 				on:dragend={handleDragEnd}
-				role="listitem"
 			>
 				<span class="w-5 shrink-0 text-[#CBD5E1] dark:text-slate-600">
 					<GripVertical size={14} class="cursor-grab active:cursor-grabbing" />
@@ -315,7 +270,7 @@
 				</span>
 
 				<div class="h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-[#E2E8F0] dark:border-[#2A2578]">
-					<img src={getCropThumbUrl(img, $cropRevision) || img.thumbnailUrl} alt="" class="h-full w-full object-cover" />
+					<img src={img.thumbnailUrl} alt="" class="h-full w-full object-cover" />
 				</div>
 
 				<input
@@ -337,19 +292,7 @@
 					{img.originalWidth}×{img.originalHeight}
 				</span>
 
-				<div class="flex shrink-0 items-center gap-0.5 opacity-0 transition-all group-hover:opacity-100">
-					<button
-						class={cn(
-							'rounded-md p-1.5 transition-colors',
-							$cropRevision >= 0 && hasImageCrop(img.id)
-								? 'bg-[#0891B2]/10 text-[#0891B2] opacity-100 dark:bg-[#22D3EE]/10 dark:text-[#22D3EE]'
-								: 'text-[#94A3B8] hover:bg-[#0891B2]/10 hover:text-[#0891B2] dark:text-slate-500 dark:hover:bg-[#22D3EE]/10 dark:hover:text-[#22D3EE]'
-						)}
-						title={hasImageCrop(img.id) ? 'Edit crop' : 'Crop image'}
-						on:click={() => dispatch('crop', img)}
-					>
-						<Crop size={13} />
-					</button>
+				<div class="flex w-8 shrink-0 items-center justify-end opacity-0 transition-all group-hover:opacity-100">
 					<button
 						class="rounded-md p-1.5 text-[#94A3B8] transition-colors hover:bg-[#EF4444]/10 hover:text-[#EF4444] dark:text-slate-500"
 						title="Remove image"
@@ -363,12 +306,12 @@
 			<!-- MOBILE CARD -->
 			<div
 				data-row-index={i}
+				role="listitem"
 				class={cn(
 					'group flex items-start gap-3 border-b border-[#F1F5F9] px-3 py-2.5 transition-colors md:hidden dark:border-[#2A2578]/30',
-					dragOverIndex === i && 'border-t-2 border-t-[#0891B2] dark:border-t-[#22D3EE]',
-					dragFromIndex === i && 'opacity-40'
+					dragFromIndex === i && 'opacity-40',
+					dragOverIndex === i && 'border-t-2 border-t-[#0891B2] dark:border-t-[#22D3EE]'
 				)}
-				role="listitem"
 			>
 				<span
 					class="mt-1 shrink-0 touch-none text-[#CBD5E1] dark:text-slate-600"
@@ -380,7 +323,7 @@
 				</span>
 
 				<div class="h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-[#E2E8F0] dark:border-[#2A2578]">
-					<img src={getCropThumbUrl(img, $cropRevision) || img.thumbnailUrl} alt="" class="h-full w-full object-cover" />
+					<img src={img.thumbnailUrl} alt="" class="h-full w-full object-cover" />
 				</div>
 
 				<div class="min-w-0 flex-1 space-y-1.5">
@@ -395,25 +338,12 @@
 								'dark:border-[#2A2578] dark:bg-[#0B0A23]/50 dark:text-white dark:focus:border-[#22D3EE] dark:focus:ring-[#22D3EE]'
 							)}
 						/>
-						<div class="flex shrink-0 items-center gap-0.5">
-							<button
-								class={cn(
-									'rounded-md p-1.5 transition-colors',
-									$cropRevision >= 0 && hasImageCrop(img.id)
-										? 'bg-[#0891B2]/10 text-[#0891B2] dark:bg-[#22D3EE]/10 dark:text-[#22D3EE]'
-										: 'text-[#94A3B8] hover:bg-[#0891B2]/10 hover:text-[#0891B2] dark:text-slate-500 dark:hover:bg-[#22D3EE]/10 dark:hover:text-[#22D3EE]'
-								)}
-								on:click={() => dispatch('crop', img)}
-							>
-								<Crop size={13} />
-							</button>
-							<button
-								class="rounded-md p-1.5 text-[#94A3B8] transition-colors hover:bg-[#EF4444]/10 hover:text-[#EF4444] dark:text-slate-500"
-								on:click={() => removeImage(img.id)}
-							>
-								<X size={13} />
-							</button>
-						</div>
+						<button
+							class="shrink-0 rounded-md p-1.5 text-[#94A3B8] transition-colors hover:bg-[#EF4444]/10 hover:text-[#EF4444] dark:text-slate-500"
+							on:click={() => removeImage(img.id)}
+						>
+							<X size={13} />
+						</button>
 					</div>
 
 					<div class="flex gap-3 text-[11px] tabular-nums text-[#94A3B8] dark:text-slate-500">
@@ -423,6 +353,7 @@
 				</div>
 			</div>
 		{/each}
+
 		</div>
 
 		<!-- SCROLL HINT -->
@@ -436,16 +367,16 @@
 			</div>
 		{/if}
 	</div>
-
-	<input
-		bind:this={fileInput}
-		type="file"
-		accept=".png,.jpg,.jpeg,.webp"
-		multiple
-		class="hidden"
-		on:change={handleAdd}
-	/>
 </div>
+
+<input
+	bind:this={fileInput}
+	type="file"
+	accept=".png,.jpg,.jpeg,.webp"
+	multiple
+	class="hidden"
+	on:change={handleAdd}
+/>
 
 <ConfirmDialog
 	bind:open={showClearConfirm}

@@ -1,0 +1,1 @@
+ALTER TABLE "tool_stats" ALTER COLUMN "total_processed" SET DATA TYPE bigint;
