@@ -123,7 +123,7 @@
 					</h3>
 
 					<p class="text-sm text-[#475569] dark:text-slate-300">
-						Shrink PNG, JPEG, and WebP images up to 90% smaller. Quality slider, target size mode, and live before/after preview.
+						Shrink PNG, JPEG, and WebP images up to 90% smaller. Batch-process dozens at once, with before/after preview.
 					</p>
 
 					<!-- UI MINIATURE -->
@@ -178,8 +178,8 @@
 							100% Local
 						</span>
 						<span class="flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] px-3 py-1.5 text-xs text-[#64748B] dark:border-[#2A2578] dark:text-slate-400">
-							<SlidersHorizontal size={12} class="text-[#0891B2] dark:text-[#22D3EE]" />
-							Quality Control
+							<Layers size={12} class="text-[#0891B2] dark:text-[#22D3EE]" />
+							Batch Processing
 						</span>
 						<span class="flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] px-3 py-1.5 text-xs text-[#64748B] dark:border-[#2A2578] dark:text-slate-400">
 							<Target size={12} class="text-[#0891B2] dark:text-[#22D3EE]" />

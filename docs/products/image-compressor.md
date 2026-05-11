@@ -30,7 +30,9 @@ The Image Compressor allows users to compress PNG, JPEG, and WebP images entirel
 - **Format conversion:** Keep original, or convert to JPEG, PNG, or WebP
 - **Smart result capping:** If compression produces a larger file (same format), keeps the original
 - **Batch auto-naming:** Sequential, prefix-original, original-suffix, number-only, template patterns
-- **Batch ZIP download:** All compressed images exported as a single ZIP file via `jszip`
+- **Batch ZIP download:** All compressed images exported as a single ZIP file via `jszip`, with filename dialog
+- **Cancel support:** Cancel button during single and batch compression
+- **Download tooltip:** Tippy.js tooltip notifies when files are ready to download
 - **Web Worker:** All compression (JPEG/WebP via OffscreenCanvas, PNG via UPNG) runs off the main thread
 - **Duplicate detection:** Re-uploading the same file is automatically skipped
 - **Drag and drop, clipboard paste, keyboard shortcuts** (Ctrl+V, Escape)

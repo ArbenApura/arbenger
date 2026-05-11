@@ -5,6 +5,7 @@
 		settings,
 		batchSettings,
 		activeImage,
+		processingState,
 		updateWidth,
 		updateHeight,
 		swapDimensions,
@@ -71,6 +72,7 @@
 
 	$: currentSettings = batch ? $batchSettings : $settings;
 	$: formatValue = currentSettings.format;
+	$: isProcessing = $processingState !== 'idle';
 	$: algorithmValue = currentSettings.algorithm;
 	$: showQuality = currentSettings.format !== 'image/png';
 	$: widthValue = currentSettings.width;
@@ -239,6 +241,9 @@
 		settings.update((s) => ({ ...s, filename }));
 	}
 </script>
+
+<!-- CONTROLS WRAPPER -->
+<div class={cn('space-y-4 transition-opacity', isProcessing && 'pointer-events-none opacity-50')}>
 
 <!-- DIMENSIONS -->
 <div class="space-y-3">
@@ -440,4 +445,5 @@
 			/>
 		</div>
 	{/if}
+</div>
 </div>

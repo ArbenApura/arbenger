@@ -2,6 +2,8 @@
 	// IMPORTED DEP-MODULES
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
+	import tippyJs from 'tippy.js';
+	import 'tippy.js/dist/tippy.css';
 	// IMPORTED MODULES
 	import { cn } from '$lib/utils/cn';
 	import {
@@ -19,6 +21,7 @@
 		downloadResult,
 		performBatchCompress,
 		downloadBatchZip,
+		cancelProcessing,
 		images
 	} from '../_lib/store';
 	// IMPORTED DEP-COMPONENTS
@@ -32,8 +35,56 @@
 
 	let zipDialogOpen = false;
 	let zipFilename = 'compressed-images';
+	let zipTippyInstance: any;
+	let singleTippyInstance: any;
+	let tippyTimeout: ReturnType<typeof setTimeout>;
+	let tooltipShownForResult = false;
+
+	function singleTippy(node: HTMLElement) {
+		const instance = tippyJs(node, {
+			content: 'Your file is ready to download!',
+			placement: 'bottom',
+			arrow: true,
+			trigger: 'manual',
+			appendTo: () => document.body
+		});
+		singleTippyInstance = instance;
+		return { destroy: () => { instance.destroy(); singleTippyInstance = null; } };
+	}
+
+	function showSingleTooltip() {
+		if (!singleTippyInstance || tooltipShownForResult) return;
+		const ref = singleTippyInstance.reference as HTMLElement;
+		if (!ref || ref.offsetParent === null) return;
+		tooltipShownForResult = true;
+		singleTippyInstance.show();
+		clearTimeout(tippyTimeout);
+		tippyTimeout = setTimeout(() => { singleTippyInstance?.hide(); }, 4000);
+	}
+
+	function zipTippy(node: HTMLElement) {
+		const instance = tippyJs(node, {
+			content: 'Your files are ready to download!',
+			placement: 'bottom',
+			arrow: true,
+			trigger: 'manual',
+			appendTo: () => document.body
+		});
+		zipTippyInstance = instance;
+		return { destroy: () => { instance.destroy(); zipTippyInstance = null; } };
+	}
 
 	// -- FUNCTIONS -- //
+
+	function showZipTooltip() {
+		if (!zipTippyInstance || tooltipShownForResult) return;
+		const ref = zipTippyInstance.reference as HTMLElement;
+		if (!ref || ref.offsetParent === null) return;
+		tooltipShownForResult = true;
+		zipTippyInstance.show();
+		clearTimeout(tippyTimeout);
+		tippyTimeout = setTimeout(() => { zipTippyInstance?.hide(); }, 4000);
+	}
 
 	function openZipDialog() {
 		zipFilename = 'compressed-images';
@@ -66,6 +117,16 @@
 		}
 	}
 
+	// -- REACTIVE STATEMENTS -- //
+
+	$: if ($batchResultSize === null && $result === null) { tooltipShownForResult = false; }
+	$: if ($batchResultSize !== null && $processingState === 'idle' && batch) {
+		setTimeout(showZipTooltip, 300);
+	}
+	$: if ($result !== null && $processingState === 'idle' && !batch) {
+		setTimeout(showSingleTooltip, 300);
+	}
+
 	// -- REACTIVE STATES -- //
 
 	$: outputFormat = $activeImage ? getOutputFormat($activeImage, $settings) : '';
@@ -78,7 +139,7 @@
 		? Math.round((1 - $batchResultSize / totalOriginalSize) * 100)
 		: null;
 	$: targetBytes = $settings.targetSize * ($settings.targetUnit === 'MB' ? 1024 * 1024 : 1024);
-	$: targetExceedsOriginal = $settings.qualityMode === 'target-size' && $activeImage !== null && targetBytes >= $activeImage.originalSize;
+	$: targetExceedsOriginal = !batch && $settings.qualityMode === 'target-size' && $activeImage !== null && targetBytes >= $activeImage.originalSize;
 </script>
 
 {#if !batch}
@@ -132,29 +193,45 @@
 
 		<!-- ACTION BUTTONS -->
 		<div class="flex flex-col gap-2">
-			<button
-				class={cn(
-					'flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all',
-					'bg-[#0891B2] text-white hover:brightness-110 dark:bg-[#22D3EE] dark:text-[#0B0A23]',
-					(isProcessing || targetExceedsOriginal) && 'pointer-events-none opacity-50'
-				)}
-				disabled={isProcessing || !$activeImage || targetExceedsOriginal}
-				on:click={performCompress}
-			>
-				{#if $processingState === 'compressing'}
-					<Loader2 size={14} class="animate-spin" />
-					Compressing...
-				{:else if $result}
-					Re-compress
-				{:else}
-					Compress
-				{/if}
-			</button>
+			{#if $processingState === 'compressing'}
+				<div class="flex gap-2">
+					<button
+						class="flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#0891B2] px-4 py-2.5 text-sm font-medium text-white pointer-events-none opacity-70 dark:bg-[#22D3EE] dark:text-[#0B0A23]"
+						disabled
+					>
+						<Loader2 size={14} class="animate-spin" />
+						Compressing...
+					</button>
+					<button
+						class="flex items-center justify-center rounded-lg border border-[#E2E8F0] px-3 py-2.5 text-xs font-medium text-[#64748B] transition-all hover:border-[#EF4444] hover:text-[#EF4444] dark:border-[#2A2578] dark:text-slate-400"
+						on:click={cancelProcessing}
+					>
+						Cancel
+					</button>
+				</div>
+			{:else}
+				<button
+					class={cn(
+						'flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all',
+						'bg-[#0891B2] text-white hover:brightness-110 dark:bg-[#22D3EE] dark:text-[#0B0A23]',
+						targetExceedsOriginal && 'pointer-events-none opacity-50'
+					)}
+					disabled={!$activeImage || targetExceedsOriginal}
+					on:click={performCompress}
+				>
+					{#if $result}
+						Re-compress
+					{:else}
+						Compress
+					{/if}
+				</button>
+			{/if}
 
 			{#if $result}
 				<button
 					class="flex items-center justify-center gap-2 rounded-lg border border-[#E2E8F0] px-4 py-2.5 text-sm font-medium text-[#0F172A] transition-all hover:bg-[#F8FAFC] dark:border-[#2A2578] dark:text-white dark:hover:bg-[#1E1A5E]/30"
-					on:click={downloadResult}
+					use:singleTippy
+					on:click={() => { singleTippyInstance?.hide(); downloadResult(); }}
 				>
 					<Download size={14} />
 					Download
@@ -210,37 +287,48 @@
 
 		<!-- ACTION BUTTONS -->
 		<div class="space-y-2">
-			<button
-				class={cn(
-					'flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all',
-					'bg-[#0891B2] text-white hover:brightness-110 dark:bg-[#22D3EE] dark:text-[#0B0A23]',
-					isProcessing && 'pointer-events-none opacity-70'
-				)}
-				disabled={isProcessing}
-				on:click={performBatchCompress}
-			>
-				{#if $processingState === 'compressing'}
-					<Loader2 size={14} class="animate-spin" />
-					{$batchProgress ? `${$batchProgress.current}/${$batchProgress.total}` : 'Compressing...'}
-				{:else if $batchResultSize !== null}
-					<Play size={14} />
-					Re-compress All
-				{:else}
-					<Play size={14} />
-					Compress All
-				{/if}
-			</button>
-
-			{#if $batchResultSize !== null}
+			{#if $processingState === 'compressing'}
+				<div class="flex gap-2">
+					<button
+						class="flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#0891B2] px-4 py-2.5 text-sm font-medium text-white pointer-events-none opacity-70 dark:bg-[#22D3EE] dark:text-[#0B0A23]"
+						disabled
+					>
+						<Loader2 size={14} class="animate-spin" />
+						{$batchProgress ? `${$batchProgress.current}/${$batchProgress.total}` : 'Compressing...'}
+					</button>
+					<button
+						class="flex items-center justify-center rounded-lg border border-[#E2E8F0] px-3 py-2.5 text-xs font-medium text-[#64748B] transition-all hover:border-[#EF4444] hover:text-[#EF4444] dark:border-[#2A2578] dark:text-slate-400"
+						on:click={cancelProcessing}
+					>
+						Cancel
+					</button>
+				</div>
+			{:else}
 				<button
 					class={cn(
-						'flex w-full items-center justify-center gap-2 rounded-lg border px-4 py-2 text-xs font-medium transition-all',
-						'border-[#E2E8F0] text-[#64748B] hover:border-[#0891B2] hover:text-[#0891B2]',
-						'dark:border-[#2A2578] dark:text-slate-400 dark:hover:border-[#22D3EE] dark:hover:text-[#22D3EE]',
-						isProcessing && 'pointer-events-none opacity-70'
+						'flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all',
+						'bg-[#0891B2] text-white hover:brightness-110 dark:bg-[#22D3EE] dark:text-[#0B0A23]'
 					)}
-					disabled={isProcessing}
-					on:click={openZipDialog}
+					on:click={performBatchCompress}
+				>
+					{#if $batchResultSize !== null}
+						<Play size={14} />
+						Re-compress All
+					{:else}
+						<Play size={14} />
+						Compress All
+					{/if}
+				</button>
+			{/if}
+
+			{#if $batchResultSize !== null && !isProcessing}
+				<button
+					class={cn(
+						'animate-glow-border flex w-full items-center justify-center gap-2 rounded-lg bg-white px-4 py-2.5 text-xs font-semibold text-[#0891B2] transition-all hover:brightness-110',
+						'dark:text-[#22D3EE]'
+					)}
+					use:zipTippy
+					on:click={() => { zipTippyInstance?.hide(); openZipDialog(); }}
 				>
 					<Archive size={14} />
 					Download ZIP
@@ -316,3 +404,5 @@
 		</div>
 	</div>
 {/if}
+
+

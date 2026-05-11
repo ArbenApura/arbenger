@@ -4,8 +4,10 @@
 	import {
 		settings,
 		activeImage,
+		images,
 		getOutputFormat,
-		formatBytes
+		formatBytes,
+		processingState
 	} from '../_lib/store';
 	import type { QualityMode } from '../_lib/store';
 	// IMPORTED DEP-COMPONENTS
@@ -29,7 +31,10 @@
 	$: outputFormat = $activeImage ? getOutputFormat($activeImage, $settings) : '';
 	$: isPng = outputFormat === 'image/png';
 	$: targetBytes = $settings.targetSize * ($settings.targetUnit === 'MB' ? 1024 * 1024 : 1024);
-	$: targetExceedsOriginal = $activeImage !== null && targetBytes >= $activeImage.originalSize;
+	$: smallestOriginal = $images.length > 0 ? Math.min(...$images.map((img) => img.originalSize)) : 0;
+	$: largestOriginal = $images.length > 0 ? Math.max(...$images.map((img) => img.originalSize)) : 0;
+	$: targetExceedsOriginal = !batch && $activeImage !== null && targetBytes >= $activeImage.originalSize;
+	$: isProcessing = $processingState !== 'idle';
 
 	// -- FUNCTIONS -- //
 
@@ -70,7 +75,7 @@
 	}
 </script>
 
-<div class="flex flex-col gap-4">
+<div class={cn('flex flex-col gap-4 transition-opacity', isProcessing && 'pointer-events-none opacity-50')}>
 	<!-- QUALITY MODE TOGGLE -->
 	<div>
 		<p class="mb-2 text-xs font-medium text-[#64748B] dark:text-slate-400">
@@ -140,7 +145,11 @@
 				<p class="text-xs font-medium text-[#64748B] dark:text-slate-400">
 					Maximum file size
 				</p>
-				{#if $activeImage}
+				{#if batch && $images.length > 0}
+					<span class="text-[10px] text-[#94A3B8] dark:text-slate-500">
+						Largest: {formatBytes(largestOriginal)}
+					</span>
+				{:else if $activeImage}
 					<span class="text-[10px] text-[#94A3B8] dark:text-slate-500">
 						Original: {formatBytes($activeImage.originalSize)}
 					</span>

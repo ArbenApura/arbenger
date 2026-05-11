@@ -34,7 +34,9 @@ The Image Resizer is one of Arbenger's live products. It allows users to resize,
 - **Scale presets:** 25%, 50%, 75%, 100%, 125%, 150%, 200%, 300%
 - **Dimension presets:** Social media (Instagram, Twitter/X, YouTube, LinkedIn, Facebook), Screens (HD, FHD, 4K), App icons (16-512px)
 - **Batch auto-naming:** Sequential, prefix-original, original-suffix, number-only, template patterns
-- **Batch ZIP download:** All resized images exported as a single ZIP file via `jszip`
+- **Batch ZIP download:** All resized images exported as a single ZIP file via `jszip`, with filename dialog
+- **Cancel support:** Cancel button during single and batch resize
+- **Download tooltip:** Tippy.js tooltip notifies when files are ready to download
 - **OffscreenCanvas Web Worker:** Resize operations run off the main thread for smooth UI
 
 ---

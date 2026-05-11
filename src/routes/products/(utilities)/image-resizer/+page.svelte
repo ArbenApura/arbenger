@@ -15,6 +15,7 @@
 		hasImages,
 		hasUnprocessedImages,
 		isBatchMode,
+		processingState,
 		setImageCrop,
 		totalProcessed,
 	} from './_lib/store';
@@ -222,10 +223,12 @@
 	{:else if !$isBatchMode}
 		<!-- SINGLE IMAGE MODE -->
 		<div class="flex flex-1 flex-col gap-4">
-			<ThumbnailStrip
-				on:addFiles={(e) => handleFiles(new CustomEvent('files', { detail: e.detail }))}
-				on:clearAll={clearAll}
-			/>
+			<div class={cn($processingState !== 'idle' && 'pointer-events-none opacity-50')}>
+				<ThumbnailStrip
+					on:addFiles={(e) => handleFiles(new CustomEvent('files', { detail: e.detail }))}
+					on:clearAll={() => clearAll()}
+				/>
+			</div>
 
 			<div class="flex flex-1 gap-4">
 				<div class="relative min-w-0 flex-1 flex flex-col">
@@ -272,11 +275,14 @@
 		<div class="flex gap-4 max-lg:flex-col">
 			<!-- LEFT: IMAGE LIST -->
 			<div
-				class="flex min-h-[420px] min-w-0 flex-1 flex-col overflow-hidden rounded-xl border border-[#E2E8F0] bg-white dark:border-[#2A2578] dark:bg-[#1E1A5E]/20"
+				class={cn(
+					'flex min-h-[420px] min-w-0 flex-1 flex-col overflow-hidden rounded-xl border border-[#E2E8F0] bg-white dark:border-[#2A2578] dark:bg-[#1E1A5E]/20',
+					$processingState !== 'idle' && 'pointer-events-none opacity-50'
+				)}
 			>
 				<BatchImageList
 					on:addFiles={(e) => handleFiles(new CustomEvent('files', { detail: e.detail }))}
-					on:clearAll={clearAll}
+					on:clearAll={() => clearAll()}
 					on:crop={(e) => openCropDialog(e.detail)}
 				/>
 			</div>

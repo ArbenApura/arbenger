@@ -53,6 +53,7 @@ The dev server is configured to always run on **port 8000** (not the Vite defaul
 |---------|---------|
 | `jszip` | Batch ZIP download in image resizer and compressor tools |
 | `upng-js` | PNG compression via color quantization in image compressor |
+| `tippy.js` | Tooltip library for download-ready notifications |
 | `svelte-sonner` | Toast notification library (`<Toaster>` in root layout) |
 | `lucide-svelte` | Icon library |
 | `clsx` + `tailwind-merge` | Dynamic class composition (`cn()` utility) |

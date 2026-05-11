@@ -47,6 +47,7 @@ All image resizer state is in `src/routes/products/(utilities)/image-resizer/_li
 | `isBatchMode` | `Derived<boolean>` | True when more than one image is loaded |
 | `batchSettings` | `Writable<BatchResizeSettings>` | Shared resize settings for batch export |
 | `batchProgress` | `Writable<{ current: number; total: number } \| null>` | Batch processing progress |
+| `batchResultSize` | `Writable<number \| null>` | Total size of batch results after processing |
 | `filenameRevision` | `Writable<number>` | Incremented when filenames change (triggers reactivity in dependent components) |
 | `cropRevision` | `Writable<number>` | Incremented when crop data changes (triggers reactivity in dependent components) |
 
@@ -72,6 +73,7 @@ All image compressor state is in `src/routes/products/(utilities)/image-compress
 | `isBatchMode` | `Derived<boolean>` | True when more than one image is loaded |
 | `batchProgress` | `Writable<{ current: number; total: number } \| null>` | Batch processing progress |
 | `batchExported` | `Writable<boolean>` | Whether batch ZIP has been exported |
+| `batchResultSize` | `Writable<number \| null>` | Total size of batch results after processing |
 | `filenameRevision` | `Writable<number>` | Incremented when filenames change (triggers reactivity) |
 | `totalProcessed` | `Writable<number \| null>` | Lifetime count from `/api/stats/?toolId=image-compressor` |
 

@@ -55,7 +55,7 @@ export const products: Product[] = [
 		slug: 'image-compressor',
 		name: 'Image Compressor',
 		description:
-			'Compress PNG, JPEG, and WebP images up to 90% smaller. Quality slider, target size mode, and live before/after preview.',
+			'Compress PNG, JPEG, and WebP images up to 90% smaller. Batch processing, target size mode, and before/after preview.',
 		category: 'misc-tools',
 		status: 'live',
 		platform: 'web',

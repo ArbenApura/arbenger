@@ -4,6 +4,51 @@ All notable decisions, changes, and milestones for arbenger.com are documented h
 
 ---
 
+## 2026-05-11 — UX Polish: Batch Flow, Cancel, Tooltips, Input Guards
+
+### Batch Flow Separation (Both Tools)
+
+- **Split batch operations** — "Compress/Resize All" and "Download ZIP" are now separate buttons (previously combined as "Compress & Download ZIP")
+- **Batch result summary** — shows total original size, result size, and reduction percentage after batch processing
+- **ZIP download dialog** — confirmation dialog with editable filename input before downloading ZIP
+- **Download ready tooltip** — tippy.js tooltip appears below Download/Download ZIP button when results are ready, auto-dismisses after 4 seconds
+
+### Cancel Support (Both Tools)
+
+- **Cancel button** appears alongside the processing indicator during compress/resize (single + batch modes)
+- Batch operations check a `cancelled` flag between iterations and stop early with a toast
+
+### Input Guards (Both Tools)
+
+- **Controls disabled during processing** — all sidebar inputs (quality, format, filename, etc.) get `pointer-events-none opacity-50` when compressing/resizing
+- **Left content disabled** — ThumbnailStrip and BatchImageList become non-interactive during processing
+- **Batch target size** — validation uses largest image as reference in batch mode, doesn't block compress (per-image warnings instead)
+
+### Visual Improvements
+
+- **Animated border on Download ZIP** — traveling gradient border animation (`animate-glow-border`) draws attention to the download button
+- **Number input spinners hidden** — native browser spinners removed globally for consistent dark mode appearance
+- **Homepage compressor card** — updated description to mention batch processing, "Batch Processing" pill replaces "Quality Control"
+
+### Dependencies
+
+| Package | Type | Purpose |
+|---------|------|---------|
+| `tippy.js` | Runtime | Tooltip library for download-ready notifications |
+
+### Files Modified
+
+- Both `_lib/store.ts` — added `batchResultSize` store, `cancelProcessing()`, split `downloadAllAsZip` into `performBatch*` + `downloadBatchZip`
+- Both `InfoPanel`/`CompressInfoPanel` — batch summary, cancel buttons, ZIP dialog, tippy tooltips
+- Both `ResizeControls`/`CompressControls` — processing state gate, batch target size validation
+- Both `+page.svelte` — processing gate on left content, `clearAll` type fix
+- `src/app.css` — number spinner hide, `animate-glow-border` utility
+- `src/lib/components/home/FeaturedTool.svelte` — compressor batch processing mention
+- `src/lib/data/products.ts` — compressor description updated
+- `package.json` / `yarn.lock` — added `tippy.js`, removed `svelte-tippy`
+
+---
+
 ## 2026-05-11 — Image Compressor Tool & Cross-Tool Improvements
 
 ### Image Compressor Tool (NEW)

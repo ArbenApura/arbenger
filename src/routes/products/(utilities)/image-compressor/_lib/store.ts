@@ -59,6 +59,7 @@ export const settings = writable<CompressSettings>({
 });
 export const result = writable<CompressResult | null>(null);
 export const processingState = writable<ProcessingState>('idle');
+let cancelled = false;
 export const batchProgress = writable<{ current: number; total: number } | null>(null);
 export const batchExported = writable(false);
 export const batchResultSize = writable<number | null>(null);
@@ -108,6 +109,10 @@ export function destroyWorker(): void {
 		worker.terminate();
 		worker = null;
 	}
+}
+
+export function cancelProcessing(): void {
+	cancelled = true;
 }
 
 // -- UTILITY -- //
@@ -612,6 +617,7 @@ export async function performCompress(): Promise<void> {
 
 	saveCurrentSettings();
 	processingState.set('compressing');
+	cancelled = false;
 
 	const prevResult = imageResultMap.get(img.id);
 	if (prevResult) {
@@ -692,6 +698,8 @@ export async function performBatchCompress(): Promise<void> {
 	if (list.length < 2) return;
 
 	processingState.set('compressing');
+	cancelled = false;
+	batchResultSize.set(null);
 	const s = get(settings);
 	batchBlobs.clear();
 
@@ -700,6 +708,7 @@ export async function performBatchCompress(): Promise<void> {
 		let totalSize = 0;
 
 		for (let i = 0; i < list.length; i++) {
+			if (cancelled) { toast.info('Cancelled'); return; }
 			batchProgress.set({ current: i + 1, total: list.length });
 			const img = list[i];
 			const perImageSettings = imageSettingsMap.get(img.id);

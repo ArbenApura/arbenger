@@ -129,6 +129,31 @@ input[type='number'] {
 	font-family: var(--font-display);
 }
 
+@keyframes border-travel {
+	0% { background-position: 0% 0%; }
+	100% { background-position: 200% 0%; }
+}
+
+@utility animate-glow-border {
+	border: none;
+	background:
+		linear-gradient(var(--glow-bg, #fff), var(--glow-bg, #fff)) padding-box,
+		linear-gradient(90deg, #CBD5E1 0%, #0891B2 15%, #22D3EE 30%, #2DD4BF 50%, #22D3EE 70%, #0891B2 85%, #CBD5E1 100%) border-box;
+	background-size: 100% 100%, 200% 100%;
+	border: 1.5px solid transparent;
+	animation: border-travel 3s linear infinite;
+}
+
+.dark .animate-glow-border {
+	--glow-bg: #161446;
+	background:
+		linear-gradient(var(--glow-bg), var(--glow-bg)) padding-box,
+		linear-gradient(90deg, #2A2578 0%, #0891B2 20%, #22D3EE 40%, #2DD4BF 50%, #22D3EE 60%, #0891B2 80%, #2A2578 100%) border-box;
+	background-size: 100% 100%, 200% 100%;
+	border: 1.5px solid transparent;
+	animation: border-travel 3s linear infinite;
+}
+
 @keyframes blink {
 	0%,
 	50% {
