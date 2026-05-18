@@ -1,6 +1,6 @@
 <script lang="ts">
 	// IMPORTED DEP-MODULES
-	import { ImageIcon, ArrowRight, Shield, Layers, Crop, Minimize2, Target, SlidersHorizontal } from 'lucide-svelte';
+	import { ImageIcon, ArrowRight, Shield, Layers, Crop, Target, Pipette, Eye, Palette } from 'lucide-svelte';
 	// IMPORTED MODULES
 	import { reveal } from '$lib/actions/reveal';
 	// IMPORTED COMPONENTS
@@ -13,15 +13,15 @@
 		<div use:reveal class="mb-10 max-w-2xl">
 			<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Now available</p>
 			<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#0F172A] md:text-4xl dark:text-white">
-				Free browser-based image tools
+				Free tools for designers and developers
 			</h2>
 			<p class="mt-4 text-lg text-[#475569] dark:text-slate-300">
-				Resize, crop, compress, and convert — all locally in your browser. No uploads, no accounts.
+				Image processing, color picking, and more — all free, all private. No uploads, no accounts.
 			</p>
 		</div>
 
 		<!-- TOOL CARDS GRID -->
-		<div class="grid gap-6 lg:grid-cols-2">
+		<div class="grid gap-6 lg:grid-cols-3">
 			<!-- IMAGE RESIZER CARD -->
 			<div use:reveal={{ delay: 100 }} class="group overflow-hidden rounded-2xl border border-[#E2E8F0] bg-gradient-to-br from-white to-[#F8FAFC] shadow-[0_4px_24px_rgba(0,0,0,0.04)] transition-shadow hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:border-[#2A2578]/60 dark:from-[#1E1A5E]/30 dark:to-[#0B0A23] dark:shadow-none dark:hover:shadow-none">
 				<div class="flex flex-col gap-6 p-6 sm:p-8">
@@ -190,6 +190,80 @@
 					<!-- CTA -->
 					<Button href="/products/image-compressor/" variant="primary" class="w-full">
 						Open Image Compressor
+					</Button>
+				</div>
+			</div>
+
+			<!-- COLOR PICKER CARD -->
+			<div use:reveal={{ delay: 300 }} class="group overflow-hidden rounded-2xl border border-[#E2E8F0] bg-gradient-to-br from-white to-[#F8FAFC] shadow-[0_4px_24px_rgba(0,0,0,0.04)] transition-shadow hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:border-[#2A2578]/60 dark:from-[#1E1A5E]/30 dark:to-[#0B0A23] dark:shadow-none dark:hover:shadow-none">
+				<div class="flex h-full flex-col gap-6 p-6 sm:p-8">
+					<!-- BADGES -->
+					<div class="flex items-center gap-2">
+						<span class="rounded-full bg-[#2DD4BF]/10 px-3 py-1 text-xs font-semibold text-[#2DD4BF]">
+							Live
+						</span>
+						<span class="rounded-full border border-[#E2E8F0] px-3 py-1 text-xs text-[#94A3B8] dark:border-[#2A2578] dark:text-slate-500">
+							Chrome Extension
+						</span>
+					</div>
+
+					<h3 class="font-display text-2xl font-bold tracking-tight text-[#0F172A] dark:text-white">
+						Color Picker
+					</h3>
+
+					<p class="text-sm text-[#475569] dark:text-slate-300">
+						Pick any color, check WCAG contrast, simulate color blindness — without giving an extension access to your browsing data.
+					</p>
+
+					<!-- UI MINIATURE -->
+					<div class="rounded-xl border border-[#E2E8F0] bg-white p-3.5 dark:border-[#2A2578] dark:bg-[#1E1A5E]/40">
+						<!-- MOCK COLOR SWATCH + HEX -->
+						<div class="mb-2 flex items-center gap-3">
+							<div class="h-12 w-12 rounded-lg bg-[#22D3EE]" />
+							<div>
+								<div class="font-mono text-sm font-bold text-[#0F172A] dark:text-white">#22D3EE</div>
+								<div class="font-mono text-[7px] text-[#94A3B8] dark:text-slate-500">rgb(34, 211, 238)</div>
+							</div>
+						</div>
+						<!-- MOCK FORMAT ROWS -->
+						<div class="mb-2.5 space-y-1">
+							<div class="flex items-center rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-2 py-1 dark:border-[#2A2578] dark:bg-[#0B0A23]/50">
+								<span class="w-5 text-[7px] font-medium text-[#94A3B8] dark:text-slate-500">HEX</span>
+								<span class="flex-1 text-left text-[8px] font-semibold text-[#0F172A] dark:text-white">#22D3EE</span>
+								<svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 text-[#CBD5E1] dark:text-slate-600"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+							</div>
+							<div class="flex items-center rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-2 py-1 dark:border-[#2A2578] dark:bg-[#0B0A23]/50">
+								<span class="w-5 text-[7px] font-medium text-[#94A3B8] dark:text-slate-500">HSL</span>
+								<span class="flex-1 text-left text-[8px] font-semibold text-[#0F172A] dark:text-white">hsl(188, 82%, 53%)</span>
+								<svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 text-[#CBD5E1] dark:text-slate-600"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+							</div>
+						</div>
+						<!-- MOCK PICK BUTTON -->
+						<div class="flex items-center justify-center gap-1.5 rounded-lg bg-[#0891B2] py-1.5 dark:bg-[#22D3EE]">
+							<svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white dark:text-[#0B0A23]"><path d="m2 22 1-1h3l9-9"/><path d="M3 21v-3l9-9"/></svg>
+							<span class="text-[8px] font-semibold text-white dark:text-[#0B0A23]">Pick Color</span>
+						</div>
+					</div>
+
+					<!-- FEATURE PILLS -->
+					<div class="flex flex-wrap gap-2">
+						<span class="flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] px-3 py-1.5 text-xs text-[#64748B] dark:border-[#2A2578] dark:text-slate-400">
+							<Eye size={12} class="text-[#0891B2] dark:text-[#22D3EE]" />
+							Contrast Checker
+						</span>
+						<span class="flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] px-3 py-1.5 text-xs text-[#64748B] dark:border-[#2A2578] dark:text-slate-400">
+							<Palette size={12} class="text-[#0891B2] dark:text-[#22D3EE]" />
+							Harmonies
+						</span>
+						<span class="flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] px-3 py-1.5 text-xs text-[#64748B] dark:border-[#2A2578] dark:text-slate-400">
+							<Shield size={12} class="text-[#0891B2] dark:text-[#22D3EE]" />
+							Zero Permissions
+						</span>
+					</div>
+
+					<!-- CTA — mt-auto PUSHES TO BOTTOM TO MATCH OTHER CARDS -->
+					<Button href="/products/color-picker/" variant="primary" class="mt-auto w-full">
+						Explore Color Picker
 					</Button>
 				</div>
 			</div>

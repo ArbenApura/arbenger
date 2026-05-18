@@ -12,6 +12,17 @@ export const blogCategories: BlogCategoryInfo[] = [
 
 export const blogPosts: BlogPost[] = [
 	{
+		slug: 'introducing-color-picker',
+		title: 'We Built a Color Picker Because Every Other One Reads Your Browsing Data',
+		description:
+			'A Chrome extension with WCAG contrast checking, color blindness simulation, and four output formats — using only two permissions. Here\'s why we built it.',
+		date: '2026-05-19',
+		category: 'release',
+		tags: ['color-picker', 'chrome-extension', 'release'],
+		readTime: 8,
+		featured: true,
+	},
+	{
 		slug: 'how-to-use-image-resizer',
 		title: 'How to Use Arbenger Image Resizer — The Complete Guide',
 		description:

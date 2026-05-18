@@ -14,6 +14,7 @@ const STATIC_PAGES = [
 	{ path: '/cookies/', priority: '0.3', changefreq: 'yearly', lastmod: '2026-05-08' },
 	{ path: '/products/image-resizer/', priority: '0.7', changefreq: 'weekly', lastmod: '2026-05-09' },
 	{ path: '/products/image-compressor/', priority: '0.7', changefreq: 'weekly', lastmod: '2026-05-11' },
+	{ path: '/products/color-picker/', priority: '0.7', changefreq: 'weekly', lastmod: '2026-05-19' },
 ];
 
 const BLOG_PAGES = sortedPosts.map((post) => ({

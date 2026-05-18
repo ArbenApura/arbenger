@@ -21,7 +21,7 @@ export const categories: ProductCategoryInfo[] = [
 		name: 'Chrome Plugins',
 		description: 'Browser extensions that work inside Chrome.',
 		icon: 'chrome',
-		productCount: 0,
+		productCount: 1,
 	},
 	{
 		id: 'ai-tools',
@@ -61,6 +61,18 @@ export const products: Product[] = [
 		platform: 'web',
 		externalUrl: '/products/image-compressor',
 		tags: ['image', 'compress', 'optimize', 'free'],
+		featured: false,
+	},
+	{
+		slug: 'color-picker',
+		name: 'Color Picker',
+		description:
+			'Pick colors from any webpage. HEX, RGB, HSL, OKLCH formats. Color harmonies, WCAG contrast checker, color blindness simulation, and shade generator.',
+		category: 'chrome-plugins',
+		status: 'live',
+		platform: 'chrome-web-store',
+		externalUrl: '/products/color-picker',
+		tags: ['color', 'eyedropper', 'design', 'free'],
 		featured: false,
 	},
 ];

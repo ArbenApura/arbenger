@@ -13,7 +13,6 @@
 </script>
 
 <!-- TERMINAL-STYLE SECTION LABEL -->
-<p class={cn('mb-8 font-mono text-sm tracking-widest text-[#94A3B8] uppercase dark:text-slate-400', className)}>
-	<span class="text-[#0891B2] dark:text-[#22D3EE]">{'>'}</span>
+<p class={cn('mb-8 font-mono text-sm tracking-widest text-[#0891B2] uppercase dark:text-[#22D3EE]', className)}>
 	{label}
 </p>
