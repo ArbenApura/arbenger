@@ -14,6 +14,8 @@ Navigation hub for project context.
 
 ## Active Tracks
 
+- [ ] [Color Picker Chrome Extension](./tracks/color-picker-ext_20260518/index.md) — First Chrome plugin, eyedropper color picker
+
 <!-- Auto-populated by /conductor:new-track -->
 
 ## Getting Started

@@ -1,0 +1,16 @@
+{
+  "id": "color-picker-v2_20260519",
+  "title": "Color Picker v2 — Pro Features",
+  "type": "feature",
+  "status": "complete",
+  "created": "2026-05-19T00:00:00Z",
+  "updated": "2026-05-19T00:00:00Z",
+  "phases": {
+    "total": 4,
+    "completed": 4
+  },
+  "tasks": {
+    "total": 19,
+    "completed": 19
+  }
+}

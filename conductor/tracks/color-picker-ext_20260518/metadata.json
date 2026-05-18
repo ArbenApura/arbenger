@@ -1,0 +1,16 @@
+{
+  "id": "color-picker-ext_20260518",
+  "title": "Color Picker Chrome Extension",
+  "type": "feature",
+  "status": "complete",
+  "created": "2026-05-18T00:00:00Z",
+  "updated": "2026-05-18T00:00:00Z",
+  "phases": {
+    "total": 4,
+    "completed": 4
+  },
+  "tasks": {
+    "total": 21,
+    "completed": 21
+  }
+}

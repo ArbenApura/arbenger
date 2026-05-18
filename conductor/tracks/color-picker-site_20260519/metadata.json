@@ -1,0 +1,16 @@
+{
+  "id": "color-picker-site_20260519",
+  "title": "Color Picker Site Integration",
+  "type": "feature",
+  "status": "complete",
+  "created": "2026-05-19T00:00:00Z",
+  "updated": "2026-05-19T00:00:00Z",
+  "phases": {
+    "total": 5,
+    "completed": 5
+  },
+  "tasks": {
+    "total": 18,
+    "completed": 18
+  }
+}
