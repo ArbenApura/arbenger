@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Color Picker — Arbenger",
   "version": "1.1.0",
-  "description": "Pick colors from any webpage. HEX, RGB, HSL. Color harmonies, contrast checker, shade generator.",
+  "description": "Pick colors from any webpage. HEX, RGB, HSL, OKLCH. WCAG contrast checker, color blindness sim, harmonies, shades.",
   "permissions": ["activeTab", "storage"],
   "action": {
     "default_popup": "popup.html",

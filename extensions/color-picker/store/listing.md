@@ -29,7 +29,7 @@ This extension uses only two permissions:
 • activeTab — lets the eyedropper read the pixel you click (nothing else)
 • storage — saves your color history and settings locally
 
-No page content access. No network requests. No analytics. Under 20 KB total.
+No page content access. No network requests. No analytics. Under 70 KB total.
 
 BUILT FOR DEVELOPERS:
 
