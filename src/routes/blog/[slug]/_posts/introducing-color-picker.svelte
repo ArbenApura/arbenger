@@ -6,7 +6,7 @@
 <!-- INTRO -->
 <section use:reveal>
 	<p class="text-lg leading-relaxed text-[#475569] dark:text-slate-300">
-		We got tired of installing color picker extensions that demand access to every website we visit. So we built one that doesn't. Color Picker combines an eyedropper, four output formats, WCAG contrast checker, color blindness simulation, harmonies, shades, and persistent history — in a single 20 KB popup with only two permissions.
+		We got tired of installing color picker extensions that demand access to every website we visit. So we built one that doesn't. Color Picker combines an eyedropper, four output formats, WCAG contrast checker, color blindness simulation, harmonies, shades, and persistent history — in a single lightweight popup with only two permissions.
 	</p>
 
 	<!-- PRIVACY CALLOUT -->
@@ -678,7 +678,7 @@
 			</li>
 			<li class="flex items-start gap-3">
 				<span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0891B2] dark:bg-[#22D3EE]" />
-				<span><strong class="text-[#0F172A] dark:text-white">Under 70 KB</strong> — entire JS bundle, minified. No external dependencies at runtime.</span>
+				<span><strong class="text-[#0F172A] dark:text-white">Lightweight</strong> — no external dependencies at runtime. Fast to install, fast to load.</span>
 			</li>
 			<li class="flex items-start gap-3">
 				<span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0891B2] dark:bg-[#22D3EE]" />
@@ -693,7 +693,7 @@
 	<div class="rounded-2xl border border-[#0891B2]/20 bg-[#0891B2]/5 p-8 text-center dark:border-[#22D3EE]/20 dark:bg-[#22D3EE]/5">
 		<p class="font-display text-xl font-bold text-[#0F172A] dark:text-white">Try Color Picker</p>
 		<p class="mt-2 text-sm text-[#475569] dark:text-slate-300">
-			Free, private, and under 20 KB. Two permissions. Six tools in one popup.
+			Free, private, and lightweight. Two permissions. Six tools in one popup.
 		</p>
 		<div class="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
 			<a

@@ -5,9 +5,6 @@ export const POSTS_PER_PAGE = 9;
 
 export const blogCategories: BlogCategoryInfo[] = [
 	{ id: 'tutorial', label: 'Tutorials' },
-	{ id: 'devlog', label: 'Dev Logs' },
-	{ id: 'release', label: 'Releases' },
-	{ id: 'opinion', label: 'Opinion' },
 ];
 
 export const blogPosts: BlogPost[] = [
@@ -17,8 +14,8 @@ export const blogPosts: BlogPost[] = [
 		description:
 			'A Chrome extension with WCAG contrast checking, color blindness simulation, and four output formats — using only two permissions. Here\'s why we built it.',
 		date: '2026-05-19',
-		category: 'release',
-		tags: ['color-picker', 'chrome-extension', 'release'],
+		category: 'tutorial',
+		tags: ['color-picker', 'chrome-extension', 'guide'],
 		readTime: 8,
 		featured: true,
 	},

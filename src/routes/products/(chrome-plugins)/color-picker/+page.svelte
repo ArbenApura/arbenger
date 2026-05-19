@@ -48,7 +48,7 @@
 	];
 
 	const STEPS = [
-		{ num: '1', title: 'Install', desc: 'One click from the Chrome Web Store. Under 70 KB — installs in seconds.' },
+		{ num: '1', title: 'Install', desc: 'One click from the Chrome Web Store. Installs in seconds.' },
 		{ num: '2', title: 'Pick', desc: 'Click the extension icon, press Pick Color, click any pixel on the page.' },
 		{ num: '3', title: 'Copy', desc: 'HEX is already on your clipboard. Open the popup for formats, harmonies, and contrast.' }
 	];
@@ -150,7 +150,7 @@
 				Six tools designers keep open in separate tabs — in one popup
 			</h2>
 			<p class="mt-3 text-[#475569] dark:text-slate-300">
-				Color picker, format converter, palette generator, contrast checker, color blindness simulator, and history — 20 KB total.
+				Color picker, format converter, palette generator, contrast checker, color blindness simulator, and history — all in one popup.
 			</p>
 		</div>
 
@@ -317,7 +317,7 @@
 				</div>
 				<div class="flex items-center gap-2 rounded-lg border border-[#E2E8F0] px-4 py-2 dark:border-[#2A2578]">
 					<Feather size={16} class="text-[#2DD4BF]" />
-					<span class="text-sm text-[#475569] dark:text-slate-400">Under 70 KB</span>
+					<span class="text-sm text-[#475569] dark:text-slate-400">Lightweight</span>
 				</div>
 			</div>
 		</div>

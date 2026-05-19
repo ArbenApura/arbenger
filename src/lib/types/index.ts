@@ -60,7 +60,7 @@ export interface Locale {
 	enabled: boolean;
 }
 
-export type BlogCategory = 'tutorial' | 'devlog' | 'release' | 'opinion';
+export type BlogCategory = 'tutorial';
 
 export interface BlogPost {
 	slug: string;

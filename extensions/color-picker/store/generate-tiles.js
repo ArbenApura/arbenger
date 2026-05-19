@@ -69,7 +69,7 @@ const marqueeSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${MW}" height
   </g>
 
   <!-- TRUST LINE -->
-  <text x="${TX}" y="${LOGO_CY + 110}" fill="#2DD4BF" font-family="Arial, Helvetica, sans-serif" font-size="20">Minimal permissions · Under 70 KB · Free</text>
+  <text x="${TX}" y="${LOGO_CY + 110}" fill="#2DD4BF" font-family="Arial, Helvetica, sans-serif" font-size="20">Minimal permissions · Lightweight · Free</text>
 
   <!-- BRAND -->
   <text x="${TX}" y="${MH - 30}" fill="#64748B" font-family="Arial, Helvetica, sans-serif" font-size="16">by Arbenger</text>
