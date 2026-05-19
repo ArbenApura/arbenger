@@ -257,7 +257,7 @@
 						</span>
 						<span class="flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] px-3 py-1.5 text-xs text-[#64748B] dark:border-[#2A2578] dark:text-slate-400">
 							<Shield size={12} class="text-[#0891B2] dark:text-[#22D3EE]" />
-							Zero Permissions
+							Minimal Permissions
 						</span>
 					</div>
 

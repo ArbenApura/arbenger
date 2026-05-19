@@ -48,7 +48,7 @@
 	];
 
 	const STEPS = [
-		{ num: '1', title: 'Install', desc: 'One click from the Chrome Web Store. Under 20 KB — installs in seconds.' },
+		{ num: '1', title: 'Install', desc: 'One click from the Chrome Web Store. Under 70 KB — installs in seconds.' },
 		{ num: '2', title: 'Pick', desc: 'Click the extension icon, press Pick Color, click any pixel on the page.' },
 		{ num: '3', title: 'Copy', desc: 'HEX is already on your clipboard. Open the popup for formats, harmonies, and contrast.' }
 	];
@@ -56,7 +56,7 @@
 
 <MetaTags
 	title="Free Color Picker Chrome Extension — HEX, RGB, HSL, Contrast Checker | Arbenger"
-	description="Pick colors from any webpage. HEX, RGB, HSL, OKLCH output. Color harmonies, WCAG contrast checker, color blindness simulation. Zero permissions. 100% free."
+	description="Pick colors from any webpage. HEX, RGB, HSL, OKLCH output. Color harmonies, WCAG contrast checker, color blindness simulation. Minimal permissions. 100% free."
 	url="{SITE_URL}/products/color-picker/"
 />
 
@@ -172,6 +172,98 @@
 	</div>
 </section>
 
+<!-- TRY IT — COLOR SAMPLE TARGETS -->
+<section class="border-y border-[#E2E8F0] bg-[#F8FAFC] py-16 md:py-24 dark:border-[#2A2578] dark:bg-[#1E1A5E]/10">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div use:reveal class="mb-12 text-center">
+			<SectionLabel label="Try it" />
+			<h2 class="font-display mt-4 text-2xl font-bold tracking-tight text-[#0F172A] md:text-3xl dark:text-white">
+				Install the extension, then pick any color below
+			</h2>
+			<p class="mx-auto mt-3 max-w-xl text-[#475569] dark:text-slate-300">
+				These are real colors rendered on your screen. Click the extension icon, hit Pick Color, and click any swatch to grab its exact value.
+			</p>
+		</div>
+
+		<!-- GRADIENT BANNER -->
+		<div use:reveal={{ delay: 80 }} class="mb-8 h-16 rounded-2xl md:h-20" style="background: linear-gradient(to right, #EF4444, #F97316, #FBBF24, #22C55E, #06B6D4, #6366F1, #A855F7, #EC4899);"></div>
+
+		<!-- SAMPLE SWATCHES GRID -->
+		<div use:reveal={{ delay: 160 }} class="grid grid-cols-5 gap-3 sm:grid-cols-10">
+			{#each [
+				'#0F172A', '#1E293B', '#334155', '#475569', '#64748B',
+				'#EF4444', '#F97316', '#FBBF24', '#EAB308', '#84CC16',
+				'#22C55E', '#10B981', '#14B8A6', '#06B6D4', '#0EA5E9',
+				'#3B82F6', '#6366F1', '#8B5CF6', '#A855F7', '#D946EF',
+				'#EC4899', '#F43F5E', '#FB7185', '#FDA4AF', '#FECDD3',
+				'#DBEAFE', '#BFDBFE', '#93C5FD', '#60A5FA', '#2563EB',
+				'#D9F99D', '#BEF264', '#A3E635', '#65A30D', '#3F6212',
+				'#FEF08A', '#FDE047', '#FACC15', '#CA8A04', '#713F12',
+				'#CFFAFE', '#A5F3FC', '#67E8F9', '#22D3EE', '#0891B2',
+				'#F5D0FE', '#F0ABFC', '#E879F9', '#C026D3', '#86198F'
+			] as color}
+				<div
+					class="aspect-square rounded-lg transition-transform hover:scale-110 hover:shadow-lg"
+					style="background: {color};"
+					title={color}
+				/>
+			{/each}
+		</div>
+
+		<!-- SAMPLE UI ELEMENTS -->
+		<div use:reveal={{ delay: 240 }} class="mt-8 grid gap-4 sm:grid-cols-3">
+			<!-- MOCK BUTTON GROUP -->
+			<div class="rounded-xl border border-[#E2E8F0] bg-white p-5 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30">
+				<p class="mb-3 text-xs font-medium text-[#94A3B8] dark:text-slate-500">BUTTONS</p>
+				<div class="space-y-2">
+					<div class="rounded-lg bg-[#3B82F6] px-4 py-2 text-center text-sm font-semibold text-white">Primary Action</div>
+					<div class="rounded-lg bg-[#10B981] px-4 py-2 text-center text-sm font-semibold text-white">Success</div>
+					<div class="rounded-lg bg-[#EF4444] px-4 py-2 text-center text-sm font-semibold text-white">Danger</div>
+					<div class="rounded-lg border border-[#E2E8F0] bg-white px-4 py-2 text-center text-sm font-semibold text-[#334155] dark:border-[#2A2578] dark:bg-[#0B0A23] dark:text-slate-300">Secondary</div>
+				</div>
+			</div>
+
+			<!-- MOCK GRADIENT CARDS -->
+			<div class="rounded-xl border border-[#E2E8F0] bg-white p-5 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30">
+				<p class="mb-3 text-xs font-medium text-[#94A3B8] dark:text-slate-500">GRADIENTS</p>
+				<div class="space-y-2">
+					<div class="h-10 rounded-lg" style="background: linear-gradient(135deg, #667EEA, #764BA2);"></div>
+					<div class="h-10 rounded-lg" style="background: linear-gradient(135deg, #F093FB, #F5576C);"></div>
+					<div class="h-10 rounded-lg" style="background: linear-gradient(135deg, #4FACFE, #00F2FE);"></div>
+					<div class="h-10 rounded-lg" style="background: linear-gradient(135deg, #43E97B, #38F9D7);"></div>
+				</div>
+			</div>
+
+			<!-- MOCK BRAND COLORS -->
+			<div class="rounded-xl border border-[#E2E8F0] bg-white p-5 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30">
+				<p class="mb-3 text-xs font-medium text-[#94A3B8] dark:text-slate-500">BRAND PALETTES</p>
+				<div class="space-y-2">
+					<div class="flex gap-1">
+						<div class="h-10 flex-1 rounded-l-lg bg-[#1DA1F2]" title="Twitter Blue" />
+						<div class="h-10 flex-1 bg-[#14171A]" title="Twitter Dark" />
+						<div class="h-10 flex-1 rounded-r-lg bg-[#AAB8C2]" title="Twitter Gray" />
+					</div>
+					<div class="flex gap-1">
+						<div class="h-10 flex-1 rounded-l-lg bg-[#FF0000]" title="YouTube Red" />
+						<div class="h-10 flex-1 bg-[#282828]" title="YouTube Dark" />
+						<div class="h-10 flex-1 rounded-r-lg bg-[#FFFFFF] border border-[#E2E8F0] dark:border-[#2A2578]" title="YouTube White" />
+					</div>
+					<div class="flex gap-1">
+						<div class="h-10 flex-1 rounded-l-lg bg-[#5865F2]" title="Discord Blurple" />
+						<div class="h-10 flex-1 bg-[#EB459E]" title="Discord Fuchsia" />
+						<div class="h-10 flex-1 rounded-r-lg bg-[#57F287]" title="Discord Green" />
+					</div>
+					<div class="flex gap-1">
+						<div class="h-10 flex-1 rounded-l-lg bg-[#FF6900]" title="Reddit Orange" />
+						<div class="h-10 flex-1 bg-[#0079D3]" title="Reddit Blue" />
+						<div class="h-10 flex-1 rounded-r-lg bg-[#1A1A1B]" title="Reddit Dark" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
 <!-- HOW IT WORKS -->
 <section class="border-y border-[#E2E8F0] bg-[#F8FAFC] py-16 md:py-24 dark:border-[#2A2578] dark:bg-[#1E1A5E]/10">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -225,7 +317,7 @@
 				</div>
 				<div class="flex items-center gap-2 rounded-lg border border-[#E2E8F0] px-4 py-2 dark:border-[#2A2578]">
 					<Feather size={16} class="text-[#2DD4BF]" />
-					<span class="text-sm text-[#475569] dark:text-slate-400">Under 20 KB</span>
+					<span class="text-sm text-[#475569] dark:text-slate-400">Under 70 KB</span>
 				</div>
 			</div>
 		</div>

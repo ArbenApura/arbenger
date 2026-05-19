@@ -24,7 +24,7 @@
 			Privacy Policy
 		</h1>
 
-		<p class="mt-4 text-sm text-[#64748B] dark:text-slate-400">Last updated: May 10, 2026</p>
+		<p class="mt-4 text-sm text-[#64748B] dark:text-slate-400">Last updated: May 19, 2026</p>
 	</div>
 </section>
 
@@ -59,6 +59,29 @@
 			<li>
 				<strong class="text-[#0F172A] dark:text-white">Contact form data</strong> -- If we add a contact form,
 				we'll collect whatever you submit (name, email, message). We won't use it for anything else.
+			</li>
+		</ul>
+
+		<!-- CHROME EXTENSIONS -->
+		<h2 class="font-display mt-12 text-xl font-bold text-[#0F172A] dark:text-white">Chrome Extensions</h2>
+		<p class="mt-4 text-[#475569] leading-relaxed dark:text-slate-300">
+			Our Chrome extensions (such as Color Picker) are designed with minimal permissions and zero data collection:
+		</p>
+		<ul class="mt-4 list-disc space-y-2 pl-6 text-[#475569] leading-relaxed dark:text-slate-300">
+			<li>
+				<strong class="text-[#0F172A] dark:text-white">No browsing data access</strong> -- Our extensions use only
+				<code class="rounded bg-[#F1F5F9] px-1 py-0.5 font-mono text-sm dark:bg-[#2A2578]">activeTab</code> (activates only when you click the extension icon) and
+				<code class="rounded bg-[#F1F5F9] px-1 py-0.5 font-mono text-sm dark:bg-[#2A2578]">storage</code> (saves preferences locally on your device).
+			</li>
+			<li>
+				<strong class="text-[#0F172A] dark:text-white">No network requests</strong> -- Our extensions do not send any data to external servers. All processing happens locally in your browser.
+			</li>
+			<li>
+				<strong class="text-[#0F172A] dark:text-white">Local storage only</strong> -- Settings like color history, theme preference, and panel states are saved to
+				<code class="rounded bg-[#F1F5F9] px-1 py-0.5 font-mono text-sm dark:bg-[#2A2578]">chrome.storage.local</code> on your device. We cannot access this data.
+			</li>
+			<li>
+				<strong class="text-[#0F172A] dark:text-white">No analytics or tracking</strong> -- Our extensions contain no analytics code, no telemetry, and no crash reporting.
 			</li>
 		</ul>
 

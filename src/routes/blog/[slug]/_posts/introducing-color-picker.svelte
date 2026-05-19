@@ -678,7 +678,7 @@
 			</li>
 			<li class="flex items-start gap-3">
 				<span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0891B2] dark:bg-[#22D3EE]" />
-				<span><strong class="text-[#0F172A] dark:text-white">Under 20 KB</strong> — entire JS bundle, minified. No external dependencies at runtime.</span>
+				<span><strong class="text-[#0F172A] dark:text-white">Under 70 KB</strong> — entire JS bundle, minified. No external dependencies at runtime.</span>
 			</li>
 			<li class="flex items-start gap-3">
 				<span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0891B2] dark:bg-[#22D3EE]" />
