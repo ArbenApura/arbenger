@@ -1,6 +1,6 @@
 # SEO Standards
 
-**Last updated:** 2026-05-11
+**Last updated:** 2026-05-19
 
 This document defines the SEO requirements for every page on arbenger.com. All pages must meet these standards before deployment. No page ships without proper meta tags, structured data, and heading hierarchy.
 
@@ -277,9 +277,11 @@ Server-rendered SvelteKit route at `/sitemap.xml` that returns XML content type.
 | `/cookies` | 0.3 | yearly | 2026-05-08 |
 | `/products/image-resizer` | 0.7 | weekly | 2026-05-09 |
 | `/products/image-compressor` | 0.7 | weekly | 2026-05-10 |
+| `/products/color-picker` | 0.7 | weekly | 2026-05-19 |
 | `/blog` | 0.8 | weekly | 2026-05-10 |
 | `/blog/how-to-use-image-resizer` | 0.7 | monthly | 2026-05-10 |
 | `/blog/how-to-use-image-compressor` | 0.7 | monthly | 2026-05-11 |
+| `/blog/introducing-color-picker` | 0.7 | monthly | 2026-05-19 |
 
 Note: Blog post URLs are auto-generated in the sitemap from `sortedPosts` in `src/lib/data/blog.ts`. New posts appear in the sitemap automatically.
 

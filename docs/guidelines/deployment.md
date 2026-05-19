@@ -1,8 +1,8 @@
 # Deployment Guide
 
-**Last updated:** 2026-05-11
+**Last updated:** 2026-05-19
 
-This document covers the complete deployment pipeline for arbenger.com: from local development to production on Cloudflare Pages.
+This document covers the complete deployment pipeline for arbenger.com: from local development to production on Cloudflare Pages. For the Color Picker Chrome extension, see `extensions/color-picker/store/PUBLISHING.md`.
 
 ---
 

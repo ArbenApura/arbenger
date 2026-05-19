@@ -1,6 +1,6 @@
 # Data Models
 
-**Last updated:** 2026-05-11
+**Last updated:** 2026-05-19
 
 This document defines the TypeScript interfaces and data structures used across arbenger.com. All data types live in `src/lib/types/index.ts`.
 
@@ -121,11 +121,22 @@ export const products: Product[] = [
     externalUrl: '/products/image-compressor',
     tags: ['image', 'compress', 'optimize', 'free'],
     featured: false
+  },
+  {
+    slug: 'color-picker',
+    name: 'Color Picker',
+    description: 'Pick colors from any webpage. HEX, RGB, HSL, OKLCH formats. Color harmonies, WCAG contrast checker, color blindness simulation, and shade generator.',
+    category: 'chrome-plugins',
+    status: 'live',
+    platform: 'chrome-web-store',
+    externalUrl: '/products/color-picker',
+    tags: ['color', 'eyedropper', 'design', 'free'],
+    featured: false
   }
 ];
 ```
 
-Note: The `misc-tools` category is sorted first because it has live products. The category `id` remains `misc-tools` for backwards compatibility, but the display `name` is "Utilities".
+Note: The `misc-tools` category is sorted first because it has live products. The `chrome-plugins` category has one live product (Color Picker). The category `id` remains `misc-tools` for backwards compatibility, but the display `name` is "Utilities".
 
 ### Adding a New Product
 
@@ -264,7 +275,7 @@ Locale data is used by `LanguageSelector.svelte` (navbar + footer) and `locale` 
 ```typescript
 // src/lib/types/index.ts
 
-export type BlogCategory = 'tutorial' | 'devlog' | 'release' | 'opinion';
+export type BlogCategory = 'tutorial';
 
 export interface BlogPost {
   slug: string;
@@ -294,9 +305,6 @@ export const POSTS_PER_PAGE = 9;
 
 export const blogCategories: BlogCategoryInfo[] = [
   { id: 'tutorial', label: 'Tutorials' },
-  { id: 'devlog', label: 'Dev Logs' },
-  { id: 'release', label: 'Releases' },
-  { id: 'opinion', label: 'Opinion' },
 ];
 
 export const blogPosts: BlogPost[] = [

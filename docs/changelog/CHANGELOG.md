@@ -4,6 +4,45 @@ All notable decisions, changes, and milestones for arbenger.com are documented h
 
 ---
 
+## 2026-05-19 — Color Picker Chrome Extension + Site Integration
+
+### Chrome Extension (`extensions/color-picker/`)
+
+- **New product** — Color Picker Chrome extension (Manifest V3, `activeTab` + `storage` only)
+- **Eyedropper** — EyeDropper API, auto-copies HEX to clipboard on pick
+- **Four output formats** — HEX, RGB, HSL, OKLCH with one-click copy
+- **Two-color contrast checker** — foreground + background with WCAG AA/AA+/AAA badges, live preview, swap button
+- **Color blindness simulation** — protanopia, deuteranopia, tritanopia (Machado et al. 2009 algorithm)
+- **Color harmonies** — complementary, analogous, triadic, split-complementary
+- **Shades & tints** — 9-step lighter-to-darker ramp
+- **Persistent history** — 10 colors saved via `chrome.storage.local`
+- **Light/dark mode** — toggle in popup header, persisted
+- **Picking state** — popup collapses content during pick, expands with fade-in on result
+- **Copy toast** — teal slide-up toast confirms every copy action
+- **Theme-aware toolbar icon** — detects system dark/light mode via popup `matchMedia`
+- **Build tooling** — esbuild bundler, resvg icon generation, ZIP packaging script
+- **Chrome Web Store** — store listing copy, promo tiles, publishing guide
+
+### Site Integration
+
+- **Product landing page** (`/products/color-picker`) — hero with logo, feature grid (6 cards), "Try It" color sample targets (50 swatches + gradient banner + UI mockups + brand palettes), how-it-works steps, privacy section, cross-links. WebApplication + BreadcrumbList JSON-LD. Visible H1.
+- **Homepage** — FeaturedTool updated to 3-column grid with Color Picker card, miniature UI mockup, feature pills
+- **Blog post** (`/blog/introducing-color-picker`) — tutorial with table of contents, step-by-step instructions, UI mockups for pick flow, contrast checker, color blindness, harmonies, shades. 8 min read.
+- **Products data** — Color Picker added to `products.ts` with `externalUrl`, `chrome-plugins` category count updated to 1
+- **Sitemap** — `/products/color-picker/` added
+- **Privacy policy** — new "Chrome Extensions" section covering permissions, no data collection, local storage only
+
+### Other Changes
+
+- **SectionLabel** — removed `>` prefix globally (was terminal-style, now plain text in cyan)
+- **Blog categories** — simplified to `tutorial` only (removed devlog, releases, opinion)
+- **BlogCategory type** — updated to `'tutorial'` only in `src/lib/types/index.ts`
+- **File size claims** — removed all KB mentions from product page, blog, store listing, promo tiles
+- **"Zero permissions"** → **"Minimal permissions"** across all surfaces for accuracy
+- **wrangler** — updated to 4.92.0
+
+---
+
 ## 2026-05-11 — UX Polish: Batch Flow, Cancel, Tooltips, Input Guards
 
 ### Batch Flow Separation (Both Tools)

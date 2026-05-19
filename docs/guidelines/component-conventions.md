@@ -1,6 +1,6 @@
 # Component Conventions
 
-**Last updated:** 2026-05-11
+**Last updated:** 2026-05-19
 
 This document defines how to build Svelte components for arbenger.com. It supplements the svelte-guidelines skill (which covers syntax rules) with project-specific patterns and architectural decisions.
 
@@ -30,7 +30,7 @@ All components use **Svelte 4 syntax**. This is mandatory, no exceptions.
 | Type | Path | Example |
 |------|------|---------|
 | Layout components | `src/lib/components/layout/` | Navbar.svelte, Footer.svelte, ThemeToggle.svelte, LanguageSelector.svelte, CookieBanner.svelte |
-| Reusable UI primitives | `src/lib/components/ui/` | Button.svelte, Card.svelte, Select.svelte, ColorPicker.svelte, ConfirmDialog.svelte, UploadZone.svelte |
+| Reusable UI primitives | `src/lib/components/ui/` | Button.svelte, Card.svelte, Badge.svelte, SectionLabel.svelte, Select.svelte, ColorPicker.svelte, ConfirmDialog.svelte, UploadZone.svelte, GeometricDivider.svelte |
 | Page-specific sections | `src/lib/components/[page]/` | home/Hero.svelte, home/ProductCategories.svelte, home/AboutTeaser.svelte, home/FeaturedTool.svelte |
 | Blog components | `src/lib/components/blog/` | BlogCard.svelte, BlogPagination.svelte, ReadingProgress.svelte |
 | SEO utilities | `src/lib/components/seo/` | MetaTags.svelte, JsonLd.svelte, Breadcrumbs.svelte |

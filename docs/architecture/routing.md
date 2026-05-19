@@ -1,6 +1,6 @@
 # Routing Architecture
 
-**Last updated:** 2026-05-11
+**Last updated:** 2026-05-19
 
 This document defines the URL structure, rendering strategy, and route planning for arbenger.com.
 
@@ -41,8 +41,9 @@ SvelteKit file-based routing. All routes live under `src/routes/`. The adapter i
 |-------|------|---------|-----|
 | `/products/image-resizer` | `src/routes/products/(utilities)/image-resizer/+page.svelte` | Image resizer tool | "Free Online Image Resizer — Resize, Crop & Convert" (sr-only) |
 | `/products/image-compressor` | `src/routes/products/(utilities)/image-compressor/+page.svelte` | Image compressor tool | "Free Online Image Compressor — Reduce File Size Without Quality Loss" (sr-only) |
+| `/products/color-picker` | `src/routes/products/(chrome-plugins)/color-picker/+page.svelte` | Color picker landing page | "Pick any color. Check if it's accessible." (visible H1) |
 
-Product tool routes use SvelteKit **group routes** via `(utilities)/`. The group name is excluded from the URL — e.g., `products/(utilities)/image-resizer/` renders at `/products/image-resizer`. Each product tool route contains:
+Product tool routes use SvelteKit **group routes**. Utilities use `(utilities)/`, Chrome extensions use `(chrome-plugins)/`. The group name is excluded from the URL — e.g., `products/(chrome-plugins)/color-picker/` renders at `/products/color-picker`. Each product tool route contains:
 - `+page.svelte` — page component
 - `+page.ts` — prerender config (`export const prerender = true`)
 - `_components/` — route-local components (underscore prefix tells SvelteKit to ignore for routing)
@@ -52,7 +53,7 @@ Product tool routes use SvelteKit **group routes** via `(utilities)/`. The group
 
 | Route | File | Purpose | H1 |
 |-------|------|---------|-----|
-| `/blog` | `src/routes/blog/+page.svelte` | Blog listing with category filters and pagination | "Tutorials & Dev Logs" |
+| `/blog` | `src/routes/blog/+page.svelte` | Blog listing with category filters and pagination | "Tutorials" |
 | `/blog/[slug]` | `src/routes/blog/[slug]/+page.svelte` | Blog post shell (loads content via `import.meta.glob`) | Post title (dynamic) |
 
 Blog post routes use a dynamic `[slug]` parameter with `entries()` export in `+page.ts` to enumerate all slugs at build time for prerendering. Post content lives in `_posts/*.svelte` files inside the `[slug]` route directory, loaded eagerly via `import.meta.glob('./_posts/*.svelte', { eager: true })`.
@@ -126,16 +127,21 @@ src/routes/
         _lib/              ← Route-local store and worker
           store.ts
           worker.ts
+    (chrome-plugins)/      ← SvelteKit group route for Chrome extensions
+      color-picker/
+        +page.svelte      ← Color picker landing page
+        +page.ts          ← prerender = true
     [slug]/
       +page.svelte        ← Individual product (inherits root layout) — future
   blog/
-    +page.svelte          ← Blog listing (category filters, pagination)
+    +page.svelte          ← Blog listing (tutorials only)
     [slug]/
       +page.ts            ← entries() + load() for prerendering
       +page.svelte        ← Post shell (SEO, header, content loader)
       _posts/             ← Blog post content files
         how-to-use-image-resizer.svelte
         how-to-use-image-compressor.svelte
+        introducing-color-picker.svelte
   contact/
     +page.svelte          ← Contact page (inherits root layout)
   privacy/
