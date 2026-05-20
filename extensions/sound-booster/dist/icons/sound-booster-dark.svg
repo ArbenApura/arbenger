@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- DARK VARIANT: Dark blue circle, light icon — for light backgrounds -->
+  <circle cx="512" cy="512" r="512" fill="rgb(7, 28, 56)"/>
+  <g transform="translate(220, 280)">
+    <polygon points="40,150 130,150 270,35 270,425 130,310 40,310" fill="rgb(241, 253, 253)"/>
+    <path d="M340,110 Q440,230 340,350" stroke="rgb(241, 253, 253)" stroke-width="44" fill="none" stroke-linecap="round"/>
+    <path d="M420,45 Q555,230 420,415" stroke="rgb(241, 253, 253)" stroke-width="44" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>

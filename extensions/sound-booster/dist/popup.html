@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sound Booster — Arbenger</title>
+	<style>
+		* { margin: 0; padding: 0; box-sizing: border-box; }
+
+		body {
+			--bg: #0B0A23;
+			--surface: #1E1A5E;
+			--border: #2A2578;
+			--cyan: #22D3EE;
+			--cyan-hover: #67E8F9;
+			--teal: #2DD4BF;
+			--text: #CBD5E1;
+			--text-muted: #94A3B8;
+			--text-heading: #FFFFFF;
+			--red: #F87171;
+			--green: #4ADE80;
+			--amber: #FBBF24;
+			--glow: rgba(34, 211, 238, 0.25);
+			--glow-soft: rgba(34, 211, 238, 0.1);
+
+			width: 310px;
+			max-height: 540px;
+			background: var(--bg);
+			color: var(--text);
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+			font-size: 13px;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			transition: background 0.2s, color 0.2s;
+		}
+
+		body.light {
+			--bg: #F1F5F9;
+			--surface: #FFFFFF;
+			--border: #CBD5E1;
+			--text: #1E293B;
+			--text-muted: #475569;
+			--text-heading: #0F172A;
+		}
+
+		body.light .volume-pct.boost { color: #0891B2; }
+		body.light .eq-value { color: #0891B2; }
+		body.light .power-toggle input:checked + .power-slider { background: #0891B2; }
+
+		body.off #main { opacity: 0.35; pointer-events: none; }
+		body.off .status-text { color: var(--text-muted); }
+
+		:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+		.mono { font-family: 'Courier New', monospace; }
+		.hidden { display: none !important; }
+
+		/* -- Header -- */
+		.header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 8px 14px;
+			border-bottom: 1px solid var(--border);
+			flex-shrink: 0;
+		}
+
+		.header-title {
+			font-weight: 700;
+			font-size: 13px;
+			color: var(--text-heading);
+			letter-spacing: -0.025em;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+
+		.header-title span { color: var(--cyan); }
+
+		.header-logo {
+			width: 18px;
+			height: 18px;
+			flex-shrink: 0;
+			margin-right: 2px;
+			transition: all 0.2s;
+		}
+
+		.logo-bg { fill: #FFFFFF; }
+		.logo-icon { fill: rgb(7, 28, 56); stroke: rgb(7, 28, 56); }
+		body.light .logo-bg { fill: rgb(7, 28, 56); }
+		body.light .logo-icon { fill: rgb(241, 253, 253); stroke: rgb(241, 253, 253); }
+
+		.header-actions { display: flex; align-items: center; gap: 6px; }
+
+		.icon-btn {
+			background: none;
+			border: 1px solid transparent;
+			color: var(--text-muted);
+			cursor: pointer;
+			padding: 4px;
+			border-radius: 6px;
+			display: flex;
+			align-items: center;
+			transition: all 0.15s;
+		}
+
+		.icon-btn:hover {
+			color: var(--cyan);
+			background: var(--glow-soft);
+			border-color: var(--border);
+		}
+
+		.icon-btn:disabled { opacity: 0.4; cursor: default; pointer-events: none; }
+		.icon-btn svg { width: 14px; height: 14px; }
+
+		/* -- Power Toggle -- */
+		.power-toggle {
+			position: relative;
+			width: 34px;
+			height: 18px;
+			display: inline-block;
+			cursor: pointer;
+			flex-shrink: 0;
+		}
+
+		.power-toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
+
+		.power-slider {
+			position: absolute;
+			inset: 0;
+			background: var(--border);
+			border-radius: 9px;
+			transition: background 0.2s;
+		}
+
+		.power-slider::before {
+			content: '';
+			position: absolute;
+			width: 14px;
+			height: 14px;
+			left: 2px;
+			bottom: 2px;
+			background: var(--text-muted);
+			border-radius: 50%;
+			transition: transform 0.2s, background 0.2s;
+		}
+
+		.power-toggle input:checked + .power-slider {
+			background: var(--cyan);
+			box-shadow: 0 0 8px var(--glow);
+		}
+
+		.power-toggle input:checked + .power-slider::before {
+			transform: translateX(16px);
+			background: var(--bg);
+		}
+
+		/* -- Status -- */
+		.status {
+			padding: 5px 14px;
+			font-size: 11px;
+			display: flex;
+			align-items: center;
+			gap: 5px;
+			border-bottom: 1px solid var(--border);
+			flex-shrink: 0;
+		}
+
+		.status-dot {
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			flex-shrink: 0;
+		}
+
+		.status-dot.active { background: var(--green); }
+		.status-dot.warning { background: var(--amber); }
+		.status-dot.error { background: var(--red); }
+		.status-dot.off { background: var(--text-muted); }
+		.status-text { color: var(--text-muted); }
+
+		/* -- Volume Section -- */
+		.volume-section { padding: 14px 14px 10px; flex-shrink: 0; }
+		.volume-display { text-align: center; margin-bottom: 8px; }
+
+		.volume-pct {
+			font-size: 44px;
+			font-weight: 700;
+			color: var(--text-heading);
+			line-height: 1;
+			transition: color 0.15s;
+			letter-spacing: -0.02em;
+		}
+
+		.volume-pct.boost { color: var(--cyan); }
+		.volume-pct.high { color: var(--amber); }
+		.volume-pct.muted { color: var(--red); opacity: 0.6; }
+
+		/* -- Peak Meter -- */
+		.peak-meter {
+			height: 6px;
+			background: var(--surface);
+			border-radius: 3px;
+			border: 1px solid var(--border);
+			overflow: hidden;
+			margin-bottom: 12px;
+		}
+
+		.peak-bar {
+			height: 100%;
+			width: 0%;
+			border-radius: 2px;
+			background: linear-gradient(to right, var(--green) 0%, var(--green) 55%, var(--amber) 75%, var(--red) 100%);
+			transition: width 0.06s linear;
+		}
+
+		/* -- Volume Slider -- */
+		.volume-slider-wrap {
+			position: relative;
+			padding: 6px 0;
+			margin-bottom: 2px;
+		}
+
+		.volume-mark {
+			position: absolute;
+			left: 16.667%;
+			top: 0;
+			bottom: 0;
+			width: 2px;
+			background: var(--text-muted);
+			border-radius: 1px;
+			opacity: 0.3;
+			pointer-events: none;
+			z-index: 1;
+		}
+
+		.volume-slider {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 100%;
+			height: 8px;
+			border-radius: 4px;
+			background: var(--border);
+			outline: none;
+			cursor: pointer;
+			display: block;
+		}
+
+		.volume-slider::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: var(--cyan);
+			cursor: pointer;
+			border: 2px solid var(--bg);
+			box-shadow: 0 0 8px var(--glow);
+			transition: box-shadow 0.15s;
+		}
+
+		.volume-slider::-webkit-slider-thumb:hover { box-shadow: 0 0 14px var(--glow); }
+		.volume-slider:disabled { opacity: 0.4; cursor: default; }
+
+		.volume-labels {
+			display: flex;
+			justify-content: space-between;
+			font-size: 9px;
+			color: var(--text-muted);
+			margin-bottom: 10px;
+			padding: 0 2px;
+		}
+
+		/* -- Controls -- */
+		.controls { display: flex; gap: 6px; }
+
+		.ctrl-btn {
+			flex: 1;
+			padding: 7px 10px;
+			background: var(--surface);
+			border: 1px solid var(--border);
+			color: var(--text);
+			border-radius: 6px;
+			font-size: 12px;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 5px;
+			transition: all 0.15s;
+		}
+
+		.ctrl-btn:hover {
+			border-color: var(--cyan);
+			color: var(--text-heading);
+			background: var(--glow-soft);
+		}
+
+		.ctrl-btn:disabled { opacity: 0.4; cursor: default; pointer-events: none; }
+
+		.ctrl-btn.active {
+			border-color: var(--red);
+			color: var(--red);
+			background: rgba(248, 113, 113, 0.1);
+		}
+
+		.ctrl-btn svg { width: 14px; height: 14px; }
+
+		.ctrl-btn-sm {
+			flex: none;
+			width: 100%;
+			padding: 5px 8px;
+			font-size: 11px;
+			margin-top: 8px;
+		}
+
+		/* -- Scrollable -- */
+		.below-volume {
+			flex: 1;
+			overflow-y: auto;
+			overflow-x: hidden;
+			min-height: 0;
+		}
+
+		/* -- Sections -- */
+		.section { border-top: 1px solid var(--border); }
+
+		.section-toggle {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			padding: 8px 14px;
+			background: none;
+			border: none;
+			color: var(--text-muted);
+			font-size: 10px;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			cursor: pointer;
+			transition: color 0.15s;
+		}
+
+		.section-toggle:hover { color: var(--text); }
+
+		.section-toggle svg {
+			width: 11px;
+			height: 11px;
+			transition: transform 0.2s;
+		}
+
+		.section-toggle.open svg { transform: rotate(180deg); }
+		.section-body { padding: 0 14px 10px; display: none; }
+		.section-body.open { display: block; }
+
+		/* -- Presets -- */
+		.preset-row { display: flex; gap: 4px; margin-bottom: 10px; align-items: center; }
+
+		/* -- Custom Select -- */
+		.custom-select {
+			flex: 1;
+			position: relative;
+		}
+
+		.custom-select-btn {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 4px;
+			background: var(--surface);
+			border: 1px solid var(--border);
+			color: var(--text-heading);
+			font-size: 11px;
+			padding: 5px 8px;
+			border-radius: 5px;
+			cursor: pointer;
+			font-family: 'Courier New', monospace;
+			transition: border-color 0.15s;
+			text-align: left;
+		}
+
+		.custom-select-btn:hover { border-color: var(--cyan); }
+		.custom-select.open .custom-select-btn { border-color: var(--cyan); }
+		.custom-select-btn:disabled { opacity: 0.4; cursor: default; }
+
+		.custom-select-arrow {
+			width: 10px;
+			height: 10px;
+			color: var(--text-muted);
+			flex-shrink: 0;
+			transition: transform 0.15s;
+		}
+
+		.custom-select.open .custom-select-arrow { transform: rotate(180deg); }
+
+		.custom-select-dropdown {
+			display: none;
+			position: absolute;
+			top: calc(100% + 3px);
+			left: 0;
+			right: 0;
+			background: var(--surface);
+			border: 1px solid var(--border);
+			border-radius: 6px;
+			box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+			z-index: 50;
+			max-height: 160px;
+			overflow-y: auto;
+			padding: 3px;
+		}
+
+		.custom-select.open .custom-select-dropdown { display: block; }
+
+		.custom-select-group {
+			padding: 3px 0;
+		}
+
+		.custom-select-group + .custom-select-group {
+			border-top: 1px solid var(--border);
+		}
+
+		.custom-select-group-label {
+			font-size: 9px;
+			color: var(--text-muted);
+			text-transform: uppercase;
+			letter-spacing: 0.06em;
+			padding: 3px 7px 2px;
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+		}
+
+		.custom-select-option {
+			display: block;
+			width: 100%;
+			padding: 5px 7px;
+			background: none;
+			border: none;
+			color: var(--text);
+			font-size: 11px;
+			font-family: 'Courier New', monospace;
+			text-align: left;
+			cursor: pointer;
+			border-radius: 4px;
+			transition: all 0.1s;
+		}
+
+		.custom-select-option:hover {
+			background: var(--glow-soft);
+			color: var(--text-heading);
+		}
+
+		.custom-select-option.active {
+			color: var(--cyan);
+			background: var(--glow-soft);
+		}
+
+		.custom-select-dropdown::-webkit-scrollbar { width: 4px; }
+		.custom-select-dropdown::-webkit-scrollbar-track { background: transparent; }
+		.custom-select-dropdown::-webkit-scrollbar-thumb {
+			background: var(--border);
+			border-radius: 2px;
+		}
+
+		/* -- EQ Container -- */
+		.eq-container {
+			background: var(--surface);
+			border: 1px solid var(--border);
+			border-radius: 8px;
+			padding: 10px 10px 8px;
+		}
+
+		.eq-sliders {
+			display: flex;
+			justify-content: space-evenly;
+			align-items: flex-start;
+		}
+
+		.eq-column {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 4px;
+			width: 44px;
+		}
+
+		.eq-value {
+			font-size: 9px;
+			color: var(--cyan);
+			height: 12px;
+			line-height: 12px;
+			text-align: center;
+		}
+
+		/* -- EQ Slider with separate track -- */
+		.eq-track-wrap {
+			position: relative;
+			width: 28px;
+			height: 80px;
+		}
+
+		.eq-track {
+			position: absolute;
+			left: 50%;
+			top: 2px;
+			bottom: 2px;
+			width: 3px;
+			transform: translateX(-50%);
+			background: var(--border);
+			border-radius: 1.5px;
+			pointer-events: none;
+		}
+
+		.eq-center-line {
+			position: absolute;
+			left: 5px;
+			right: 5px;
+			top: 50%;
+			height: 1px;
+			background: var(--text-muted);
+			opacity: 0.25;
+			pointer-events: none;
+		}
+
+		.eq-slider {
+			position: absolute;
+			inset: 0;
+			-webkit-appearance: none;
+			appearance: none;
+			writing-mode: vertical-lr;
+			direction: rtl;
+			width: 100%;
+			height: 100%;
+			background: transparent;
+			cursor: pointer;
+			margin: 0;
+		}
+
+		.eq-slider::-webkit-slider-runnable-track {
+			background: transparent;
+			border: none;
+		}
+
+		.eq-slider::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			background: var(--cyan);
+			cursor: pointer;
+			border: 2px solid var(--bg);
+			box-shadow: 0 0 6px var(--glow);
+			position: relative;
+			z-index: 2;
+		}
+
+		.eq-slider:disabled { opacity: 0.4; cursor: default; }
+
+		.eq-freq {
+			font-size: 9px;
+			color: var(--text-muted);
+			text-align: center;
+		}
+
+		/* -- Footer -- */
+		.footer {
+			padding: 6px 14px 8px;
+			border-top: 1px solid var(--border);
+			text-align: center;
+			flex-shrink: 0;
+		}
+
+		.footer a {
+			color: var(--text-muted);
+			text-decoration: none;
+			font-size: 10px;
+			transition: color 0.15s;
+			display: inline-flex;
+			align-items: center;
+			gap: 4px;
+		}
+
+		.footer a:hover { color: var(--cyan); }
+
+		/* -- Toast -- */
+		.toast {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: var(--teal);
+			color: #0B0A23;
+			text-align: center;
+			padding: 7px 14px;
+			font-weight: 600;
+			font-size: 12px;
+			z-index: 100;
+			transform: translateY(100%);
+			transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		.toast.show { transform: translateY(0); }
+
+		/* -- Scrollbar -- */
+		.below-volume::-webkit-scrollbar { width: 6px; }
+		.below-volume::-webkit-scrollbar-track { background: transparent; margin: 4px 0; }
+		.below-volume::-webkit-scrollbar-thumb {
+			background: var(--border);
+			border-radius: 3px;
+			border: 1px solid var(--bg);
+		}
+		.below-volume::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+		/* -- Animations -- */
+		.fade-in { animation: fadeIn 0.3s ease; }
+
+		@keyframes fadeIn {
+			from { opacity: 0; transform: translateY(-4px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<div class="header-title mono">
+			<svg class="header-logo" viewBox="0 0 1024 1024" aria-hidden="true">
+				<circle cx="512" cy="512" r="512" class="logo-bg"/>
+				<g class="logo-icon" transform="translate(220, 280)">
+					<polygon points="40,150 130,150 270,35 270,425 130,310 40,310"/>
+					<path d="M340,110 Q440,230 340,350" stroke-width="44" fill="none" stroke-linecap="round"/>
+					<path d="M420,45 Q555,230 420,415" stroke-width="44" fill="none" stroke-linecap="round"/>
+				</g>
+			</svg>Sound Booster
+		</div>
+		<div class="header-actions">
+			<label class="power-toggle" aria-label="Enable or disable booster">
+				<input type="checkbox" id="powerCheck" checked>
+				<span class="power-slider"></span>
+			</label>
+			<button class="icon-btn" id="themeBtn" aria-label="Toggle theme">
+				<svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+				</svg>
+			</button>
+		</div>
+	</div>
+
+	<div class="status" id="status">
+		<div class="status-dot active" id="statusDot"></div>
+		<span class="status-text" id="statusText">Initializing…</span>
+	</div>
+
+	<div id="main">
+		<div class="volume-section">
+			<div class="volume-display">
+				<div class="volume-pct mono" id="volumePct">100%</div>
+			</div>
+			<div class="peak-meter">
+				<div class="peak-bar" id="peakBar"></div>
+			</div>
+			<div class="volume-slider-wrap">
+				<div class="volume-mark"></div>
+				<input type="range" class="volume-slider" id="volumeSlider" min="0" max="600" value="100" aria-label="Volume" aria-valuenow="100" aria-valuemin="0" aria-valuemax="600">
+			</div>
+			<div class="volume-labels mono">
+				<span>0%</span>
+				<span>600%</span>
+			</div>
+			<div class="controls">
+				<button class="ctrl-btn" id="muteBtn" aria-label="Toggle mute">
+					<svg id="muteIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+						<path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+						<path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+					</svg>
+					<span id="muteLabel">Mute</span>
+				</button>
+				<button class="ctrl-btn" id="resetBtn">Reset 100%</button>
+			</div>
+		</div>
+
+		<div class="below-volume" id="belowVolume">
+			<div class="section">
+				<button class="section-toggle mono" id="eqToggle" aria-expanded="false">
+					Equalizer
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+				</button>
+				<div class="section-body" id="eqBody">
+					<div class="preset-row">
+						<div class="custom-select" id="presetSelect" role="listbox" aria-label="EQ Preset">
+							<button class="custom-select-btn" id="presetBtn" type="button">
+								<span id="presetLabel">Flat</span>
+								<svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+							</button>
+							<div class="custom-select-dropdown" id="presetDropdown"></div>
+						</div>
+						<button class="icon-btn" id="savePresetBtn" title="Save preset" aria-label="Save preset">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+						</button>
+						<button class="icon-btn" id="deletePresetBtn" title="Delete preset" aria-label="Delete preset">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+						</button>
+					</div>
+					<div class="eq-container">
+						<div class="eq-sliders" id="eqSliders"></div>
+					</div>
+					<button class="ctrl-btn ctrl-btn-sm" id="resetEqBtn">Reset EQ</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="toast" id="toast"></div>
+
+	<div class="footer">
+		<a href="https://arbenger.com" target="_blank" rel="noopener">
+			<svg style="width:18px;height:18px" viewBox="0 0 1024 1024" aria-hidden="true"><path d="M333.1 780L218.9 780L470.5 287L556.9 287L624 422L563.5 515L513.6 413ZM407.9 780L386.2 780L499.3 583.4L530 618L642.9 445L808.2 780L693.5 780L629.4 649.2L643.2 627L692 655L638.4 549.3L528.2 709L500 670Z" fill="currentColor" fill-rule="evenodd"/></svg>
+			Powered by Arbenger
+		</a>
+	</div>
+
+	<script src="popup.js"></script>
+</body>
+</html>

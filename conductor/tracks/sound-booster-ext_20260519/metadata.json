@@ -1,0 +1,16 @@
+{
+  "id": "sound-booster-ext_20260519",
+  "title": "Sound Booster Chrome Extension",
+  "type": "feature",
+  "status": "complete",
+  "created": "2026-05-19T00:00:00.000Z",
+  "updated": "2026-05-19T00:00:00.000Z",
+  "phases": {
+    "total": 6,
+    "completed": 6
+  },
+  "tasks": {
+    "total": 39,
+    "completed": 38
+  }
+}
