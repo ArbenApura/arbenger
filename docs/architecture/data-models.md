@@ -1,6 +1,6 @@
 # Data Models
 
-**Last updated:** 2026-05-19
+**Last updated:** 2026-05-21
 
 This document defines the TypeScript interfaces and data structures used across arbenger.com. All data types live in `src/lib/types/index.ts`.
 
@@ -81,7 +81,7 @@ export const categories: ProductCategoryInfo[] = [
     name: 'Chrome Plugins',
     description: 'Browser extensions that work inside Chrome.',
     icon: 'chrome',
-    productCount: 0
+    productCount: 2
   },
   {
     id: 'ai-tools',
@@ -132,11 +132,22 @@ export const products: Product[] = [
     externalUrl: '/products/color-picker',
     tags: ['color', 'eyedropper', 'design', 'free'],
     featured: false
+  },
+  {
+    slug: 'sound-booster',
+    name: 'Sound Booster',
+    description: 'Boost audio beyond 100% on any tab. Per-tab volume up to 600%, 5-band equalizer, presets, keyboard shortcuts.',
+    category: 'chrome-plugins',
+    status: 'live',
+    platform: 'chrome-web-store',
+    externalUrl: '/products/sound-booster',
+    tags: ['audio', 'volume', 'equalizer', 'free'],
+    featured: true
   }
 ];
 ```
 
-Note: The `misc-tools` category is sorted first because it has live products. The `chrome-plugins` category has one live product (Color Picker). The category `id` remains `misc-tools` for backwards compatibility, but the display `name` is "Utilities".
+Note: The `misc-tools` category is sorted first because it has live products. The `chrome-plugins` category has two live products (Color Picker and Sound Booster). The category `id` remains `misc-tools` for backwards compatibility, but the display `name` is "Utilities".
 
 ### Adding a New Product
 
@@ -309,13 +320,46 @@ export const blogCategories: BlogCategoryInfo[] = [
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: 'how-to-use-image-resizer',
-    title: 'How to Use Arbenger Image Resizer — The Complete Guide',
-    description: 'Learn how to resize, crop, and batch-convert images directly in your browser...',
+    slug: 'browser-volume-beyond-100',
+    title: 'Browser Volume Stops at 100%. Ours Goes to 600%.',
+    description: 'Volume boost, 5-band EQ, seven presets, keyboard shortcuts, and a live peak meter...',
+    date: '2026-05-21',
+    category: 'tutorial',
+    tags: ['sound-booster', 'chrome-extension', 'guide'],
+    readTime: 7,
+    featured: true,
+  },
+  {
+    slug: 'color-picker-without-tracking',
+    title: "Your Color Picker Extension Probably Reads Your Browsing Data. Ours Doesn't.",
+    description: 'Eyedropper, WCAG contrast checker, color blindness simulation...',
+    date: '2026-05-19',
+    updatedDate: '2026-05-21',
+    category: 'tutorial',
+    tags: ['color-picker', 'chrome-extension', 'guide'],
+    readTime: 8,
+    featured: true,
+  },
+  {
+    slug: 'resize-crop-convert-in-browser',
+    title: 'Resize, Crop, and Batch-Convert Images Without Uploading Anything',
+    description: 'Single image or 50 at once — resize, crop, rotate, and convert...',
     date: '2026-05-10',
+    updatedDate: '2026-05-21',
     category: 'tutorial',
     tags: ['image-resizer', 'guide', 'tools'],
     readTime: 8,
+    featured: true,
+  },
+  {
+    slug: 'compress-images-90-smaller',
+    title: 'Compress Images 90% Smaller Without Visible Quality Loss',
+    description: 'Quality slider, target file size mode, before/after comparison...',
+    date: '2026-05-11',
+    updatedDate: '2026-05-21',
+    category: 'tutorial',
+    tags: ['image-compressor', 'guide', 'tools'],
+    readTime: 7,
     featured: true,
   },
 ];

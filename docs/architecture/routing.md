@@ -1,6 +1,6 @@
 # Routing Architecture
 
-**Last updated:** 2026-05-19
+**Last updated:** 2026-05-21
 
 This document defines the URL structure, rendering strategy, and route planning for arbenger.com.
 
@@ -42,6 +42,7 @@ SvelteKit file-based routing. All routes live under `src/routes/`. The adapter i
 | `/products/image-resizer` | `src/routes/products/(utilities)/image-resizer/+page.svelte` | Image resizer tool | "Free Online Image Resizer — Resize, Crop & Convert" (sr-only) |
 | `/products/image-compressor` | `src/routes/products/(utilities)/image-compressor/+page.svelte` | Image compressor tool | "Free Online Image Compressor — Reduce File Size Without Quality Loss" (sr-only) |
 | `/products/color-picker` | `src/routes/products/(chrome-plugins)/color-picker/+page.svelte` | Color picker landing page | "Pick any color. Check if it's accessible." (visible H1) |
+| `/products/sound-booster` | `src/routes/products/(chrome-plugins)/sound-booster/+page.svelte` | Sound booster landing page | "Your browser stops at 100%. This goes to 600%." (visible H1) |
 
 Product tool routes use SvelteKit **group routes**. Utilities use `(utilities)/`, Chrome extensions use `(chrome-plugins)/`. The group name is excluded from the URL — e.g., `products/(chrome-plugins)/color-picker/` renders at `/products/color-picker`. Each product tool route contains:
 - `+page.svelte` — page component

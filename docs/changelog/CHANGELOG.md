@@ -4,6 +4,55 @@ All notable decisions, changes, and milestones for arbenger.com are documented h
 
 ---
 
+## 2026-05-21 — Sound Booster Chrome Extension + Site Integration + Copy Overhaul
+
+### Chrome Extension (`extensions/sound-booster/`)
+
+- **New product** — Sound Booster Chrome extension (Manifest V3, `activeTab` + `storage` + `scripting`)
+- **Volume boost** — 0–600% via GainNode, DynamicsCompressorNode prevents clipping
+- **5-band equalizer** — BiquadFilterNodes at 60Hz, 230Hz, 910Hz, 4kHz, 14kHz (±12dB)
+- **7 built-in presets** — Flat, Bass Boost, Treble Boost, Music, Movie, Voice, Bass Cut
+- **Custom presets** — save/delete via chrome.storage.local, custom dropdown UI
+- **On/off toggle** — bypass all processing without losing settings
+- **Keyboard shortcuts** — Alt+Shift+Up/Down/M via chrome.commands API
+- **Live peak meter** — AnalyserNode polled at 60ms, gradient bar (green→amber→red)
+- **Per-tab state** — background service worker tracks volume/EQ/mute per tabId
+- **MutationObserver** — captures dynamically added media elements (SPA support)
+- **Light/dark mode** — toggle in popup header, persisted
+- **Theme-aware toolbar icon** — system prefers-color-scheme detection
+- **Build tooling** — esbuild bundler, resvg icon generation, ZIP packaging script
+- **Chrome Web Store** — store listing copy, promo tiles (440×280 + 1400×560), publishing guide
+- **Extension UI guidelines** — `docs/guidelines/extension-ui.md` (18 sections)
+
+### Site Integration
+
+- **Product page** (`/products/sound-booster/`) — hero, 6 feature cards, how-it-works steps, EQ presets showcase, privacy section, cross-links. WebApplication + BreadcrumbList JSON-LD.
+- **Blog tutorial** (`/blog/browser-volume-beyond-100/`) — 8-section guide with UI mockups (volume states, EQ panel, peak meter levels, on/off toggle states, keyboard shortcuts table)
+- **Homepage** — FeaturedTool updated to 2×2 grid with Sound Booster card, accurate popup miniature (volume, slider with thumb, peak meter, EQ vertical sliders)
+- **Products data** — Sound Booster added to `products.ts`, chrome-plugins category count → 2
+
+### Copy Overhaul
+
+- **Blog slugs renamed** — `introducing-color-picker` → `color-picker-without-tracking`, `introducing-sound-booster` → `browser-volume-beyond-100`, `how-to-use-image-resizer` → `resize-crop-convert-in-browser`, `how-to-use-image-compressor` → `compress-images-90-smaller`
+- **Blog titles rewritten** — removed "We Built a..." and "How to Use..." templates, replaced with specific claims
+- **Homepage meta** — generic "Browse what's available" → specific product + privacy description
+- **Products subtitle** — "Tools we've built and shipped" → "Browser tools, Chrome extensions, and more"
+- **About subtitle** — "We make software tools" → "We build tools that do one thing well"
+- **Sound Booster H1** — "Your browser stops at 100%. This goes to 600%."
+- **Cross-links** — scoped by category (chrome extensions → chrome, utilities → utilities)
+
+### SEO & Infrastructure
+
+- **Sitemap** — `/products/sound-booster/` added, all lastmod dates updated to 2026-05-21
+- **Blog updatedDate** — added to 3 renamed posts for accurate sitemap lastmod
+- **301 redirects** — `_redirects` file for Cloudflare Pages (4 old blog slugs → new)
+- **theme-color meta** — added to `app.html` with light/dark media queries
+- **meta author** — added to blog post template
+- **Chrome icon** — "Add to Chrome" buttons use `/icons/chrome.svg` on product pages + blog CTAs
+- **Color Picker CWS link** — updated from generic to actual listing URL
+
+---
+
 ## 2026-05-19 — Color Picker Chrome Extension + Site Integration
 
 ### Chrome Extension (`extensions/color-picker/`)

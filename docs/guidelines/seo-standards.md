@@ -1,6 +1,6 @@
 # SEO Standards
 
-**Last updated:** 2026-05-19
+**Last updated:** 2026-05-21
 
 This document defines the SEO requirements for every page on arbenger.com. All pages must meet these standards before deployment. No page ships without proper meta tags, structured data, and heading hierarchy.
 
@@ -220,6 +220,8 @@ import JsonLd from '$lib/components/seo/JsonLd.svelte';
 | `/products/image-compressor` | "Free Online Image Compressor — Reduce File Size Without Quality Loss" (sr-only) | Image compressor, compress, optimize |
 | `/blog` | "Tutorials & Dev Logs" | Blog, tutorials, guides |
 | `/blog/[slug]` | Post title (dynamic) | Post-specific keywords |
+| `/products/color-picker` | "Pick any color. Check if it's accessible." | Color picker, eyedropper, contrast |
+| `/products/sound-booster` | "Your browser stops at 100%. This goes to 600%." | Sound booster, volume, equalizer |
 | `/products/[slug]` | Product name | Product-specific keyword |
 
 ---
@@ -243,6 +245,8 @@ import JsonLd from '$lib/components/seo/JsonLd.svelte';
 | `/products` | Product catalog |
 | `/products/image-resizer` | Image Resizer tool |
 | `/products/image-compressor` | Image Compressor tool |
+| `/products/color-picker` | Color Picker extension landing |
+| `/products/sound-booster` | Sound Booster extension landing |
 | `/products/[slug]` | Individual product (future) |
 | `/contact` | Contact page |
 | `/blog` | Blog listing |
@@ -268,20 +272,22 @@ Server-rendered SvelteKit route at `/sitemap.xml` that returns XML content type.
 
 | Path | Priority | Changefreq | Last Modified |
 |------|----------|------------|---------------|
-| `/` | 1.0 | weekly | 2026-05-09 |
-| `/products` | 0.8 | weekly | 2026-05-09 |
-| `/about` | 0.6 | monthly | 2026-05-09 |
+| `/` | 1.0 | weekly | 2026-05-21 |
+| `/products` | 0.8 | weekly | 2026-05-21 |
+| `/about` | 0.6 | monthly | 2026-05-21 |
 | `/contact` | 0.5 | monthly | 2026-05-09 |
 | `/privacy` | 0.3 | yearly | 2026-05-08 |
 | `/terms` | 0.3 | yearly | 2026-05-08 |
 | `/cookies` | 0.3 | yearly | 2026-05-08 |
-| `/products/image-resizer` | 0.7 | weekly | 2026-05-09 |
-| `/products/image-compressor` | 0.7 | weekly | 2026-05-10 |
+| `/products/image-resizer` | 0.7 | weekly | 2026-05-21 |
+| `/products/image-compressor` | 0.7 | weekly | 2026-05-21 |
 | `/products/color-picker` | 0.7 | weekly | 2026-05-19 |
-| `/blog` | 0.8 | weekly | 2026-05-10 |
-| `/blog/how-to-use-image-resizer` | 0.7 | monthly | 2026-05-10 |
-| `/blog/how-to-use-image-compressor` | 0.7 | monthly | 2026-05-11 |
-| `/blog/introducing-color-picker` | 0.7 | monthly | 2026-05-19 |
+| `/products/sound-booster` | 0.7 | weekly | 2026-05-21 |
+| `/blog` | 0.8 | weekly | 2026-05-21 |
+| `/blog/resize-crop-convert-in-browser` | 0.7 | monthly | 2026-05-10 |
+| `/blog/compress-images-90-smaller` | 0.7 | monthly | 2026-05-11 |
+| `/blog/color-picker-without-tracking` | 0.7 | monthly | 2026-05-19 |
+| `/blog/browser-volume-beyond-100` | 0.7 | monthly | 2026-05-21 |
 
 Note: Blog post URLs are auto-generated in the sitemap from `sortedPosts` in `src/lib/data/blog.ts`. New posts appear in the sitemap automatically.
 
@@ -356,6 +362,38 @@ Notes:
 - Same sr-only H1 and WebApplication JSON-LD pattern as image resizer
 - Cross-links to image resizer at page bottom ("Need to resize instead?")
 
+### Color Picker (`/products/color-picker`)
+
+| Element | Value |
+|---------|-------|
+| Title | "Free Color Picker Chrome Extension — Eyedropper, Contrast Checker \| Arbenger" |
+| Meta description | "Pick any color from any webpage. Check WCAG contrast ratios instantly. Eyedropper, palette history, and accessibility scoring. No tracking. Free." |
+| H1 | "Pick any color. Check if it's accessible." (visible H1) |
+| JSON-LD #1 | `WebApplication` — name, url, applicationCategory, operatingSystem, offers, description |
+| JSON-LD #2 | `BreadcrumbList` — Home → Products → Color Picker (3-level) |
+| Canonical URL | `https://arbenger.com/products/color-picker/` |
+| Sitemap priority | 0.7, weekly changefreq |
+
+Notes:
+- Same WebApplication + BreadcrumbList JSON-LD pattern as Image Resizer
+- Cross-links to other extensions only (category-scoped)
+
+### Sound Booster (`/products/sound-booster`)
+
+| Element | Value |
+|---------|-------|
+| Title | "Free Sound Booster Chrome Extension — Volume up to 600%, Equalizer \| Arbenger" |
+| Meta description | "Boost audio beyond 100% on any tab. Per-tab volume up to 600%, 5-band equalizer, presets, keyboard shortcuts. Minimal permissions. Free." |
+| H1 | "Your browser stops at 100%. This goes to 600%." (visible H1) |
+| JSON-LD #1 | `WebApplication` — name, url, applicationCategory, operatingSystem, offers, description |
+| JSON-LD #2 | `BreadcrumbList` — Home → Products → Sound Booster (3-level) |
+| Canonical URL | `https://arbenger.com/products/sound-booster/` |
+| Sitemap priority | 0.7, weekly changefreq |
+
+Notes:
+- Same WebApplication + BreadcrumbList JSON-LD pattern as Color Picker
+- Cross-links to Color Picker only (category-scoped)
+
 ---
 
 ## 8. Internal Linking
@@ -375,6 +413,8 @@ Homepage (/)
   ├── /products (via navbar + product categories section)
   ├── /products/image-resizer (via FeaturedTool card CTA)
   ├── /products/image-compressor (via FeaturedTool card CTA)
+  ├── /products/color-picker (via FeaturedTool card CTA)
+  ├── /products/sound-booster (via FeaturedTool card CTA)
   ├── /about (via navbar + about teaser section)
   ├── /contact (via navbar + footer)
   └── /products/[slug] (via product cards — future)
@@ -382,6 +422,8 @@ Homepage (/)
 Products (/products)
   ├── /products/image-resizer (via live products spotlight + category nested link)
   ├── /products/image-compressor (via live products spotlight + category nested link)
+  ├── /products/color-picker (via live products spotlight + category nested link)
+  ├── /products/sound-booster (via live products spotlight + category nested link)
   └── /products/[slug] (via category nested links — future)
 
 Image Resizer (/products/image-resizer)
@@ -397,7 +439,8 @@ Image Compressor (/products/image-compressor)
   └── /products/image-resizer (via cross-link at page bottom)
 
 Blog (/blog)
-  └── /blog/[slug] (via post cards)
+  ├── /blog/[slug] (via post cards)
+  └── /blog/browser-volume-beyond-100 (via blog listing)
 
 Blog Post (/blog/[slug])
   ├── /blog (via category link + back link)
