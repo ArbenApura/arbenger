@@ -9,33 +9,47 @@ export const blogCategories: BlogCategoryInfo[] = [
 
 export const blogPosts: BlogPost[] = [
 	{
-		slug: 'introducing-color-picker',
-		title: 'We Built a Color Picker Because Every Other One Reads Your Browsing Data',
+		slug: 'browser-volume-beyond-100',
+		title: 'Browser Volume Stops at 100%. Ours Goes to 600%.',
 		description:
-			'A Chrome extension with WCAG contrast checking, color blindness simulation, and four output formats — using only two permissions. Here\'s why we built it.',
+			'Volume boost, 5-band EQ, seven presets, keyboard shortcuts, and a live peak meter — all running on three Chrome permissions. Full walkthrough inside.',
+		date: '2026-05-21',
+		category: 'tutorial',
+		tags: ['sound-booster', 'chrome-extension', 'guide'],
+		readTime: 7,
+		featured: true,
+	},
+	{
+		slug: 'color-picker-without-tracking',
+		title: 'Your Color Picker Extension Probably Reads Your Browsing Data. Ours Doesn\'t.',
+		description:
+			'Eyedropper, WCAG contrast checker, color blindness simulation, four output formats, and persistent history — with zero page-access permissions. Full walkthrough inside.',
 		date: '2026-05-19',
+		updatedDate: '2026-05-21',
 		category: 'tutorial',
 		tags: ['color-picker', 'chrome-extension', 'guide'],
 		readTime: 8,
 		featured: true,
 	},
 	{
-		slug: 'how-to-use-image-resizer',
-		title: 'How to Use Arbenger Image Resizer — The Complete Guide',
+		slug: 'resize-crop-convert-in-browser',
+		title: 'Resize, Crop, and Batch-Convert Images Without Uploading Anything',
 		description:
-			'Learn how to resize, crop, and batch-convert images directly in your browser. Step-by-step guide covering single image mode, batch processing, format conversion, and more.',
+			'Single image or 50 at once — resize, crop, rotate, and convert to PNG/JPEG/WebP directly in your browser. No server, no signup, no file size limits.',
 		date: '2026-05-10',
+		updatedDate: '2026-05-21',
 		category: 'tutorial',
 		tags: ['image-resizer', 'guide', 'tools'],
 		readTime: 8,
 		featured: true,
 	},
 	{
-		slug: 'how-to-use-image-compressor',
-		title: 'How to Use Arbenger Image Compressor — The Complete Guide',
+		slug: 'compress-images-90-smaller',
+		title: 'Compress Images 90% Smaller Without Visible Quality Loss',
 		description:
-			'Learn how to compress PNG, JPEG, and WebP images directly in your browser. Step-by-step guide covering quality mode, target size, before/after comparison, batch compression, and more.',
+			'Quality slider, target file size mode, before/after comparison, and batch compression for PNG, JPEG, and WebP — all client-side. No uploads, no watermarks.',
 		date: '2026-05-11',
+		updatedDate: '2026-05-21',
 		category: 'tutorial',
 		tags: ['image-compressor', 'guide', 'tools'],
 		readTime: 7,

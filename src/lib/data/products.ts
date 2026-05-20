@@ -21,7 +21,7 @@ export const categories: ProductCategoryInfo[] = [
 		name: 'Chrome Plugins',
 		description: 'Browser extensions that work inside Chrome.',
 		icon: 'chrome',
-		productCount: 1,
+		productCount: 2,
 	},
 	{
 		id: 'ai-tools',
@@ -73,6 +73,18 @@ export const products: Product[] = [
 		platform: 'chrome-web-store',
 		externalUrl: '/products/color-picker',
 		tags: ['color', 'eyedropper', 'design', 'free'],
-		featured: false,
+		featured: true,
+	},
+	{
+		slug: 'sound-booster',
+		name: 'Sound Booster',
+		description:
+			'Boost audio beyond 100% on any tab. Per-tab volume up to 600%, 5-band equalizer, presets, keyboard shortcuts.',
+		category: 'chrome-plugins',
+		status: 'live',
+		platform: 'chrome-web-store',
+		externalUrl: '/products/sound-booster',
+		tags: ['audio', 'volume', 'equalizer', 'free'],
+		featured: true,
 	},
 ];

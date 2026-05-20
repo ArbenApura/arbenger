@@ -697,11 +697,12 @@
 		</p>
 		<div class="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
 			<a
-				href="https://chromewebstore.google.com"
+				href="https://chromewebstore.google.com/detail/color-picker-%E2%80%94-arbenger/mjdifbicaidoofdighgfdnajphcbjnba"
 				target="_blank"
 				rel="noopener"
 				class="inline-flex items-center gap-2 rounded-lg bg-[#0891B2] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0891B2]/90 dark:bg-[#22D3EE] dark:text-[#0B0A23] dark:hover:bg-[#22D3EE]/90"
 			>
+				<img src="/icons/chrome.svg" alt="Chrome" width="18" height="18" class="shrink-0" />
 				Add to Chrome
 			</a>
 			<a

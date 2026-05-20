@@ -1,6 +1,6 @@
 <script lang="ts">
 	// IMPORTED DEP-MODULES
-	import { Pipette, Eye, Palette, SlidersHorizontal, EyeOff, History, Shield, ArrowRight, ExternalLink, Download, EyeIcon, Lock, Feather } from 'lucide-svelte';
+	import { Pipette, Eye, Palette, SlidersHorizontal, EyeOff, History, Shield, ArrowRight, ExternalLink, EyeIcon, Lock, Feather } from 'lucide-svelte';
 	// IMPORTED MODULES
 	import { reveal } from '$lib/actions/reveal';
 	// IMPORTED COMPONENTS
@@ -124,12 +124,12 @@
 			<!-- CTA BUTTONS -->
 			<div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
 				<a
-					href="https://chromewebstore.google.com"
+					href="https://chromewebstore.google.com/detail/color-picker-%E2%80%94-arbenger/mjdifbicaidoofdighgfdnajphcbjnba"
 					target="_blank"
 					rel="noopener"
-					class="inline-flex items-center justify-center gap-2 rounded-lg bg-[#0891B2] px-6 py-3 font-medium text-white transition-all hover:brightness-110 hover:shadow-[0_0_20px_rgba(8,145,178,0.2)] active:scale-[0.98] dark:bg-[#22D3EE] dark:text-[#0B0A23] dark:hover:shadow-[0_0_20px_rgba(34,211,238,0.15)]"
+					class="inline-flex items-center justify-center gap-2.5 rounded-lg bg-[#0891B2] px-7 py-3.5 text-[15px] font-semibold text-white shadow-lg transition-all hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_0_24px_rgba(8,145,178,0.3)] active:scale-[0.98] dark:bg-[#22D3EE] dark:text-[#0B0A23] dark:hover:shadow-[0_0_24px_rgba(34,211,238,0.2)]"
 				>
-					<Download size={16} />
+					<img src="/icons/chrome.svg" alt="Chrome" width="20" height="20" class="shrink-0 drop-shadow-sm" />
 					Add to Chrome — Free
 				</a>
 				<Button href="/products/" variant="secondary" class="gap-2">
@@ -330,12 +330,8 @@
 		<div use:reveal class="text-center">
 			<p class="text-sm text-[#64748B] dark:text-slate-400">Also from Arbenger</p>
 			<div class="mt-4 flex flex-wrap items-center justify-center gap-4">
-				<a href="/products/image-resizer/" class="flex items-center gap-2 rounded-lg border border-[#E2E8F0] px-4 py-2.5 text-sm text-[#475569] transition-colors hover:border-[#0891B2]/30 hover:text-[#0891B2] dark:border-[#2A2578] dark:text-slate-400 dark:hover:border-[#22D3EE]/30 dark:hover:text-[#22D3EE]">
-					Image Resizer
-					<ExternalLink size={12} />
-				</a>
-				<a href="/products/image-compressor/" class="flex items-center gap-2 rounded-lg border border-[#E2E8F0] px-4 py-2.5 text-sm text-[#475569] transition-colors hover:border-[#0891B2]/30 hover:text-[#0891B2] dark:border-[#2A2578] dark:text-slate-400 dark:hover:border-[#22D3EE]/30 dark:hover:text-[#22D3EE]">
-					Image Compressor
+				<a href="/products/sound-booster/" class="flex items-center gap-2 rounded-lg border border-[#E2E8F0] px-4 py-2.5 text-sm text-[#475569] transition-colors hover:border-[#0891B2]/30 hover:text-[#0891B2] dark:border-[#2A2578] dark:text-slate-400 dark:hover:border-[#22D3EE]/30 dark:hover:text-[#22D3EE]">
+					Sound Booster
 					<ExternalLink size={12} />
 				</a>
 			</div>

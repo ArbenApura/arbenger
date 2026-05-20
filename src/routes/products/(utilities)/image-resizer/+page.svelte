@@ -189,7 +189,7 @@
 
 		<div class="flex items-center gap-3">
 			<a
-				href="/blog/how-to-use-image-resizer/"
+				href="/blog/resize-crop-convert-in-browser/"
 				class="flex items-center gap-1 text-[10px] text-[#0891B2] transition-colors hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80"
 			>
 				<BookOpen size={10} />
@@ -218,7 +218,7 @@
 	{#if !$hasImages}
 		<!-- UPLOAD ZONE -->
 		<div class="flex flex-1 items-center justify-center py-6 lg:py-10">
-			<UploadZone on:files={handleFiles} class="w-full max-w-2xl lg:min-h-[560px]" guideHref="/blog/how-to-use-image-resizer/" />
+			<UploadZone on:files={handleFiles} class="w-full max-w-2xl lg:min-h-[560px]" guideHref="/blog/resize-crop-convert-in-browser/" />
 		</div>
 	{:else if !$isBatchMode}
 		<!-- SINGLE IMAGE MODE -->

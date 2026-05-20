@@ -15,6 +15,7 @@ Navigation hub for project context.
 ## Active Tracks
 
 - [ ] [Color Picker Chrome Extension](./tracks/color-picker-ext_20260518/index.md) — First Chrome plugin, eyedropper color picker
+- [ ] [Sound Booster Chrome Extension](./tracks/sound-booster-ext_20260519/index.md) — Audio boost beyond 100%, per-tab EQ, presets
 
 <!-- Auto-populated by /conductor:new-track -->
 

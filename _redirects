@@ -1,0 +1,5 @@
+# Blog slug redirects (renamed 2026-05-21)
+/blog/introducing-color-picker/ /blog/color-picker-without-tracking/ 301
+/blog/introducing-sound-booster/ /blog/browser-volume-beyond-100/ 301
+/blog/how-to-use-image-resizer/ /blog/resize-crop-convert-in-browser/ 301
+/blog/how-to-use-image-compressor/ /blog/compress-images-90-smaller/ 301

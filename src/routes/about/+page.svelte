@@ -43,7 +43,7 @@
 		</h1>
 
 		<p class="mt-6 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			We make software tools. Here's what that looks like.
+			We build tools that do one thing well and don't waste your time.
 		</p>
 	</div>
 </section>

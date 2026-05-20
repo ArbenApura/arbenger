@@ -163,7 +163,7 @@
 
 		<div class="flex items-center gap-3">
 			<a
-				href="/blog/how-to-use-image-compressor/"
+				href="/blog/compress-images-90-smaller/"
 				class="flex items-center gap-1 text-[10px] text-[#0891B2] transition-colors hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80"
 			>
 				<BookOpen size={10} />

@@ -46,6 +46,10 @@
 	image={post.coverImage}
 />
 
+<svelte:head>
+	<meta name="author" content="Arbenger" />
+</svelte:head>
+
 <Breadcrumbs
 	items={[
 		{ name: 'Blog', url: `${SITE_URL}/blog/` },

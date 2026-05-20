@@ -62,7 +62,7 @@
 				Products
 			</h1>
 			<p class="mt-4 text-lg text-[#475569] dark:text-slate-300">
-				Tools we've built and shipped. More on the way.
+				Browser tools, Chrome extensions, and more. Everything runs local, everything is free.
 			</p>
 		</div>
 	</div>

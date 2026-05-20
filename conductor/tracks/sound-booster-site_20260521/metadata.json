@@ -1,0 +1,16 @@
+{
+  "id": "sound-booster-site_20260521",
+  "title": "Sound Booster Site Integration",
+  "type": "feature",
+  "status": "complete",
+  "created": "2026-05-21T00:00:00.000Z",
+  "updated": "2026-05-21T00:00:00.000Z",
+  "phases": {
+    "total": 4,
+    "completed": 4
+  },
+  "tasks": {
+    "total": 12,
+    "completed": 12
+  }
+}

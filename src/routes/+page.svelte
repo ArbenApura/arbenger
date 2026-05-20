@@ -17,7 +17,7 @@
 
 <MetaTags
 	title="Arbenger — Extensions, Plugins, AI Tools & Web Apps"
-	description="Extensions, plugins, AI tools, and web apps. Browse what's available at Arbenger."
+	description="Free browser tools, Chrome extensions, and AI utilities. Image processing, color picking, audio boosting — all private, all local. No uploads, no accounts."
 	url="https://arbenger.com"
 />
 
