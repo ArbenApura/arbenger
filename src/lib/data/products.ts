@@ -5,9 +5,9 @@ export const categories: ProductCategoryInfo[] = [
 	{
 		id: 'misc-tools',
 		name: 'Utilities',
-		description: 'Image tools, code formatters, converters, and other browser-based utilities.',
+		description: 'Image tools, code editors, converters, and other browser-based utilities.',
 		icon: 'wrench',
-		productCount: 2,
+		productCount: 3,
 	},
 	{
 		id: 'vscode-extensions',
@@ -85,6 +85,18 @@ export const products: Product[] = [
 		platform: 'chrome-web-store',
 		externalUrl: '/products/sound-booster',
 		tags: ['audio', 'volume', 'equalizer', 'free'],
+		featured: true,
+	},
+	{
+		slug: 'html-editor',
+		name: 'HTML Editor',
+		description:
+			'Write HTML, CSS, and JavaScript with live preview, Prettier formatting, inline error detection, Emmet support, and responsive device preview. 100% client-side.',
+		category: 'misc-tools',
+		status: 'live',
+		platform: 'web',
+		externalUrl: '/products/html-editor',
+		tags: ['html', 'css', 'javascript', 'editor', 'code', 'free'],
 		featured: true,
 	},
 ];

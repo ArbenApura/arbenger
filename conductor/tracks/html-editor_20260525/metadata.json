@@ -1,0 +1,16 @@
+{
+  "id": "html-editor_20260525",
+  "title": "Live HTML Preview Editor",
+  "type": "feature",
+  "status": "pending",
+  "created": "2026-05-25T00:00:00Z",
+  "updated": "2026-05-25T00:00:00Z",
+  "phases": {
+    "total": 10,
+    "completed": 0
+  },
+  "tasks": {
+    "total": 45,
+    "completed": 0
+  }
+}
