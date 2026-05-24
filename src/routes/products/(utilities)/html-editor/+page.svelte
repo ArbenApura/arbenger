@@ -2,13 +2,13 @@
 	// IMPORTED DEP-MODULES
 	import { onMount, onDestroy } from 'svelte';
 	// IMPORTED MODULES
-	import { htmlCode, cssCode, jsCode } from './_lib/store';
+	import { htmlCode, cssCode, jsCode, resetAll } from './_lib/store';
 	import { exportAsZip, exportAsHTML } from './_lib/exporter';
 	import { initPersistence, destroyPersistence } from './_lib/persistence';
 	import { hideChrome } from '$lib/stores/layout';
 	import { isDark } from '$lib/stores/theme';
 	// IMPORTED DEP-COMPONENTS
-	import { ArrowLeft, Download, FileCode, FolderArchive, Moon, Shield, Sun } from 'lucide-svelte';
+	import { ArrowLeft, Download, FileCode, FilePlus2, FolderArchive, Moon, Shield, Sun } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 	// IMPORTED COMPONENTS
 	import JsonLd from '$lib/components/seo/JsonLd.svelte';
@@ -40,6 +40,15 @@
 		toast.success('Exported as HTML');
 	}
 
+	function handleNew() {
+		resetAll();
+		toast.success('Editor reset');
+	}
+
+	function handleClickOutside(e: MouseEvent) {
+		if (exportOpen) exportOpen = false;
+	}
+
 	// -- LIFECYCLES -- //
 
 	onMount(async () => {
@@ -55,6 +64,8 @@
 		destroyPersistence();
 	});
 </script>
+
+<svelte:window on:click={handleClickOutside} />
 
 <MetaTags
 	title="Free HTML Editor — Live Preview, Prettier & Error Detection | Arbenger"
@@ -95,7 +106,7 @@
 
 <div class="flex h-screen flex-col">
 	<!-- MINIMAL HEADER -->
-	<div class="flex shrink-0 items-center gap-3 border-b border-[#e2e8f0] bg-white px-3 py-1.5 dark:border-[#1E1A5E] dark:bg-[#0B0A23]">
+	<div class="flex shrink-0 items-center gap-2 border-b border-[#e2e8f0] bg-white px-2 py-1.5 sm:gap-3 sm:px-3 dark:border-[#1E1A5E] dark:bg-[#0B0A23]">
 		<!-- BACK + LOGO -->
 		<a
 			href="/products/"
@@ -108,7 +119,7 @@
 
 		<div class="h-4 w-px bg-[#e2e8f0] dark:bg-[#1E1A5E]" />
 
-		<span class="text-xs font-medium text-[#0f172a] dark:text-white">HTML Editor</span>
+		<span class="text-sm font-semibold text-[#0f172a] dark:text-white">HTML Editor</span>
 
 		<div class="flex-1" />
 
@@ -117,6 +128,17 @@
 			<Shield size={10} class="text-[#0891B2] dark:text-[#22D3EE]" />
 			100% Private
 		</span>
+
+		<div class="hidden h-3 w-px bg-[#e2e8f0] sm:block dark:bg-[#1E1A5E]" />
+
+		<!-- NEW BUTTON -->
+		<button
+			class="rounded p-1 text-[#64748b] transition-colors hover:bg-[#e2e8f0] hover:text-[#0f172a] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white"
+			on:click={handleNew}
+			title="New (reset all code)"
+		>
+			<FilePlus2 size={14} />
+		</button>
 
 		<!-- THEME TOGGLE -->
 		<button
@@ -135,14 +157,18 @@
 		<div class="relative">
 			<button
 				class="flex items-center gap-1 rounded border border-[#e2e8f0] px-2 py-1 text-[10px] font-medium text-[#64748b] transition-colors hover:bg-[#e2e8f0] hover:text-[#0f172a] dark:border-[#1E1A5E] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white"
-				on:click={() => (exportOpen = !exportOpen)}
+				on:click|stopPropagation={() => (exportOpen = !exportOpen)}
 			>
 				<Download size={12} />
-				Export
+				<span class="hidden sm:inline">Export</span>
 			</button>
 
 			{#if exportOpen}
-				<div class="absolute right-0 top-full z-50 mt-1 w-44 rounded-lg border border-[#e2e8f0] bg-white py-1 shadow-lg dark:border-[#1E1A5E] dark:bg-[#0d0c2b]">
+				<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
+				<div
+					class="absolute right-0 top-full z-50 mt-1 w-44 rounded-lg border border-[#e2e8f0] bg-white py-1 shadow-lg dark:border-[#1E1A5E] dark:bg-[#0d0c2b]"
+					on:click|stopPropagation
+				>
 					<button
 						class="flex w-full items-center gap-2 px-3 py-2 text-left text-xs text-[#0f172a] transition-colors hover:bg-[#f1f5f9] dark:text-slate-300 dark:hover:bg-[#1E1A5E]"
 						on:click={handleExportZip}

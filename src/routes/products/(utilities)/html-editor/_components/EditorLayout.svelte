@@ -8,7 +8,7 @@
 	import type { EditorTab } from '../_lib/store';
 	import { formatByLanguage, formatAll } from '../_lib/formatter';
 	// IMPORTED DEP-COMPONENTS
-	import { Code, Paintbrush, Terminal, WandSparkles } from 'lucide-svelte';
+	import { Code, Paintbrush, Terminal, WandSparkles, Loader2 } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 	// IMPORTED COMPONENTS
 	import EditorPane from './EditorPane.svelte';
@@ -101,7 +101,7 @@
 		{#each TABS as tab}
 			<button
 				class={cn(
-					'flex items-center gap-1.5 px-4 py-2 text-xs font-medium transition-colors',
+					'flex items-center gap-1.5 px-3 py-2 text-xs font-medium transition-colors sm:px-4',
 					$activeTab === tab.id
 						? 'border-b-2 border-[#0891B2] text-[#0891B2] dark:border-[#22D3EE] dark:text-[#22D3EE]'
 						: 'text-[#64748b] hover:text-[#0f172a] dark:text-slate-500 dark:hover:text-slate-300'
@@ -115,24 +115,44 @@
 
 		<div class="flex-1" />
 
+		<div class="mr-1 h-3 w-px bg-[#e2e8f0] dark:bg-[#1E1A5E]" />
+
 		<button
-			class="mr-1 flex items-center gap-1 rounded px-2 py-1 text-[10px] font-medium text-[#64748b] transition-colors hover:bg-[#e2e8f0] hover:text-[#0f172a] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white"
+			class={cn(
+				'mr-1 flex items-center gap-1 rounded px-2 py-1 text-[10px] font-medium transition-colors',
+				formatting
+					? 'cursor-wait text-[#94A3B8] dark:text-slate-600'
+					: 'text-[#64748b] hover:bg-[#e2e8f0] hover:text-[#0f172a] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white'
+			)}
 			on:click={formatCurrentPane}
 			disabled={formatting}
 			title="Format current pane (Shift+Alt+F)"
 		>
-			<WandSparkles size={12} />
-			Format
+			{#if formatting}
+				<Loader2 size={12} class="animate-spin" />
+			{:else}
+				<WandSparkles size={12} />
+			{/if}
+			<span class="hidden sm:inline">Format</span>
 		</button>
 
 		<button
-			class="mr-2 flex items-center gap-1 rounded px-2 py-1 text-[10px] font-medium text-[#64748b] transition-colors hover:bg-[#e2e8f0] hover:text-[#0f172a] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white"
+			class={cn(
+				'mr-2 flex items-center gap-1 rounded px-2 py-1 text-[10px] font-medium transition-colors',
+				formatting
+					? 'cursor-wait text-[#94A3B8] dark:text-slate-600'
+					: 'text-[#64748b] hover:bg-[#e2e8f0] hover:text-[#0f172a] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white'
+			)}
 			on:click={formatAllPanes}
 			disabled={formatting}
 			title="Format all panes"
 		>
-			<WandSparkles size={12} />
-			Format All
+			{#if formatting}
+				<Loader2 size={12} class="animate-spin" />
+			{:else}
+				<WandSparkles size={12} />
+			{/if}
+			<span class="hidden sm:inline">All</span>
 		</button>
 	</div>
 

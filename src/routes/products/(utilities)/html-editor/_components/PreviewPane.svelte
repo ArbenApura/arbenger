@@ -18,7 +18,6 @@
 
 	let iframe: HTMLIFrameElement;
 	let pendingUpdate: ReturnType<typeof setTimeout> | null = null;
-	let errorCount = 0;
 	let lastContentHash = '';
 	let revokeTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -56,6 +55,7 @@ ${h}
 		parent.postMessage({ type: 'console', method: 'error', args: ['Unhandled rejection: ' + e.reason] }, '*');
 	});
 })();
+parent.postMessage({ type: 'console', method: 'clear', args: [] }, '*');
 try {
 ${j}
 } catch(e) {
@@ -66,10 +66,10 @@ ${j}
 </html>`;
 	}
 
-	function updatePreview() {
+	function updatePreview(force = false) {
 		if (!iframe) return;
 		const contentHash = $htmlCode + '|' + $cssCode + '|' + $jsCode;
-		if (contentHash === lastContentHash) return;
+		if (!force && contentHash === lastContentHash) return;
 		lastContentHash = contentHash;
 		iframe.srcdoc = buildSrcdoc($htmlCode, $cssCode, $jsCode);
 	}
@@ -84,7 +84,7 @@ ${j}
 
 	function runManual() {
 		if (pendingUpdate) clearTimeout(pendingUpdate);
-		updatePreview();
+		updatePreview(true);
 	}
 
 	function openInNewTab() {
@@ -96,12 +96,6 @@ ${j}
 			URL.revokeObjectURL(url);
 			revokeTimer = null;
 		}, 5000);
-	}
-
-	function handleMessage(e: MessageEvent) {
-		if (e.data?.type === 'console' && e.data.method === 'error') {
-			errorCount++;
-		}
 	}
 
 	// -- REACTIVE STATEMENTS -- //
@@ -119,31 +113,42 @@ ${j}
 	// -- LIFECYCLES -- //
 
 	onMount(() => {
-		window.addEventListener('message', handleMessage);
+		window.addEventListener('message', () => {});
 	});
 
 	onDestroy(() => {
 		if (pendingUpdate) clearTimeout(pendingUpdate);
 		if (revokeTimer) clearTimeout(revokeTimer);
-		if (typeof window !== 'undefined') {
-			window.removeEventListener('message', handleMessage);
-		}
 	});
 </script>
 
 <div class={cn('flex h-full flex-col overflow-hidden', className)}>
 	<!-- PREVIEW TOOLBAR -->
 	<div
-		class="flex shrink-0 items-center gap-2 border-b border-[#e2e8f0] bg-[#f8fafc] px-3 py-1.5 dark:border-[#1E1A5E] dark:bg-[#0d0c2b]"
+		class="flex shrink-0 items-center gap-1.5 border-b border-[#e2e8f0] bg-[#f8fafc] px-2 py-1.5 sm:gap-2 sm:px-3 dark:border-[#1E1A5E] dark:bg-[#0d0c2b]"
 	>
-		<span class="mr-2 text-xs font-medium text-[#64748b] dark:text-slate-500">Preview</span>
+		<span class="mr-1 text-xs font-medium text-[#64748b] sm:mr-2 dark:text-slate-500">Preview</span>
 
 		<DevicePresets />
 
 		<div class="flex-1" />
 
+		<!-- AUTO-RUN INDICATOR -->
+		{#if !$autoRun}
+			<span class="rounded bg-[#f59e0b]/10 px-1.5 py-0.5 text-[9px] font-semibold text-[#f59e0b]">
+				PAUSED
+			</span>
+		{/if}
+
+		<div class="h-3 w-px bg-[#e2e8f0] dark:bg-[#1E1A5E]" />
+
 		<button
-			class="rounded p-1 text-[#64748b] transition-colors hover:bg-[#e2e8f0] hover:text-[#0f172a] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white"
+			class={cn(
+				'rounded p-1 transition-colors',
+				$autoRun
+					? 'text-[#0891B2] hover:bg-[#0891B2]/10 dark:text-[#22D3EE] dark:hover:bg-[#22D3EE]/10'
+					: 'text-[#f59e0b] hover:bg-[#f59e0b]/10'
+			)}
 			on:click={() => autoRun.update((v) => !v)}
 			title={$autoRun ? 'Pause auto-run' : 'Enable auto-run'}
 		>
@@ -157,7 +162,7 @@ ${j}
 		<button
 			class="rounded p-1 text-[#64748b] transition-colors hover:bg-[#e2e8f0] hover:text-[#0f172a] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white"
 			on:click={runManual}
-			title="Run"
+			title="Run (force re-execute)"
 		>
 			<RefreshCw size={14} />
 		</button>
