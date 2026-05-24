@@ -101,6 +101,11 @@ ${j}
 
 	// -- REACTIVE STATEMENTS -- //
 
+	$: if (iframe) {
+		lastContentHash = '';
+		updatePreview();
+	}
+
 	$: if ($autoRun && iframe) {
 		$htmlCode, $cssCode, $jsCode;
 		scheduleUpdate();
