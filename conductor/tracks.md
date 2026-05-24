@@ -9,6 +9,6 @@
 
 | [x] | sound-booster-site_20260521 | Sound Booster Site Integration | 2026-05-21 | 2026-05-21 |
 
-| [~] | html-editor_20260525 | Live HTML Preview Editor | 2026-05-25 | 2026-05-25 |
+| [x] | html-editor_20260525 | Live HTML Preview Editor | 2026-05-25 | 2026-05-25 |
 
 <!-- Tracks registered by /conductor:new-track -->
