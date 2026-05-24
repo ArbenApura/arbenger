@@ -4,7 +4,7 @@
 	// IMPORTED MODULES
 	import { htmlCode, cssCode, jsCode } from './_lib/store';
 	import { exportAsZip, exportAsHTML } from './_lib/exporter';
-	import { initPersistence } from './_lib/persistence';
+	import { initPersistence, destroyPersistence } from './_lib/persistence';
 	import { hideChrome } from '$lib/stores/layout';
 	import { isDark } from '$lib/stores/theme';
 	// IMPORTED DEP-COMPONENTS
@@ -52,6 +52,7 @@
 
 	onDestroy(() => {
 		hideChrome.set(false);
+		destroyPersistence();
 	});
 </script>
 

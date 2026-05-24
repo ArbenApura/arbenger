@@ -1,6 +1,6 @@
 <script lang="ts">
 	// IMPORTED DEP-MODULES
-	import { onDestroy } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	// IMPORTED MODULES
 	import { htmlCode, cssCode, jsCode, autoRun } from '../_lib/store';
 	import { cn } from '$lib/utils/cn';
@@ -20,6 +20,7 @@
 	let pendingUpdate: ReturnType<typeof setTimeout> | null = null;
 	let errorCount = 0;
 	let lastContentHash = '';
+	let revokeTimer: ReturnType<typeof setTimeout> | null = null;
 
 	// -- FUNCTIONS -- //
 
@@ -90,7 +91,11 @@ ${j}
 		const blob = new Blob([buildSrcdoc($htmlCode, $cssCode, $jsCode)], { type: 'text/html' });
 		const url = URL.createObjectURL(blob);
 		window.open(url, '_blank');
-		setTimeout(() => URL.revokeObjectURL(url), 5000);
+		if (revokeTimer) clearTimeout(revokeTimer);
+		revokeTimer = setTimeout(() => {
+			URL.revokeObjectURL(url);
+			revokeTimer = null;
+		}, 5000);
 	}
 
 	function handleMessage(e: MessageEvent) {
@@ -111,16 +116,15 @@ ${j}
 		scheduleUpdate();
 	}
 
-	// -- SUBSCRIPTIONS -- //
-
-	if (typeof window !== 'undefined') {
-		window.addEventListener('message', handleMessage);
-	}
-
 	// -- LIFECYCLES -- //
+
+	onMount(() => {
+		window.addEventListener('message', handleMessage);
+	});
 
 	onDestroy(() => {
 		if (pendingUpdate) clearTimeout(pendingUpdate);
+		if (revokeTimer) clearTimeout(revokeTimer);
 		if (typeof window !== 'undefined') {
 			window.removeEventListener('message', handleMessage);
 		}

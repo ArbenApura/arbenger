@@ -1,3 +1,5 @@
+// IMPORTED DEP-MODULES
+import { get } from 'svelte/store';
 // IMPORTED MODULES
 import { htmlCode, cssCode, jsCode } from './store';
 
@@ -21,6 +23,7 @@ type EditorState = {
 
 let db: IDBDatabase | null = null;
 let saveTimer: ReturnType<typeof setTimeout> | null = null;
+let unsubscribers: (() => void)[] = [];
 
 // -- FUNCTIONS -- //
 
@@ -60,10 +63,15 @@ async function loadState(): Promise<EditorState | null> {
 	});
 }
 
-function scheduleSave(html: string, css: string, js: string) {
+function scheduleSave() {
 	if (saveTimer) clearTimeout(saveTimer);
 	saveTimer = setTimeout(() => {
-		saveState({ html, css, js, savedAt: Date.now() });
+		saveState({
+			html: get(htmlCode),
+			css: get(cssCode),
+			js: get(jsCode),
+			savedAt: Date.now(),
+		});
 	}, SAVE_DEBOUNCE);
 }
 
@@ -76,29 +84,11 @@ export async function initPersistence(): Promise<number | null> {
 			jsCode.set(state.js);
 		}
 
-		const unsubHTML = htmlCode.subscribe((v) => {
-			let c = '',
-				j = '';
-			cssCode.subscribe((val) => (c = val))();
-			jsCode.subscribe((val) => (j = val))();
-			scheduleSave(v, c, j);
-		});
-
-		const unsubCSS = cssCode.subscribe((v) => {
-			let h = '',
-				j = '';
-			htmlCode.subscribe((val) => (h = val))();
-			jsCode.subscribe((val) => (j = val))();
-			scheduleSave(h, v, j);
-		});
-
-		const unsubJS = jsCode.subscribe((v) => {
-			let h = '',
-				c = '';
-			htmlCode.subscribe((val) => (h = val))();
-			cssCode.subscribe((val) => (c = val))();
-			scheduleSave(h, c, v);
-		});
+		unsubscribers = [
+			htmlCode.subscribe(() => scheduleSave()),
+			cssCode.subscribe(() => scheduleSave()),
+			jsCode.subscribe(() => scheduleSave()),
+		];
 
 		return state?.savedAt ?? null;
 	} catch {
@@ -106,6 +96,11 @@ export async function initPersistence(): Promise<number | null> {
 	}
 }
 
-export function getLastSaved(): Promise<number | null> {
-	return loadState().then((s) => s?.savedAt ?? null);
+export function destroyPersistence() {
+	unsubscribers.forEach((unsub) => unsub());
+	unsubscribers = [];
+	if (saveTimer) {
+		clearTimeout(saveTimer);
+		saveTimer = null;
+	}
 }

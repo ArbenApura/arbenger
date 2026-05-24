@@ -1,6 +1,7 @@
 <script lang="ts">
 	// IMPORTED DEP-MODULES
 	import { onMount, onDestroy } from 'svelte';
+	import { get } from 'svelte/store';
 	// IMPORTED MODULES
 	import { cn } from '$lib/utils/cn';
 	import { activeTab, htmlCode, cssCode, jsCode, getActiveStore } from '../_lib/store';
@@ -39,10 +40,9 @@
 		formatting = true;
 		const tab = $activeTab;
 		const store = getActiveStore(tab);
-		let code: string;
-		store.subscribe((v) => (code = v))();
+		const code = get(store);
 
-		const result = await formatByLanguage(getLanguageForTab(tab), code!);
+		const result = await formatByLanguage(getLanguageForTab(tab), code);
 		if (result.formatted !== null) {
 			store.set(result.formatted);
 			toast.success(`${tab.toUpperCase()} formatted`);
@@ -55,12 +55,11 @@
 	async function formatAllPanes() {
 		if (formatting) return;
 		formatting = true;
-		let h: string, c: string, j: string;
-		htmlCode.subscribe((v) => (h = v))();
-		cssCode.subscribe((v) => (c = v))();
-		jsCode.subscribe((v) => (j = v))();
+		const h = get(htmlCode);
+		const c = get(cssCode);
+		const j = get(jsCode);
 
-		const results = await formatAll(h!, c!, j!);
+		const results = await formatAll(h, c, j);
 		let errors = 0;
 		if (results.html.formatted !== null) htmlCode.set(results.html.formatted);
 		else errors++;

@@ -24,7 +24,13 @@ function htmlLinter() {
 			const to = from + full.length;
 
 			if (full.startsWith('</')) {
-				const lastOpen = openTags.findLastIndex((t) => t.tag === tagName);
+				let lastOpen = -1;
+				for (let i = openTags.length - 1; i >= 0; i--) {
+					if (openTags[i].tag === tagName) {
+						lastOpen = i;
+						break;
+					}
+				}
 				if (lastOpen === -1) {
 					diagnostics.push({
 						from,
@@ -64,7 +70,6 @@ function cssLinter() {
 			if (doc[i] === '}') {
 				braceDepth--;
 				if (braceDepth < 0) {
-					const line = view.state.doc.lineAt(i);
 					diagnostics.push({
 						from: i,
 						to: i + 1,
@@ -99,22 +104,18 @@ function jsLinter() {
 
 		if (!doc.trim()) return diagnostics;
 
+		// Parse-only check via indirect eval in a try/catch — does NOT execute user code.
+		// Function constructor parses but never calls the function.
 		try {
-			new Function(doc);
+			Function('"use strict";' + doc);
 		} catch (e) {
 			const msg = (e as SyntaxError).message;
-			const lineMatch = msg.match(/line (\d+)/i);
-			let from = 0;
-			let to = doc.length;
-
-			if (lineMatch) {
-				const lineNum = parseInt(lineMatch[1], 10);
-				const line = view.state.doc.line(Math.min(lineNum, view.state.doc.lines));
-				from = line.from;
-				to = line.to;
-			}
-
-			diagnostics.push({ from, to, severity: 'error', message: msg });
+			diagnostics.push({
+				from: 0,
+				to: Math.min(doc.length, 100),
+				severity: 'error',
+				message: msg,
+			});
 		}
 
 		return diagnostics;
