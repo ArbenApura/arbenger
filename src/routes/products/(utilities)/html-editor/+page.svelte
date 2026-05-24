@@ -1,6 +1,10 @@
 <script lang="ts">
+	// IMPORTED MODULES
+	import { htmlCode, cssCode, jsCode } from './_lib/store';
+	import { exportAsZip, exportAsHTML } from './_lib/exporter';
 	// IMPORTED DEP-COMPONENTS
-	import { Shield, Wifi } from 'lucide-svelte';
+	import { Download, FileCode, FolderArchive, Shield, Wifi } from 'lucide-svelte';
+	import { toast } from 'svelte-sonner';
 	// IMPORTED COMPONENTS
 	import JsonLd from '$lib/components/seo/JsonLd.svelte';
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
@@ -11,6 +15,24 @@
 	// -- CONSTANTS -- //
 
 	const SITE_URL = 'https://arbenger.com';
+
+	// -- STATES -- //
+
+	let exportOpen = false;
+
+	// -- FUNCTIONS -- //
+
+	async function handleExportZip() {
+		exportOpen = false;
+		await exportAsZip($htmlCode, $cssCode, $jsCode);
+		toast.success('Exported as ZIP');
+	}
+
+	function handleExportHTML() {
+		exportOpen = false;
+		exportAsHTML($htmlCode, $cssCode, $jsCode);
+		toast.success('Exported as HTML');
+	}
 </script>
 
 <MetaTags
@@ -70,6 +92,36 @@
 				<Wifi size={10} class="text-[#0891B2] dark:text-[#22D3EE]" />
 				Works Offline
 			</span>
+
+			<!-- EXPORT DROPDOWN -->
+			<div class="relative">
+				<button
+					class="flex items-center gap-1 rounded border border-[#e2e8f0] px-2 py-1 text-[10px] font-medium text-[#64748b] transition-colors hover:bg-[#e2e8f0] hover:text-[#0f172a] dark:border-[#1E1A5E] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white"
+					on:click={() => (exportOpen = !exportOpen)}
+				>
+					<Download size={12} />
+					Export
+				</button>
+
+				{#if exportOpen}
+					<div class="absolute right-0 top-full z-50 mt-1 w-44 rounded-lg border border-[#e2e8f0] bg-white py-1 shadow-lg dark:border-[#1E1A5E] dark:bg-[#0d0c2b]">
+						<button
+							class="flex w-full items-center gap-2 px-3 py-2 text-left text-xs text-[#0f172a] transition-colors hover:bg-[#f1f5f9] dark:text-slate-300 dark:hover:bg-[#1E1A5E]"
+							on:click={handleExportZip}
+						>
+							<FolderArchive size={14} />
+							Export as ZIP
+						</button>
+						<button
+							class="flex w-full items-center gap-2 px-3 py-2 text-left text-xs text-[#0f172a] transition-colors hover:bg-[#f1f5f9] dark:text-slate-300 dark:hover:bg-[#1E1A5E]"
+							on:click={handleExportHTML}
+						>
+							<FileCode size={14} />
+							Export as HTML
+						</button>
+					</div>
+				{/if}
+			</div>
 		</div>
 	</div>
 
