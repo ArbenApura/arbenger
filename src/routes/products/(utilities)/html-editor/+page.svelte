@@ -6,6 +6,7 @@
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
 	import EditorLayout from './_components/EditorLayout.svelte';
 	import PreviewPane from './_components/PreviewPane.svelte';
+	import ConsolePane from './_components/ConsolePane.svelte';
 
 	// -- CONSTANTS -- //
 
@@ -79,9 +80,12 @@
 			<EditorLayout />
 		</div>
 
-		<!-- PREVIEW -->
-		<div class="h-1/2 md:h-full md:w-1/2">
-			<PreviewPane />
+		<!-- PREVIEW + CONSOLE -->
+		<div class="flex h-1/2 flex-col md:h-full md:w-1/2">
+			<div class="min-h-0 flex-1">
+				<PreviewPane />
+			</div>
+			<ConsolePane />
 		</div>
 	</div>
 </div>
