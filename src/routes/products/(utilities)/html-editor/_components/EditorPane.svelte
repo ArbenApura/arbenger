@@ -8,6 +8,7 @@
 	import { css } from '@codemirror/lang-css';
 	import { javascript } from '@codemirror/lang-javascript';
 	import { lintGutter } from '@codemirror/lint';
+	import { abbreviationTracker } from '@emmetio/codemirror6-plugin';
 	import { basicSetup } from 'codemirror';
 	// IMPORTED MODULES
 	import { isDark } from '$lib/stores/theme';
@@ -83,6 +84,7 @@
 			getLanguageExtension(language),
 			getLinter(language),
 			lintGutter(),
+			...(language !== 'javascript' ? [abbreviationTracker()] : []),
 			themeCompartment.of(getTheme($isDark)),
 			EditorView.updateListener.of((update) => {
 				if (update.docChanged) {
