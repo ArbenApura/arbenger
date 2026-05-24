@@ -2,10 +2,12 @@
 	// IMPORTED DEP-MODULES
 	import { onDestroy } from 'svelte';
 	// IMPORTED MODULES
-	import { htmlCode, cssCode, jsCode, autoRun } from '../_lib/store';
+	import { htmlCode, cssCode, jsCode, autoRun, devicePreset } from '../_lib/store';
 	import { cn } from '$lib/utils/cn';
 	// IMPORTED DEP-COMPONENTS
 	import { Play, RefreshCw, ExternalLink, Pause } from 'lucide-svelte';
+	// IMPORTED COMPONENTS
+	import DevicePresets from './DevicePresets.svelte';
 
 	// -- OPTIONAL PROPS -- //
 
@@ -16,6 +18,16 @@
 	let iframe: HTMLIFrameElement;
 	let pendingUpdate: ReturnType<typeof setTimeout> | null = null;
 	let errorCount = 0;
+	let rotated = false;
+
+	// -- CONSTANTS -- //
+
+	const DIMENSIONS: Record<string, { w: number; h: number } | null> = {
+		mobile: { w: 375, h: 667 },
+		tablet: { w: 768, h: 1024 },
+		desktop: { w: 1440, h: 900 },
+		full: null,
+	};
 
 	// -- FUNCTIONS -- //
 
@@ -120,7 +132,9 @@ ${j}
 	<div
 		class="flex shrink-0 items-center gap-2 border-b border-[#e2e8f0] bg-[#f8fafc] px-3 py-1.5 dark:border-[#1E1A5E] dark:bg-[#0d0c2b]"
 	>
-		<span class="text-xs font-medium text-[#64748b] dark:text-slate-500">Preview</span>
+		<span class="mr-2 text-xs font-medium text-[#64748b] dark:text-slate-500">Preview</span>
+
+		<DevicePresets />
 
 		<div class="flex-1" />
 
@@ -154,12 +168,27 @@ ${j}
 	</div>
 
 	<!-- IFRAME -->
-	<div class="min-h-0 flex-1 bg-white">
-		<iframe
-			bind:this={iframe}
-			title="Preview"
-			sandbox="allow-scripts allow-modals"
-			class="h-full w-full border-0"
-		/>
+	<div class="flex min-h-0 flex-1 items-center justify-center overflow-auto bg-[#f1f5f9] p-2 dark:bg-[#070619]">
+		{#if $devicePreset === 'full'}
+			<iframe
+				bind:this={iframe}
+				title="Preview"
+				sandbox="allow-scripts allow-modals"
+				class="h-full w-full border-0 bg-white"
+			/>
+		{:else}
+			{@const dims = DIMENSIONS[$devicePreset]}
+			<div
+				class="overflow-hidden rounded-lg border border-[#e2e8f0] bg-white shadow-lg dark:border-[#1E1A5E]"
+				style="width: {dims?.w}px; height: {dims?.h}px; max-width: 100%; max-height: 100%;"
+			>
+				<iframe
+					bind:this={iframe}
+					title="Preview"
+					sandbox="allow-scripts allow-modals"
+					class="h-full w-full border-0"
+				/>
+			</div>
+		{/if}
 	</div>
 </div>
