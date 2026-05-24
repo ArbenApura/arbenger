@@ -1,7 +1,10 @@
 <script lang="ts">
+	// IMPORTED DEP-MODULES
+	import { onMount } from 'svelte';
 	// IMPORTED MODULES
 	import { htmlCode, cssCode, jsCode } from './_lib/store';
 	import { exportAsZip, exportAsHTML } from './_lib/exporter';
+	import { initPersistence } from './_lib/persistence';
 	// IMPORTED DEP-COMPONENTS
 	import { Download, FileCode, FolderArchive, Shield, Wifi } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
@@ -19,6 +22,7 @@
 	// -- STATES -- //
 
 	let exportOpen = false;
+	let lastSaved: number | null = null;
 
 	// -- FUNCTIONS -- //
 
@@ -33,6 +37,16 @@
 		exportAsHTML($htmlCode, $cssCode, $jsCode);
 		toast.success('Exported as HTML');
 	}
+
+	// -- LIFECYCLES -- //
+
+	onMount(async () => {
+		const saved = await initPersistence();
+		if (saved) {
+			lastSaved = saved;
+			toast.info('Restored previous session');
+		}
+	});
 </script>
 
 <MetaTags
