@@ -19,6 +19,7 @@
 	let pendingUpdate: ReturnType<typeof setTimeout> | null = null;
 	let errorCount = 0;
 	let rotated = false;
+	let lastContentHash = '';
 
 	// -- CONSTANTS -- //
 
@@ -75,6 +76,9 @@ ${j}
 
 	function updatePreview() {
 		if (!iframe) return;
+		const contentHash = $htmlCode + '|' + $cssCode + '|' + $jsCode;
+		if (contentHash === lastContentHash) return;
+		lastContentHash = contentHash;
 		iframe.srcdoc = buildSrcdoc($htmlCode, $cssCode, $jsCode);
 	}
 

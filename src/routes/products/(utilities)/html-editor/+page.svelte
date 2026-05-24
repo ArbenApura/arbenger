@@ -1,16 +1,19 @@
 <script lang="ts">
 	// IMPORTED DEP-MODULES
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	// IMPORTED MODULES
 	import { htmlCode, cssCode, jsCode } from './_lib/store';
 	import { exportAsZip, exportAsHTML } from './_lib/exporter';
 	import { initPersistence } from './_lib/persistence';
+	import { hideChrome } from '$lib/stores/layout';
+	import { isDark } from '$lib/stores/theme';
 	// IMPORTED DEP-COMPONENTS
-	import { Download, FileCode, FolderArchive, Shield, Wifi } from 'lucide-svelte';
+	import { ArrowLeft, Download, FileCode, FolderArchive, Moon, Shield, Sun } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 	// IMPORTED COMPONENTS
 	import JsonLd from '$lib/components/seo/JsonLd.svelte';
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
+	import Logo from '$lib/components/ui/Logo.svelte';
 	import EditorLayout from './_components/EditorLayout.svelte';
 	import PreviewPane from './_components/PreviewPane.svelte';
 	import ConsolePane from './_components/ConsolePane.svelte';
@@ -22,7 +25,6 @@
 	// -- STATES -- //
 
 	let exportOpen = false;
-	let lastSaved: number | null = null;
 
 	// -- FUNCTIONS -- //
 
@@ -41,11 +43,15 @@
 	// -- LIFECYCLES -- //
 
 	onMount(async () => {
+		hideChrome.set(true);
 		const saved = await initPersistence();
 		if (saved) {
-			lastSaved = saved;
 			toast.info('Restored previous session');
 		}
+	});
+
+	onDestroy(() => {
+		hideChrome.set(false);
 	});
 </script>
 
@@ -86,56 +92,72 @@
 	}}
 />
 
-<div class="flex h-[calc(100vh-5rem)] flex-col pt-20">
-	<!-- TOP BAR -->
-	<div class="flex shrink-0 items-center justify-between border-b border-[#e2e8f0] px-4 py-2 dark:border-[#1E1A5E]">
-		<nav class="text-xs text-[#94A3B8] dark:text-slate-500">
-			<a href="/" class="transition-colors hover:text-[#0891B2] dark:hover:text-[#22D3EE]">Home</a>
-			<span class="mx-1">/</span>
-			<a href="/products/" class="transition-colors hover:text-[#0891B2] dark:hover:text-[#22D3EE]">Products</a>
-			<span class="mx-1">/</span>
-			<span class="text-[#0f172a] dark:text-white">HTML Editor</span>
-		</nav>
+<div class="flex h-screen flex-col">
+	<!-- MINIMAL HEADER -->
+	<div class="flex shrink-0 items-center gap-3 border-b border-[#e2e8f0] bg-white px-3 py-1.5 dark:border-[#1E1A5E] dark:bg-[#0B0A23]">
+		<!-- BACK + LOGO -->
+		<a
+			href="/products/"
+			class="flex items-center gap-2 rounded-lg px-2 py-1 text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0f172a] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white"
+			title="Back to Products"
+		>
+			<ArrowLeft size={14} />
+			<Logo size={18} />
+		</a>
 
-		<div class="flex items-center gap-3">
-			<span class="flex items-center gap-1 text-[10px] text-[#94A3B8] dark:text-slate-500">
-				<Shield size={10} class="text-[#0891B2] dark:text-[#22D3EE]" />
-				100% Private
-			</span>
-			<span class="flex items-center gap-1 text-[10px] text-[#94A3B8] dark:text-slate-500">
-				<Wifi size={10} class="text-[#0891B2] dark:text-[#22D3EE]" />
-				Works Offline
-			</span>
+		<div class="h-4 w-px bg-[#e2e8f0] dark:bg-[#1E1A5E]" />
 
-			<!-- EXPORT DROPDOWN -->
-			<div class="relative">
-				<button
-					class="flex items-center gap-1 rounded border border-[#e2e8f0] px-2 py-1 text-[10px] font-medium text-[#64748b] transition-colors hover:bg-[#e2e8f0] hover:text-[#0f172a] dark:border-[#1E1A5E] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white"
-					on:click={() => (exportOpen = !exportOpen)}
-				>
-					<Download size={12} />
-					Export
-				</button>
+		<span class="text-xs font-medium text-[#0f172a] dark:text-white">HTML Editor</span>
 
-				{#if exportOpen}
-					<div class="absolute right-0 top-full z-50 mt-1 w-44 rounded-lg border border-[#e2e8f0] bg-white py-1 shadow-lg dark:border-[#1E1A5E] dark:bg-[#0d0c2b]">
-						<button
-							class="flex w-full items-center gap-2 px-3 py-2 text-left text-xs text-[#0f172a] transition-colors hover:bg-[#f1f5f9] dark:text-slate-300 dark:hover:bg-[#1E1A5E]"
-							on:click={handleExportZip}
-						>
-							<FolderArchive size={14} />
-							Export as ZIP
-						</button>
-						<button
-							class="flex w-full items-center gap-2 px-3 py-2 text-left text-xs text-[#0f172a] transition-colors hover:bg-[#f1f5f9] dark:text-slate-300 dark:hover:bg-[#1E1A5E]"
-							on:click={handleExportHTML}
-						>
-							<FileCode size={14} />
-							Export as HTML
-						</button>
-					</div>
-				{/if}
-			</div>
+		<div class="flex-1" />
+
+		<!-- STATUS BADGES -->
+		<span class="hidden items-center gap-1 text-[10px] text-[#94A3B8] sm:flex dark:text-slate-500">
+			<Shield size={10} class="text-[#0891B2] dark:text-[#22D3EE]" />
+			100% Private
+		</span>
+
+		<!-- THEME TOGGLE -->
+		<button
+			class="rounded p-1 text-[#64748b] transition-colors hover:bg-[#e2e8f0] hover:text-[#0f172a] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white"
+			on:click={() => isDark.toggle()}
+			title="Toggle theme"
+		>
+			{#if $isDark}
+				<Sun size={14} />
+			{:else}
+				<Moon size={14} />
+			{/if}
+		</button>
+
+		<!-- EXPORT DROPDOWN -->
+		<div class="relative">
+			<button
+				class="flex items-center gap-1 rounded border border-[#e2e8f0] px-2 py-1 text-[10px] font-medium text-[#64748b] transition-colors hover:bg-[#e2e8f0] hover:text-[#0f172a] dark:border-[#1E1A5E] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white"
+				on:click={() => (exportOpen = !exportOpen)}
+			>
+				<Download size={12} />
+				Export
+			</button>
+
+			{#if exportOpen}
+				<div class="absolute right-0 top-full z-50 mt-1 w-44 rounded-lg border border-[#e2e8f0] bg-white py-1 shadow-lg dark:border-[#1E1A5E] dark:bg-[#0d0c2b]">
+					<button
+						class="flex w-full items-center gap-2 px-3 py-2 text-left text-xs text-[#0f172a] transition-colors hover:bg-[#f1f5f9] dark:text-slate-300 dark:hover:bg-[#1E1A5E]"
+						on:click={handleExportZip}
+					>
+						<FolderArchive size={14} />
+						Export as ZIP
+					</button>
+					<button
+						class="flex w-full items-center gap-2 px-3 py-2 text-left text-xs text-[#0f172a] transition-colors hover:bg-[#f1f5f9] dark:text-slate-300 dark:hover:bg-[#1E1A5E]"
+						on:click={handleExportHTML}
+					>
+						<FileCode size={14} />
+						Export as HTML
+					</button>
+				</div>
+			{/if}
 		</div>
 	</div>
 

@@ -1,6 +1,7 @@
 <script lang="ts">
 	// IMPORTED MODULES
 	import '../app.css';
+	import { hideChrome } from '$lib/stores/layout';
 
 	// IMPORTED DEP-COMPONENTS
 	import { Toaster } from 'svelte-sonner';
@@ -29,13 +30,17 @@
 	Skip to content
 </a>
 
-<Navbar />
+{#if !$hideChrome}
+	<Navbar />
+{/if}
 
 <!-- MAIN CONTENT -->
 <main id="main-content">
 	<slot />
 </main>
 
-<Footer />
-<CookieBanner />
+{#if !$hideChrome}
+	<Footer />
+	<CookieBanner />
+{/if}
 <Toaster richColors closeButton position="bottom-right" />
