@@ -40,6 +40,7 @@ export const autoRun = writable(true);
 export const showPreview = writable(true);
 export const showConsole = writable(false);
 export const devicePreset = writable<DevicePreset>('full');
+export const deviceRotated = writable(false);
 
 // -- FUNCTIONS -- //
 
