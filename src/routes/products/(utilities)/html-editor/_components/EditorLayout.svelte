@@ -1,10 +1,14 @@
 <script lang="ts">
+	// IMPORTED DEP-MODULES
+	import { onMount, onDestroy } from 'svelte';
 	// IMPORTED MODULES
 	import { cn } from '$lib/utils/cn';
-	import { activeTab, htmlCode, cssCode, jsCode } from '../_lib/store';
+	import { activeTab, htmlCode, cssCode, jsCode, getActiveStore } from '../_lib/store';
 	import type { EditorTab } from '../_lib/store';
+	import { formatByLanguage, formatAll } from '../_lib/formatter';
 	// IMPORTED DEP-COMPONENTS
-	import { Code, Paintbrush, Terminal } from 'lucide-svelte';
+	import { Code, Paintbrush, Terminal, WandSparkles } from 'lucide-svelte';
+	import { toast } from 'svelte-sonner';
 	// IMPORTED COMPONENTS
 	import EditorPane from './EditorPane.svelte';
 
@@ -16,17 +20,84 @@
 		{ id: 'js', label: 'JS', icon: Terminal },
 	];
 
+	// -- STATES -- //
+
+	let formatting = false;
+
 	// -- FUNCTIONS -- //
 
 	function setTab(tab: EditorTab) {
 		activeTab.set(tab);
 	}
+
+	function getLanguageForTab(tab: EditorTab): 'html' | 'css' | 'javascript' {
+		return tab === 'js' ? 'javascript' : tab;
+	}
+
+	async function formatCurrentPane() {
+		if (formatting) return;
+		formatting = true;
+		const tab = $activeTab;
+		const store = getActiveStore(tab);
+		let code: string;
+		store.subscribe((v) => (code = v))();
+
+		const result = await formatByLanguage(getLanguageForTab(tab), code!);
+		if (result.formatted !== null) {
+			store.set(result.formatted);
+			toast.success(`${tab.toUpperCase()} formatted`);
+		} else {
+			toast.error(`Format error: ${result.error}`);
+		}
+		formatting = false;
+	}
+
+	async function formatAllPanes() {
+		if (formatting) return;
+		formatting = true;
+		let h: string, c: string, j: string;
+		htmlCode.subscribe((v) => (h = v))();
+		cssCode.subscribe((v) => (c = v))();
+		jsCode.subscribe((v) => (j = v))();
+
+		const results = await formatAll(h!, c!, j!);
+		let errors = 0;
+		if (results.html.formatted !== null) htmlCode.set(results.html.formatted);
+		else errors++;
+		if (results.css.formatted !== null) cssCode.set(results.css.formatted);
+		else errors++;
+		if (results.js.formatted !== null) jsCode.set(results.js.formatted);
+		else errors++;
+
+		if (errors === 0) toast.success('All panes formatted');
+		else toast.warning(`Formatted with ${errors} error(s)`);
+		formatting = false;
+	}
+
+	function handleKeydown(e: KeyboardEvent) {
+		if (e.shiftKey && e.altKey && e.key === 'F') {
+			e.preventDefault();
+			formatCurrentPane();
+		}
+	}
+
+	// -- LIFECYCLES -- //
+
+	onMount(() => {
+		document.addEventListener('keydown', handleKeydown);
+	});
+
+	onDestroy(() => {
+		if (typeof document !== 'undefined') {
+			document.removeEventListener('keydown', handleKeydown);
+		}
+	});
 </script>
 
 <div class="flex h-full flex-col overflow-hidden">
 	<!-- TAB BAR -->
 	<div
-		class="flex shrink-0 border-b border-[#e2e8f0] bg-[#f8fafc] dark:border-[#1E1A5E] dark:bg-[#0d0c2b]"
+		class="flex shrink-0 items-center border-b border-[#e2e8f0] bg-[#f8fafc] dark:border-[#1E1A5E] dark:bg-[#0d0c2b]"
 	>
 		{#each TABS as tab}
 			<button
@@ -42,6 +113,28 @@
 				{tab.label}
 			</button>
 		{/each}
+
+		<div class="flex-1" />
+
+		<button
+			class="mr-1 flex items-center gap-1 rounded px-2 py-1 text-[10px] font-medium text-[#64748b] transition-colors hover:bg-[#e2e8f0] hover:text-[#0f172a] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white"
+			on:click={formatCurrentPane}
+			disabled={formatting}
+			title="Format current pane (Shift+Alt+F)"
+		>
+			<WandSparkles size={12} />
+			Format
+		</button>
+
+		<button
+			class="mr-2 flex items-center gap-1 rounded px-2 py-1 text-[10px] font-medium text-[#64748b] transition-colors hover:bg-[#e2e8f0] hover:text-[#0f172a] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white"
+			on:click={formatAllPanes}
+			disabled={formatting}
+			title="Format all panes"
+		>
+			<WandSparkles size={12} />
+			Format All
+		</button>
 	</div>
 
 	<!-- EDITOR PANES -->
