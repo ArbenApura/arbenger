@@ -69,6 +69,7 @@
 				{ '@type': 'ListItem', position: 2, name: 'Image Compressor', url: 'https://arbenger.com/products/image-compressor/' },
 				{ '@type': 'ListItem', position: 3, name: 'Color Picker', url: 'https://arbenger.com/products/color-picker/' },
 				{ '@type': 'ListItem', position: 4, name: 'Sound Booster', url: 'https://arbenger.com/products/sound-booster/' },
+				{ '@type': 'ListItem', position: 5, name: 'HTML Editor', url: 'https://arbenger.com/products/html-editor/' },
 			],
 		},
 	}}

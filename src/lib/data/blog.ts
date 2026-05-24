@@ -9,6 +9,17 @@ export const blogCategories: BlogCategoryInfo[] = [
 
 export const blogPosts: BlogPost[] = [
 	{
+		slug: 'html-css-js-editor-in-browser',
+		title: 'Write HTML, CSS & JS with Live Preview — No Signup, No Server',
+		description:
+			'Prettier formatting, inline error detection, Emmet abbreviations, responsive device preview, and a built-in console — running entirely in your browser. Full walkthrough inside.',
+		date: '2026-05-25',
+		category: 'tutorial',
+		tags: ['html-editor', 'guide', 'tools'],
+		readTime: 6,
+		featured: true,
+	},
+	{
 		slug: 'browser-volume-beyond-100',
 		title: 'Browser Volume Stops at 100%. Ours Goes to 600%.',
 		description:
