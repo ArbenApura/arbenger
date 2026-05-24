@@ -7,10 +7,12 @@
 	import { html } from '@codemirror/lang-html';
 	import { css } from '@codemirror/lang-css';
 	import { javascript } from '@codemirror/lang-javascript';
+	import { lintGutter } from '@codemirror/lint';
 	import { basicSetup } from 'codemirror';
 	// IMPORTED MODULES
 	import { isDark } from '$lib/stores/theme';
 	import { arbengerDarkTheme, arbengerLightTheme } from '../_lib/codemirror-theme';
+	import { getLinter } from '../_lib/linting';
 
 	// -- REQUIRED PROPS -- //
 
@@ -79,6 +81,8 @@
 			basicSetup,
 			keymap.of([indentWithTab]),
 			getLanguageExtension(language),
+			getLinter(language),
+			lintGutter(),
 			themeCompartment.of(getTheme($isDark)),
 			EditorView.updateListener.of((update) => {
 				if (update.docChanged) {
