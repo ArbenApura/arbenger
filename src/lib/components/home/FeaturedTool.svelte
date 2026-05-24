@@ -1,6 +1,6 @@
 <script lang="ts">
 	// IMPORTED DEP-MODULES
-	import { ImageIcon, ArrowRight, Shield, Layers, Crop, Target, Pipette, Eye, Palette, Volume2, SlidersHorizontal, Music } from 'lucide-svelte';
+	import { ImageIcon, ArrowRight, Shield, Layers, Crop, Target, Pipette, Eye, Palette, Volume2, SlidersHorizontal, Music, Code, WandSparkles, Smartphone } from 'lucide-svelte';
 	// IMPORTED MODULES
 	import { reveal } from '$lib/actions/reveal';
 	// IMPORTED COMPONENTS
@@ -16,7 +16,7 @@
 				Free tools for designers and developers
 			</h2>
 			<p class="mt-4 text-lg text-[#475569] dark:text-slate-300">
-				Image processing, color picking, and more — all free, all private. No uploads, no accounts.
+				Image processing, code editing, color picking, and more — all free, all private. No uploads, no accounts.
 			</p>
 		</div>
 
@@ -342,6 +342,94 @@
 					<Button href="/products/sound-booster/" variant="primary" class="mt-auto w-full">
 						Explore Sound Booster
 					</Button>
+				</div>
+			</div>
+			<!-- HTML EDITOR CARD (FULL WIDTH) -->
+			<div use:reveal={{ delay: 500 }} class="group overflow-hidden rounded-2xl border border-[#E2E8F0] bg-gradient-to-br from-white to-[#F8FAFC] shadow-[0_4px_24px_rgba(0,0,0,0.04)] transition-shadow hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] sm:col-span-2 dark:border-[#2A2578]/60 dark:from-[#1E1A5E]/30 dark:to-[#0B0A23] dark:shadow-none dark:hover:shadow-none">
+				<div class="flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-8">
+					<!-- TEXT SIDE -->
+					<div class="flex flex-1 flex-col gap-4">
+						<!-- BADGES -->
+						<div class="flex items-center gap-2">
+							<span class="rounded-full bg-[#2DD4BF]/10 px-3 py-1 text-xs font-semibold text-[#2DD4BF]">
+								New
+							</span>
+							<span class="rounded-full border border-[#E2E8F0] px-3 py-1 text-xs text-[#94A3B8] dark:border-[#2A2578] dark:text-slate-500">
+								Utilities
+							</span>
+						</div>
+
+						<h3 class="font-display text-2xl font-bold tracking-tight text-[#0F172A] dark:text-white">
+							HTML Editor
+						</h3>
+
+						<p class="text-sm text-[#475569] dark:text-slate-300">
+							Write HTML, CSS, and JavaScript with live preview, Prettier formatting, and inline error detection. No signup, no server.
+						</p>
+
+						<!-- FEATURE PILLS -->
+						<div class="flex flex-wrap gap-2">
+							<span class="flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] px-3 py-1.5 text-xs text-[#64748B] dark:border-[#2A2578] dark:text-slate-400">
+								<Shield size={12} class="text-[#0891B2] dark:text-[#22D3EE]" />
+								100% Local
+							</span>
+							<span class="flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] px-3 py-1.5 text-xs text-[#64748B] dark:border-[#2A2578] dark:text-slate-400">
+								<WandSparkles size={12} class="text-[#0891B2] dark:text-[#22D3EE]" />
+								Prettier
+							</span>
+							<span class="flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] px-3 py-1.5 text-xs text-[#64748B] dark:border-[#2A2578] dark:text-slate-400">
+								<Smartphone size={12} class="text-[#0891B2] dark:text-[#22D3EE]" />
+								Device Preview
+							</span>
+						</div>
+
+						<!-- CTA -->
+						<Button href="/products/html-editor/" variant="primary" class="w-full sm:w-auto">
+							Open HTML Editor
+						</Button>
+					</div>
+
+					<!-- UI MINIATURE -->
+					<div class="w-full shrink-0 sm:w-[280px]">
+						<div class="rounded-xl border border-[#E2E8F0] bg-white dark:border-[#2A2578] dark:bg-[#1E1A5E]/40">
+							<!-- MOCK TAB BAR -->
+							<div class="flex items-center border-b border-[#E2E8F0] px-2 py-1.5 dark:border-[#2A2578]">
+								<div class="flex items-center gap-1 border-b-2 border-[#0891B2] px-2 py-0.5 text-[7px] font-medium text-[#0891B2] dark:border-[#22D3EE] dark:text-[#22D3EE]">
+									<Code size={8} />
+									HTML
+								</div>
+								<div class="px-2 py-0.5 text-[7px] text-[#94A3B8] dark:text-slate-600">CSS</div>
+								<div class="px-2 py-0.5 text-[7px] text-[#94A3B8] dark:text-slate-600">JS</div>
+							</div>
+							<!-- MOCK SPLIT EDITOR + PREVIEW -->
+							<div class="flex">
+								<!-- CODE SIDE -->
+								<div class="flex-1 border-r border-[#E2E8F0] bg-[#0B0A23] p-2 font-mono text-[7px] leading-relaxed dark:border-[#2A2578]">
+									<div class="flex gap-1.5">
+										<div class="select-none text-[#475569]">
+											<div>1</div><div>2</div><div>3</div>
+										</div>
+										<div>
+											<div><span class="text-[#f07178]">&lt;h1&gt;</span><span class="text-[#e2e8f0]">Hello</span><span class="text-[#f07178]">&lt;/h1&gt;</span></div>
+											<div><span class="text-[#f07178]">&lt;p&gt;</span></div>
+											<div>&nbsp;&nbsp;<span class="text-[#e2e8f0]">World</span></div>
+										</div>
+									</div>
+								</div>
+								<!-- PREVIEW SIDE -->
+								<div class="flex-1 p-2">
+									<div class="text-[8px] font-bold text-[#0891B2]">Hello</div>
+									<div class="mt-0.5 text-[6px] text-[#475569]">World</div>
+								</div>
+							</div>
+							<!-- MOCK CONSOLE -->
+							<div class="flex items-center gap-1.5 border-t border-[#E2E8F0] px-2 py-1 dark:border-[#2A2578]">
+								<span class="text-[6px] font-medium text-[#64748b] dark:text-slate-500">Console</span>
+								<div class="flex-1" />
+								<span class="text-[5px] text-[#94A3B8] dark:text-slate-600">&#9654; Hello</span>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
