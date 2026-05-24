@@ -5,6 +5,7 @@
 	import JsonLd from '$lib/components/seo/JsonLd.svelte';
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
 	import EditorLayout from './_components/EditorLayout.svelte';
+	import PreviewPane from './_components/PreviewPane.svelte';
 
 	// -- CONSTANTS -- //
 
@@ -72,7 +73,15 @@
 	</div>
 
 	<!-- MAIN EDITOR AREA -->
-	<div class="min-h-0 flex-1">
-		<EditorLayout />
+	<div class="flex min-h-0 flex-1 flex-col md:flex-row">
+		<!-- EDITORS -->
+		<div class="h-1/2 border-r-0 border-b border-[#e2e8f0] md:h-full md:w-1/2 md:border-r md:border-b-0 dark:border-[#1E1A5E]">
+			<EditorLayout />
+		</div>
+
+		<!-- PREVIEW -->
+		<div class="h-1/2 md:h-full md:w-1/2">
+			<PreviewPane />
+		</div>
 	</div>
 </div>
