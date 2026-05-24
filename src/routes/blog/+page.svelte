@@ -9,6 +9,7 @@
 
 	// IMPORTED COMPONENTS
 	import Breadcrumbs from '$lib/components/seo/Breadcrumbs.svelte';
+	import JsonLd from '$lib/components/seo/JsonLd.svelte';
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
 	import BlogCard from '$lib/components/blog/BlogCard.svelte';
 	import BlogPagination from '$lib/components/blog/BlogPagination.svelte';
@@ -47,6 +48,22 @@
 />
 
 <Breadcrumbs pageName="Blog" pageUrl="{SITE_URL}/blog/" />
+
+<JsonLd
+	schema={{
+		'@context': 'https://schema.org',
+		'@type': 'Blog',
+		name: 'Arbenger Blog',
+		url: `${SITE_URL}/blog/`,
+		description: 'Tutorials, deep dives, and behind-the-scenes on the tools we build.',
+		publisher: {
+			'@type': 'Organization',
+			name: 'Arbenger',
+			url: SITE_URL,
+			logo: { '@type': 'ImageObject', url: `${SITE_URL}/arbenger.svg` },
+		},
+	}}
+/>
 
 <!-- PAGE HERO -->
 <section class="relative overflow-hidden pt-32 pb-12">

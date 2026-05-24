@@ -12,6 +12,7 @@
 
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
+	import JsonLd from '$lib/components/seo/JsonLd.svelte';
 	import Breadcrumbs from '$lib/components/seo/Breadcrumbs.svelte';
 
 	// -- TYPES -- //
@@ -53,6 +54,25 @@
 />
 
 <Breadcrumbs pageName="Products" pageUrl="https://arbenger.com/products/" />
+
+<JsonLd
+	schema={{
+		'@context': 'https://schema.org',
+		'@type': 'CollectionPage',
+		name: 'Arbenger Products',
+		url: 'https://arbenger.com/products/',
+		description: 'Browse Arbenger\'s product catalog. Free browser-based utilities, Chrome extensions, AI tools, and web apps.',
+		mainEntity: {
+			'@type': 'ItemList',
+			itemListElement: [
+				{ '@type': 'ListItem', position: 1, name: 'Image Resizer', url: 'https://arbenger.com/products/image-resizer/' },
+				{ '@type': 'ListItem', position: 2, name: 'Image Compressor', url: 'https://arbenger.com/products/image-compressor/' },
+				{ '@type': 'ListItem', position: 3, name: 'Color Picker', url: 'https://arbenger.com/products/color-picker/' },
+				{ '@type': 'ListItem', position: 4, name: 'Sound Booster', url: 'https://arbenger.com/products/sound-booster/' },
+			],
+		},
+	}}
+/>
 
 <!-- HERO -->
 <section class="relative overflow-hidden pt-32 pb-12">

@@ -7,6 +7,7 @@
 
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
+	import JsonLd from '$lib/components/seo/JsonLd.svelte';
 	import Breadcrumbs from '$lib/components/seo/Breadcrumbs.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
 </script>
@@ -18,6 +19,22 @@
 />
 
 <Breadcrumbs pageName="About" pageUrl="https://arbenger.com/about/" />
+
+<JsonLd
+	schema={{
+		'@context': 'https://schema.org',
+		'@type': 'AboutPage',
+		name: 'About Arbenger',
+		url: 'https://arbenger.com/about/',
+		description: 'Arbenger builds extensions, plugins, AI tools, and web apps. Learn about our approach to clean, focused software.',
+		mainEntity: {
+			'@type': 'Organization',
+			name: 'Arbenger',
+			url: 'https://arbenger.com',
+			logo: 'https://arbenger.com/arbenger.svg',
+		},
+	}}
+/>
 
 <!-- PAGE HERO -->
 <section class="relative overflow-hidden pt-32 pb-16">

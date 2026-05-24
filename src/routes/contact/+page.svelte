@@ -8,6 +8,7 @@
 
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
+	import JsonLd from '$lib/components/seo/JsonLd.svelte';
 	import Breadcrumbs from '$lib/components/seo/Breadcrumbs.svelte';
 
 	// -- CONSTANTS -- //
@@ -25,6 +26,22 @@
 />
 
 <Breadcrumbs pageName="Contact" pageUrl="https://arbenger.com/contact/" />
+
+<JsonLd
+	schema={{
+		'@context': 'https://schema.org',
+		'@type': 'ContactPage',
+		name: 'Contact Arbenger',
+		url: 'https://arbenger.com/contact/',
+		description: 'Have a question, idea, or feedback? Get in touch with Arbenger via email or social.',
+		mainEntity: {
+			'@type': 'Organization',
+			name: 'Arbenger',
+			url: 'https://arbenger.com',
+			email: 'contact@arbenger.com',
+		},
+	}}
+/>
 
 <!-- PAGE HERO -->
 <section class="relative overflow-hidden pt-32 pb-16">

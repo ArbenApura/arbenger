@@ -21,6 +21,21 @@
 	url="https://arbenger.com"
 />
 
+<!-- WEBSITE JSON-LD (HOMEPAGE ONLY) -->
+<JsonLd
+	schema={{
+		'@context': 'https://schema.org',
+		'@type': 'WebSite',
+		name: 'Arbenger',
+		url: 'https://arbenger.com',
+		potentialAction: {
+			'@type': 'SearchAction',
+			target: 'https://arbenger.com/products/?q={search_term_string}',
+			'query-input': 'required name=search_term_string',
+		},
+	}}
+/>
+
 <!-- ORGANIZATION JSON-LD (HOMEPAGE ONLY) -->
 <JsonLd
 	schema={{

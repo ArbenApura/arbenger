@@ -124,7 +124,7 @@
 			<!-- CTA BUTTONS -->
 			<div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
 				<a
-					href="https://chromewebstore.google.com"
+					href="https://chromewebstore.google.com/detail/sound-booster-%E2%80%94-arbenger/mngicimeobmdkmcebgjhliknojfkfkfg"
 					target="_blank"
 					rel="noopener"
 					class="inline-flex items-center justify-center gap-2.5 rounded-lg bg-[#0891B2] px-7 py-3.5 text-[15px] font-semibold text-white shadow-lg transition-all hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_0_24px_rgba(8,145,178,0.3)] active:scale-[0.98] dark:bg-[#22D3EE] dark:text-[#0B0A23] dark:hover:shadow-[0_0_24px_rgba(34,211,238,0.2)]"

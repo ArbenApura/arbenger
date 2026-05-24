@@ -4,6 +4,7 @@
 
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
+	import JsonLd from '$lib/components/seo/JsonLd.svelte';
 	import Breadcrumbs from '$lib/components/seo/Breadcrumbs.svelte';
 </script>
 
@@ -14,6 +15,16 @@
 />
 
 <Breadcrumbs pageName="Terms of Service" pageUrl="https://arbenger.com/terms/" />
+
+<JsonLd
+	schema={{
+		'@context': 'https://schema.org',
+		'@type': 'WebPage',
+		name: 'Terms of Service',
+		url: 'https://arbenger.com/terms/',
+		description: 'Terms governing your use of Arbenger\'s website, products, tools, and extensions.',
+	}}
+/>
 
 <!-- PAGE HERO -->
 <section class="relative overflow-hidden pt-32 pb-16">
