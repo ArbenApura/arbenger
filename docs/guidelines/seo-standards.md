@@ -1,6 +1,6 @@
 # SEO Standards
 
-**Last updated:** 2026-05-21
+**Last updated:** 2026-05-27
 
 This document defines the SEO requirements for every page on arbenger.com. All pages must meet these standards before deployment. No page ships without proper meta tags, structured data, and heading hierarchy.
 
@@ -131,6 +131,29 @@ Used on individual blog post pages:
 
 Blog post pages also include a 3-level `BreadcrumbList` (Home > Blog > Post Title) using the `Breadcrumbs.svelte` component with the `items` array prop.
 
+### FAQPage (Product Pages with FAQ Content)
+
+Used on product pages that include FAQ sections for rich snippet eligibility:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is my code sent to a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Everything runs in your browser..."
+      }
+    }
+  ]
+}
+```
+
+Currently used on: HTML Editor (`/products/html-editor/`) with 5 Q&A pairs.
+
 ### SoftwareApplication (Per Product Page — Future)
 
 ```json
@@ -222,6 +245,7 @@ import JsonLd from '$lib/components/seo/JsonLd.svelte';
 | `/blog/[slug]` | Post title (dynamic) | Post-specific keywords |
 | `/products/color-picker` | "Pick any color. Check if it's accessible." | Color picker, eyedropper, contrast |
 | `/products/sound-booster` | "Your browser stops at 100%. This goes to 600%." | Sound booster, volume, equalizer |
+| `/products/html-editor` | "Free Online HTML Editor — Write HTML, CSS & JavaScript with Live Preview" (sr-only) | HTML editor, code editor, live preview |
 | `/products/[slug]` | Product name | Product-specific keyword |
 
 ---
@@ -247,6 +271,7 @@ import JsonLd from '$lib/components/seo/JsonLd.svelte';
 | `/products/image-compressor` | Image Compressor tool |
 | `/products/color-picker` | Color Picker extension landing |
 | `/products/sound-booster` | Sound Booster extension landing |
+| `/products/html-editor` | HTML/CSS/JS Editor tool |
 | `/products/[slug]` | Individual product (future) |
 | `/contact` | Contact page |
 | `/blog` | Blog listing |
@@ -281,13 +306,15 @@ Server-rendered SvelteKit route at `/sitemap.xml` that returns XML content type.
 | `/cookies` | 0.3 | yearly | 2026-05-08 |
 | `/products/image-resizer` | 0.7 | weekly | 2026-05-21 |
 | `/products/image-compressor` | 0.7 | weekly | 2026-05-21 |
-| `/products/color-picker` | 0.7 | weekly | 2026-05-19 |
+| `/products/color-picker` | 0.7 | weekly | 2026-05-21 |
 | `/products/sound-booster` | 0.7 | weekly | 2026-05-21 |
+| `/products/html-editor` | 0.8 | weekly | 2026-05-25 |
 | `/blog` | 0.8 | weekly | 2026-05-21 |
 | `/blog/resize-crop-convert-in-browser` | 0.7 | monthly | 2026-05-10 |
 | `/blog/compress-images-90-smaller` | 0.7 | monthly | 2026-05-11 |
 | `/blog/color-picker-without-tracking` | 0.7 | monthly | 2026-05-19 |
 | `/blog/browser-volume-beyond-100` | 0.7 | monthly | 2026-05-21 |
+| `/blog/html-css-js-editor-in-browser` | 0.7 | monthly | 2026-05-25 |
 
 Note: Blog post URLs are auto-generated in the sitemap from `sortedPosts` in `src/lib/data/blog.ts`. New posts appear in the sitemap automatically.
 
@@ -394,6 +421,25 @@ Notes:
 - Same WebApplication + BreadcrumbList JSON-LD pattern as Color Picker
 - Cross-links to Color Picker only (category-scoped)
 
+### HTML Editor (`/products/html-editor`)
+
+| Element | Value |
+|---------|-------|
+| Title | "Free Online HTML Editor — Live Preview & Formatting \| Arbenger" |
+| Meta description | "Write HTML, CSS, and JavaScript with live preview, Prettier formatting, and inline error detection. No signup, no uploads. 100% private and free." |
+| H1 | "Free Online HTML Editor — Write HTML, CSS & JavaScript with Live Preview" (sr-only) |
+| JSON-LD #1 | `WebApplication` — name, url, applicationCategory (`DeveloperApplication`), offers, description, featureList, browserRequirements, publisher |
+| JSON-LD #2 | `BreadcrumbList` — Home → Products → HTML Editor (3-level) |
+| JSON-LD #3 | `FAQPage` — 5 Q&A pairs covering privacy, languages, offline use, formatting, export |
+| Canonical URL | `https://arbenger.com/products/html-editor/` |
+| Sitemap priority | 0.8, weekly changefreq |
+
+Notes:
+- Same sr-only H1 and WebApplication pattern as image tools
+- Uses `DeveloperApplication` as applicationCategory (vs `UtilitiesApplication` for image tools)
+- Includes `FAQPage` JSON-LD for rich snippet eligibility
+- Full-screen layout (hideChrome) — no navbar/footer, only minimal header with back link
+
 ---
 
 ## 8. Internal Linking
@@ -415,6 +461,7 @@ Homepage (/)
   ├── /products/image-compressor (via FeaturedTool card CTA)
   ├── /products/color-picker (via FeaturedTool card CTA)
   ├── /products/sound-booster (via FeaturedTool card CTA)
+  ├── /products/html-editor (via FeaturedTool card CTA)
   ├── /about (via navbar + about teaser section)
   ├── /contact (via navbar + footer)
   └── /products/[slug] (via product cards — future)
@@ -424,6 +471,7 @@ Products (/products)
   ├── /products/image-compressor (via live products spotlight + category nested link)
   ├── /products/color-picker (via live products spotlight + category nested link)
   ├── /products/sound-booster (via live products spotlight + category nested link)
+  ├── /products/html-editor (via live products spotlight + category nested link)
   └── /products/[slug] (via category nested links — future)
 
 Image Resizer (/products/image-resizer)

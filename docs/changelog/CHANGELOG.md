@@ -4,6 +4,100 @@ All notable decisions, changes, and milestones for arbenger.com are documented h
 
 ---
 
+## 2026-05-27 — HTML Editor Tool + Site Integration
+
+### HTML Editor Tool (NEW)
+
+- **Full code editor** at `/products/html-editor/` — write HTML, CSS, and JavaScript with live preview, entirely client-side
+- **CodeMirror 6** — syntax highlighting, auto-completion, bracket matching for all three languages
+- **Prettier formatting** — browser-based formatter triggered by button or Shift+Alt+F
+- **Inline error detection** — ESLint/HTMLHint-based lint gutter with error markers
+- **Emmet abbreviation expansion** — expand shorthand into full HTML/CSS
+- **Responsive device preview** — mobile, tablet, desktop device frames with rotation toggle
+- **Built-in console** — captures `console.log/warn/error/info` output with filtering
+- **Export** — ZIP (index.html, style.css, script.js) or standalone single HTML file
+- **IndexedDB persistence** — editor state auto-saved with 1s debounce, restored on next visit
+- **UI settings persistence** — active tab and device preset stored in `localStorage` (`arbenger-html-editor-ui`)
+- **Full-screen layout** — `hideChrome` store hides navbar/footer, custom minimal header with back link + logo
+- **Dark/light mode** — respects site theme via `isDark` store
+- **Pre-rendered** — `+page.ts` exports `prerender = true`
+
+### Route Structure
+
+```
+src/routes/products/(utilities)/html-editor/
+  +page.svelte          ← Page component (minimal header, SEO, editor/preview layout)
+  +page.ts              ← prerender = true
+  _components/
+    EditorLayout.svelte ← Tab bar + CodeMirror integration
+    EditorPane.svelte   ← Single CodeMirror editor pane
+    PreviewPane.svelte  ← iframe preview with device frames
+    ConsolePane.svelte  ← Captured console output display
+    DevicePresets.svelte ← Device size preset buttons
+    DeviceFrame.svelte  ← Visual device frame wrapper
+  _lib/
+    store.ts            ← Svelte stores (htmlCode, cssCode, jsCode, activeTab, etc.)
+    persistence.ts      ← IndexedDB save/load with debounce
+    linting.ts          ← Error detection integration
+    formatter.ts        ← Prettier browser-based formatting
+    exporter.ts         ← ZIP and standalone HTML export
+    codemirror-theme.ts ← CodeMirror theme configuration
+```
+
+### Site Integration
+
+- **Product data** — HTML Editor added to `products.ts`: slug `html-editor`, category `misc-tools`, status `live`, platform `web`, `featured: true`. Utilities `productCount` → 3.
+- **Homepage FeaturedTool** — redesigned from 2×2 grid to 4-column grid with 5 product cards (Image Resizer, Image Compressor, Color Picker, Sound Booster, HTML Editor). HTML Editor card centered in last row.
+- **Blog tutorial** (`/blog/html-css-js-editor-in-browser/`) — walkthrough of all editor features (6 min read)
+- **Products page** — HTML Editor appears in live products spotlight and Utilities category
+
+### New Shared Store
+
+- **`hideChrome`** — `Writable<boolean>` in `src/lib/stores/layout.ts`. When `true`, root layout hides Navbar and Footer. Used by HTML Editor for full-screen editing.
+
+### SEO
+
+- **Title:** "Free Online HTML Editor — Live Preview & Formatting | Arbenger"
+- **Meta description:** "Write HTML, CSS, and JavaScript with live preview, Prettier formatting, and inline error detection. No signup, no uploads. 100% private and free."
+- **H1:** "Free Online HTML Editor — Write HTML, CSS & JavaScript with Live Preview" (sr-only)
+- **JSON-LD #1:** `WebApplication` — name, url, applicationCategory (`DeveloperApplication`), offers, description, featureList, browserRequirements, publisher
+- **JSON-LD #2:** `BreadcrumbList` — Home → Products → HTML Editor (3-level)
+- **JSON-LD #3:** `FAQPage` — 5 Q&A pairs (privacy, languages, offline, formatting, export)
+- **Sitemap:** `/products/html-editor/` added with priority 0.8, lastmod 2026-05-25
+
+### Dependencies
+
+No new runtime dependencies — CodeMirror and Prettier loaded via existing project imports.
+
+### Files Created
+
+- `src/routes/products/(utilities)/html-editor/+page.svelte`
+- `src/routes/products/(utilities)/html-editor/+page.ts`
+- `src/routes/products/(utilities)/html-editor/_components/EditorLayout.svelte`
+- `src/routes/products/(utilities)/html-editor/_components/EditorPane.svelte`
+- `src/routes/products/(utilities)/html-editor/_components/PreviewPane.svelte`
+- `src/routes/products/(utilities)/html-editor/_components/ConsolePane.svelte`
+- `src/routes/products/(utilities)/html-editor/_components/DevicePresets.svelte`
+- `src/routes/products/(utilities)/html-editor/_components/DeviceFrame.svelte`
+- `src/routes/products/(utilities)/html-editor/_lib/store.ts`
+- `src/routes/products/(utilities)/html-editor/_lib/persistence.ts`
+- `src/routes/products/(utilities)/html-editor/_lib/linting.ts`
+- `src/routes/products/(utilities)/html-editor/_lib/formatter.ts`
+- `src/routes/products/(utilities)/html-editor/_lib/exporter.ts`
+- `src/routes/products/(utilities)/html-editor/_lib/codemirror-theme.ts`
+- `src/lib/stores/layout.ts`
+- `src/routes/blog/[slug]/_posts/html-css-js-editor-in-browser.svelte`
+
+### Files Modified
+
+- `src/lib/components/home/FeaturedTool.svelte` — 4-col grid with 5 product cards, HTML Editor card centered
+- `src/lib/data/products.ts` — HTML Editor product entry, `misc-tools` productCount → 3
+- `src/lib/data/blog.ts` — HTML Editor blog post entry added
+- `src/routes/products/+page.svelte` — HTML Editor appears in live products
+- `src/routes/sitemap.xml/+server.ts` — `/products/html-editor/` added
+
+---
+
 ## 2026-05-21 — Sound Booster Chrome Extension + Site Integration + Copy Overhaul
 
 ### Chrome Extension (`extensions/sound-booster/`)

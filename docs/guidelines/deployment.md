@@ -1,6 +1,6 @@
 # Deployment Guide
 
-**Last updated:** 2026-05-21
+**Last updated:** 2026-05-27
 
 This document covers the complete deployment pipeline for arbenger.com: from local development to production on Cloudflare Pages. For the Color Picker Chrome extension, see `extensions/color-picker/store/PUBLISHING.md`.
 
@@ -362,7 +362,7 @@ After the first production deployment:
 - [ ] Site loads at `https://arbenger.com`
 - [ ] `www.arbenger.com` redirects to `arbenger.com`
 - [ ] HTTP redirects to HTTPS
-- [ ] All 16 pages render correctly (home, about, products, contact, privacy, terms, cookies, products/image-resizer, products/image-compressor, products/color-picker, products/sound-booster, blog, blog/browser-volume-beyond-100, blog/color-picker-without-tracking, blog/resize-crop-convert-in-browser, blog/compress-images-90-smaller)
+- [ ] All 18 pages render correctly (home, about, products, contact, privacy, terms, cookies, products/image-resizer, products/image-compressor, products/color-picker, products/sound-booster, products/html-editor, blog, blog/html-css-js-editor-in-browser, blog/browser-volume-beyond-100, blog/color-picker-without-tracking, blog/resize-crop-convert-in-browser, blog/compress-images-90-smaller)
 - [ ] `/api/stats/` returns JSON (GET returns `{ totalProcessed: N }`, accepts `?toolId=` param)
 - [ ] Image resizer and compressor stats counters display at page bottom
 - [ ] Theme toggle works (dark/light)

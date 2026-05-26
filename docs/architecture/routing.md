@@ -1,6 +1,6 @@
 # Routing Architecture
 
-**Last updated:** 2026-05-21
+**Last updated:** 2026-05-27
 
 This document defines the URL structure, rendering strategy, and route planning for arbenger.com.
 
@@ -43,6 +43,7 @@ SvelteKit file-based routing. All routes live under `src/routes/`. The adapter i
 | `/products/image-compressor` | `src/routes/products/(utilities)/image-compressor/+page.svelte` | Image compressor tool | "Free Online Image Compressor — Reduce File Size Without Quality Loss" (sr-only) |
 | `/products/color-picker` | `src/routes/products/(chrome-plugins)/color-picker/+page.svelte` | Color picker landing page | "Pick any color. Check if it's accessible." (visible H1) |
 | `/products/sound-booster` | `src/routes/products/(chrome-plugins)/sound-booster/+page.svelte` | Sound booster landing page | "Your browser stops at 100%. This goes to 600%." (visible H1) |
+| `/products/html-editor` | `src/routes/products/(utilities)/html-editor/+page.svelte` | HTML/CSS/JS editor tool | "Free Online HTML Editor — Write HTML, CSS & JavaScript with Live Preview" (sr-only) |
 
 Product tool routes use SvelteKit **group routes**. Utilities use `(utilities)/`, Chrome extensions use `(chrome-plugins)/`. The group name is excluded from the URL — e.g., `products/(chrome-plugins)/color-picker/` renders at `/products/color-picker`. Each product tool route contains:
 - `+page.svelte` — page component
@@ -128,9 +129,29 @@ src/routes/
         _lib/              ← Route-local store and worker
           store.ts
           worker.ts
+      html-editor/
+        +page.svelte      ← HTML/CSS/JS editor tool (full-screen layout)
+        +page.ts          ← prerender = true
+        _components/       ← Route-local components
+          EditorLayout.svelte
+          EditorPane.svelte
+          PreviewPane.svelte
+          ConsolePane.svelte
+          DevicePresets.svelte
+          DeviceFrame.svelte
+        _lib/              ← Route-local store and utilities
+          store.ts
+          persistence.ts
+          linting.ts
+          formatter.ts
+          exporter.ts
+          codemirror-theme.ts
     (chrome-plugins)/      ← SvelteKit group route for Chrome extensions
       color-picker/
         +page.svelte      ← Color picker landing page
+        +page.ts          ← prerender = true
+      sound-booster/
+        +page.svelte      ← Sound booster landing page
         +page.ts          ← prerender = true
     [slug]/
       +page.svelte        ← Individual product (inherits root layout) — future
@@ -140,9 +161,11 @@ src/routes/
       +page.ts            ← entries() + load() for prerendering
       +page.svelte        ← Post shell (SEO, header, content loader)
       _posts/             ← Blog post content files
-        how-to-use-image-resizer.svelte
-        how-to-use-image-compressor.svelte
-        introducing-color-picker.svelte
+        resize-crop-convert-in-browser.svelte
+        compress-images-90-smaller.svelte
+        color-picker-without-tracking.svelte
+        browser-volume-beyond-100.svelte
+        html-css-js-editor-in-browser.svelte
   contact/
     +page.svelte          ← Contact page (inherits root layout)
   privacy/
@@ -193,12 +216,12 @@ Same links as navbar, plus:
 | From | To | Context |
 |------|----|---------|
 | Homepage hero CTA | `/products` | "See What's Available" button |
-| Homepage FeaturedTool CTA | `/products/image-resizer` | "Open Image Resizer" button |
+| Homepage FeaturedTool CTAs | `/products/image-resizer`, `/products/image-compressor`, `/products/color-picker`, `/products/sound-booster`, `/products/html-editor` | Per-card CTA buttons |
 | Homepage about teaser | `/about` | "Learn more" link |
 | Homepage bottom CTA | `/contact` | "Get in Touch" button |
 | Homepage product cards | `/products` | Category card clicks |
-| Products live spotlight | `/products/image-resizer` | Live product card "Open tool" link |
-| Products category grid | `/products/image-resizer` | Nested product link in Utilities category |
+| Products live spotlight | `/products/image-resizer`, `/products/image-compressor`, `/products/color-picker`, `/products/sound-booster`, `/products/html-editor` | Live product card "Open tool" links |
+| Products category grid | `/products/image-resizer`, `/products/image-compressor`, `/products/html-editor` | Nested product links in Utilities category |
 | Image resizer breadcrumb | `/`, `/products` | Visual breadcrumb navigation |
 | Image resizer Guide link | `/blog/how-to-use-image-resizer` | "Guide" link in top bar + "New here? Read the guide" in upload zone |
 | Blog listing cards | `/blog/[slug]` | Blog post card links |

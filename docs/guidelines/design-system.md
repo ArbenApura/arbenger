@@ -1,6 +1,6 @@
 # Arbenger Design System
 
-**Last updated:** 2026-05-11
+**Last updated:** 2026-05-27
 
 This document defines the complete visual language for arbenger.com. All components, pages, and future additions must follow these specifications. When in doubt, refer back to the aesthetic direction and verify against the color, typography, and spacing tokens defined here.
 

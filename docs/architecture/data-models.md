@@ -1,6 +1,6 @@
 # Data Models
 
-**Last updated:** 2026-05-21
+**Last updated:** 2026-05-27
 
 This document defines the TypeScript interfaces and data structures used across arbenger.com. All data types live in `src/lib/types/index.ts`.
 
@@ -65,9 +65,9 @@ export const categories: ProductCategoryInfo[] = [
   {
     id: 'misc-tools',
     name: 'Utilities',
-    description: 'Image tools, code formatters, converters, and other browser-based utilities.',
+    description: 'Image tools, code editors, converters, and other browser-based utilities.',
     icon: 'wrench',
-    productCount: 2
+    productCount: 3
   },
   {
     id: 'vscode-extensions',
@@ -143,11 +143,22 @@ export const products: Product[] = [
     externalUrl: '/products/sound-booster',
     tags: ['audio', 'volume', 'equalizer', 'free'],
     featured: true
+  },
+  {
+    slug: 'html-editor',
+    name: 'HTML Editor',
+    description: 'Write HTML, CSS, and JavaScript with live preview, Prettier formatting, inline error detection, Emmet support, and responsive device preview. 100% client-side.',
+    category: 'misc-tools',
+    status: 'live',
+    platform: 'web',
+    externalUrl: '/products/html-editor',
+    tags: ['html', 'css', 'javascript', 'editor', 'code', 'free'],
+    featured: true
   }
 ];
 ```
 
-Note: The `misc-tools` category is sorted first because it has live products. The `chrome-plugins` category has two live products (Color Picker and Sound Booster). The category `id` remains `misc-tools` for backwards compatibility, but the display `name` is "Utilities".
+Note: The `misc-tools` category is sorted first because it has live products (3 utilities). The `chrome-plugins` category has two live products (Color Picker and Sound Booster). The category `id` remains `misc-tools` for backwards compatibility, but the display `name` is "Utilities".
 
 ### Adding a New Product
 
@@ -319,6 +330,16 @@ export const blogCategories: BlogCategoryInfo[] = [
 ];
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: 'html-css-js-editor-in-browser',
+    title: 'Write HTML, CSS & JS with Live Preview — No Signup, No Server',
+    description: 'Prettier formatting, inline error detection, Emmet abbreviations, responsive device preview...',
+    date: '2026-05-25',
+    category: 'tutorial',
+    tags: ['html-editor', 'guide', 'tools'],
+    readTime: 6,
+    featured: true,
+  },
   {
     slug: 'browser-volume-beyond-100',
     title: 'Browser Volume Stops at 100%. Ours Goes to 600%.',

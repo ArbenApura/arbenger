@@ -1,6 +1,6 @@
 # State Management
 
-**Last updated:** 2026-05-11
+**Last updated:** 2026-05-27
 
 This document defines how state is managed across arbenger.com. The base site has minimal state requirements — theme preference is the primary concern.
 
@@ -29,6 +29,7 @@ This document defines how state is managed across arbenger.com. The base site ha
 | `isDark` | `src/lib/stores/theme.ts` | `Writable<boolean>` | Yes (`localStorage`: `arbenger-theme`) | Theme preference |
 | `locale` | `src/lib/stores/locale.ts` | `Writable<string>` | Yes (`localStorage`: `arbenger-locale`) | Locale/language preference |
 | `isMobile`, `prefersReducedMotion` | `src/lib/stores/viewport.ts` | `Readable<boolean>` | No | Reactive media query listeners for mobile breakpoint (max-width: 767px) and reduced motion preference |
+| `hideChrome` | `src/lib/stores/layout.ts` | `Writable<boolean>` | No | When `true`, root layout hides Navbar and Footer. Used by HTML Editor for full-screen editing |
 
 ### Route-Local Stores (Image Resizer)
 
@@ -82,6 +83,34 @@ The image compressor also maintains per-image state via `Map` objects:
 - `imageSettingsMap` — `Map<string, CompressSettings>` — per-image settings (including filename)
 
 PNG compression uses `upng-js` for color quantization (quality slider maps to color count). The Web Worker (`worker.ts`) handles both canvas-based JPEG/WebP compression and UPNG-based PNG compression off the main thread.
+
+### Route-Local Stores (HTML Editor)
+
+All HTML editor state is in `src/routes/products/(utilities)/html-editor/_lib/store.ts`:
+
+| Store | Type | Purpose |
+|-------|------|---------|
+| `htmlCode` | `Writable<string>` | Current HTML source code |
+| `cssCode` | `Writable<string>` | Current CSS source code |
+| `jsCode` | `Writable<string>` | Current JavaScript source code |
+| `activeTab` | `Writable<EditorTab>` | Which editor pane is visible (`'html' \| 'css' \| 'js'`). Persisted to localStorage. |
+| `autoRun` | `Writable<boolean>` | Whether preview updates on every keystroke |
+| `showPreview` | `Writable<boolean>` | Whether the preview pane is visible |
+| `showConsole` | `Writable<boolean>` | Whether the console pane is visible |
+| `devicePreset` | `Writable<DevicePreset>` | Preview device frame size (`'mobile' \| 'tablet' \| 'desktop' \| 'full'`). Persisted to localStorage. |
+| `deviceRotated` | `Writable<boolean>` | Whether device frame is rotated (landscape) |
+
+Helper functions:
+- `getActiveStore(tab)` — returns the writable store for a given tab
+- `resetAll()` — resets HTML/CSS/JS to default starter code
+
+### HTML Editor Persistence (`_lib/persistence.ts`)
+
+Uses IndexedDB (database: `arbenger-html-editor`, store: `editor-state`) for code persistence. The module exports:
+- `initPersistence()` — loads saved state from IndexedDB, hydrates code stores, subscribes to future changes with 1s debounced auto-save. Returns timestamp of last save (or null).
+- `destroyPersistence()` — unsubscribes all store listeners and clears timers.
+
+UI settings (activeTab, devicePreset) are persisted separately to localStorage key `arbenger-html-editor-ui` via `createPersistedStore()` helper in `store.ts`.
 
 ### Stats Store and Functions (Shared)
 

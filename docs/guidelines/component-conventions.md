@@ -1,6 +1,6 @@
 # Component Conventions
 
-**Last updated:** 2026-05-19
+**Last updated:** 2026-05-27
 
 This document defines how to build Svelte components for arbenger.com. It supplements the svelte-guidelines skill (which covers syntax rules) with project-specific patterns and architectural decisions.
 
@@ -35,8 +35,8 @@ All components use **Svelte 4 syntax**. This is mandatory, no exceptions.
 | Blog components | `src/lib/components/blog/` | BlogCard.svelte, BlogPagination.svelte, ReadingProgress.svelte |
 | SEO utilities | `src/lib/components/seo/` | MetaTags.svelte, JsonLd.svelte, Breadcrumbs.svelte |
 | Route-local components | `src/routes/[route]/_components/` | products/(utilities)/image-resizer/_components/ResizeControls.svelte, image-compressor/_components/CompressControls.svelte |
-| Route-local stores/workers | `src/routes/[route]/_lib/` | image-resizer/_lib/store.ts, image-compressor/_lib/store.ts, worker.ts |
-| Shared stores | `src/lib/stores/` | theme.ts, locale.ts, viewport.ts |
+| Route-local stores/workers | `src/routes/[route]/_lib/` | image-resizer/_lib/store.ts, image-compressor/_lib/store.ts, html-editor/_lib/store.ts |
+| Shared stores | `src/lib/stores/` | theme.ts, locale.ts, viewport.ts, layout.ts |
 | Utilities | `src/lib/utils/` | cn.ts |
 | Data | `src/lib/data/` | products.ts, navigation.ts, locales.ts, blog.ts |
 | Types | `src/lib/types/` | index.ts |
@@ -352,6 +352,24 @@ src/routes/products/(utilities)/image-compressor/
   _lib/
     store.ts
     worker.ts
+
+src/routes/products/(utilities)/html-editor/
+  +page.svelte
+  +page.ts
+  _components/
+    EditorLayout.svelte
+    EditorPane.svelte
+    PreviewPane.svelte
+    ConsolePane.svelte
+    DevicePresets.svelte
+    DeviceFrame.svelte
+  _lib/
+    store.ts
+    persistence.ts
+    linting.ts
+    formatter.ts
+    exporter.ts
+    codemirror-theme.ts
 ```
 
 **When to use route-local vs shared:**
