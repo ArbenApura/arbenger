@@ -21,7 +21,7 @@
 
 	const TIMELINE = [
 		{
-			role: 'Remote Full-Stack Web Developer',
+			role: 'Full-Stack Developer',
 			company: 'UniStar.BG Ltd (Bulgaria-based)',
 			period: '01/2025 — 06/2026',
 			points: [
