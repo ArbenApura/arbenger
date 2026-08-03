@@ -115,7 +115,7 @@
 						<p class="shrink-0 text-[10pt] text-[#64748B]">01/2025 - 06/2026</p>
 					</div>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.35] text-[#334155]">
-						<li>Developed web automation and scraping pipelines and dissected APK structure and packaging.</li>
+						<li>Developed web automation and scraping pipelines for a prototype project.</li>
 						<li>Built a parallel queue task system (worker pooling) for large volumes of scraped data.</li>
 						<li>Created a full admin panel (PostgreSQL, Drizzle ORM): app CMS with multi-language support (manual, DeepL, Gemini AI) across 40+ languages, order and sales management, and usage statistics.</li>
 						<li>Managed production deployment on Plesk and Webuzo, including VM instances and a monorepo with CI/CD.</li>
