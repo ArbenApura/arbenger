@@ -15,7 +15,7 @@
 	const HERO_PHRASES = [
 		'Full-Stack Web Developer',
 		'SvelteKit & Next.js Specialist',
-		'Web & Android Developer',
+		'Web App Developer',
 		'Freelance Developer',
 		'Figma to Production',
 	];
@@ -129,8 +129,8 @@
 				class:translate-y-0={isVisible}
 				style="transition-delay: 400ms;"
 			>
-				I'm a freelance full-stack developer building and shipping production web and Android apps —
-				from client Figma designs to the Google Play Store.
+				I'm a freelance full-stack developer focused on building production web applications —
+				from client Figma designs to deployed products.
 			</p>
 
 			<!-- CTA BUTTONS -->
