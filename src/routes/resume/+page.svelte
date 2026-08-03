@@ -1,6 +1,8 @@
 <script lang="ts">
-	// IMPORTED MODULES
+	// IMPORTED DEP-MODULES
 	import { onMount, onDestroy } from 'svelte';
+
+	// IMPORTED MODULES
 	import { hideChrome } from '$lib/stores/layout';
 
 	// IMPORTED COMPONENTS
@@ -46,7 +48,7 @@
 		</h1>
 
 		<p class="mt-4 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			A one-page overview. Print it or save it as a PDF — it's sized for US Letter.
+			A one-page overview, formatted for applicant tracking systems. Print it or save it as a PDF — sized for US Letter.
 		</p>
 
 		<button
@@ -58,70 +60,63 @@
 	</div>
 </section>
 
-<!-- RESUME SHEET — ALWAYS WHITE PAPER (SCREEN + PRINT) -->
+<!-- RESUME SHEET — ALWAYS WHITE PAPER (SCREEN + PRINT), ATS-FRIENDLY: SINGLE COLUMN, STANDARD FONT, NO IMAGES -->
 <section class="px-4 py-12 md:px-6 print:px-0 print:py-0">
 	<div
 		class="resume-sheet mx-auto w-[8.5in] max-w-full rounded-xl border border-[#E2E8F0] bg-white p-9 shadow-[0_8px_32px_rgba(0,0,0,0.12)] print:rounded-none print:border-0 print:bg-white print:p-0 print:shadow-none"
 	>
 		<!-- HEADER -->
-		<header class="flex items-start justify-between gap-6">
-			<div>
-				<h2 class="font-display text-[24pt] leading-none font-bold tracking-tight text-[#0F172A]">
-					Arben M. Apura
-				</h2>
-				<p class="font-mono mt-2 text-[10.5pt] font-semibold tracking-[0.14em] text-[#0891B2] uppercase">
-					Full-Stack Web Developer
-				</p>
-				<p class="mt-3 text-[9pt] leading-relaxed text-[#334155]">
-					arbenapura.official@gmail.com · +63 976 430 4619
-					<br />
-					San Jose Del Monte, Bulacan, Philippines · github.com/ArbenApura · arbenger.com
-				</p>
-			</div>
-			<img
-				src="/resume/arben.jpg"
-				alt="Portrait of Arben M. Apura"
-				class="h-[1.1in] w-[1.1in] shrink-0 rounded-full object-cover"
-			/>
+		<header>
+			<h2 class="text-[22pt] leading-none font-bold tracking-tight text-[#0F172A]">
+				Arben M. Apura
+			</h2>
+			<p class="mt-2 text-[12pt] font-semibold tracking-[0.08em] text-[#0891B2] uppercase">
+				Full-Stack Web Developer
+			</p>
+			<p class="mt-3 text-[10pt] leading-relaxed text-[#334155]">
+				arbenapura.official@gmail.com | +63 976 430 4619 | San Jose Del Monte, Bulacan, Philippines
+				<br />
+				github.com/ArbenApura | arbenger.com
+			</p>
 		</header>
 
-		<!-- SUMMARY -->
-		<section class="resume-section mt-7">
-			<h3 class="font-mono border-b border-[#CBD5E1] pb-1 text-[9.5pt] font-bold tracking-[0.16em] text-[#0F172A] uppercase">
-				Summary
+		<!-- PROFESSIONAL SUMMARY -->
+		<section class="resume-section mt-6">
+			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
+				Professional Summary
 			</h3>
-			<p class="mt-2.5 text-[9.5pt] leading-[1.5] text-[#334155]">
+			<p class="mt-2.5 text-[10.5pt] leading-[1.4] text-[#334155]">
 				Dedicated and adaptable full-stack developer with a strong focus on web development. Proficient in
 				SvelteKit and Next.js, creating user-friendly and efficient applications. Value continuous learning,
-				clean code, and collaboration — approaching challenges with a positive attitude and a commitment to quality.
+				clean code, and collaboration, and approach challenges with a positive attitude and a commitment to quality.
 			</p>
 		</section>
 
 		<!-- SKILLS -->
-		<section class="resume-section mt-6">
-			<h3 class="font-mono border-b border-[#CBD5E1] pb-1 text-[9.5pt] font-bold tracking-[0.16em] text-[#0F172A] uppercase">
+		<section class="resume-section mt-5">
+			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Skills
 			</h3>
-			<div class="mt-2.5 space-y-1.5 text-[9.5pt] leading-[1.5] text-[#334155]">
+			<div class="mt-2.5 space-y-1 text-[10.5pt] leading-[1.4] text-[#334155]">
 				<p><span class="font-semibold text-[#0F172A]">Frontend:</span> TypeScript, JavaScript, SvelteKit, Svelte, Next.js, React, Tailwind CSS, SCSS, HTML</p>
 				<p><span class="font-semibold text-[#0F172A]">Backend:</span> Node.js, Supabase, Firebase, PocketBase, MySQL, PHP</p>
 				<p><span class="font-semibold text-[#0F172A]">Mobile:</span> Capacitor, Progressive Web Apps, Google Play Store deployment</p>
-				<p><span class="font-semibold text-[#0F172A]">Hosting &amp; DevOps:</span> Vercel, Render, Cloudflare Pages, Plesk, Webuzo, Nginx, VPS</p>
-				<p><span class="font-semibold text-[#0F172A]">AI &amp; APIs:</span> OpenAI API, LLM prompt engineering</p>
+				<p><span class="font-semibold text-[#0F172A]">Hosting and DevOps:</span> Vercel, Render, Cloudflare Pages, Plesk, Webuzo, Nginx, VPS</p>
+				<p><span class="font-semibold text-[#0F172A]">AI and APIs:</span> OpenAI API, LLM prompt engineering</p>
 			</div>
 		</section>
 
 		<!-- EXPERIENCE -->
-		<section class="resume-section mt-6">
-			<h3 class="font-mono border-b border-[#CBD5E1] pb-1 text-[9.5pt] font-bold tracking-[0.16em] text-[#0F172A] uppercase">
+		<section class="resume-section mt-5">
+			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Experience
 			</h3>
 			<div class="mt-2.5">
 				<div class="flex items-baseline justify-between gap-4">
-					<p class="text-[10pt] font-semibold text-[#0F172A]">Remote Full-Stack Web Developer — UniStar.BG Ltd</p>
-					<p class="font-mono shrink-0 text-[8.5pt] text-[#64748B]">Jan 2025 – Jun 2026</p>
+					<p class="text-[11pt] font-semibold text-[#0F172A]">Remote Full-Stack Web Developer - UniStar.BG Ltd</p>
+					<p class="shrink-0 text-[10pt] text-[#64748B]">01/2025 - 06/2026</p>
 				</div>
-				<ul class="mt-1.5 list-disc space-y-1 pl-4 text-[9.5pt] leading-[1.5] text-[#334155]">
+				<ul class="mt-1.5 list-disc space-y-0.5 pl-4 text-[10.5pt] leading-[1.4] text-[#334155]">
 					<li>Collaborated with design teams to implement user-friendly interfaces and improve user experience.</li>
 					<li>Built modern web applications integrated with Capacitor for deployment on the Web and the Google Play Store.</li>
 					<li>Developed secure, efficient APIs and managed databases for seamless app integration.</li>
@@ -131,41 +126,41 @@
 		</section>
 
 		<!-- EDUCATION -->
-		<section class="resume-section mt-6">
-			<h3 class="font-mono border-b border-[#CBD5E1] pb-1 text-[9.5pt] font-bold tracking-[0.16em] text-[#0F172A] uppercase">
+		<section class="resume-section mt-5">
+			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Education
 			</h3>
-			<div class="mt-2.5 space-y-1.5 text-[9.5pt] leading-[1.5] text-[#334155]">
+			<div class="mt-2.5 space-y-1 text-[10.5pt] leading-[1.4] text-[#334155]">
 				<p>
-					<span class="font-semibold text-[#0F172A]">BS in Information Technology</span> — Bulacan State University
-					<span class="text-[#64748B]">· Magna Cum Laude · 2025</span>
+					<span class="font-semibold text-[#0F172A]">BS in Information Technology</span> - Bulacan State University
+					<span class="text-[#64748B]"> | Magna Cum Laude | 2025</span>
 				</p>
 				<p>
-					<span class="font-semibold text-[#0F172A]">High School &amp; Senior High School</span> — San Jose del Monte
-					National Trade School <span class="text-[#64748B]">· 2021</span>
+					<span class="font-semibold text-[#0F172A]">High School and Senior High School</span> - San Jose del Monte
+					National Trade School <span class="text-[#64748B]"> | 2021</span>
 				</p>
 			</div>
 		</section>
 
-		<!-- ACCOMPLISHMENT -->
-		<section class="resume-section mt-6">
-			<h3 class="font-mono border-b border-[#CBD5E1] pb-1 text-[9.5pt] font-bold tracking-[0.16em] text-[#0F172A] uppercase">
-				Accomplishment
+		<!-- ACHIEVEMENTS -->
+		<section class="resume-section mt-5">
+			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
+				Achievements
 			</h3>
-			<p class="mt-2.5 text-[9.5pt] leading-[1.5] text-[#334155]">
-				Registered the university capstone project <span class="font-semibold text-[#0F172A]">"Door Lock Module"</span> —
-				a smart door lock with RFID and face recognition — with the Intellectual Property Office of the Philippines
+			<p class="mt-2.5 text-[10.5pt] leading-[1.4] text-[#334155]">
+				Registered the university capstone project <span class="font-semibold text-[#0F172A]">"Door Lock Module"</span> -
+				a smart door lock with RFID and face recognition - with the Intellectual Property Office of the Philippines
 				(IPOPHL), February 2026.
 			</p>
 		</section>
 
 		<!-- LANGUAGES -->
-		<section class="resume-section mt-6">
-			<h3 class="font-mono border-b border-[#CBD5E1] pb-1 text-[9.5pt] font-bold tracking-[0.16em] text-[#0F172A] uppercase">
+		<section class="resume-section mt-5">
+			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Languages
 			</h3>
-			<p class="mt-2.5 text-[9.5pt] leading-[1.5] text-[#334155]">
-				Filipino <span class="text-[#64748B]">(Native)</span> · English <span class="text-[#64748B]">(Proficient)</span>
+			<p class="mt-2.5 text-[10.5pt] leading-[1.4] text-[#334155]">
+				Filipino <span class="text-[#64748B]">(Native)</span> | English <span class="text-[#64748B]">(Proficient)</span>
 			</p>
 		</section>
 	</div>

@@ -285,6 +285,12 @@ input[type='number'] {
 }
 
 /* RESUME PRINT — US LETTER, ONE PAGE */
+/* ATS-FRIENDLY: ONE STANDARD FONT FAMILY FOR THE WHOLE SHEET (SCREEN + PRINT) */
+.resume-sheet,
+.resume-sheet * {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 @media print {
 	@page {
 		size: letter;
