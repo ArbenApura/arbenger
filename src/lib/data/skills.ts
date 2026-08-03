@@ -10,7 +10,7 @@ export const skillGroups: SkillGroup[] = [
 	},
 	{
 		name: 'Backend',
-		skills: ['Node.js', 'Supabase', 'Firebase', 'PocketBase', 'PostgreSQL', 'MySQL', 'PHP', 'ORM'],
+		skills: ['Node.js', 'Supabase', 'Firebase', 'PocketBase', 'PostgreSQL', 'MySQL', 'PHP', 'Drizzle ORM'],
 	},
 	{
 		name: 'Mobile',
