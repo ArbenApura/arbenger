@@ -22,7 +22,7 @@
 	const TIMELINE = [
 		{
 			role: 'Full-Stack Developer',
-			company: 'Smartago LLC (UniStar.BG Ltd subsidiary)',
+			company: 'Smartago LLC (Wilmington, DE, US · UniStar.BG Ltd subsidiary)',
 			period: '08/2025 — 06/2026',
 			points: [
 				'Developed and shipped 7 Android and web apps to the Google Play Store, implementing client Figma designs end-to-end.',
@@ -33,7 +33,7 @@
 		},
 		{
 			role: 'Full-Stack Developer',
-			company: 'UniStar.BG Ltd (Bulgaria-based)',
+			company: 'UniStar.BG Ltd (Gotse Delchev, Bulgaria)',
 			period: '01/2025 — 06/2026',
 			points: [
 				'Developed web automation and scraping pipelines for a prototype app store, scraping the web for APKs with thousands of scrapes per day.',
