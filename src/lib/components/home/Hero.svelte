@@ -13,11 +13,11 @@
 	// -- CONSTANTS -- //
 
 	const HERO_PHRASES = [
-		'and do it well',
-		'without the bloat',
-		"you'll keep coming back to",
-		'that stay out of your way',
-		'worth your time',
+		'Full-Stack Web Developer',
+		'SvelteKit & Next.js Specialist',
+		'Indie Tool Builder',
+		'Freelance Developer',
+		'Student of Clean Code',
 	];
 
 	// -- REACTIVE STATES -- //
@@ -92,6 +92,19 @@
 		<!-- TEXT CONTENT — LEFT SIDE -->
 		<div class="flex-1">
 			<!-- TAGLINE -->
+			<div
+				class:opacity-0={!isVisible}
+				class:translate-y-8={!isVisible}
+				class:opacity-100={isVisible}
+				class:translate-y-0={isVisible}
+				style="transition: all 1s ease; transition-delay: 100ms;"
+			>
+				<span class="inline-flex items-center gap-2 rounded-full border border-[#2DD4BF]/30 bg-[#2DD4BF]/10 px-3.5 py-1.5 font-mono text-xs text-[#0F766E] dark:text-[#2DD4BF]">
+					<span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#2DD4BF]" />
+					Available for freelance work
+				</span>
+			</div>
+
 			<h1
 				class="font-display max-w-4xl text-4xl leading-[1.1] font-bold tracking-tight text-[#0F172A] transition-all duration-1000 md:text-6xl lg:text-7xl dark:text-white"
 				class:opacity-0={!isVisible}
@@ -100,7 +113,7 @@
 				class:translate-y-0={isVisible}
 				style="transition-delay: 200ms;"
 			>
-				Tools that do the job
+				Arben M. Apura
 				<br />
 				<span class="text-[#0891B2] dark:text-[#22D3EE]">
 					<Typewriter phrases={HERO_PHRASES} typingSpeed={70} deletingSpeed={35} pauseDuration={2500} />
@@ -116,21 +129,23 @@
 				class:translate-y-0={isVisible}
 				style="transition-delay: 400ms;"
 			>
-				Extensions, plugins, AI tools, and web apps. Take a look around.
+				I build clean, efficient web applications — from full-stack platforms and AI tools to
+				Chrome extensions that do one thing well.
 			</p>
 
-			<!-- CTA BUTTON -->
+			<!-- CTA BUTTONS -->
 			<div
-				class="mt-12 transition-all duration-1000"
+				class="mt-12 flex flex-wrap items-center gap-4 transition-all duration-1000"
 				class:opacity-0={!isVisible}
 				class:translate-y-8={!isVisible}
 				class:opacity-100={isVisible}
 				class:translate-y-0={isVisible}
 				style="transition-delay: 600ms;"
 			>
-				<Button href="/products/" variant="primary" class="group relative overflow-hidden">
-					<span class="relative z-10">See What's Available</span>
+				<Button href="/projects/" variant="primary" class="group relative overflow-hidden">
+					<span class="relative z-10">View Projects</span>
 				</Button>
+				<Button href="/contact/" variant="secondary">Get in Touch</Button>
 			</div>
 		</div>
 

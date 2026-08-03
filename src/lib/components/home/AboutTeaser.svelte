@@ -83,14 +83,16 @@
 				</h2>
 
 				<p class="mt-6 text-lg leading-relaxed text-[#475569] dark:text-slate-300">
-					Arbenger makes extensions, plugins, AI tools, and web apps. Each one is built to do its job and get out
-					of the way.
+					I'm Arben — a full-stack developer from the Philippines. I build web apps, AI tools,
+					and extensions that do one thing well and get out of the way.
 				</p>
 
-				<p class="mt-4 text-[#64748B] dark:text-slate-400">Curious? Browse the catalog or say hello.</p>
+				<p class="mt-4 text-[#64748B] dark:text-slate-400">
+					From capstone IoT systems to tools covered by national media — clean code, useful results.
+				</p>
 
 				<div class="mt-10">
-					<Button href="/about/" variant="secondary">Learn more</Button>
+					<Button href="/about/" variant="secondary">More about me</Button>
 				</div>
 			</div>
 		</div>
