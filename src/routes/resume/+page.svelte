@@ -149,10 +149,12 @@
 			<h3 class="border-b border-[#CBD5E1] pb-0.5 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Projects and Achievements
 			</h3>
-			<ul class="mt-2 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.2] text-[#334155]">
-				<li>Door Lock Module (2026) - university capstone smart door lock with RFID and face recognition (Arduino), registered with the Intellectual Property Office of the Philippines (IPOPHL).</li>
-				<li>Top One Uwu (2022) - AI study assistant that went viral in the Programming Philippines community; featured in Inquirer.net, a popular media outlet in the Philippines, and interviewed live on CLTV36.</li>
-			</ul>
+			<div class="mt-2 space-y-1 text-[10.5pt] leading-[1.2] text-[#334155]">
+				<p class="font-semibold text-[#0F172A]">Top One Uwu | AI Study Assistant (2022)</p>
+				<p>Built and launched an AI-powered study assistant during my 2nd year of college, gaining traction within the Philippine programming community and receiving features from Inquirer.net and CLTV36.</p>
+				<p class="font-semibold text-[#0F172A]">Door Lock Module | University Capstone (2026)</p>
+				<p>Built an Arduino-powered smart door lock with RFID and face recognition as a university capstone project, registered with the Intellectual Property Office of the Philippines (IPOPHL).</p>
+			</div>
 		</section>
 
 		<!-- SKILLS -->
