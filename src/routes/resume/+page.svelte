@@ -117,16 +117,30 @@
 			<div class="mt-2 space-y-3">
 				<div>
 					<div class="flex items-baseline justify-between gap-4">
-						<p class="text-[11pt] font-semibold text-[#0F172A]">UniStar.BG Ltd / Smartago LLC</p>
+						<p class="text-[11pt] font-semibold text-[#0F172A]">Smartago LLC</p>
+						<p class="shrink-0 text-[10pt] text-[#64748B]">08/2025 - 06/2026</p>
+					</div>
+					<p class="text-[10pt] font-semibold text-[#334155]">Freelance Full-Stack Developer</p>
+					<p class="mt-0 text-[10pt] text-[#64748B]">Additional work for the same client group (UniStar.BG subsidiary) · Wilmington, DE, US</p>
+					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.2] text-[#334155]">
+						<li>Shipped and maintained 7 production apps in SvelteKit and Capacitor, wrapping web codebases into native Android builds for the Google Play Store across utility and Android TV categories.</li>
+						<li>Developed "XAPK Installer APK Downloader" from Figma designs to 500k+ downloads across mobile, tablet, and Android TV, plus an Android TV launcher and TV downloader that each surpassed 100k+ downloads.</li>
+						<li>Maintained one codebase across the Web, Android (phones and tablets), and Android TV.</li>
+						<li>Integrated Google Play Billing with idempotent purchase verification and RTDN webhook endpoints that sync purchase lifecycle events (purchased, renewed, cancelled, expired) to the database.</li>
+					</ul>
+				</div>
+				<div>
+					<div class="flex items-baseline justify-between gap-4">
+						<p class="text-[11pt] font-semibold text-[#0F172A]">UniStar.BG Ltd</p>
 						<p class="shrink-0 text-[10pt] text-[#64748B]">01/2025 - 06/2026</p>
 					</div>
 					<p class="text-[10pt] font-semibold text-[#334155]">Freelance Full-Stack Developer</p>
-					<p class="mt-0 text-[10pt] text-[#64748B]">Long-term freelance engagement via Upwork across the parent company and its subsidiary · Bulgaria / US</p>
+					<p class="mt-0 text-[10pt] text-[#64748B]">Long-term freelance engagement via Upwork · Gotse Delchev, Bulgaria</p>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.2] text-[#334155]">
-						<li>Shipped and maintained 7 production apps (SvelteKit + Capacitor) to the Google Play Store from Figma designs — 500k+ downloads on the leading app, 100k+ each on two Android TV apps, one codebase across Web, Android, and TV.</li>
-						<li>Built automated web scraping and APK ingestion pipelines (metadata extraction, processing, packaging, persistence) and a parallel job-processing system with worker pooling handling thousands of tasks per day with incremental PostgreSQL scaling.</li>
-						<li>Built a SvelteKit/PostgreSQL/Drizzle CMS supporting 40+ languages (manual, DeepL, Gemini AI translation) with order, sales, and per-app analytics, plus Google Play Billing with idempotent verification and RTDN webhook sync.</li>
-						<li>Managed production infrastructure on Linux (Plesk, Webuzo, Nginx) covering SSL and DNS, VM provisioning and cloning, and a monorepo with optimized CI/CD.</li>
+						<li>Built an automated web scraping and APK ingestion pipeline covering metadata extraction, processing, packaging, and database persistence.</li>
+						<li>Designed and implemented a parallel job-processing system with worker pooling, processing thousands of APK scraping tasks per day while scaling PostgreSQL incrementally with workload growth.</li>
+						<li>Built a SvelteKit, PostgreSQL/Drizzle CMS supporting 40+ languages with manual, DeepL, and Gemini-powered translation workflows, plus order, sales, and per-app user and activity analytics.</li>
+						<li>Managed production deployment on Linux (Plesk, Webuzo, Nginx) covering SSL and DNS, VM provisioning and cloning, and a monorepo with optimized CI/CD.</li>
 					</ul>
 				</div>
 			</div>
