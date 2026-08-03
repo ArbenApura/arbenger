@@ -6,7 +6,6 @@
 	// IMPORTED DEP-COMPONENTS
 	import { Toaster } from 'svelte-sonner';
 	// IMPORTED COMPONENTS
-	import CookieBanner from '$lib/components/layout/CookieBanner.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import Navbar from '$lib/components/layout/Navbar.svelte';
 	import JsonLd from '$lib/components/seo/JsonLd.svelte';
@@ -17,7 +16,7 @@
 	schema={{
 		'@context': 'https://schema.org',
 		'@type': 'WebSite',
-		name: 'Arbenger',
+		name: 'Arben Apura',
 		url: 'https://arbenger.com',
 	}}
 />
@@ -41,6 +40,5 @@
 
 {#if !$hideChrome}
 	<Footer />
-	<CookieBanner />
 {/if}
 <Toaster richColors closeButton position="bottom-right" />
