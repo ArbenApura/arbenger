@@ -71,7 +71,7 @@
 				Arben M. Apura
 			</h2>
 			<p class="mt-2 text-[12pt] font-semibold tracking-[0.08em] text-[#0891B2] uppercase">
-				Full-Stack Web Developer
+				Full-Stack Developer
 			</p>
 			<p class="mt-3 text-[10pt] leading-relaxed text-[#334155]">
 				arbenapura.official@gmail.com | +63 976 430 4619 | San Jose Del Monte, Bulacan, Philippines
@@ -86,9 +86,9 @@
 				Professional Summary
 			</h3>
 			<p class="mt-2.5 text-[10.5pt] leading-[1.4] text-[#334155]">
-				Full-stack developer with 4+ years building web and Android applications, proficient in SvelteKit,
-				Next.js, and Capacitor. Developed and shipped 7 apps to the Google Play Store, with 500k+ downloads
-				on the leading app. Creates user-friendly, efficient applications and values clean code and continuous learning.
+				Full-stack developer with 4+ years building web and Android applications in SvelteKit, Next.js, and
+				Capacitor. Shipped 7 apps to the Google Play Store — 500k+ downloads on the leading app — with end-to-end
+				ownership across automation, admin platforms, Google Play Billing, and CI/CD.
 			</p>
 		</section>
 
