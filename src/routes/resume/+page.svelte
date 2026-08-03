@@ -138,7 +138,7 @@
 						<li>Developed web automation and scraping pipelines that fed a prototype app store with web-scraped APKs, from metadata extraction to APK packaging.</li>
 						<li>Designed and implemented a parallel job-processing system with worker pooling, processing thousands of APK scraping tasks per day while scaling PostgreSQL incrementally with workload growth.</li>
 						<li>Built a SvelteKit, PostgreSQL/Drizzle CMS supporting 40+ languages with manual, DeepL, and Gemini-powered translation workflows, plus order, sales, and per-app user and activity analytics.</li>
-						<li>Managed production deployment on Plesk and Webuzo, including VM provisioning and cloning, and organized all source code in a monorepo with optimized CI/CD.</li>
+						<li>Managed production deployment on Linux (Plesk, Webuzo, Nginx) covering SSL and DNS, VM provisioning and cloning, and a monorepo with optimized CI/CD.</li>
 					</ul>
 				</div>
 			</div>
@@ -164,7 +164,7 @@
 				<p><span class="font-semibold text-[#0F172A]">Frontend:</span> TypeScript, JavaScript, SvelteKit, Next.js, React, Tailwind CSS, SCSS, HTML</p>
 				<p><span class="font-semibold text-[#0F172A]">Backend:</span> Node.js, Supabase, Firebase, PocketBase, PostgreSQL, MySQL, PHP, Drizzle ORM</p>
 				<p><span class="font-semibold text-[#0F172A]">Mobile:</span> Capacitor, Google Play Billing, Progressive Web Apps, Google Play Store deployment</p>
-				<p><span class="font-semibold text-[#0F172A]">Hosting and DevOps:</span> Vercel, Render, Cloudflare Pages, Plesk, Webuzo, Nginx, VPS, CI/CD, Git</p>
+				<p><span class="font-semibold text-[#0F172A]">Hosting and DevOps:</span> Linux, Vercel, Render, Cloudflare Pages, Plesk, Webuzo, Nginx, VPS, SSL, DNS, CI/CD, Git</p>
 				<p><span class="font-semibold text-[#0F172A]">AI and APIs:</span> OpenAI API, Google AI Studio API, DeepSeek, LLM prompt engineering</p>
 			</div>
 		</section>
