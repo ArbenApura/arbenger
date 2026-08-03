@@ -91,7 +91,7 @@
 				Full-Stack Developer
 			</p>
 			<p class="mt-3 text-[10pt] leading-relaxed text-[#334155]">
-				arbenapura.official@gmail.com | +63 976 430 4619 | San Jose Del Monte, Bulacan 3023, Philippines
+				arbenapura.official@gmail.com | +63 976 430 4619 | San Jose Del Monte, Bulacan 3023, Philippines · Remote
 				<br />
 				github.com/ArbenApura | arbenger.com
 			</p>
@@ -118,7 +118,7 @@
 				<div>
 					<div class="flex items-baseline justify-between gap-4">
 						<p class="text-[11pt] font-semibold text-[#0F172A]">Full-Stack Developer - Smartago LLC (UniStar.BG Ltd subsidiary, Wilmington, DE, US)</p>
-						<p class="shrink-0 text-[10pt] text-[#64748B]">08/2025 - 06/2026</p>
+						<p class="shrink-0 text-[10pt] text-[#64748B]">08/2025 - 06/2026 · Remote</p>
 					</div>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.3] text-[#334155]">
 						<li>Shipped 7 Android and web apps to Google Play from Figma designs end-to-end.</li>
@@ -130,7 +130,7 @@
 				<div>
 					<div class="flex items-baseline justify-between gap-4">
 						<p class="text-[11pt] font-semibold text-[#0F172A]">Full-Stack Developer - UniStar.BG Ltd (Gotse Delchev, Bulgaria)</p>
-						<p class="shrink-0 text-[10pt] text-[#64748B]">01/2025 - 06/2026</p>
+						<p class="shrink-0 text-[10pt] text-[#64748B]">01/2025 - 06/2026 · Remote</p>
 					</div>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.3] text-[#334155]">
 						<li>Developed web automation and scraping pipelines for a prototype app store, scraping the web for APKs (thousands of scrapes per day).</li>
