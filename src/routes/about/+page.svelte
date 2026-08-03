@@ -95,7 +95,7 @@
 		</h1>
 
 		<p class="mt-6 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			Full-stack developer from San Jose Del Monte, Bulacan, Philippines. Remote-friendly, always building.
+			Freelance full-stack developer from San Jose Del Monte, Bulacan, Philippines. Remote-friendly, always building.
 		</p>
 	</div>
 </section>
@@ -107,10 +107,10 @@
 			<h2 class="font-display text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">Who I am</h2>
 
 			<p class="mt-6 text-lg leading-relaxed text-[#475569] dark:text-slate-300">
-				A dedicated and adaptable full-stack developer with a strong focus on web development. Proficient in
-				frameworks like SvelteKit and Next.js, I enjoy creating user-friendly and efficient applications. I value
-				continuous learning, writing clean code, and working collaboratively to deliver practical solutions.
-				Always striving to improve, I approach challenges with a positive attitude and a commitment to quality.
+				Full-stack developer focused on building and shipping production web and Android applications.
+				Experienced in turning client designs into complete products across frontend, backend, mobile, and
+				infrastructure, working as a freelance developer since my college years. Strong focus on TypeScript,
+				SvelteKit, Next.js, PostgreSQL, and Capacitor.
 			</p>
 		</div>
 	</div>
