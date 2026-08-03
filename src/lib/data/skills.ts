@@ -21,6 +21,10 @@ export const skillGroups: SkillGroup[] = [
 		skills: ['Vercel', 'Render', 'Cloudflare Pages', 'Plesk', 'Webuzo', 'Nginx', 'VPS', 'CI/CD', 'Monorepo'],
 	},
 	{
+		name: 'Tools',
+		skills: ['Git', 'GitHub'],
+	},
+	{
 		name: 'AI & APIs',
 		skills: ['OpenAI API', 'Google AI Studio API', 'DeepSeek', 'LLM prompt engineering', 'REST APIs'],
 	},
