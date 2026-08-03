@@ -36,8 +36,8 @@
 			company: 'UniStar.BG Ltd (Bulgaria-based)',
 			period: '01/2025 — 06/2026',
 			points: [
-				'Developed web automation and scraping pipelines; dissected APK structure and packaging for product development.',
-				'Built a parallel queue task system (worker pooling) that processed large volumes of scraped data across available resources.',
+				'Developed web automation and scraping pipelines for a prototype app store, scraping the web for APKs with thousands of scrapes per day.',
+				'Built a parallel queue task system (worker pooling) to process the scraped data, with incremental database scaling as usage grew.',
 				'Created a full admin panel on PostgreSQL with Drizzle ORM: app CMS with multi-language support (manual, DeepL, and Gemini AI translation), order and sales management, and usage statistics.',
 				'Managed production deployment on Plesk and Webuzo (including VM deployment and cloning) and a monorepo with optimized CI/CD.',
 			],
