@@ -79,3 +79,24 @@ export interface BlogCategoryInfo {
 	id: BlogCategory;
 	label: string;
 }
+
+export interface PortfolioProject {
+	slug: string;
+	name: string;
+	tagline: string;
+	year: string;
+	category: string;
+	role: string;
+	status: string;
+	recognition?: string;
+	summary: string;
+	problem?: string;
+	solution?: string;
+	features: string[];
+	stack: string[];
+	links: { label: string; url: string }[];
+	cover?: string;
+	screenshots?: string[];
+	video?: { embedUrl: string; title: string };
+	pdf?: { path: string; label: string };
+}
