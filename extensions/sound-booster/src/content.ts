@@ -44,14 +44,16 @@ class AudioManager {
 						node.querySelectorAll<HTMLMediaElement>('audio, video').forEach((el) => this.captureElement(el));
 					}
 				}
-				for (const node of mutation.removedNodes) {
-					if (node instanceof HTMLMediaElement) {
-						this.releaseElement(node);
-					}
-					if (node instanceof HTMLElement) {
-						node.querySelectorAll<HTMLMediaElement>('audio, video').forEach((el) => this.releaseElement(el));
-					}
+		for (const node of mutation.removedNodes) {
+				if (node instanceof HTMLMediaElement) {
+					if (!node.isConnected) this.releaseElement(node);
 				}
+				if (node instanceof HTMLElement) {
+					node.querySelectorAll<HTMLMediaElement>('audio, video').forEach((el) => {
+						if (!el.isConnected) this.releaseElement(el);
+					});
+				}
+			}
 			}
 		});
 		this.observer.observe(document.documentElement, { childList: true, subtree: true });

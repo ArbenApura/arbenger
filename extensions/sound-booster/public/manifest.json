@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Sound Booster — Arbenger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Boost audio beyond 100%. Per-tab volume, 5-band EQ, presets, keyboard shortcuts. Zero tracking.",
   "permissions": ["activeTab", "storage", "scripting"],
   "action": {
