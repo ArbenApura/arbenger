@@ -123,7 +123,7 @@
 					<li>Built a parallel queue task system (worker pooling) that processed large volumes of scraped data across available resources.</li>
 					<li>Developed web automation and scraping pipelines; dissected APK structure and packaging for product development.</li>
 					<li>Created a full admin panel: app CMS, multi-language support (manual, DeepL, and Gemini AI translation), orders and sales, and usage statistics.</li>
-					<li>Integrated Google Play Billing with idempotent purchase verification to prevent duplicate transactions.</li>
+					<li>Engineered Google Play Billing integration with idempotent purchase verification — deduplicating order IDs and enforcing atomic entitlement state transitions for exactly-once fulfillment and protection against duplicate or replayed transactions.</li>
 					<li>Managed production deployment on Plesk and Webuzo, including virtual machine deployment and cloning.</li>
 					<li>Organized all source code in a monorepo with optimized CI/CD for continuous and fast updates.</li>
 				</ul>
