@@ -120,7 +120,7 @@
 						<p class="text-[11pt] font-semibold text-[#0F172A]">Smartago LLC - Freelance Full-Stack Developer</p>
 						<p class="shrink-0 text-[10pt] text-[#64748B]">08/2025 - 06/2026</p>
 					</div>
-					<p class="mt-0 text-[10pt] text-[#64748B]">Additional work for the same client group (UniStar.BG subsidiary) · Wilmington, DE, US</p>
+					<p class="mt-0 text-[10pt] text-[#64748B]">Additional work for the same client group · UniStar.BG subsidiary</p>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.2] text-[#334155]">
 						<li>Shipped and maintained 7 production apps in SvelteKit and Capacitor, wrapping web codebases into native Android builds for the Google Play Store across utility and Android TV categories.</li>
 						<li>Developed "XAPK Installer APK Downloader" from Figma designs to 500k+ downloads across mobile, tablet, and Android TV, plus an Android TV launcher and TV downloader that each surpassed 100k+ downloads.</li>
