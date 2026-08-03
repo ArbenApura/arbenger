@@ -122,8 +122,8 @@
 					</div>
 					<p class="mt-0 text-[10pt] text-[#64748B]">Wilmington, DE, US</p>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.25] text-[#334155]">
-						<li>Shipped 7 Android and web apps to Google Play from Figma designs end-to-end.</li>
-						<li>XAPK Installer APK Downloader: 500k+ downloads; two Android TV apps: 100k+ each.</li>
+						<li>Developed and shipped 7 Android and web apps to the Google Play Store, implementing client Figma designs end-to-end.</li>
+						<li>"XAPK Installer APK Downloader" surpassed 500k+ downloads on mobile, tablet, and Android TV; two Android TV apps passed 100k+ downloads each.</li>
 						<li>Integrated Capacitor with SvelteKit to ship one codebase to the Web and native Android.</li>
 						<li>Integrated Google Play Billing with idempotent verification to prevent duplicate transactions.</li>
 					</ul>
@@ -136,7 +136,7 @@
 					<p class="mt-0 text-[10pt] text-[#64748B]">Gotse Delchev, Bulgaria</p>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.25] text-[#334155]">
 						<li>Developed web automation and scraping pipelines for a prototype app store, scraping the web for APKs (thousands of scrapes per day).</li>
-						<li>Built a parallel queue task system (worker pooling) to process the scraped data, with incremental database scaling as usage grew.</li>
+						<li>Built a parallel queue task system (worker pooling) processing thousands of scraped APKs per day, with incremental database scaling as usage grew.</li>
 						<li>Created a full admin panel (PostgreSQL, Drizzle ORM): app CMS with multi-language support (manual, DeepL, Gemini AI) across 40+ languages, order and sales management, and usage statistics.</li>
 						<li>Managed production deployment on Plesk and Webuzo, including VM instances and a monorepo with CI/CD.</li>
 					</ul>
