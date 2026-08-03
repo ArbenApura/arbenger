@@ -4,6 +4,17 @@ All notable decisions, changes, and milestones for arbenger.com are documented h
 
 ---
 
+## 2026-08-04 — Portfolio revision
+
+- Converted the site from a company presence to a personal portfolio (Arben M. Apura).
+- Added /projects/ with 4 featured projects (door-lock-module, top-one-uwu, calculus-courseware, exemplary-league-portal) + minor tools grid.
+- Added prerendered project detail pages with placeholder covers, video embed, and PDF download.
+- Rewrote home, about, contact pages; reframed blog as a dev log.
+- Removed newsletter, language selector, cookie banner, legal pages, and the products catalog (/products/ → /projects/).
+- Updated Person-based JSON-LD, nav links, footer, sitemap.
+
+---
+
 ## 2026-05-27 — HTML Editor Tool + Site Integration
 
 ### HTML Editor Tool (NEW)

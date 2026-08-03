@@ -1,6 +1,6 @@
 # Data Models
 
-**Last updated:** 2026-05-27
+**Last updated:** 2026-08-04
 
 This document defines the TypeScript interfaces and data structures used across arbenger.com. All data types live in `src/lib/types/index.ts`.
 
@@ -213,10 +213,10 @@ export interface NavLink {
 ### Data
 
 ```typescript
-// src/lib/data/navigation.ts (or inline in layout)
+// src/lib/data/navigation.ts
 
 export const navLinks: NavLink[] = [
-  { label: 'Products', href: '/products/' },
+  { label: 'Projects', href: '/projects/' },
   { label: 'Blog', href: '/blog/' },
   { label: 'About', href: '/about/' },
   { label: 'Contact', href: '/contact/' },
@@ -243,7 +243,8 @@ export interface SocialLink {
 
 ```typescript
 export const socialLinks: SocialLink[] = [
-  { platform: 'GitHub', url: 'https://github.com/arbenger', icon: 'github' },
+  { platform: 'GitHub', url: 'https://github.com/ArbenApura', icon: 'github' },
+  { platform: 'Facebook', url: 'https://www.facebook.com/arbenapura.official', icon: 'facebook' },
 ];
 ```
 
@@ -403,7 +404,91 @@ export const blogPosts: BlogPost[] = [
 
 ---
 
-## 7. Image Resizer Data (Route-Local)
+## 7. Portfolio Project Data
+
+### Interface
+
+```typescript
+// src/lib/types/index.ts
+
+export interface PortfolioProject {
+  slug: string;
+  name: string;
+  tagline: string;
+  year: string;
+  category: string;
+  role: string;
+  status: string;
+  recognition?: string;
+  summary: string;
+  problem?: string;
+  solution?: string;
+  features: string[];
+  stack: string[];
+  links: { label: string; url: string }[];
+  cover?: string;
+  screenshots?: string[];
+  video?: { embedUrl: string; title: string };
+  pdf?: { path: string; label: string };
+}
+```
+
+### Data
+
+```typescript
+// src/lib/data/projects.ts
+
+export const projects: PortfolioProject[] = [
+  {
+    slug: 'door-lock-module',
+    name: 'Door Lock Module',
+    tagline: 'Smart door lock with RFID and face recognition for a university faculty room.',
+    year: '2026',
+    category: 'IoT · Web App',
+    role: 'Proponent · full-stack & hardware',
+    status: 'Completed',
+    recognition: 'Registered with IPOPHL · Feb 2026',
+    summary: 'Capstone for Bulacan State University: an Arduino-powered smart door lock...',
+    features: ['RFID authentication from two readers', 'Face recognition through the web interface', '...'],
+    stack: ['SvelteKit', 'Supabase', 'Face API JS', 'Arduino Mega 2560', 'ESP8266 NodeMCU', 'RFID RC522', 'Vercel'],
+    links: [{ label: 'Video demo', url: 'https://drive.google.com/...' }],
+    video: { embedUrl: 'https://drive.google.com/.../preview', title: 'Door Lock Module demo' },
+    pdf: { path: '/projects/door-lock-module/IMRAD-...-SC.pdf', label: 'Research paper (IMRAD)' },
+  },
+  // ... top-one-uwu, calculus-courseware, exemplary-league-portal
+];
+
+export function getProjectBySlug(slug: string): PortfolioProject | undefined {
+  return projects.find((p) => p.slug === slug);
+}
+```
+
+The `projects` array is the single source of truth for the `/projects` listing and the `/projects/[slug]` detail pages (which enumerate all slugs via `entries()` for prerendering). Covers, screenshots, and PDFs are served from `static/projects/<slug>/`.
+
+### Skills Data
+
+```typescript
+// src/lib/data/skills.ts
+
+export interface SkillGroup {
+  name: string;
+  skills: string[];
+}
+
+export const skillGroups: SkillGroup[] = [
+  { name: 'Frontend', skills: ['JavaScript / TypeScript', 'SvelteKit', 'Svelte', 'Next.js', 'React', 'Tailwind CSS', 'SCSS / CSS', 'HTML'] },
+  { name: 'Backend', skills: ['Node.js', 'Supabase', 'Firebase', 'PocketBase', 'MySQL', 'PHP', 'ORM'] },
+  { name: 'Mobile', skills: ['Capacitor', 'Progressive Web Apps', 'Google Play deployment'] },
+  { name: 'Hosting & DevOps', skills: ['Vercel', 'Render', 'Cloudflare Pages', 'Plesk', 'Webuzo', 'Nginx', 'VPS'] },
+  { name: 'AI & APIs', skills: ['OpenAI API', 'LLM prompt engineering', 'REST APIs'] },
+];
+```
+
+`skillGroups` feeds the skills sections on the home and about pages.
+
+---
+
+## 8. Image Resizer Data (Route-Local)
 
 These types are defined in `src/routes/products/(utilities)/image-resizer/_lib/store.ts`, not in the shared `src/lib/types/` file, because they are only used by the image resizer tool.
 
@@ -522,7 +607,7 @@ type ResizeError = {
 
 ---
 
-## 8. Stats Data (Server-Side)
+## 9. Stats Data (Server-Side)
 
 These types are defined in `src/lib/server/db/schema.ts` using Drizzle ORM. They represent the database schema, not client-side TypeScript interfaces.
 
@@ -580,7 +665,7 @@ The image resizer exports `totalProcessed` (a `Writable<number | null>` store) a
 
 ---
 
-## 9. Theme Data
+## 10. Theme Data
 
 ### Type
 
@@ -594,21 +679,25 @@ The theme store is a simple `writable<boolean>` (`isDark`). See `src/lib/stores/
 
 ---
 
-## 10. Data Flow
+## 11. Data Flow
 
 ```
 STATIC (build time):
-src/lib/data/products.ts     → Product catalog data
-src/lib/data/blog.ts         → Blog post registry
+src/lib/data/projects.ts    → Portfolio projects (listing + detail pages)
+src/lib/data/products.ts    → Product tool catalog (5 tools at /products/<slug>)
+src/lib/data/blog.ts        → Blog post registry
+src/lib/data/skills.ts      → Skill groups (home, about)
+src/lib/data/navigation.ts  → Nav links + social links (Projects, GitHub ArbenApura, Facebook)
        ↓
-src/lib/types/index.ts       → TypeScript interfaces
+src/lib/types/index.ts      → TypeScript interfaces
        ↓
-src/routes/+page.svelte      → Homepage (featured products)
-src/routes/products/+page.svelte  → Full catalog grid
+src/routes/+page.svelte     → Homepage (featured projects + minor tools)
+src/routes/projects/+page.svelte  → Project listing grid
+src/routes/projects/[slug]/ → Project detail (entries() from projects.ts)
 src/routes/blog/+page.svelte → Blog listing (filtered, paginated)
-src/routes/blog/[slug]/      → Blog post (loaded via import.meta.glob)
+src/routes/blog/[slug]/     → Blog post (loaded via import.meta.glob)
        ↓
-src/lib/components/           → UI components receive typed props
+src/lib/components/          → UI components receive typed props
 
 DYNAMIC (runtime):
 Client (store.ts trackStats)  → POST /api/stats/  → Hyperdrive → Neon PostgreSQL

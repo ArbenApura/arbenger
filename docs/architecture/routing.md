@@ -1,6 +1,6 @@
 # Routing Architecture
 
-**Last updated:** 2026-05-27
+**Last updated:** 2026-08-04
 
 This document defines the URL structure, rendering strategy, and route planning for arbenger.com.
 
@@ -27,15 +27,22 @@ SvelteKit file-based routing. All routes live under `src/routes/`. The adapter i
 
 | Route | File | Purpose | H1 |
 |-------|------|---------|-----|
-| `/` | `src/routes/+page.svelte` | Homepage | "Tools that do the job" (+ typewriter) |
-| `/about` | `src/routes/about/+page.svelte` | About page | "About Arbenger" |
-| `/products` | `src/routes/products/+page.svelte` | Product catalog | "Products" |
+| `/` | `src/routes/+page.svelte` | Homepage | "Arben M. Apura" (+ typewriter) |
+| `/about` | `src/routes/about/+page.svelte` | About page | "About Me" |
+| `/projects` | `src/routes/projects/+page.svelte` | Portfolio project listing | "Projects" |
 | `/contact` | `src/routes/contact/+page.svelte` | Contact info | "Say Hello" |
-| `/privacy` | `src/routes/privacy/+page.svelte` | Privacy policy | "Privacy Policy" |
-| `/terms` | `src/routes/terms/+page.svelte` | Terms of service | "Terms of Service" |
-| `/cookies` | `src/routes/cookies/+page.svelte` | Cookie policy | "Cookie Policy" |
 
-### Product Routes (Pre-rendered, Group Routes)
+### Project Routes (Pre-rendered, Dynamic)
+
+| Route | File | Purpose | H1 |
+|-------|------|---------|-----|
+| `/projects/[slug]` | `src/routes/projects/[slug]/+page.svelte` | Project detail page (cover, features, stack, links, video, PDF) | Project name (dynamic) |
+
+Project detail routes use a dynamic `[slug]` parameter with an `entries()` export in `+page.ts` to enumerate all slugs from `src/lib/data/projects.ts` at build time for prerendering. Static assets (covers, screenshots, PDFs) live in `static/projects/`.
+
+### Product Tool Routes (Pre-rendered, Group Routes)
+
+Note: The `/products` catalog page was removed in the portfolio revision. Only the individual tool pages remain at `/products/<slug>`.
 
 | Route | File | Purpose | H1 |
 |-------|------|---------|-----|
@@ -55,7 +62,7 @@ Product tool routes use SvelteKit **group routes**. Utilities use `(utilities)/`
 
 | Route | File | Purpose | H1 |
 |-------|------|---------|-----|
-| `/blog` | `src/routes/blog/+page.svelte` | Blog listing with category filters and pagination | "Tutorials" |
+| `/blog` | `src/routes/blog/+page.svelte` | Blog listing with category filters and pagination | "Tutorials & Dev Logs" |
 | `/blog/[slug]` | `src/routes/blog/[slug]/+page.svelte` | Blog post shell (loads content via `import.meta.glob`) | Post title (dynamic) |
 
 Blog post routes use a dynamic `[slug]` parameter with `entries()` export in `+page.ts` to enumerate all slugs at build time for prerendering. Post content lives in `_posts/*.svelte` files inside the `[slug]` route directory, loaded eagerly via `import.meta.glob('./_posts/*.svelte', { eager: true })`.
@@ -74,12 +81,6 @@ API routes are server-rendered (not prerendered). They run as Cloudflare Worker 
 |-------|------|-----------|---------|
 | `/sitemap.xml` | `src/routes/sitemap.xml/+server.ts` | Pre-rendered | XML sitemap (generated at build time) |
 
-### Future Routes
-
-| Route | File | Rendering | Purpose |
-|-------|------|-----------|---------|
-| `/products/[slug]` | `src/routes/products/[slug]/+page.svelte` | Pre-rendered (from product data) | Individual product pages |
-
 ### Static Files
 
 | URL | Source | Purpose |
@@ -95,14 +96,18 @@ API routes are server-rendered (not prerendered). They run as Cloudflare Worker 
 
 ```
 src/routes/
-  +layout.svelte          ← Root layout (Navbar + Footer + CookieBanner + Toaster + JSON-LD)
+  +layout.svelte          ← Root layout (Navbar + Footer + Toaster + JSON-LD)
   +layout.ts              ← prerender = true (default for all child routes)
   +page.svelte            ← Homepage
   +error.svelte           ← Custom error page (404, 500)
   about/
     +page.svelte          ← About page (inherits root layout)
+  projects/
+    +page.svelte          ← Project listing (inherits root layout)
+    [slug]/
+      +page.ts            ← entries() + load() for prerendering
+      +page.svelte        ← Project detail page (cover, video, PDF, links)
   products/
-    +page.svelte          ← Product catalog (inherits root layout)
     (utilities)/           ← SvelteKit group route (excluded from URL)
       image-resizer/
         +page.svelte      ← Image resizer tool
@@ -153,10 +158,8 @@ src/routes/
       sound-booster/
         +page.svelte      ← Sound booster landing page
         +page.ts          ← prerender = true
-    [slug]/
-      +page.svelte        ← Individual product (inherits root layout) — future
   blog/
-    +page.svelte          ← Blog listing (tutorials only)
+    +page.svelte          ← Blog listing (tutorials + dev logs)
     [slug]/
       +page.ts            ← entries() + load() for prerendering
       +page.svelte        ← Post shell (SEO, header, content loader)
@@ -168,12 +171,6 @@ src/routes/
         html-css-js-editor-in-browser.svelte
   contact/
     +page.svelte          ← Contact page (inherits root layout)
-  privacy/
-    +page.svelte          ← Privacy policy (inherits root layout)
-  terms/
-    +page.svelte          ← Terms of service (inherits root layout)
-  cookies/
-    +page.svelte          ← Cookie policy (inherits root layout)
   api/
     stats/
       +server.ts          ← Usage stats API (GET + POST, server-rendered)
@@ -184,8 +181,7 @@ src/routes/
 The root layout provides:
 - Navbar component (sticky, transparent → blur on scroll)
 - `<main>` wrapper with skip-to-content accessibility link
-- Footer component (4-column: logo/tagline, navigation, legal, social)
-- CookieBanner component (localStorage-persisted consent)
+- Footer component (4-column: logo/tagline, navigation, connect, available-for-work)
 - Toaster component (`svelte-sonner`) — positioned bottom-right, rich colors, close button
 - Sitewide JSON-LD (WebSite schema)
 
@@ -200,7 +196,7 @@ Note: Theme initialization (dark class on `<html>`) happens in `app.html` via an
 | Label | Route | Visible On |
 |-------|-------|------------|
 | Home | `/` | Always (logo click) |
-| Products | `/products` | Always |
+| Projects | `/projects` | Always |
 | Blog | `/blog` | Always |
 | About | `/about` | Always |
 | Contact | `/contact` | Always |
@@ -208,26 +204,22 @@ Note: Theme initialization (dark class on `<html>`) happens in `app.html` via an
 ### Footer Navigation
 
 Same links as navbar, plus:
-- Legal links: Privacy Policy, Terms of Service, Cookie Policy
-- Social links: GitHub
+- Connect column with social links: GitHub, Facebook
 
 ### Internal Links (In-Page)
 
 | From | To | Context |
 |------|----|---------|
-| Homepage hero CTA | `/products` | "See What's Available" button |
-| Homepage FeaturedTool CTAs | `/products/image-resizer`, `/products/image-compressor`, `/products/color-picker`, `/products/sound-booster`, `/products/html-editor` | Per-card CTA buttons |
+| Homepage hero CTA | `/projects` | "View my work" button |
+| Homepage featured projects | `/projects/door-lock-module`, `/projects/top-one-uwu`, `/projects/calculus-courseware`, `/projects/exemplary-league-portal` | Featured project card links |
+| Homepage minor tools grid | `/products/image-resizer`, `/products/image-compressor`, `/products/color-picker`, `/products/sound-booster`, `/products/html-editor` | Minor tool card links |
 | Homepage about teaser | `/about` | "Learn more" link |
-| Homepage bottom CTA | `/contact` | "Get in Touch" button |
-| Homepage product cards | `/products` | Category card clicks |
-| Products live spotlight | `/products/image-resizer`, `/products/image-compressor`, `/products/color-picker`, `/products/sound-booster`, `/products/html-editor` | Live product card "Open tool" links |
-| Products category grid | `/products/image-resizer`, `/products/image-compressor`, `/products/html-editor` | Nested product links in Utilities category |
-| Image resizer breadcrumb | `/`, `/products` | Visual breadcrumb navigation |
-| Image resizer Guide link | `/blog/how-to-use-image-resizer` | "Guide" link in top bar + "New here? Read the guide" in upload zone |
+| Homepage bottom CTA | `/contact` | Contact CTA button |
+| Projects listing cards | `/projects/[slug]` | Project card links |
+| Project detail back link | `/projects` | "Back to projects" link |
+| Project detail links | `/projects/[slug]` | Video demo, PDF download, external links |
 | Blog listing cards | `/blog/[slug]` | Blog post card links |
 | Blog post back link | `/blog` | "Back to all posts" link |
-| Blog post CTA | `/products/image-resizer` | "Open Image Resizer" button in guide post |
-| Product catalog cards | `/products/[slug]` | Individual product links (future) |
 
 ---
 
