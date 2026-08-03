@@ -22,24 +22,13 @@
 	const TIMELINE = [
 		{
 			role: 'Freelance Full-Stack Developer',
-			company: 'Smartago LLC (Wilmington, DE, US · UniStar.BG Ltd subsidiary)',
-			period: '08/2025 — 06/2026 · additional work for the same client group',
+			company: 'UniStar.BG Ltd / Smartago LLC (Bulgaria, US)',
+			period: '01/2025 — 06/2026 · long-term freelance engagement via Upwork across the parent company and its subsidiary',
 			points: [
-				'Developed and shipped 7 Android and web apps to the Google Play Store, implementing client Figma designs end-to-end.',
-				'Leading app "XAPK Installer APK Downloader" surpassed 500k+ downloads on mobile, tablet, and Android TV; two Android TV apps passed 100k+ downloads each.',
-				'Integrated Capacitor with SvelteKit to ship one codebase to both the Web and native Android.',
-				'Integrated Google Play Billing with idempotent purchase verification and RTDN webhook endpoints that sync purchase lifecycle events (purchased, renewed, cancelled, expired) to the database.',
-			],
-		},
-		{
-			role: 'Freelance Full-Stack Developer',
-			company: 'UniStar.BG Ltd (Gotse Delchev, Bulgaria)',
-			period: '01/2025 — 06/2026 · long-term freelance engagement via Upwork',
-			points: [
-				'Developed web automation and scraping pipelines for a prototype app store, scraping the web for APKs with thousands of scrapes per day.',
-				'Built a parallel queue task system (worker pooling) to process the scraped data, with incremental database scaling as usage grew.',
-				'Created a full admin panel on PostgreSQL with Drizzle ORM: app CMS with multi-language support (manual, DeepL, and Gemini AI translation), order and sales management, and usage statistics.',
-				'Managed production deployment on Plesk and Webuzo (including VM deployment and cloning) and a monorepo with optimized CI/CD.',
+				'Shipped and maintained 7 production apps (SvelteKit + Capacitor) to the Google Play Store from Figma designs — 500k+ downloads on the leading app, 100k+ each on two Android TV apps, one codebase across Web, Android, and TV.',
+				'Built automated web scraping and APK ingestion pipelines (metadata extraction, processing, packaging, persistence) and a parallel job-processing system with worker pooling handling thousands of tasks per day with incremental PostgreSQL scaling.',
+				'Built a SvelteKit/PostgreSQL/Drizzle CMS supporting 40+ languages (manual, DeepL, Gemini AI translation) with order, sales, and per-app analytics, plus Google Play Billing with idempotent verification and RTDN webhook sync.',
+				'Managed production infrastructure on Linux (Plesk, Webuzo, Nginx) covering SSL and DNS, VM provisioning and cloning, and a monorepo with optimized CI/CD.',
 			],
 		},
 	];
