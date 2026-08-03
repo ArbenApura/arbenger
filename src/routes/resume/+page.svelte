@@ -57,6 +57,10 @@
 		>
 			Print / Save as PDF
 		</button>
+
+		<p class="mt-4 text-sm text-[#94A3B8] dark:text-slate-500">
+			Tip: in the print dialog, turn off "Headers and footers" for a clean PDF.
+		</p>
 	</div>
 </section>
 
