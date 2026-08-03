@@ -22,17 +22,6 @@
 	const TIMELINE = [
 		{
 			role: 'Full-Stack Developer',
-			company: 'UniStar.BG Ltd (Bulgaria-based)',
-			period: '01/2025 — 06/2026',
-			points: [
-				'Developed web automation and scraping pipelines; dissected APK structure and packaging for product development.',
-				'Built a parallel queue task system (worker pooling) that processed large volumes of scraped data across available resources.',
-				'Created a full admin panel: app CMS, multi-language support (manual, DeepL, and Gemini AI translation), orders and sales, and usage statistics.',
-				'Managed production deployment on Plesk and Webuzo (including VM deployment and cloning) and a monorepo with optimized CI/CD.',
-			],
-		},
-		{
-			role: 'Full-Stack Developer',
 			company: 'Smartago LLC (UniStar.BG Ltd subsidiary)',
 			period: '08/2025 — 06/2026',
 			points: [
@@ -40,6 +29,17 @@
 				'Leading app "XAPK Installer APK Downloader" surpassed 500k+ downloads on mobile, tablet, and Android TV; two Android TV apps passed 100k+ downloads each.',
 				'Integrated Capacitor with SvelteKit to ship one codebase to both the Web and native Android.',
 				'Engineered Google Play Billing integration with idempotent purchase verification — deduplicating order IDs and enforcing atomic entitlement state transitions for exactly-once fulfillment and protection against duplicate or replayed transactions.',
+			],
+		},
+		{
+			role: 'Full-Stack Developer',
+			company: 'UniStar.BG Ltd (Bulgaria-based)',
+			period: '01/2025 — 06/2026',
+			points: [
+				'Developed web automation and scraping pipelines; dissected APK structure and packaging for product development.',
+				'Built a parallel queue task system (worker pooling) that processed large volumes of scraped data across available resources.',
+				'Created a full admin panel: app CMS, multi-language support (manual, DeepL, and Gemini AI translation), orders and sales, and usage statistics.',
+				'Managed production deployment on Plesk and Webuzo (including VM deployment and cloning) and a monorepo with optimized CI/CD.',
 			],
 		},
 	];

@@ -100,18 +100,6 @@
 			<div class="mt-2.5 space-y-3">
 				<div>
 					<div class="flex items-baseline justify-between gap-4">
-						<p class="text-[11pt] font-semibold text-[#0F172A]">Full-Stack Developer - UniStar.BG Ltd (Bulgaria)</p>
-						<p class="shrink-0 text-[10pt] text-[#64748B]">01/2025 - 06/2026</p>
-					</div>
-					<ul class="mt-1.5 list-disc space-y-0.5 pl-4 text-[10.5pt] leading-[1.4] text-[#334155]">
-						<li>Developed web automation and scraping pipelines; dissected APK structure and packaging for product development.</li>
-						<li>Built a parallel queue task system (worker pooling) that processed large volumes of scraped data across available resources.</li>
-						<li>Created a full admin panel: app CMS, multi-language support (manual, DeepL, and Gemini AI translation), orders and sales, and usage statistics.</li>
-						<li>Managed production deployment on Plesk and Webuzo (including VM deployment and cloning) and a monorepo with optimized CI/CD.</li>
-					</ul>
-				</div>
-				<div>
-					<div class="flex items-baseline justify-between gap-4">
 						<p class="text-[11pt] font-semibold text-[#0F172A]">Full-Stack Developer - Smartago LLC (UniStar.BG Ltd subsidiary)</p>
 						<p class="shrink-0 text-[10pt] text-[#64748B]">08/2025 - 06/2026</p>
 					</div>
@@ -120,6 +108,18 @@
 						<li>"XAPK Installer APK Downloader" surpassed 500k+ downloads on mobile, tablet, and Android TV; two Android TV apps passed 100k+ downloads each.</li>
 						<li>Integrated Capacitor with SvelteKit, shipping one codebase to both the Web and native Android.</li>
 						<li>Engineered Google Play Billing integration with idempotent purchase verification — deduplicating order IDs and enforcing atomic entitlement state transitions for exactly-once fulfillment and protection against duplicate or replayed transactions.</li>
+					</ul>
+				</div>
+				<div>
+					<div class="flex items-baseline justify-between gap-4">
+						<p class="text-[11pt] font-semibold text-[#0F172A]">Full-Stack Developer - UniStar.BG Ltd (Bulgaria)</p>
+						<p class="shrink-0 text-[10pt] text-[#64748B]">01/2025 - 06/2026</p>
+					</div>
+					<ul class="mt-1.5 list-disc space-y-0.5 pl-4 text-[10.5pt] leading-[1.4] text-[#334155]">
+						<li>Developed web automation and scraping pipelines; dissected APK structure and packaging for product development.</li>
+						<li>Built a parallel queue task system (worker pooling) that processed large volumes of scraped data across available resources.</li>
+						<li>Created a full admin panel: app CMS, multi-language support (manual, DeepL, and Gemini AI translation), orders and sales, and usage statistics.</li>
+						<li>Managed production deployment on Plesk and Webuzo (including VM deployment and cloning) and a monorepo with optimized CI/CD.</li>
 					</ul>
 				</div>
 			</div>
