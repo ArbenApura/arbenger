@@ -6,71 +6,65 @@
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
 	import JsonLd from '$lib/components/seo/JsonLd.svelte';
 	import Hero from '$lib/components/home/Hero.svelte';
-	import ProductCategories from '$lib/components/home/ProductCategories.svelte';
-
-	import FeaturedTool from '$lib/components/home/FeaturedTool.svelte';
+	import FeaturedProjects from '$lib/components/home/FeaturedProjects.svelte';
+	import MinorTools from '$lib/components/home/MinorTools.svelte';
+	import Skills from '$lib/components/home/Skills.svelte';
 	import AboutTeaser from '$lib/components/home/AboutTeaser.svelte';
-	import Newsletter from '$lib/components/home/Newsletter.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
 	import GeometricDivider from '$lib/components/ui/GeometricDivider.svelte';
+
+	// -- CONSTANTS -- //
+
+	const SITE_URL = 'https://arbenger.com';
 </script>
 
 <MetaTags
-	title="Arbenger — Extensions, Plugins, AI Tools & Web Apps"
-	description="Free browser tools, Chrome extensions, and AI utilities. Image processing, color picking, audio boosting — all private, all local. No uploads, no accounts."
-	url="https://arbenger.com"
+	title="Arben Apura — Full-Stack Web Developer"
+	description="Full-stack web developer from the Philippines building web apps, AI tools, and Chrome extensions. SvelteKit, Next.js, TypeScript."
+	url={SITE_URL}
 />
 
-<!-- WEBSITE JSON-LD (HOMEPAGE ONLY) -->
+<!-- PERSON JSON-LD (HOMEPAGE ONLY) -->
 <JsonLd
 	schema={{
 		'@context': 'https://schema.org',
-		'@type': 'WebSite',
-		name: 'Arbenger',
-		url: 'https://arbenger.com',
-		potentialAction: {
-			'@type': 'SearchAction',
-			target: 'https://arbenger.com/products/?q={search_term_string}',
-			'query-input': 'required name=search_term_string',
+		'@type': 'Person',
+		name: 'Arben M. Apura',
+		url: SITE_URL,
+		jobTitle: 'Full-Stack Web Developer',
+		email: 'mailto:arbenapura.official@gmail.com',
+		telephone: '+639764304619',
+		address: {
+			'@type': 'PostalAddress',
+			addressLocality: 'San Jose Del Monte',
+			addressRegion: 'Bulacan',
+			addressCountry: 'PH',
 		},
-	}}
-/>
-
-<!-- ORGANIZATION JSON-LD (HOMEPAGE ONLY) -->
-<JsonLd
-	schema={{
-		'@context': 'https://schema.org',
-		'@type': 'Organization',
-		name: 'Arbenger',
-		url: 'https://arbenger.com',
-		logo: 'https://arbenger.com/arbenger.svg',
-		description: 'Extensions, plugins, AI tools, and web applications.',
-		sameAs: [
-			'https://github.com/arbenger',
-		],
+		knowsAbout: ['SvelteKit', 'Next.js', 'TypeScript', 'Supabase', 'Firebase', 'Capacitor', 'OpenAI API'],
+		sameAs: ['https://github.com/ArbenApura', 'https://www.facebook.com/arbenapura.official'],
 	}}
 />
 
 <!-- HERO -->
 <Hero />
 
-<!-- PRODUCT CATEGORIES -->
-<ProductCategories />
+<!-- FEATURED PROJECTS -->
+<FeaturedProjects />
 
-<!-- FEATURED TOOL -->
-<FeaturedTool />
+<!-- MINOR TOOLS -->
+<MinorTools />
+
+<!-- SKILLS -->
+<Skills />
 
 <!-- ABOUT TEASER -->
 <AboutTeaser />
-
-<!-- NEWSLETTER -->
-<Newsletter />
 
 <!-- CONNECT CTA WITH GEOMETRIC MESH BACKGROUND -->
 <GeometricDivider>
 	<div use:reveal class="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 text-center lg:px-8">
 		<p class="text-lg text-[#475569] dark:text-slate-300">
-			Got a question? We're around.
+			Let's build something.
 		</p>
 		<Button href="/contact/" variant="primary">Get in Touch</Button>
 	</div>
