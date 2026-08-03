@@ -2504,6 +2504,24 @@ Expected: wrangler builds and deploys to Cloudflare Pages project `arbenger` (re
 
 ---
 
+## Task 17: Printable Resume page
+
+**Files:**
+- Create: `static/resume/arben.jpg` (copy from `docs/content/arben.jpg`)
+- Create: `src/routes/resume/+page.svelte`
+- Modify: `src/app.css` (append print styles: `@page { size: letter; margin: 0.5in }` + `.resume-section { break-inside: avoid }`)
+- Modify: `src/lib/components/layout/Navbar.svelte` (PLAIN_LINKS += Resume)
+- Modify: `src/lib/data/navigation.ts` (navLinks += Resume)
+- Modify: `src/routes/sitemap.xml/+server.ts` (STATIC_PAGES += /resume/)
+
+- [ ] **Step 1: Copy photo** — `Copy-Item "docs\content\arben.jpg" "static\resume\arben.jpg"`
+- [ ] **Step 2: Create `src/routes/resume/+page.svelte`** — minimal single-column US Letter resume: header (name + title + contact line, portrait photo top-right 1.1in circle), Summary, Skills (5 grouped lines), Experience (UniStar.BG, 4 bullets), Education (2 entries), Accomplishment (IPOPHL), Languages. White paper sheet (fixed light colors — no dark: variants), pt-based typography (name 24pt font-display, title 10.5pt mono uppercase cyan, section heads 9.5pt mono uppercase with bottom border, body 9.5pt). Screen: sheet `w-[8.5in] max-w-full mx-auto my-16 p-9 rounded-xl border shadow`; hero above with "Print / Save as PDF" button (window.print()) hidden in print (`print:hidden`). `hideChrome.set(true)` in onMount / `false` in onDestroy (html-editor pattern). MetaTags "Resume — Arben Apura".
+- [ ] **Step 3: app.css print block** — `@media print { @page { size: letter; margin: 0.5in; } body { background: #fff !important; } .resume-section { break-inside: avoid; } }`
+- [ ] **Step 4: Nav + sitemap** — add Resume link to navbar PLAIN_LINKS and navLinks (after Contact); add `/resume/` (0.5, monthly, LAST_MOD) to sitemap STATIC_PAGES.
+- [ ] **Step 5: Verify + commit** — `yarn run check` 0 errors; `yarn build` succeeds; verify `.svelte-kit/cloudflare/resume/index.html` exists. Commit: `feat(site): add printable one-page resume`
+
+---
+
 ## Self-review notes
 
 - **Spec coverage:** Every spec section maps to tasks: identity/branding → Tasks 2, 8, 9; site map (home/about/projects/contact/blog) → Tasks 9–14; removals → Tasks 5–7, 12; data layer → Tasks 1–4; SEO → Tasks 5, 9–15; verification → Task 16. Product tool pages, stats API, and `extensions/` are untouched per spec §5 and §9.
