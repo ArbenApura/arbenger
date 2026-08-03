@@ -53,9 +53,9 @@
 	schema={{
 		'@context': 'https://schema.org',
 		'@type': 'Blog',
-		name: 'Arbenger Blog',
+		name: 'Arben Apura Blog',
 		url: `${SITE_URL}/blog/`,
-		description: 'Tutorials, deep dives, and behind-the-scenes on the tools we build.',
+		description: 'Tutorials, deep dives, and behind-the-scenes on the tools I build.',
 		publisher: {
 			'@type': 'Person',
 			name: 'Arben Apura',
@@ -124,7 +124,7 @@
 			<div use:reveal class="flex flex-col items-center justify-center py-20 text-center">
 				<p class="font-display text-xl font-bold text-[#0F172A] dark:text-white">No posts yet</p>
 				<p class="mt-2 text-sm text-[#64748B] dark:text-slate-400">
-					Check back soon — we're working on it.
+					Check back soon — I'm working on it.
 				</p>
 			</div>
 		{/if}

@@ -8,7 +8,7 @@
 
 <svelte:head>
 	<meta name="robots" content="noindex" />
-	<title>{$page.status} | Arbenger</title>
+	<title>{$page.status} | Arben Apura</title>
 </svelte:head>
 
 <!-- ERROR PAGE -->
