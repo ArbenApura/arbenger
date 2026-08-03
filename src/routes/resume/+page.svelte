@@ -186,14 +186,5 @@
 			</div>
 		</section>
 
-		<!-- LANGUAGES -->
-		<section class="resume-section mt-2.5">
-			<h3 class="border-b border-[#CBD5E1] pb-0.5 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
-				Languages
-			</h3>
-			<p class="mt-2 text-[10.5pt] leading-[1.25] text-[#334155]">
-				Filipino <span class="text-[#64748B]">(Native)</span> | English <span class="text-[#64748B]">(Proficient)</span>
-			</p>
-		</section>
 	</div>
 </section>
