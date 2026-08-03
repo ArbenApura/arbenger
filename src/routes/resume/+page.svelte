@@ -1,6 +1,7 @@
 <script lang="ts">
 	// IMPORTED DEP-MODULES
 	import { onMount, onDestroy } from 'svelte';
+	import { dev } from '$app/environment';
 
 	// IMPORTED MODULES
 	import { hideChrome } from '$lib/stores/layout';
@@ -22,6 +23,12 @@
 	onDestroy(() => {
 		hideChrome.set(false);
 	});
+
+	// -- FUNCTIONS -- //
+
+	function printResume() {
+		window.print();
+	}
 </script>
 
 <MetaTags
@@ -45,13 +52,24 @@
 			A one-page overview, formatted for applicant tracking systems. Download the PDF version below.
 		</p>
 
-		<a
-			href="/resume/ArbenApura-Resume.pdf"
-			download
-			class="mt-8 inline-flex items-center gap-2 rounded-lg bg-[#0891B2] px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(8,145,178,0.2)] hover:brightness-110 dark:bg-[#22D3EE] dark:text-[#0B0A23] dark:hover:shadow-[0_0_20px_rgba(34,211,238,0.15)]"
-		>
-			Download Resume (PDF)
-		</a>
+		<div class="mt-8 flex flex-wrap items-center gap-3">
+			<a
+				href="/resume/ArbenApura-Resume.pdf"
+				download
+				class="inline-flex items-center gap-2 rounded-lg bg-[#0891B2] px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(8,145,178,0.2)] hover:brightness-110 dark:bg-[#22D3EE] dark:text-[#0B0A23] dark:hover:shadow-[0_0_20px_rgba(34,211,238,0.15)]"
+			>
+				Download Resume (PDF)
+			</a>
+
+			{#if dev}
+				<button
+					on:click={printResume}
+					class="inline-flex items-center gap-2 rounded-lg border border-[#0F172A] px-6 py-3 text-sm font-medium text-[#0F172A] transition-all duration-300 hover:bg-[#0F172A]/5 dark:border-[#22D3EE] dark:text-[#22D3EE] dark:hover:bg-[#22D3EE]/10"
+				>
+					Print (dev)
+				</button>
+			{/if}
+		</div>
 
 		<p class="mt-4 text-sm text-[#94A3B8] dark:text-slate-500">
 			US Letter, one page, ATS-friendly.
