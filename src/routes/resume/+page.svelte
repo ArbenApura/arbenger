@@ -86,7 +86,7 @@
 				Professional Summary
 			</h3>
 			<p class="mt-2.5 text-[10.5pt] leading-[1.4] text-[#334155]">
-				Full-stack developer with over 3 years building web and Android applications, proficient in SvelteKit,
+				Full-stack developer with 4+ years building web and Android applications, proficient in SvelteKit,
 				Next.js, and Capacitor. Sole developer of 7 apps shipped to the Google Play Store, with 500k+ downloads
 				on the leading app. Creates user-friendly, efficient applications and values clean code and continuous learning.
 			</p>
