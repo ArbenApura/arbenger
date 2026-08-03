@@ -3,3 +3,6 @@
 /blog/introducing-sound-booster/ /blog/browser-volume-beyond-100/ 301
 /blog/how-to-use-image-resizer/ /blog/resize-crop-convert-in-browser/ 301
 /blog/how-to-use-image-compressor/ /blog/compress-images-90-smaller/ 301
+
+# Products catalog replaced by projects page (2026-08-04)
+/products/ /projects/ 301
