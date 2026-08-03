@@ -5,45 +5,23 @@
 
 	// IMPORTED MODULES
 	import { cn } from '$lib/utils/cn';
-	import { products } from '$lib/data/products';
 	import { sortedPosts, formatPostDate } from '$lib/data/blog';
 
 	// IMPORTED DEP-COMPONENTS
-	import {
-		Menu,
-		X,
-		ChevronDown,
-		ArrowRight,
-		Image,
-		Minimize2,
-		Palette,
-		Volume2,
-		Code,
-		Wrench,
-		Puzzle,
-		BookOpen,
-	} from 'lucide-svelte';
+	import { Menu, X, ChevronDown, ArrowRight, BookOpen } from 'lucide-svelte';
 
 	// IMPORTED COMPONENTS
 	import ThemeToggle from '$lib/components/layout/ThemeToggle.svelte';
-	import LanguageSelector from '$lib/components/layout/LanguageSelector.svelte';
 	import Logo from '$lib/components/ui/Logo.svelte';
 
 	// -- TYPES -- //
 
-	type Popover = 'products' | 'blog' | null;
+	type Popover = 'blog' | null;
 
 	// -- CONSTANTS -- //
 
-	const PRODUCT_ICONS: Record<string, typeof Code> = {
-		'image-resizer': Image,
-		'image-compressor': Minimize2,
-		'color-picker': Palette,
-		'sound-booster': Volume2,
-		'html-editor': Code,
-	};
-
 	const PLAIN_LINKS = [
+		{ label: 'Projects', href: '/projects/' },
 		{ label: 'About', href: '/about/' },
 		{ label: 'Contact', href: '/contact/' },
 	];
@@ -58,32 +36,23 @@
 
 	let navEl: HTMLElement;
 
-	let mobileProductsOpen = false;
-
 	let mobileBlogOpen = false;
 
 	// -- REACTIVE STATES -- //
 
 	$: isScrolled = scrollY > 50;
 
-	$: liveProducts = products.filter((p) => p.status === 'live');
-
-	$: utilities = liveProducts.filter((p) => p.category === 'misc-tools');
-
-	$: extensions = liveProducts.filter((p) => p.category === 'chrome-plugins');
-
 	$: recentPosts = sortedPosts.slice(0, 3);
 
 	// -- FUNCTIONS -- //
 
-	function togglePopover(name: 'products' | 'blog') {
+	function togglePopover(name: 'blog') {
 		activePopover = activePopover === name ? null : name;
 	}
 
 	function closeAll() {
 		activePopover = null;
 		isMobileMenuOpen = false;
-		mobileProductsOpen = false;
 		mobileBlogOpen = false;
 	}
 
@@ -98,17 +67,6 @@
 			activePopover = null;
 			isMobileMenuOpen = false;
 		}
-	}
-
-	function firstSentence(text: string): string {
-		const dot = text.indexOf('.');
-		return dot >= 0 ? text.slice(0, dot + 1) : text;
-	}
-
-	function closeMobileMenu() {
-		isMobileMenuOpen = false;
-		mobileProductsOpen = false;
-		mobileBlogOpen = false;
 	}
 </script>
 
@@ -136,27 +94,14 @@
 
 		<!-- DESKTOP NAV -->
 		<div class="hidden items-center gap-8 lg:flex">
-			<!-- PRODUCTS TRIGGER -->
-			<button
-				on:click={() => togglePopover('products')}
-				class={cn(
-					'flex items-center gap-1 text-sm transition-colors duration-200',
-					activePopover === 'products'
-						? 'text-[#0891B2] dark:text-[#22D3EE]'
-						: 'text-[#475569] hover:text-[#0891B2] dark:text-slate-300 dark:hover:text-[#22D3EE]',
-				)}
-				aria-expanded={activePopover === 'products'}
-				aria-haspopup="true"
-			>
-				Products
-				<ChevronDown
-					size={14}
-					class={cn(
-						'transition-transform duration-200',
-						activePopover === 'products' && 'rotate-180',
-					)}
-				/>
-			</button>
+			{#each PLAIN_LINKS as link}
+				<a
+					href={link.href}
+					class="text-sm text-[#475569] transition-colors duration-200 hover:text-[#0891B2] dark:text-slate-300 dark:hover:text-[#22D3EE]"
+				>
+					{link.label}
+				</a>
+			{/each}
 
 			<!-- BLOG TRIGGER + DROPDOWN -->
 			<div class="relative">
@@ -187,9 +132,7 @@
 						transition:fly={{ y: -8, duration: 150, easing: cubicOut }}
 						class="absolute left-1/2 top-full mt-4 w-96 -translate-x-1/2 rounded-xl border border-[#E2E8F0] bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:border-[#2A2578] dark:bg-[#0F0E2A] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
 					>
-						<p
-							class="mb-3 font-mono text-xs tracking-widest text-[#0891B2] dark:text-[#22D3EE]"
-						>
+						<p class="mb-3 font-mono text-xs tracking-widest text-[#0891B2] dark:text-[#22D3EE]">
 							LATEST
 						</p>
 
@@ -235,23 +178,11 @@
 				{/if}
 			</div>
 
-			<!-- PLAIN LINKS -->
-			{#each PLAIN_LINKS as link}
-				<a
-					href={link.href}
-					class="text-sm text-[#475569] transition-colors duration-200 hover:text-[#0891B2] dark:text-slate-300 dark:hover:text-[#22D3EE]"
-				>
-					{link.label}
-				</a>
-			{/each}
-
-			<LanguageSelector />
 			<ThemeToggle />
 		</div>
 
 		<!-- MOBILE MENU BUTTON -->
 		<div class="flex items-center gap-2 lg:hidden">
-			<LanguageSelector />
 			<ThemeToggle />
 			<button
 				on:click={() => (isMobileMenuOpen = !isMobileMenuOpen)}
@@ -267,166 +198,22 @@
 		</div>
 	</div>
 
-	<!-- PRODUCTS MEGA MENU (FULL WIDTH, DESKTOP ONLY) -->
-	{#if activePopover === 'products'}
-		<div
-			transition:slide={{ duration: 200, easing: cubicOut }}
-			class="hidden border-t border-[#E2E8F0] bg-white/98 backdrop-blur-lg lg:block dark:border-[#2A2578] dark:bg-[#0B0A23]/98"
-		>
-			<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-				<div class="grid grid-cols-2 gap-10">
-					<!-- UTILITIES COLUMN -->
-					{#if utilities.length > 0}
-						<div>
-							<div class="mb-3 flex items-center gap-2">
-								<Wrench size={14} class="text-[#94A3B8]" />
-								<p
-									class="font-mono text-xs tracking-widest text-[#0891B2] dark:text-[#22D3EE]"
-								>
-									UTILITIES
-								</p>
-							</div>
-							<div class="space-y-1">
-								{#each utilities as product}
-									{@const Icon = PRODUCT_ICONS[product.slug] || Code}
-									<a
-										href={product.externalUrl}
-										class="group flex items-start gap-3 rounded-lg px-3 py-3 transition-colors hover:bg-[#F1F5F9] dark:hover:bg-[#1E1A5E]"
-										on:click={() => (activePopover = null)}
-									>
-										<div
-											class="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-[#F1F5F9] transition-colors group-hover:bg-[#0891B2]/10 dark:bg-[#1E1A5E] dark:group-hover:bg-[#22D3EE]/10"
-										>
-											<Icon
-												size={16}
-												class="text-[#64748B] transition-colors group-hover:text-[#0891B2] dark:text-slate-400 dark:group-hover:text-[#22D3EE]"
-											/>
-										</div>
-										<div>
-											<p
-												class="text-sm font-medium text-[#0F172A] group-hover:text-[#0891B2] dark:text-white dark:group-hover:text-[#22D3EE]"
-											>
-												{product.name}
-											</p>
-											<p class="mt-0.5 text-xs leading-relaxed text-[#94A3B8]">
-												{firstSentence(product.description)}
-											</p>
-										</div>
-									</a>
-								{/each}
-							</div>
-						</div>
-					{/if}
-
-					<!-- CHROME EXTENSIONS COLUMN -->
-					{#if extensions.length > 0}
-						<div>
-							<div class="mb-3 flex items-center gap-2">
-								<Puzzle size={14} class="text-[#94A3B8]" />
-								<p
-									class="font-mono text-xs tracking-widest text-[#0891B2] dark:text-[#22D3EE]"
-								>
-									CHROME EXTENSIONS
-								</p>
-							</div>
-							<div class="space-y-1">
-								{#each extensions as product}
-									{@const Icon = PRODUCT_ICONS[product.slug] || Code}
-									<a
-										href={product.externalUrl}
-										class="group flex items-start gap-3 rounded-lg px-3 py-3 transition-colors hover:bg-[#F1F5F9] dark:hover:bg-[#1E1A5E]"
-										on:click={() => (activePopover = null)}
-									>
-										<div
-											class="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-[#F1F5F9] transition-colors group-hover:bg-[#0891B2]/10 dark:bg-[#1E1A5E] dark:group-hover:bg-[#22D3EE]/10"
-										>
-											<Icon
-												size={16}
-												class="text-[#64748B] transition-colors group-hover:text-[#0891B2] dark:text-slate-400 dark:group-hover:text-[#22D3EE]"
-											/>
-										</div>
-										<div>
-											<p
-												class="text-sm font-medium text-[#0F172A] group-hover:text-[#0891B2] dark:text-white dark:group-hover:text-[#22D3EE]"
-											>
-												{product.name}
-											</p>
-											<p class="mt-0.5 text-xs leading-relaxed text-[#94A3B8]">
-												{firstSentence(product.description)}
-											</p>
-										</div>
-									</a>
-								{/each}
-							</div>
-						</div>
-					{/if}
-				</div>
-
-				<!-- VIEW ALL PRODUCTS LINK -->
-				<div class="mt-5 border-t border-[#E2E8F0] pt-4 dark:border-[#2A2578]">
-					<a
-						href="/products/"
-						class="group flex items-center gap-1.5 text-sm font-medium text-[#0891B2] transition-colors hover:text-[#0E7490] dark:text-[#22D3EE] dark:hover:text-[#67E8F9]"
-						on:click={() => (activePopover = null)}
-					>
-						View all products
-						<ArrowRight
-							size={14}
-							class="transition-transform group-hover:translate-x-0.5"
-						/>
-					</a>
-				</div>
-			</div>
-		</div>
-	{/if}
-
 	<!-- MOBILE MENU DRAWER -->
 	{#if isMobileMenuOpen}
 		<div
 			transition:slide={{ duration: 200, easing: cubicOut }}
 			class="border-t border-[#E2E8F0] bg-white/95 px-6 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-xl lg:hidden dark:border-[#2A2578] dark:bg-[#0B0A23]/95 dark:shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
 		>
-			<!-- PRODUCTS (EXPANDABLE) -->
-			<button
-				on:click={() => (mobileProductsOpen = !mobileProductsOpen)}
-				class="flex w-full items-center justify-between rounded-lg px-4 py-3.5 text-left text-base font-medium text-[#0F172A] transition-colors duration-200 hover:bg-[#0891B2]/10 hover:text-[#0891B2] dark:text-white dark:hover:bg-[#22D3EE]/10 dark:hover:text-[#22D3EE]"
-			>
-				Products
-				<ChevronDown
-					size={16}
-					class={cn(
-						'transition-transform duration-200',
-						mobileProductsOpen && 'rotate-180',
-					)}
-				/>
-			</button>
-
-			{#if mobileProductsOpen}
-				<div
-					transition:slide={{ duration: 150, easing: cubicOut }}
-					class="mb-1 ml-4 space-y-0.5"
+			<!-- PLAIN LINKS -->
+			{#each PLAIN_LINKS as link}
+				<a
+					href={link.href}
+					class="block rounded-lg px-4 py-3.5 text-base font-medium text-[#0F172A] transition-colors duration-200 hover:bg-[#0891B2]/10 hover:text-[#0891B2] dark:text-white dark:hover:bg-[#22D3EE]/10 dark:hover:text-[#22D3EE]"
+					on:click={closeAll}
 				>
-					{#each liveProducts as product}
-						{@const Icon = PRODUCT_ICONS[product.slug] || Code}
-						<a
-							href={product.externalUrl}
-							class="flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm text-[#475569] transition-colors hover:bg-[#0891B2]/10 hover:text-[#0891B2] dark:text-slate-400 dark:hover:bg-[#22D3EE]/10 dark:hover:text-[#22D3EE]"
-							on:click={closeMobileMenu}
-						>
-							<Icon size={15} class="shrink-0" />
-							{product.name}
-						</a>
-					{/each}
-					<a
-						href="/products/"
-						class="flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium text-[#0891B2] transition-colors hover:bg-[#0891B2]/10 dark:text-[#22D3EE] dark:hover:bg-[#22D3EE]/10"
-						on:click={closeMobileMenu}
-					>
-						<ArrowRight size={14} />
-						View all
-					</a>
-				</div>
-			{/if}
+					{link.label}
+				</a>
+			{/each}
 
 			<!-- BLOG (EXPANDABLE) -->
 			<button
@@ -444,15 +231,12 @@
 			</button>
 
 			{#if mobileBlogOpen}
-				<div
-					transition:slide={{ duration: 150, easing: cubicOut }}
-					class="mb-1 ml-4 space-y-0.5"
-				>
+				<div transition:slide={{ duration: 150, easing: cubicOut }} class="mb-1 ml-4 space-y-0.5">
 					{#each recentPosts as post}
 						<a
 							href="/blog/{post.slug}/"
 							class="block rounded-lg px-4 py-2.5 text-sm text-[#475569] transition-colors hover:bg-[#0891B2]/10 hover:text-[#0891B2] dark:text-slate-400 dark:hover:bg-[#22D3EE]/10 dark:hover:text-[#22D3EE]"
-							on:click={closeMobileMenu}
+							on:click={closeAll}
 						>
 							<span class="line-clamp-1">{post.title}</span>
 						</a>
@@ -460,24 +244,13 @@
 					<a
 						href="/blog/"
 						class="flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium text-[#0891B2] transition-colors hover:bg-[#0891B2]/10 dark:text-[#22D3EE] dark:hover:bg-[#22D3EE]/10"
-						on:click={closeMobileMenu}
+						on:click={closeAll}
 					>
 						<ArrowRight size={14} />
 						View all posts
 					</a>
 				</div>
 			{/if}
-
-			<!-- ABOUT + CONTACT (PLAIN LINKS) -->
-			{#each PLAIN_LINKS as link}
-				<a
-					href={link.href}
-					class="block rounded-lg px-4 py-3.5 text-base font-medium text-[#0F172A] transition-colors duration-200 hover:bg-[#0891B2]/10 hover:text-[#0891B2] dark:text-white dark:hover:bg-[#22D3EE]/10 dark:hover:text-[#22D3EE]"
-					on:click={closeMobileMenu}
-				>
-					{link.label}
-				</a>
-			{/each}
 		</div>
 	{/if}
 </nav>
