@@ -86,14 +86,14 @@
 				Professional Summary
 			</h3>
 			<p class="mt-2.5 text-[10.5pt] leading-[1.4] text-[#334155]">
-				Dedicated and adaptable full-stack developer with a strong focus on web development. Proficient in
-				SvelteKit and Next.js, creating user-friendly and efficient applications. Value continuous learning,
-				clean code, and collaboration, and approach challenges with a positive attitude and a commitment to quality.
+				Dedicated and adaptable full-stack developer focused on web development, proficient in SvelteKit and
+				Next.js. Creates user-friendly, efficient applications, values clean code and continuous learning, and
+				approaches challenges with a commitment to quality.
 			</p>
 		</section>
 
 		<!-- SKILLS -->
-		<section class="resume-section mt-5">
+		<section class="resume-section mt-4">
 			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Skills
 			</h3>
@@ -107,7 +107,7 @@
 		</section>
 
 		<!-- EXPERIENCE -->
-		<section class="resume-section mt-5">
+		<section class="resume-section mt-4">
 			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Experience
 			</h3>
@@ -125,8 +125,33 @@
 			</div>
 		</section>
 
+		<!-- PROJECTS -->
+		<section class="resume-section mt-4">
+			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
+				Projects
+			</h3>
+			<div class="mt-2.5 space-y-1 text-[10.5pt] leading-[1.4] text-[#334155]">
+				<p>
+					<span class="font-semibold text-[#0F172A]">Door Lock Module</span> <span class="text-[#64748B]">| 2026</span> -
+					Smart door lock with RFID and face recognition (SvelteKit, Supabase, Arduino)
+				</p>
+				<p>
+					<span class="font-semibold text-[#0F172A]">Top One Uwu</span> <span class="text-[#64748B]">| 2022</span> -
+					AI study assistant featured in Inquirer.net (23k+ reactions, 36k+ shares) (SvelteKit, Supabase, OpenAI)
+				</p>
+				<p>
+					<span class="font-semibold text-[#0F172A]">Calculus Courseware</span> <span class="text-[#64748B]">| 2022</span> -
+					E-learning platform for a doctoral client (Next.js, React, Firebase)
+				</p>
+				<p>
+					<span class="font-semibold text-[#0F172A]">ELITS Membership Portal</span> <span class="text-[#64748B]">| 2023</span> -
+					Student organization portal, built as Vice-President (SvelteKit, Supabase)
+				</p>
+			</div>
+		</section>
+
 		<!-- EDUCATION -->
-		<section class="resume-section mt-5">
+		<section class="resume-section mt-4">
 			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Education
 			</h3>
@@ -143,7 +168,7 @@
 		</section>
 
 		<!-- ACHIEVEMENTS -->
-		<section class="resume-section mt-5">
+		<section class="resume-section mt-4">
 			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Achievements
 			</h3>
@@ -155,7 +180,7 @@
 		</section>
 
 		<!-- LANGUAGES -->
-		<section class="resume-section mt-5">
+		<section class="resume-section mt-4">
 			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Languages
 			</h3>
