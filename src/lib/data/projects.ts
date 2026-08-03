@@ -46,7 +46,7 @@ export const projects: PortfolioProject[] = [
 		category: 'Web App · AI',
 		role: 'Solo developer',
 		status: 'Archived',
-		recognition: 'Featured in Inquirer.net',
+		recognition: 'Featured in Inquirer.net & CLTV36',
 		summary:
 			'A free AI-powered writing and study assistant for students, built at 19 while exploring SvelteKit. Went viral in the Programming Philippines community and was covered by Inquirer.net.',
 		problem:

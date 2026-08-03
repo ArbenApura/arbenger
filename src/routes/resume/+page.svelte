@@ -136,7 +136,7 @@
 			</h3>
 			<ul class="mt-2 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.35] text-[#334155]">
 				<li>Door Lock Module (2026) - university capstone smart door lock with RFID and face recognition (Arduino), registered with the Intellectual Property Office of the Philippines (IPOPHL).</li>
-				<li>Top One Uwu (2022) - AI study assistant that went viral in the Programming Philippines community and was featured in Inquirer.net, a popular media outlet in the Philippines.</li>
+				<li>Top One Uwu (2022) - AI study assistant that went viral in the Programming Philippines community; featured in Inquirer.net, a popular media outlet in the Philippines, and interviewed live on CLTV36.</li>
 			</ul>
 		</section>
 
