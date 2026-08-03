@@ -103,9 +103,9 @@
 				Professional Summary
 			</h3>
 			<p class="mt-2 text-[10.5pt] leading-[1.2] text-[#334155]">
-				Full-stack developer building web and Android applications in SvelteKit, Next.js, and Capacitor,
-				working with clients from Figma to production. Shipped 7 apps to Google Play (500k+ downloads) plus a
-				PostgreSQL/Drizzle CMS and Google Play Billing. Seeking remote roles across Web and Android.
+				Full-stack developer focused on building and shipping production web and Android applications.
+				Experienced in turning client designs into complete products across frontend, backend, mobile, and
+				infrastructure. Strong focus on TypeScript, SvelteKit, Next.js, PostgreSQL, and Capacitor.
 			</p>
 		</section>
 
