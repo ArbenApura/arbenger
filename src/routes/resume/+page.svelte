@@ -22,12 +22,6 @@
 	onDestroy(() => {
 		hideChrome.set(false);
 	});
-
-	// -- FUNCTIONS -- //
-
-	function printResume() {
-		window.print();
-	}
 </script>
 
 <MetaTags
@@ -48,18 +42,19 @@
 		</h1>
 
 		<p class="mt-4 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			A one-page overview, formatted for applicant tracking systems. Print it or save it as a PDF — sized for US Letter.
+			A one-page overview, formatted for applicant tracking systems. Download the PDF version below.
 		</p>
 
-		<button
-			on:click={printResume}
+		<a
+			href="/resume/ArbenApura-Resume.pdf"
+			download
 			class="mt-8 inline-flex items-center gap-2 rounded-lg bg-[#0891B2] px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(8,145,178,0.2)] hover:brightness-110 dark:bg-[#22D3EE] dark:text-[#0B0A23] dark:hover:shadow-[0_0_20px_rgba(34,211,238,0.15)]"
 		>
-			Print / Save as PDF
-		</button>
+			Download Resume (PDF)
+		</a>
 
 		<p class="mt-4 text-sm text-[#94A3B8] dark:text-slate-500">
-			Tip: in the print dialog, turn off "Headers and footers" for a clean PDF.
+			US Letter, one page, ATS-friendly.
 		</p>
 	</div>
 </section>
