@@ -155,14 +155,14 @@
 				Education
 			</h3>
 			<div class="mt-2 space-y-1 text-[10.5pt] leading-[1.35] text-[#334155]">
-				<p>
-					<span class="font-semibold text-[#0F172A]">BS in Information Technology</span> - Bulacan State University,
-					Sarmiento Campus, San Jose del Monte, Bulacan
-				</p>
-				<p>
-					Graduated <span class="font-semibold text-[#0F172A]">Magna Cum Laude</span>
-					<span class="text-[#64748B]"> | 2025</span>
-				</p>
+				<div class="flex items-baseline justify-between gap-4">
+					<p class="font-semibold text-[#0F172A]">Bulacan State University - Sarmiento Campus</p>
+					<p class="shrink-0 text-[#64748B]">San Jose del Monte, Bulacan</p>
+				</div>
+				<div class="flex items-baseline justify-between gap-4">
+					<p class="font-semibold text-[#0F172A]">BS in Information Technology</p>
+					<p class="shrink-0 text-[#64748B]">July 2025 | Magna Cum Laude</p>
+				</div>
 			</div>
 		</section>
 
