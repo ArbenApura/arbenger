@@ -136,9 +136,9 @@
 					<p class="mt-0 text-[10pt] text-[#64748B]">Gotse Delchev, Bulgaria</p>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.2] text-[#334155]">
 						<li>Developed web automation and scraping pipelines that fed a prototype app store with web-scraped APKs, from metadata extraction to APK packaging.</li>
-						<li>Built a parallel queue task system with worker pooling that processed thousands of scraped APKs per day in parallel across available resources, with incremental database scaling as usage grew.</li>
-						<li>Created a full admin panel (PostgreSQL, Drizzle ORM) for the app ecosystem: content CMS with multi-language support across 40+ languages (manual, DeepL, and Gemini AI translation), order and sales management, and usage statistics for product improvements.</li>
-						<li>Managed production deployment on Plesk and Webuzo, including provisioning and cloning VM instances, and organized all source code in a monorepo with optimized CI/CD for continuous fast releases.</li>
+						<li>Built a parallel queue task system with worker pooling, processing thousands of scraped APKs per day in parallel with incremental database scaling as usage grew.</li>
+						<li>Created a full admin panel (PostgreSQL, Drizzle ORM): CMS with multi-language support across 40+ languages (manual, DeepL, Gemini AI), order and sales management, and usage stats.</li>
+						<li>Managed production deployment on Plesk and Webuzo, including VM provisioning and cloning, and organized all source code in a monorepo with optimized CI/CD.</li>
 					</ul>
 				</div>
 			</div>
