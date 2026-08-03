@@ -165,7 +165,7 @@
 				<p><span class="font-semibold text-[#0F172A]">Backend:</span> Node.js, Supabase, Firebase, PocketBase, PostgreSQL, MySQL, PHP, Drizzle ORM</p>
 				<p><span class="font-semibold text-[#0F172A]">Mobile:</span> Capacitor, Google Play Billing, Progressive Web Apps, Google Play Store deployment</p>
 				<p><span class="font-semibold text-[#0F172A]">Hosting and DevOps:</span> Linux, Vercel, Render, Cloudflare Pages, Plesk, Webuzo, Nginx, VPS, SSL, DNS, CI/CD, Git</p>
-				<p><span class="font-semibold text-[#0F172A]">AI and APIs:</span> OpenAI API, Google AI Studio API, DeepSeek, LLM prompt engineering</p>
+				<p><span class="font-semibold text-[#0F172A]">AI and APIs:</span> OpenAI API, Google AI Studio API, DeepSeek API, LLM prompt engineering</p>
 			</div>
 		</section>
 
