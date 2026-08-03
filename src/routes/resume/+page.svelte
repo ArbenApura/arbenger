@@ -82,32 +82,32 @@
 
 		<!-- PROFESSIONAL SUMMARY -->
 		<section class="resume-section mt-6">
-			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
+			<h3 class="border-b border-[#CBD5E1] pb-0.5 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Professional Summary
 			</h3>
-			<p class="mt-2.5 text-[10.5pt] leading-[1.4] text-[#334155]">
+			<p class="mt-2 text-[10.5pt] leading-[1.35] text-[#334155]">
 				Full-stack developer with 4+ years building web and Android applications in SvelteKit, Next.js, and
-				Capacitor. Shipped 7 apps to the Google Play Store — 500k+ downloads on the leading app — working
-				end-to-end from Figma designs to production. Seeking remote full-stack roles across Web and Android.
+				Capacitor. Shipped 7 apps to Google Play — 500k+ downloads on the leading app — end-to-end from Figma
+				to production. Seeking remote full-stack roles across Web and Android.
 			</p>
 		</section>
 
 		<!-- EXPERIENCE -->
-		<section class="resume-section mt-4">
-			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
+		<section class="resume-section mt-3">
+			<h3 class="border-b border-[#CBD5E1] pb-0.5 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Experience
 			</h3>
-			<div class="mt-2.5 space-y-3">
+			<div class="mt-2 space-y-3">
 				<div>
 					<div class="flex items-baseline justify-between gap-4">
 						<p class="text-[11pt] font-semibold text-[#0F172A]">Full-Stack Developer - Smartago LLC (UniStar.BG Ltd subsidiary)</p>
 						<p class="shrink-0 text-[10pt] text-[#64748B]">08/2025 - 06/2026</p>
 					</div>
-					<ul class="mt-1.5 list-disc space-y-0.5 pl-4 text-[10.5pt] leading-[1.4] text-[#334155]">
-						<li>Developed and shipped 7 Android and web apps to the Google Play Store, implementing client Figma designs end-to-end.</li>
-						<li>"XAPK Installer APK Downloader" surpassed 500k+ downloads on mobile, tablet, and Android TV; two Android TV apps passed 100k+ downloads each.</li>
-						<li>Integrated Capacitor with SvelteKit, shipping one codebase to both the Web and native Android.</li>
-						<li>Integrated Google Play Billing with idempotent purchase verification to prevent duplicate transactions and secure in-app purchases.</li>
+					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.35] text-[#334155]">
+						<li>Shipped 7 Android and web apps to the Google Play Store, implementing Figma designs end-to-end.</li>
+						<li>"XAPK Installer APK Downloader" surpassed 500k+ downloads; two Android TV apps passed 100k+ each.</li>
+						<li>Integrated Capacitor with SvelteKit to ship one codebase to the Web and native Android.</li>
+						<li>Integrated Google Play Billing with idempotent verification to prevent duplicate transactions.</li>
 					</ul>
 				</div>
 				<div>
@@ -115,47 +115,47 @@
 						<p class="text-[11pt] font-semibold text-[#0F172A]">Full-Stack Developer - UniStar.BG Ltd (Bulgaria)</p>
 						<p class="shrink-0 text-[10pt] text-[#64748B]">01/2025 - 06/2026</p>
 					</div>
-					<ul class="mt-1.5 list-disc space-y-0.5 pl-4 text-[10.5pt] leading-[1.4] text-[#334155]">
-						<li>Developed web automation and scraping pipelines; dissected APK structure and packaging for product development.</li>
-						<li>Built a parallel queue task system (worker pooling) that processed large volumes of scraped data across available resources.</li>
-						<li>Created a full admin panel on PostgreSQL with Drizzle ORM: app CMS with multi-language support (manual, DeepL, and Gemini AI translation), order and sales management, and usage statistics.</li>
-						<li>Managed production deployment on Plesk and Webuzo (including VM deployment and cloning) and a monorepo with optimized CI/CD.</li>
+					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.35] text-[#334155]">
+						<li>Developed web automation and scraping pipelines and dissected APK structure and packaging.</li>
+						<li>Built a parallel queue task system (worker pooling) for large volumes of scraped data.</li>
+						<li>Created a full admin panel (PostgreSQL, Drizzle ORM): app CMS with multi-language support (manual, DeepL, Gemini AI), order and sales management, and usage statistics.</li>
+						<li>Managed production deployment on Plesk and Webuzo, including VM instances and a monorepo with CI/CD.</li>
 					</ul>
 				</div>
 			</div>
 		</section>
 
 		<!-- PROJECTS AND ACHIEVEMENTS -->
-		<section class="resume-section mt-4">
-			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
+		<section class="resume-section mt-3">
+			<h3 class="border-b border-[#CBD5E1] pb-0.5 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Projects and Achievements
 			</h3>
-			<ul class="mt-2.5 list-disc space-y-0.5 pl-4 text-[10.5pt] leading-[1.4] text-[#334155]">
-				<li>Door Lock Module (2026) - university capstone: an Arduino-powered smart door lock with RFID and face recognition, managed through a web app; registered with the Intellectual Property Office of the Philippines (IPOPHL).</li>
-				<li>Top One Uwu (2022) - AI-powered study assistant built as a student project; went viral in the Programming Philippines community and was featured in Inquirer.net (23k+ reactions, 36k+ shares).</li>
+			<ul class="mt-2 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.35] text-[#334155]">
+				<li>Door Lock Module (2026) - university capstone smart door lock with RFID and face recognition (Arduino), registered with IPOPHL.</li>
+				<li>Top One Uwu (2022) - AI study assistant that went viral in Programming Philippines and was featured in Inquirer.net (23k+ reactions, 36k+ shares).</li>
 			</ul>
 		</section>
 
 		<!-- SKILLS -->
-		<section class="resume-section mt-4">
-			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
+		<section class="resume-section mt-3">
+			<h3 class="border-b border-[#CBD5E1] pb-0.5 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Skills
 			</h3>
-			<div class="mt-2.5 space-y-1 text-[10.5pt] leading-[1.4] text-[#334155]">
-				<p><span class="font-semibold text-[#0F172A]">Frontend:</span> TypeScript, JavaScript, SvelteKit, Svelte, Next.js, React, Tailwind CSS, SCSS, HTML</p>
+			<div class="mt-2 space-y-1 text-[10.5pt] leading-[1.35] text-[#334155]">
+				<p><span class="font-semibold text-[#0F172A]">Frontend:</span> TypeScript, JavaScript, SvelteKit, Next.js, React, Tailwind CSS, SCSS, HTML</p>
 				<p><span class="font-semibold text-[#0F172A]">Backend:</span> Node.js, Supabase, Firebase, PocketBase, PostgreSQL, MySQL, PHP, Drizzle ORM</p>
 				<p><span class="font-semibold text-[#0F172A]">Mobile:</span> Capacitor, Google Play Billing, Progressive Web Apps, Google Play Store deployment</p>
-				<p><span class="font-semibold text-[#0F172A]">Hosting and DevOps:</span> Vercel, Render, Cloudflare Pages, Plesk, Webuzo, Nginx, VPS, CI/CD, Monorepo, Git</p>
+				<p><span class="font-semibold text-[#0F172A]">Hosting and DevOps:</span> Vercel, Render, Cloudflare Pages, Plesk, Webuzo, Nginx, VPS, CI/CD, Git</p>
 				<p><span class="font-semibold text-[#0F172A]">AI and APIs:</span> OpenAI API, Google AI Studio API, DeepSeek, LLM prompt engineering</p>
 			</div>
 		</section>
 
 		<!-- EDUCATION -->
-		<section class="resume-section mt-4">
-			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
+		<section class="resume-section mt-3">
+			<h3 class="border-b border-[#CBD5E1] pb-0.5 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Education
 			</h3>
-			<div class="mt-2.5 space-y-1 text-[10.5pt] leading-[1.4] text-[#334155]">
+			<div class="mt-2 space-y-1 text-[10.5pt] leading-[1.35] text-[#334155]">
 				<p>
 					<span class="font-semibold text-[#0F172A]">BS in Information Technology</span> - Bulacan State University
 					<span class="text-[#64748B]"> | Magna Cum Laude | 2025</span>
@@ -168,11 +168,11 @@
 		</section>
 
 		<!-- LANGUAGES -->
-		<section class="resume-section mt-4">
-			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
+		<section class="resume-section mt-3">
+			<h3 class="border-b border-[#CBD5E1] pb-0.5 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Languages
 			</h3>
-			<p class="mt-2.5 text-[10.5pt] leading-[1.4] text-[#334155]">
+			<p class="mt-2 text-[10.5pt] leading-[1.35] text-[#334155]">
 				Filipino <span class="text-[#64748B]">(Native)</span> | English <span class="text-[#64748B]">(Proficient)</span>
 			</p>
 		</section>
