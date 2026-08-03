@@ -18,7 +18,7 @@ export const skillGroups: SkillGroup[] = [
 	},
 	{
 		name: 'Hosting & DevOps',
-		skills: ['Vercel', 'Render', 'Cloudflare Pages', 'Plesk', 'Webuzo', 'Nginx', 'VPS', 'CI/CD', 'Monorepo', 'Git', 'GitHub'],
+		skills: ['Vercel', 'Render', 'Cloudflare Pages', 'Plesk', 'Webuzo', 'Nginx', 'VPS', 'CI/CD', 'Monorepo', 'Git'],
 	},
 	{
 		name: 'AI & APIs',
