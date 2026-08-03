@@ -122,7 +122,7 @@
 					</div>
 					<p class="mt-0 text-[10pt] text-[#64748B]">Wilmington, DE, US</p>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.2] text-[#334155]">
-						<li>Shipped 7 apps in SvelteKit and Capacitor, wrapping web codebases into native Android builds for the Google Play Store.</li>
+						<li>Shipped and maintained 7 production apps in SvelteKit and Capacitor, wrapping web codebases into native Android builds for the Google Play Store across utility and Android TV categories.</li>
 						<li>Developed "XAPK Installer APK Downloader" from Figma designs to 500k+ downloads across mobile, tablet, and Android TV, plus an Android TV launcher and TV downloader at 100k+ each.</li>
 						<li>Maintained a single codebase across Web, Android, and Android TV (mobile, tablet, and TV form factors).</li>
 						<li>Integrated Google Play Billing with idempotent purchase verification and RTDN webhook endpoints that sync purchase lifecycle events (purchased, renewed, cancelled, expired) to the database.</li>
