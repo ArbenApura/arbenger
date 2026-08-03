@@ -117,9 +117,10 @@
 			<div class="mt-2 space-y-3">
 				<div>
 					<div class="flex items-baseline justify-between gap-4">
-						<p class="text-[11pt] font-semibold text-[#0F172A]">Remote Full-Stack Developer - Smartago LLC (UniStar.BG, Wilmington, DE)</p>
+						<p class="text-[11pt] font-semibold text-[#0F172A]">Remote Full-Stack Developer - Smartago LLC (UniStar.BG subsidiary)</p>
 						<p class="shrink-0 text-[10pt] text-[#64748B]">08/2025 - 06/2026</p>
 					</div>
+					<p class="mt-0.5 text-[10pt] text-[#64748B]">Wilmington, DE, US</p>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.3] text-[#334155]">
 						<li>Shipped 7 Android and web apps to Google Play from Figma designs end-to-end.</li>
 						<li>XAPK Installer APK Downloader: 500k+ downloads; two Android TV apps: 100k+ each.</li>
@@ -129,9 +130,10 @@
 				</div>
 				<div>
 					<div class="flex items-baseline justify-between gap-4">
-						<p class="text-[11pt] font-semibold text-[#0F172A]">Remote Full-Stack Developer - UniStar.BG Ltd (Gotse Delchev, Bulgaria)</p>
+						<p class="text-[11pt] font-semibold text-[#0F172A]">Remote Full-Stack Developer - UniStar.BG Ltd</p>
 						<p class="shrink-0 text-[10pt] text-[#64748B]">01/2025 - 06/2026</p>
 					</div>
+					<p class="mt-0.5 text-[10pt] text-[#64748B]">Gotse Delchev, Bulgaria</p>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.3] text-[#334155]">
 						<li>Developed web automation and scraping pipelines for a prototype app store, scraping the web for APKs (thousands of scrapes per day).</li>
 						<li>Built a parallel queue task system (worker pooling) to process the scraped data, with incremental database scaling as usage grew.</li>
