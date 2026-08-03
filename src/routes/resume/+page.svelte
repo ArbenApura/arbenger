@@ -125,7 +125,7 @@
 						<li>Shipped and maintained 7 production apps in SvelteKit and Capacitor, wrapping web codebases into native Android builds for the Google Play Store across utility and Android TV categories.</li>
 						<li>Developed "XAPK Installer APK Downloader" from Figma designs to 500k+ downloads across mobile, tablet, and Android TV, plus an Android TV launcher and TV downloader that each surpassed 100k+ downloads.</li>
 						<li>Architected and maintained a shared codebase across Web, Android phones/tablets, and Android TV.</li>
-						<li>Integrated Google Play Billing with idempotent purchase verification and RTDN webhook endpoints that sync purchase lifecycle events (purchased, renewed, cancelled, expired) to the database.</li>
+						<li>Integrated Google Play Billing with idempotent purchase verification and RTDN webhook endpoints that synchronize purchase lifecycle events (purchased, renewed, cancelled, expired) to the database.</li>
 					</ul>
 				</div>
 				<div>
