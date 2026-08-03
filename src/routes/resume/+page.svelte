@@ -117,10 +117,11 @@
 			<div class="mt-2 space-y-3">
 				<div>
 					<div class="flex items-baseline justify-between gap-4">
-						<p class="text-[11pt] font-semibold text-[#0F172A]">Remote Full-Stack Developer - Smartago LLC (UniStar.BG subsidiary)</p>
+						<p class="text-[11pt] font-semibold text-[#0F172A]">Smartago LLC</p>
 						<p class="shrink-0 text-[10pt] text-[#64748B]">08/2025 - 06/2026</p>
 					</div>
-					<p class="mt-0 text-[10pt] text-[#64748B]">Wilmington, DE, US</p>
+					<p class="text-[10pt] font-semibold text-[#334155]">Freelance Full-Stack Developer</p>
+					<p class="mt-0 text-[10pt] text-[#64748B]">Additional work for the same client group (UniStar.BG subsidiary) · Wilmington, DE, US</p>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.2] text-[#334155]">
 						<li>Shipped and maintained 7 production apps in SvelteKit and Capacitor, wrapping web codebases into native Android builds for the Google Play Store across utility and Android TV categories.</li>
 						<li>Developed "XAPK Installer APK Downloader" from Figma designs to 500k+ downloads across mobile, tablet, and Android TV, plus an Android TV launcher and TV downloader that each surpassed 100k+ downloads.</li>
@@ -130,10 +131,11 @@
 				</div>
 				<div>
 					<div class="flex items-baseline justify-between gap-4">
-						<p class="text-[11pt] font-semibold text-[#0F172A]">Remote Full-Stack Developer - UniStar.BG Ltd</p>
+						<p class="text-[11pt] font-semibold text-[#0F172A]">UniStar.BG Ltd</p>
 						<p class="shrink-0 text-[10pt] text-[#64748B]">01/2025 - 06/2026</p>
 					</div>
-					<p class="mt-0 text-[10pt] text-[#64748B]">Gotse Delchev, Bulgaria</p>
+					<p class="text-[10pt] font-semibold text-[#334155]">Freelance Full-Stack Developer</p>
+					<p class="mt-0 text-[10pt] text-[#64748B]">Long-term freelance engagement via Upwork · Gotse Delchev, Bulgaria</p>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.2] text-[#334155]">
 						<li>Built an automated web scraping and APK ingestion pipeline covering metadata extraction, processing, packaging, and database persistence.</li>
 						<li>Designed and implemented a parallel job-processing system with worker pooling, processing thousands of APK scraping tasks per day while scaling PostgreSQL incrementally with workload growth.</li>

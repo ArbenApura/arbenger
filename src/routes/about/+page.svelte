@@ -21,9 +21,9 @@
 
 	const TIMELINE = [
 		{
-			role: 'Remote Full-Stack Developer',
+			role: 'Freelance Full-Stack Developer',
 			company: 'Smartago LLC (Wilmington, DE, US · UniStar.BG Ltd subsidiary)',
-			period: '08/2025 — 06/2026',
+			period: '08/2025 — 06/2026 · additional work for the same client group',
 			points: [
 				'Developed and shipped 7 Android and web apps to the Google Play Store, implementing client Figma designs end-to-end.',
 				'Leading app "XAPK Installer APK Downloader" surpassed 500k+ downloads on mobile, tablet, and Android TV; two Android TV apps passed 100k+ downloads each.',
@@ -32,9 +32,9 @@
 			],
 		},
 		{
-			role: 'Remote Full-Stack Developer',
+			role: 'Freelance Full-Stack Developer',
 			company: 'UniStar.BG Ltd (Gotse Delchev, Bulgaria)',
-			period: '01/2025 — 06/2026',
+			period: '01/2025 — 06/2026 · long-term freelance engagement via Upwork',
 			points: [
 				'Developed web automation and scraping pipelines for a prototype app store, scraping the web for APKs with thousands of scrapes per day.',
 				'Built a parallel queue task system (worker pooling) to process the scraped data, with incremental database scaling as usage grew.',
