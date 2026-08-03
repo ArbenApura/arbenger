@@ -125,6 +125,17 @@
 			</div>
 		</section>
 
+		<!-- PROJECTS AND ACHIEVEMENTS -->
+		<section class="resume-section mt-4">
+			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
+				Projects and Achievements
+			</h3>
+			<ul class="mt-2.5 list-disc space-y-0.5 pl-4 text-[10.5pt] leading-[1.4] text-[#334155]">
+				<li>Door Lock Module (2026) - university capstone: an Arduino-powered smart door lock with RFID and face recognition, managed through a web app; registered with the Intellectual Property Office of the Philippines (IPOPHL).</li>
+				<li>Top One Uwu (2022) - AI-powered study assistant built as a student project; went viral in the Programming Philippines community and was featured in Inquirer.net (23k+ reactions, 36k+ shares).</li>
+			</ul>
+		</section>
+
 		<!-- SKILLS -->
 		<section class="resume-section mt-4">
 			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
@@ -154,17 +165,6 @@
 					National Trade School <span class="text-[#64748B]"> | 2021</span>
 				</p>
 			</div>
-		</section>
-
-		<!-- PROJECTS AND ACHIEVEMENTS -->
-		<section class="resume-section mt-4">
-			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
-				Projects and Achievements
-			</h3>
-			<ul class="mt-2.5 list-disc space-y-0.5 pl-4 text-[10.5pt] leading-[1.4] text-[#334155]">
-				<li>Door Lock Module (2026) - university capstone: an Arduino-powered smart door lock with RFID and face recognition, managed through a web app; registered with the Intellectual Property Office of the Philippines (IPOPHL).</li>
-				<li>Top One Uwu (2022) - AI-powered study assistant built as a student project; went viral in the Programming Philippines community and was featured in Inquirer.net (23k+ reactions, 36k+ shares).</li>
-			</ul>
 		</section>
 
 		<!-- LANGUAGES -->
