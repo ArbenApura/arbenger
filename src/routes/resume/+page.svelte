@@ -134,7 +134,6 @@
 				<li>Door Lock Module (2026) - university capstone: an Arduino-powered smart door lock with RFID and face recognition, managed through a web app; registered with the Intellectual Property Office of the Philippines (IPOPHL).</li>
 				<li>Top One Uwu (2022) - AI-powered study assistant built as a student project; went viral in the Programming Philippines community and was featured in Inquirer.net (23k+ reactions, 36k+ shares).</li>
 			</ul>
-			<p class="mt-2 text-[10pt] text-[#64748B]">See more projects: arbenger.com/projects/</p>
 		</section>
 
 		<!-- SKILLS -->
