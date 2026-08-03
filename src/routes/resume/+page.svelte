@@ -113,7 +113,7 @@
 			</h3>
 			<div class="mt-2.5">
 				<div class="flex items-baseline justify-between gap-4">
-					<p class="text-[11pt] font-semibold text-[#0F172A]">Remote Full-Stack Web Developer - UniStar.BG Ltd</p>
+					<p class="text-[11pt] font-semibold text-[#0F172A]">Remote Full-Stack Web Developer - UniStar.BG Ltd (Bulgaria)</p>
 					<p class="shrink-0 text-[10pt] text-[#64748B]">01/2025 - 06/2026</p>
 				</div>
 				<ul class="mt-1.5 list-disc space-y-0.5 pl-4 text-[10.5pt] leading-[1.4] text-[#334155]">

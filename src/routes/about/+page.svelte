@@ -22,7 +22,7 @@
 	const TIMELINE = [
 		{
 			role: 'Remote Full-Stack Web Developer',
-			company: 'UniStar.BG Ltd',
+			company: 'UniStar.BG Ltd (Bulgaria-based)',
 			period: '01/2025 — 06/2026',
 			points: [
 				'Sole developer of 7 Android and web apps shipped to the Google Play Store, implementing client Figma designs end-to-end.',
