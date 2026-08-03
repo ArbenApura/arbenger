@@ -98,11 +98,11 @@
 		</header>
 
 		<!-- PROFESSIONAL SUMMARY -->
-		<section class="resume-section mt-6">
+		<section class="resume-section mt-5">
 			<h3 class="border-b border-[#CBD5E1] pb-0.5 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Professional Summary
 			</h3>
-			<p class="mt-2 text-[10.5pt] leading-[1.3] text-[#334155]">
+			<p class="mt-2 text-[10.5pt] leading-[1.25] text-[#334155]">
 				Full-stack developer with 4+ years building web and Android applications in SvelteKit, Next.js, and
 				Capacitor. Shipped 7 apps to Google Play — 500k+ downloads on the leading app — end-to-end from Figma
 				to production. Seeking remote full-stack roles across Web and Android.
@@ -110,7 +110,7 @@
 		</section>
 
 		<!-- EXPERIENCE -->
-		<section class="resume-section mt-3">
+		<section class="resume-section mt-2.5">
 			<h3 class="border-b border-[#CBD5E1] pb-0.5 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Experience
 			</h3>
@@ -120,8 +120,8 @@
 						<p class="text-[11pt] font-semibold text-[#0F172A]">Remote Full-Stack Developer - Smartago LLC (UniStar.BG subsidiary)</p>
 						<p class="shrink-0 text-[10pt] text-[#64748B]">08/2025 - 06/2026</p>
 					</div>
-					<p class="mt-0.5 text-[10pt] text-[#64748B]">Wilmington, DE, US</p>
-					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.3] text-[#334155]">
+					<p class="mt-0 text-[10pt] text-[#64748B]">Wilmington, DE, US</p>
+					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.25] text-[#334155]">
 						<li>Shipped 7 Android and web apps to Google Play from Figma designs end-to-end.</li>
 						<li>XAPK Installer APK Downloader: 500k+ downloads; two Android TV apps: 100k+ each.</li>
 						<li>Integrated Capacitor with SvelteKit to ship one codebase to the Web and native Android.</li>
@@ -133,8 +133,8 @@
 						<p class="text-[11pt] font-semibold text-[#0F172A]">Remote Full-Stack Developer - UniStar.BG Ltd</p>
 						<p class="shrink-0 text-[10pt] text-[#64748B]">01/2025 - 06/2026</p>
 					</div>
-					<p class="mt-0.5 text-[10pt] text-[#64748B]">Gotse Delchev, Bulgaria</p>
-					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.3] text-[#334155]">
+					<p class="mt-0 text-[10pt] text-[#64748B]">Gotse Delchev, Bulgaria</p>
+					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.25] text-[#334155]">
 						<li>Developed web automation and scraping pipelines for a prototype app store, scraping the web for APKs (thousands of scrapes per day).</li>
 						<li>Built a parallel queue task system (worker pooling) to process the scraped data, with incremental database scaling as usage grew.</li>
 						<li>Created a full admin panel (PostgreSQL, Drizzle ORM): app CMS with multi-language support (manual, DeepL, Gemini AI) across 40+ languages, order and sales management, and usage statistics.</li>
@@ -145,22 +145,22 @@
 		</section>
 
 		<!-- PROJECTS AND ACHIEVEMENTS -->
-		<section class="resume-section mt-3">
+		<section class="resume-section mt-2.5">
 			<h3 class="border-b border-[#CBD5E1] pb-0.5 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Projects and Achievements
 			</h3>
-			<ul class="mt-2 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.3] text-[#334155]">
+			<ul class="mt-2 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.25] text-[#334155]">
 				<li>Door Lock Module (2026) - university capstone smart door lock with RFID and face recognition (Arduino), registered with the Intellectual Property Office of the Philippines (IPOPHL).</li>
 				<li>Top One Uwu (2022) - AI study assistant that went viral in the Programming Philippines community; featured in Inquirer.net, a popular media outlet in the Philippines, and interviewed live on CLTV36.</li>
 			</ul>
 		</section>
 
 		<!-- SKILLS -->
-		<section class="resume-section mt-3">
+		<section class="resume-section mt-2.5">
 			<h3 class="border-b border-[#CBD5E1] pb-0.5 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Skills
 			</h3>
-			<div class="mt-2 space-y-1 text-[10.5pt] leading-[1.3] text-[#334155]">
+			<div class="mt-2 space-y-1 text-[10.5pt] leading-[1.25] text-[#334155]">
 				<p><span class="font-semibold text-[#0F172A]">Frontend:</span> TypeScript, JavaScript, SvelteKit, Next.js, React, Tailwind CSS, SCSS, HTML</p>
 				<p><span class="font-semibold text-[#0F172A]">Backend:</span> Node.js, Supabase, Firebase, PocketBase, PostgreSQL, MySQL, PHP, Drizzle ORM</p>
 				<p><span class="font-semibold text-[#0F172A]">Mobile:</span> Capacitor, Google Play Billing, Progressive Web Apps, Google Play Store deployment</p>
@@ -170,11 +170,11 @@
 		</section>
 
 		<!-- EDUCATION -->
-		<section class="resume-section mt-3">
+		<section class="resume-section mt-2.5">
 			<h3 class="border-b border-[#CBD5E1] pb-0.5 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Education
 			</h3>
-			<div class="mt-2 space-y-1 text-[10.5pt] leading-[1.3] text-[#334155]">
+			<div class="mt-2 space-y-1 text-[10.5pt] leading-[1.25] text-[#334155]">
 				<div class="flex items-baseline justify-between gap-4">
 					<p class="font-semibold text-[#0F172A]">Bulacan State University - Sarmiento Campus</p>
 					<p class="shrink-0 text-[#64748B]">San Jose del Monte, Bulacan</p>
@@ -187,11 +187,11 @@
 		</section>
 
 		<!-- LANGUAGES -->
-		<section class="resume-section mt-3">
+		<section class="resume-section mt-2.5">
 			<h3 class="border-b border-[#CBD5E1] pb-0.5 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
 				Languages
 			</h3>
-			<p class="mt-2 text-[10.5pt] leading-[1.3] text-[#334155]">
+			<p class="mt-2 text-[10.5pt] leading-[1.25] text-[#334155]">
 				Filipino <span class="text-[#64748B]">(Native)</span> | English <span class="text-[#64748B]">(Proficient)</span>
 			</p>
 		</section>
