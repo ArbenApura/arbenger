@@ -92,20 +92,6 @@
 			</p>
 		</section>
 
-		<!-- SKILLS -->
-		<section class="resume-section mt-4">
-			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
-				Skills
-			</h3>
-			<div class="mt-2.5 space-y-1 text-[10.5pt] leading-[1.4] text-[#334155]">
-				<p><span class="font-semibold text-[#0F172A]">Frontend:</span> TypeScript, JavaScript, SvelteKit, Svelte, Next.js, React, Tailwind CSS, SCSS, HTML</p>
-				<p><span class="font-semibold text-[#0F172A]">Backend:</span> Node.js, Supabase, Firebase, PocketBase, MySQL, PHP</p>
-				<p><span class="font-semibold text-[#0F172A]">Mobile:</span> Capacitor, Google Play Billing, Progressive Web Apps, Google Play Store deployment</p>
-				<p><span class="font-semibold text-[#0F172A]">Hosting and DevOps:</span> Vercel, Render, Cloudflare Pages, Plesk, Webuzo, Nginx, VPS, CI/CD, Monorepo</p>
-				<p><span class="font-semibold text-[#0F172A]">AI and APIs:</span> OpenAI API, Google AI Studio API, DeepSeek, LLM prompt engineering</p>
-			</div>
-		</section>
-
 		<!-- EXPERIENCE -->
 		<section class="resume-section mt-4">
 			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
@@ -127,6 +113,20 @@
 					<li>Managed production deployment on Plesk and Webuzo, including virtual machine deployment and cloning.</li>
 					<li>Organized all source code in a monorepo with optimized CI/CD for continuous and fast updates.</li>
 				</ul>
+			</div>
+		</section>
+
+		<!-- SKILLS -->
+		<section class="resume-section mt-4">
+			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
+				Skills
+			</h3>
+			<div class="mt-2.5 space-y-1 text-[10.5pt] leading-[1.4] text-[#334155]">
+				<p><span class="font-semibold text-[#0F172A]">Frontend:</span> TypeScript, JavaScript, SvelteKit, Svelte, Next.js, React, Tailwind CSS, SCSS, HTML</p>
+				<p><span class="font-semibold text-[#0F172A]">Backend:</span> Node.js, Supabase, Firebase, PocketBase, MySQL, PHP</p>
+				<p><span class="font-semibold text-[#0F172A]">Mobile:</span> Capacitor, Google Play Billing, Progressive Web Apps, Google Play Store deployment</p>
+				<p><span class="font-semibold text-[#0F172A]">Hosting and DevOps:</span> Vercel, Render, Cloudflare Pages, Plesk, Webuzo, Nginx, VPS, CI/CD, Monorepo</p>
+				<p><span class="font-semibold text-[#0F172A]">AI and APIs:</span> OpenAI API, Google AI Studio API, DeepSeek, LLM prompt engineering</p>
 			</div>
 		</section>
 
