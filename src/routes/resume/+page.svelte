@@ -124,8 +124,8 @@
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.25] text-[#334155]">
 						<li>Developed and shipped 7 Android and web apps to the Google Play Store, implementing client Figma designs end-to-end.</li>
 						<li>"XAPK Installer APK Downloader" surpassed 500k+ downloads on mobile, tablet, and Android TV; two Android TV apps passed 100k+ downloads each.</li>
-						<li>Integrated Capacitor with SvelteKit to ship one codebase to the Web and native Android.</li>
-						<li>Integrated Google Play Billing with idempotent verification to prevent duplicate transactions.</li>
+						<li>Integrated Capacitor with SvelteKit to ship one codebase to the Web and native Android across mobile, tablet, and TV form factors.</li>
+						<li>Integrated Google Play Billing with idempotent purchase verification to prevent duplicate transactions and secure in-app purchases.</li>
 					</ul>
 				</div>
 				<div>
