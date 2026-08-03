@@ -42,7 +42,7 @@
 			'@type': 'Person',
 			name: 'Arben M. Apura',
 			url: SITE_URL,
-			email: 'arbenapura.official@gmail.com',
+			email: 'mailto:arbenapura.official@gmail.com',
 			telephone: '+639764304619',
 		},
 	}}

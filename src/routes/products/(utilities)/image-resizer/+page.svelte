@@ -165,7 +165,7 @@
 		'@type': 'BreadcrumbList',
 		itemListElement: [
 			{ '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-			{ '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE_URL}/products/` },
+			{ '@type': 'ListItem', position: 2, name: 'Projects', item: `${SITE_URL}/projects/` },
 			{
 				'@type': 'ListItem',
 				position: 3,
