@@ -87,7 +87,7 @@
 			</h3>
 			<p class="mt-2.5 text-[10.5pt] leading-[1.4] text-[#334155]">
 				Full-stack developer with 4+ years building web and Android applications, proficient in SvelteKit,
-				Next.js, and Capacitor. Sole developer of 7 apps shipped to the Google Play Store, with 500k+ downloads
+				Next.js, and Capacitor. Developed and shipped 7 apps to the Google Play Store, with 500k+ downloads
 				on the leading app. Creates user-friendly, efficient applications and values clean code and continuous learning.
 			</p>
 		</section>
@@ -104,7 +104,7 @@
 						<p class="shrink-0 text-[10pt] text-[#64748B]">08/2025 - 06/2026</p>
 					</div>
 					<ul class="mt-1.5 list-disc space-y-0.5 pl-4 text-[10.5pt] leading-[1.4] text-[#334155]">
-						<li>Sole developer of 7 Android and web apps shipped to the Google Play Store, implementing client Figma designs end-to-end.</li>
+						<li>Developed and shipped 7 Android and web apps to the Google Play Store, implementing client Figma designs end-to-end.</li>
 						<li>"XAPK Installer APK Downloader" surpassed 500k+ downloads on mobile, tablet, and Android TV; two Android TV apps passed 100k+ downloads each.</li>
 						<li>Integrated Capacitor with SvelteKit, shipping one codebase to both the Web and native Android.</li>
 						<li>Engineered Google Play Billing integration with idempotent purchase verification — deduplicating order IDs and enforcing atomic entitlement state transitions for exactly-once fulfillment and protection against duplicate or replayed transactions.</li>
