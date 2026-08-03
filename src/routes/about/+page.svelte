@@ -38,7 +38,7 @@
 			points: [
 				'Developed web automation and scraping pipelines; dissected APK structure and packaging for product development.',
 				'Built a parallel queue task system (worker pooling) that processed large volumes of scraped data across available resources.',
-				'Created a full admin panel: app CMS, multi-language support (manual, DeepL, and Gemini AI translation), orders and sales, and usage statistics.',
+				'Created a full admin panel on PostgreSQL: app CMS, multi-language support (manual, DeepL, and Gemini AI translation), orders and sales, and usage statistics.',
 				'Managed production deployment on Plesk and Webuzo (including VM deployment and cloning) and a monorepo with optimized CI/CD.',
 			],
 		},
