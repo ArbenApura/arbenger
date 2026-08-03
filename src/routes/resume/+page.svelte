@@ -87,8 +87,8 @@
 			</h3>
 			<p class="mt-2.5 text-[10.5pt] leading-[1.4] text-[#334155]">
 				Full-stack developer with 4+ years building web and Android applications in SvelteKit, Next.js, and
-				Capacitor. Shipped 7 apps to the Google Play Store — 500k+ downloads on the leading app — with end-to-end
-				ownership across automation, admin platforms, Google Play Billing, and CI/CD.
+				Capacitor. Shipped 7 apps to the Google Play Store — 500k+ downloads on the leading app — working
+				end-to-end from Figma designs to production. Seeking remote full-stack roles across Web and Android.
 			</p>
 		</section>
 
