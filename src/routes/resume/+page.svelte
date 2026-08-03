@@ -73,7 +73,7 @@
 				Full-Stack Developer
 			</p>
 			<p class="mt-3 text-[10pt] leading-relaxed text-[#334155]">
-				arbenapura.official@gmail.com | +63 976 430 4619 | San Jose Del Monte, Bulacan, Philippines
+				arbenapura.official@gmail.com | +63 976 430 4619 | San Jose Del Monte, Bulacan 3023, Philippines
 				<br />
 				github.com/ArbenApura | arbenger.com
 			</p>
@@ -99,7 +99,7 @@
 			<div class="mt-2 space-y-3">
 				<div>
 					<div class="flex items-baseline justify-between gap-4">
-						<p class="text-[11pt] font-semibold text-[#0F172A]">Full-Stack Developer - Smartago LLC (UniStar.BG Ltd subsidiary)</p>
+						<p class="text-[11pt] font-semibold text-[#0F172A]">Full-Stack Developer - Smartago LLC (UniStar.BG Ltd subsidiary, Bulgaria)</p>
 						<p class="shrink-0 text-[10pt] text-[#64748B]">08/2025 - 06/2026</p>
 					</div>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.35] text-[#334155]">
@@ -157,7 +157,7 @@
 			<div class="mt-2 space-y-1 text-[10.5pt] leading-[1.35] text-[#334155]">
 				<p>
 					<span class="font-semibold text-[#0F172A]">BS in Information Technology</span> - Bulacan State University,
-					Sarmiento Campus
+					Sarmiento Campus, San Jose del Monte, Bulacan
 				</p>
 				<p>
 					Graduated <span class="font-semibold text-[#0F172A]">Magna Cum Laude</span>
