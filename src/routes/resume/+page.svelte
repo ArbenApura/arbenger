@@ -161,7 +161,7 @@
 				</div>
 				<div class="flex items-baseline justify-between gap-4">
 					<p class="font-semibold text-[#0F172A]">BS in Information Technology</p>
-					<p class="shrink-0 text-[#64748B]">July 2025 | Magna Cum Laude</p>
+					<p class="shrink-0 text-[#64748B]">July 2025 | <span class="font-semibold text-[#0F172A]">Magna Cum Laude</span></p>
 				</div>
 			</div>
 		</section>
