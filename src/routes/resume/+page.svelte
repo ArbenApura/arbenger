@@ -162,8 +162,8 @@
 				Projects and Achievements
 			</h3>
 			<ul class="mt-2.5 list-disc space-y-0.5 pl-4 text-[10.5pt] leading-[1.4] text-[#334155]">
-				<li>Top One Uwu (2022) - AI-powered study assistant built as a student project; went viral in the Programming Philippines community and was featured in Inquirer.net (23k+ reactions, 36k+ shares).</li>
 				<li>Door Lock Module (2026) - university capstone: an Arduino-powered smart door lock with RFID and face recognition, managed through a web app; registered with the Intellectual Property Office of the Philippines (IPOPHL).</li>
+				<li>Top One Uwu (2022) - AI-powered study assistant built as a student project; went viral in the Programming Philippines community and was featured in Inquirer.net (23k+ reactions, 36k+ shares).</li>
 			</ul>
 		</section>
 
