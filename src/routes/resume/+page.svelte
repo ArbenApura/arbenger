@@ -156,16 +156,16 @@
 			</div>
 		</section>
 
-		<!-- ACHIEVEMENTS -->
+		<!-- PROJECTS AND ACHIEVEMENTS -->
 		<section class="resume-section mt-4">
 			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
-				Achievements
+				Projects and Achievements
 			</h3>
-			<p class="mt-2.5 text-[10.5pt] leading-[1.4] text-[#334155]">
-				Registered the university capstone project <span class="font-semibold text-[#0F172A]">"Door Lock Module"</span> -
-				a smart door lock with RFID and face recognition - with the Intellectual Property Office of the Philippines
-				(IPOPHL), February 2026.
-			</p>
+			<ul class="mt-2.5 list-disc space-y-0.5 pl-4 text-[10.5pt] leading-[1.4] text-[#334155]">
+				<li>Top One Uwu (2022) - AI study assistant built as a student; featured in Inquirer.net.</li>
+				<li>Door Lock Module (2026) - university capstone smart door lock (RFID + face recognition), registered with IPOPHL.</li>
+				<li>Freelance developer since high school with multiple clients, including the ELITS membership portal (2023).</li>
+			</ul>
 		</section>
 
 		<!-- LANGUAGES -->
