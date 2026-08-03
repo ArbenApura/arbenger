@@ -135,7 +135,7 @@
 					</div>
 					<p class="mt-0 text-[10pt] text-[#64748B]">Gotse Delchev, Bulgaria</p>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.2] text-[#334155]">
-						<li>Built an automated APK ingestion pipeline covering metadata extraction, processing, packaging, and database persistence.</li>
+						<li>Built an automated web scraping and APK ingestion pipeline covering metadata extraction, processing, packaging, and database persistence.</li>
 						<li>Designed and implemented a parallel job-processing system with worker pooling, processing thousands of APK scraping tasks per day while scaling PostgreSQL incrementally with workload growth.</li>
 						<li>Built a SvelteKit, PostgreSQL/Drizzle CMS supporting 40+ languages with manual, DeepL, and Gemini-powered translation workflows, plus order, sales, and per-app user and activity analytics.</li>
 						<li>Managed production deployment on Linux (Plesk, Webuzo, Nginx) covering SSL and DNS, VM provisioning and cloning, and a monorepo with optimized CI/CD.</li>
