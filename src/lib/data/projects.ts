@@ -34,7 +34,7 @@ export const projects: PortfolioProject[] = [
 			title: 'Door Lock Module demo',
 		},
 		pdf: {
-			path: '/projects/door-lock-module/IMRAD-Smart-Door-Lock-Face-Recognition-and-RFID-Technology-for-ITDS-Department-SC.pdf',
+			path: '/projects/door-lock-module/research-paper.pdf',
 			label: 'Research paper (IMRAD)',
 		},
 	},
