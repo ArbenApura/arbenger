@@ -125,31 +125,6 @@
 			</div>
 		</section>
 
-		<!-- PROJECTS -->
-		<section class="resume-section mt-4">
-			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
-				Projects
-			</h3>
-			<div class="mt-2.5 space-y-1 text-[10.5pt] leading-[1.4] text-[#334155]">
-				<p>
-					<span class="font-semibold text-[#0F172A]">Door Lock Module</span> <span class="text-[#64748B]">| 2026</span> -
-					Smart door lock with RFID and face recognition (SvelteKit, Supabase, Arduino)
-				</p>
-				<p>
-					<span class="font-semibold text-[#0F172A]">Top One Uwu</span> <span class="text-[#64748B]">| 2022</span> -
-					AI study assistant featured in Inquirer.net (23k+ reactions, 36k+ shares) (SvelteKit, Supabase, OpenAI)
-				</p>
-				<p>
-					<span class="font-semibold text-[#0F172A]">Calculus Courseware</span> <span class="text-[#64748B]">| 2022</span> -
-					E-learning platform for a doctoral client (Next.js, React, Firebase)
-				</p>
-				<p>
-					<span class="font-semibold text-[#0F172A]">ELITS Membership Portal</span> <span class="text-[#64748B]">| 2023</span> -
-					Student organization portal, built as Vice-President (SvelteKit, Supabase)
-				</p>
-			</div>
-		</section>
-
 		<!-- EDUCATION -->
 		<section class="resume-section mt-4">
 			<h3 class="border-b border-[#CBD5E1] pb-1 text-[12pt] font-bold tracking-[0.08em] text-[#0F172A] uppercase">
