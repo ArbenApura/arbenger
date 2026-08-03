@@ -104,8 +104,8 @@
 			</h3>
 			<p class="mt-2 text-[10.5pt] leading-[1.25] text-[#334155]">
 				Full-stack developer with 4+ years building web and Android applications in SvelteKit, Next.js, and
-				Capacitor. Shipped 7 apps to Google Play — 500k+ downloads on the leading app — end-to-end from Figma
-				to production. Seeking remote full-stack roles across Web and Android.
+				Capacitor; shipped 7 apps to Google Play (500k+ downloads on the leading app), end-to-end from Figma to
+				production, seeking remote roles across Web and Android.
 			</p>
 		</section>
 
@@ -125,7 +125,7 @@
 						<li>Shipped 7 Android and web apps to Google Play from Figma designs end-to-end.</li>
 						<li>XAPK Installer APK Downloader: 500k+ downloads; two Android TV apps: 100k+ each.</li>
 						<li>Integrated Capacitor with SvelteKit to ship one codebase to the Web and native Android.</li>
-						<li>Integrated Google Play Billing with idempotent verification to prevent duplicate transactions.</li>
+						<li>Integrated Google Play Billing with idempotent verification (no duplicate transactions).</li>
 					</ul>
 				</div>
 				<div>
@@ -138,7 +138,7 @@
 						<li>Developed web automation and scraping pipelines for a prototype app store, scraping the web for APKs (thousands of scrapes per day).</li>
 						<li>Built a parallel queue task system (worker pooling) to process the scraped data, with incremental database scaling as usage grew.</li>
 						<li>Created a full admin panel (PostgreSQL, Drizzle ORM): app CMS with multi-language support (manual, DeepL, Gemini AI) across 40+ languages, order and sales management, and usage statistics.</li>
-						<li>Managed production deployment on Plesk and Webuzo, including VM instances and a monorepo with CI/CD.</li>
+						<li>Managed deployment on Plesk and Webuzo, including VMs and a monorepo with CI/CD.</li>
 					</ul>
 				</div>
 			</div>
@@ -151,7 +151,7 @@
 			</h3>
 			<ul class="mt-2 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.25] text-[#334155]">
 				<li>Door Lock Module (2026) - university capstone smart door lock with RFID and face recognition (Arduino), registered with the Intellectual Property Office of the Philippines (IPOPHL).</li>
-				<li>Top One Uwu (2022) - AI study assistant that went viral in the Programming Philippines community; featured in Inquirer.net, a popular media outlet in the Philippines, and interviewed live on CLTV36.</li>
+				<li>Top One Uwu (2022) - AI study assistant that went viral; featured in Inquirer.net, a popular Philippine media outlet, and interviewed live on CLTV36.</li>
 			</ul>
 		</section>
 
@@ -163,7 +163,7 @@
 			<div class="mt-2 space-y-1 text-[10.5pt] leading-[1.25] text-[#334155]">
 				<p><span class="font-semibold text-[#0F172A]">Frontend:</span> TypeScript, JavaScript, SvelteKit, Next.js, React, Tailwind CSS, SCSS, HTML</p>
 				<p><span class="font-semibold text-[#0F172A]">Backend:</span> Node.js, Supabase, Firebase, PocketBase, PostgreSQL, MySQL, PHP, Drizzle ORM</p>
-				<p><span class="font-semibold text-[#0F172A]">Mobile:</span> Capacitor, Google Play Billing, Progressive Web Apps, Google Play Store deployment</p>
+				<p><span class="font-semibold text-[#0F172A]">Mobile:</span> Capacitor, Google Play Billing, PWA, Google Play deployment</p>
 				<p><span class="font-semibold text-[#0F172A]">Hosting and DevOps:</span> Vercel, Render, Cloudflare Pages, Plesk, Webuzo, Nginx, VPS, CI/CD, Git</p>
 				<p><span class="font-semibold text-[#0F172A]">AI and APIs:</span> OpenAI API, Google AI Studio API, DeepSeek, LLM prompt engineering</p>
 			</div>
