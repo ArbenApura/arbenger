@@ -182,7 +182,7 @@
 		<nav class="text-xs text-[#94A3B8] dark:text-slate-500">
 			<a href="/" class="transition-colors hover:text-[#0891B2] dark:hover:text-[#22D3EE]">Home</a>
 			<span class="mx-1">/</span>
-			<a href="/products/" class="transition-colors hover:text-[#0891B2] dark:hover:text-[#22D3EE]">Products</a>
+			<a href="/projects/" class="transition-colors hover:text-[#0891B2] dark:hover:text-[#22D3EE]">Projects</a>
 			<span class="mx-1">/</span>
 			<span class="text-[#0F172A] dark:text-white">Image Resizer</span>
 		</nav>

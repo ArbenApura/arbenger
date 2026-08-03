@@ -132,8 +132,8 @@
 					<img src="/icons/chrome.svg" alt="Chrome" width="20" height="20" class="shrink-0 drop-shadow-sm" />
 					Add to Chrome — Free
 				</a>
-				<Button href="/products/" variant="secondary" class="gap-2">
-					All Products
+				<Button href="/projects/" variant="secondary" class="gap-2">
+					All Projects
 					<ArrowRight size={14} />
 				</Button>
 			</div>

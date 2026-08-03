@@ -400,10 +400,10 @@
 				Open HTML Editor
 			</a>
 			<a
-				href="/products/"
+				href="/projects/"
 				class="inline-flex items-center gap-2 text-sm font-medium text-[#0891B2] transition-colors hover:text-[#0891B2]/80 dark:text-[#22D3EE] dark:hover:text-[#22D3EE]/80"
 			>
-				All products &rarr;
+				All projects &rarr;
 			</a>
 		</div>
 	</div>

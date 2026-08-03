@@ -165,9 +165,9 @@
 	<div class="flex shrink-0 items-center gap-2 border-b border-[#e2e8f0] bg-white px-2 py-1.5 sm:gap-3 sm:px-3 dark:border-[#1E1A5E] dark:bg-[#0B0A23]">
 		<!-- BACK + LOGO -->
 		<a
-			href="/products/"
+			href="/projects/"
 			class="flex items-center gap-2 rounded-lg px-2 py-1 text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0f172a] dark:text-slate-500 dark:hover:bg-[#1E1A5E] dark:hover:text-white"
-			title="Back to Products"
+			title="Back to Projects"
 		>
 			<ArrowLeft size={14} />
 			<Logo size={18} />

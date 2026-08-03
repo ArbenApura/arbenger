@@ -436,13 +436,13 @@
 			</div>
 		</div>
 
-		<!-- ALL PRODUCTS LINK -->
+		<!-- ALL PROJECTS LINK -->
 		<div use:reveal={{ delay: 300 }} class="mt-8 flex justify-center">
 			<a
-				href="/products/"
+				href="/projects/"
 				class="flex items-center gap-1.5 text-sm text-[#64748B] transition-colors hover:text-[#0891B2] dark:text-slate-400 dark:hover:text-[#22D3EE]"
 			>
-				View all products
+				View all projects
 				<ArrowRight size={14} />
 			</a>
 		</div>
