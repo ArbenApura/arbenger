@@ -42,8 +42,8 @@
 </script>
 
 <MetaTags
-	title="Blog — Tutorials, Guides & Dev Logs | Arbenger"
-	description="Tutorials, deep dives, and behind-the-scenes on the tools we build. Learn how to use Arbenger products and follow our engineering journey."
+	title="Blog — Dev Logs & Tutorials | Arben Apura"
+	description="Tutorials, dev logs, and lessons from building things. Follow along with SvelteKit, Next.js, and the tools I ship."
 	url="{SITE_URL}/blog/"
 />
 
@@ -57,10 +57,9 @@
 		url: `${SITE_URL}/blog/`,
 		description: 'Tutorials, deep dives, and behind-the-scenes on the tools we build.',
 		publisher: {
-			'@type': 'Organization',
-			name: 'Arbenger',
+			'@type': 'Person',
+			name: 'Arben Apura',
 			url: SITE_URL,
-			logo: { '@type': 'ImageObject', url: `${SITE_URL}/arbenger.svg` },
 		},
 	}}
 />
@@ -75,7 +74,7 @@
 		</h1>
 
 		<p class="mt-4 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			Step-by-step guides for our tools, engineering deep dives, and product updates.
+			Writing about building things — tutorials, dev logs, and lessons learned along the way.
 		</p>
 	</div>
 </section>

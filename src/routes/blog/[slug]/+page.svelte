@@ -39,7 +39,7 @@
 </script>
 
 <MetaTags
-	title="{post.title} | Arbenger Blog"
+	title="{post.title} | Arben Apura Blog"
 	description={post.description}
 	url="{SITE_URL}/blog/{post.slug}/"
 	type="article"
@@ -47,7 +47,7 @@
 />
 
 <svelte:head>
-	<meta name="author" content="Arbenger" />
+	<meta name="author" content="Arben Apura" />
 </svelte:head>
 
 <Breadcrumbs
@@ -66,12 +66,11 @@
 		description: post.description,
 		datePublished: post.date,
 		dateModified: post.updatedDate ?? post.date,
-		author: { '@type': 'Organization', name: 'Arbenger', url: SITE_URL },
+		author: { '@type': 'Person', name: 'Arben Apura', url: SITE_URL },
 		publisher: {
-			'@type': 'Organization',
-			name: 'Arbenger',
+			'@type': 'Person',
+			name: 'Arben Apura',
 			url: SITE_URL,
-			logo: { '@type': 'ImageObject', url: `${SITE_URL}/arbenger.svg` },
 		},
 		url: `${SITE_URL}/blog/${post.slug}/`,
 		timeRequired: `PT${post.readTime}M`,
