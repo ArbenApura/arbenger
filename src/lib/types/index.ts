@@ -28,14 +28,6 @@ export interface ProductCategoryInfo {
 	productCount: number;
 }
 
-export interface PageMeta {
-	title: string;
-	description: string;
-	url: string;
-	image?: string;
-	type?: 'website' | 'article';
-}
-
 export interface JsonLdSchema {
 	'@context': string;
 	'@type': string;
@@ -51,13 +43,6 @@ export interface SocialLink {
 	platform: string;
 	url: string;
 	icon: string;
-}
-
-export interface Locale {
-	code: string;
-	label: string;
-	flag: string;
-	enabled: boolean;
 }
 
 export type BlogCategory = 'tutorial';
