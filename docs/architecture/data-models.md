@@ -254,40 +254,7 @@ Social links are used in the Footer and Contact page.
 
 ## 5. Locale Data
 
-### Interface
-
-```typescript
-export interface Locale {
-  code: string;
-  label: string;
-  flag: string;
-  enabled: boolean;
-}
-```
-
-### Data
-
-```typescript
-// src/lib/data/locales.ts
-
-export const locales: Locale[] = [
-  { code: 'en-US', label: 'English (US)', flag: 'us', enabled: true },
-  { code: 'es', label: 'Español', flag: 'es', enabled: false },
-  { code: 'fr', label: 'Français', flag: 'fr', enabled: false },
-  { code: 'ja', label: '日本語', flag: 'jp', enabled: false },
-];
-
-export const defaultLocale = 'en-US';
-```
-
-Locale data is used by `LanguageSelector.svelte` (navbar + footer) and `locale` store. The `flag` field maps to inline SVG flag definitions inside the LanguageSelector component.
-
-### Adding a New Locale
-
-1. Add the locale object to the `locales` array in `src/lib/data/locales.ts`
-2. Add the SVG flag paths to the `FLAGS` constant in `src/lib/components/layout/LanguageSelector.svelte`
-3. Set `enabled: true` when translations are ready (or `false` with "Soon" badge)
-4. The locale automatically appears in the dropdown on both navbar and footer
+The locale layer (LanguageSelector, locales data, locale store) was removed on 2026-08-04 — the site is English-only.
 
 ---
 

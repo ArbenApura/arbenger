@@ -204,7 +204,7 @@ export const isDark = createThemeStore();
    ```
 2. The `isDark` store initializes from `localStorage` on creation (browser-safe via `$app/environment`)
 3. `ThemeToggle.svelte` calls `isDark.toggle()` on click
-4. Cookie consent is stored separately via `localStorage` key `arbenger-cookies-consent` (managed by `CookieBanner.svelte`)
+4. Cookie consent was removed on 2026-08-04 — the cookie consent layer (CookieBanner, `arbenger-cookies-consent` key) no longer exists
 
 ### Usage in Components
 
