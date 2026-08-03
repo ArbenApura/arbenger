@@ -1,6 +1,10 @@
 <script lang="ts">
+	// IMPORTED DEP-MODULES
+	import { GraduationCap, Languages, Award, Briefcase } from 'lucide-svelte';
+
 	// IMPORTED MODULES
 	import { reveal, revealSlide } from '$lib/actions/reveal';
+	import { skillGroups } from '$lib/data/skills';
 
 	// IMPORTED STORES
 	import { isDark } from '$lib/stores/theme';
@@ -10,28 +14,48 @@
 	import JsonLd from '$lib/components/seo/JsonLd.svelte';
 	import Breadcrumbs from '$lib/components/seo/Breadcrumbs.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
+
+	// -- CONSTANTS -- //
+
+	const SITE_URL = 'https://arbenger.com';
+
+	const TIMELINE = [
+		{
+			role: 'Remote Full-Stack Web Developer',
+			company: 'UniStar.BG Ltd',
+			period: '01/2025 — 06/2026',
+			points: [
+				'Collaborated with design teams to implement user-friendly interfaces and improve user experience.',
+				'Built modern web applications integrated with Capacitor for deployment on both Web and Google Play Store.',
+				'Developed secure, efficient APIs and managed databases for seamless app integration.',
+				'Handled server setup, configuration, and deployment to ensure reliable performance.',
+			],
+		},
+	];
 </script>
 
 <MetaTags
-	title="About Arbenger — Who We Are & What We Build"
-	description="Arbenger builds extensions, plugins, AI tools, and web apps. Learn about our approach to clean, focused software."
-	url="https://arbenger.com/about/"
+	title="About — Arben Apura, Full-Stack Web Developer"
+	description="Full-stack developer from San Jose Del Monte, Bulacan, Philippines. SvelteKit and Next.js specialist — web apps, AI tools, and Chrome extensions."
+	url="{SITE_URL}/about/"
 />
 
-<Breadcrumbs pageName="About" pageUrl="https://arbenger.com/about/" />
+<Breadcrumbs pageName="About" pageUrl="{SITE_URL}/about/" />
 
 <JsonLd
 	schema={{
 		'@context': 'https://schema.org',
 		'@type': 'AboutPage',
-		name: 'About Arbenger',
-		url: 'https://arbenger.com/about/',
-		description: 'Arbenger builds extensions, plugins, AI tools, and web apps. Learn about our approach to clean, focused software.',
+		name: 'About Arben Apura',
+		url: `${SITE_URL}/about/`,
+		description: 'Full-stack developer from San Jose Del Monte, Bulacan, Philippines. SvelteKit and Next.js specialist.',
 		mainEntity: {
-			'@type': 'Organization',
-			name: 'Arbenger',
-			url: 'https://arbenger.com',
-			logo: 'https://arbenger.com/arbenger.svg',
+			'@type': 'Person',
+			name: 'Arben M. Apura',
+			url: SITE_URL,
+			jobTitle: 'Full-Stack Web Developer',
+			email: 'mailto:arbenapura.official@gmail.com',
+			sameAs: ['https://github.com/ArbenApura', 'https://www.facebook.com/arbenapura.official'],
 		},
 	}}
 />
@@ -56,112 +80,166 @@
 		<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">About</p>
 
 		<h1 class="font-display mt-4 max-w-3xl text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
-			About Arbenger
+			About Me
 		</h1>
 
 		<p class="mt-6 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			We build tools that do one thing well and don't waste your time.
+			Full-stack developer from San Jose Del Monte, Bulacan, Philippines. Remote-friendly, always building.
 		</p>
 	</div>
 </section>
 
-<!-- WHAT WE DO SECTION -->
+<!-- PROFESSIONAL SUMMARY -->
 <section class="relative overflow-hidden py-16">
 	<div class="mx-auto max-w-7xl px-6 lg:px-8">
-		<div class="grid items-start gap-12 lg:grid-cols-2">
-			<!-- COMPANY INFO -->
-			<div use:revealSlide={{ direction: 'left' }}>
-				<h2 class="font-display text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">What we do</h2>
+		<div use:revealSlide={{ direction: 'left' }} class="max-w-3xl">
+			<h2 class="font-display text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">Who I am</h2>
 
-				<p class="mt-6 text-[#475569] dark:text-slate-300">
-					Arbenger builds VS Code extensions, Chrome plugins, AI tools, and web apps.
-					Each product covers a different need, but they share the same approach —
-					keep it clean, keep it useful.
-				</p>
+			<p class="mt-6 text-lg leading-relaxed text-[#475569] dark:text-slate-300">
+				A dedicated and adaptable full-stack developer with a strong focus on web development. Proficient in
+				frameworks like SvelteKit and Next.js, I enjoy creating user-friendly and efficient applications. I value
+				continuous learning, writing clean code, and working collaboratively to deliver practical solutions.
+				Always striving to improve, I approach challenges with a positive attitude and a commitment to quality.
+			</p>
+		</div>
+	</div>
+</section>
+
+<!-- WORK HISTORY TIMELINE -->
+<section class="relative overflow-hidden border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]/50">
+	<div class="mx-auto max-w-7xl px-6 lg:px-8">
+		<div use:reveal class="max-w-2xl">
+			<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Work history</p>
+			<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">Where I've worked</h2>
+		</div>
+
+		<div class="mt-12 grid gap-8 md:grid-cols-3">
+			{#each TIMELINE as job, i}
+				<div
+					use:reveal={{ delay: i * 100 }}
+					class="rounded-xl border border-[#E2E8F0] bg-white p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] md:col-span-3 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none"
+				>
+					<div class="flex flex-wrap items-center gap-3">
+						<div class="flex h-11 w-11 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
+							<Briefcase class="size-5 text-[#0891B2] dark:text-[#22D3EE]" />
+						</div>
+						<div>
+							<h3 class="font-display text-lg font-bold tracking-tight text-[#0F172A] dark:text-white">{job.role}</h3>
+							<p class="text-sm text-[#64748B] dark:text-slate-400">
+								{job.company} · {job.period}
+							</p>
+						</div>
+					</div>
+
+					<ul class="mt-5 list-disc space-y-2 pl-5 text-sm text-[#475569] dark:text-slate-300">
+						{#each job.points as point}
+							<li>{point}</li>
+						{/each}
+					</ul>
+				</div>
+			{/each}
+		</div>
+	</div>
+</section>
+
+<!-- EDUCATION + LANGUAGES + ACCOMPLISHMENT -->
+<section class="relative overflow-hidden border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]/50">
+	<div class="mx-auto max-w-7xl px-6 lg:px-8">
+		<div class="grid gap-8 md:grid-cols-3">
+			<!-- EDUCATION -->
+			<div use:reveal={{ delay: 0 }} class="rounded-xl border border-[#E2E8F0] bg-white p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
+				<div class="flex h-11 w-11 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
+					<GraduationCap class="size-5 text-[#0891B2] dark:text-[#22D3EE]" />
+				</div>
+				<h3 class="font-display mt-4 text-lg font-bold tracking-tight text-[#0F172A] dark:text-white">Education</h3>
+				<div class="mt-4 space-y-4 text-sm">
+					<div>
+						<p class="font-medium text-[#0F172A] dark:text-white">BS in Information Technology</p>
+						<p class="text-[#64748B] dark:text-slate-400">Bulacan State University · Magna Cum Laude</p>
+						<p class="text-xs text-[#94A3B8] dark:text-slate-500">Expected 2025</p>
+					</div>
+					<div>
+						<p class="font-medium text-[#0F172A] dark:text-white">High School & Senior High School</p>
+						<p class="text-[#64748B] dark:text-slate-400">San Jose del Monte National Trade School</p>
+						<p class="text-xs text-[#94A3B8] dark:text-slate-500">Expected 2021</p>
+					</div>
+				</div>
 			</div>
 
-			<!-- CATEGORY INFO CARD -->
-			<div use:revealSlide={{ direction: 'right' }} class="rounded-xl border border-[#E2E8F0] bg-white p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04),0_0_1px_rgba(0,0,0,0.06)] sm:p-6 dark:border-[#2A2578] dark:bg-[#1E1A5E] dark:shadow-none">
-				<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Product categories</p>
-				<ul class="mt-4 space-y-3 text-sm text-[#475569] dark:text-slate-300">
-					<li class="flex items-center gap-3">
-						<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
-							<svg class="size-4 text-[#0891B2] dark:text-[#22D3EE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-						</span>
-						Utilities
-					</li>
-					<li class="flex items-center gap-3">
-						<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
-							<svg class="size-4 text-[#0891B2] dark:text-[#22D3EE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-						</span>
-						VS Code Extensions
-					</li>
-					<li class="flex items-center gap-3">
-						<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
-							<svg class="size-4 text-[#0891B2] dark:text-[#22D3EE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M7 7h10v10H7z" /></svg>
-						</span>
-						Chrome Plugins
-					</li>
-					<li class="flex items-center gap-3">
-						<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
-							<svg class="size-4 text-[#0891B2] dark:text-[#22D3EE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3 4 4.5 4.5 0 0 1-3-4"/><path d="M12 18v4"/></svg>
-						</span>
-						AI Tools
-					</li>
-					<li class="flex items-center gap-3">
-						<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
-							<svg class="size-4 text-[#0891B2] dark:text-[#22D3EE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
-						</span>
-						SaaS Products
-					</li>
-				</ul>
+			<!-- LANGUAGES -->
+			<div use:reveal={{ delay: 100 }} class="rounded-xl border border-[#E2E8F0] bg-white p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
+				<div class="flex h-11 w-11 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
+					<Languages class="size-5 text-[#0891B2] dark:text-[#22D3EE]" />
+				</div>
+				<h3 class="font-display mt-4 text-lg font-bold tracking-tight text-[#0F172A] dark:text-white">Languages</h3>
+				<div class="mt-4 space-y-4 text-sm">
+					<div>
+						<p class="font-medium text-[#0F172A] dark:text-white">Filipino</p>
+						<p class="text-[#64748B] dark:text-slate-400">Native</p>
+					</div>
+					<div>
+						<p class="font-medium text-[#0F172A] dark:text-white">English</p>
+						<p class="text-[#64748B] dark:text-slate-400">Proficient</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- ACCOMPLISHMENT -->
+			<div use:reveal={{ delay: 200 }} class="rounded-xl border border-[#E2E8F0] bg-white p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
+				<div class="flex h-11 w-11 items-center justify-center rounded-lg bg-[#0891B2]/10 dark:bg-[#22D3EE]/10">
+					<Award class="size-5 text-[#0891B2] dark:text-[#22D3EE]" />
+				</div>
+				<h3 class="font-display mt-4 text-lg font-bold tracking-tight text-[#0F172A] dark:text-white">Accomplishment</h3>
+				<p class="mt-4 text-sm text-[#475569] dark:text-slate-300">
+					Registered our university capstone project, <span class="font-medium text-[#0F172A] dark:text-white">"Door Lock Module"</span>,
+					with the Intellectual Property Office of the Philippines (IPOPHL) in February 2026.
+				</p>
+				<a
+					href="/projects/door-lock-module/"
+					class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#0891B2] transition-colors hover:text-[#0E7490] dark:text-[#22D3EE] dark:hover:text-[#67E8F9]"
+				>
+					View the project →
+				</a>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- WHAT TO EXPECT SECTION -->
-<section class="relative overflow-hidden border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]">
+<!-- SKILLS -->
+<section class="relative overflow-hidden border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]/50">
 	<div class="mx-auto max-w-7xl px-6 lg:px-8">
-		<div use:reveal>
-			<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Our approach</p>
-			<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">What to expect.</h2>
+		<div use:reveal class="mb-10 max-w-2xl">
+			<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Skills</p>
+			<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">What I work with</h2>
 		</div>
 
-		<!-- 3-CARD GRID: 1 LARGE + 2 SMALL -->
-		<div class="mt-12 grid gap-8 md:grid-cols-5">
-			<!-- LARGE CARD -->
-			<div use:reveal={{ delay: 100 }} class="rounded-xl border border-[#F1F5F9] bg-white p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] sm:p-8 md:col-span-3 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
-				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">Does what it says</h3>
-				<p class="mt-3 text-[#475569] dark:text-slate-300">
-					No hidden complexity. If a tool says it does something, that's what it does.
-				</p>
-			</div>
-
-			<!-- SMALL CARD -->
-			<div use:reveal={{ delay: 200 }} class="rounded-xl border border-[#F1F5F9] bg-white p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] sm:p-8 md:col-span-2 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
-				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">Kept up to date</h3>
-				<p class="mt-3 text-[#475569] dark:text-slate-300">
-					Products get regular updates and fixes.
-				</p>
-			</div>
-
-			<!-- SMALL CARD -->
-			<div use:reveal={{ delay: 300 }} class="rounded-xl border border-[#F1F5F9] bg-white p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] sm:p-8 md:col-span-2 dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none">
-				<h3 class="font-display text-xl font-bold tracking-tight text-[#0F172A] dark:text-white">Feedback welcome</h3>
-				<p class="mt-3 text-[#475569] dark:text-slate-300">
-					Something not right? Let us know. That's how things get better.
-				</p>
-			</div>
+		<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+			{#each skillGroups as group, i}
+				<div
+					use:reveal={{ delay: i * 80 }}
+					class="rounded-xl border border-[#E2E8F0] bg-white p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.04)] dark:border-[#2A2578] dark:bg-[#1E1A5E]/30 dark:shadow-none"
+				>
+					<h3 class="font-display text-sm font-bold tracking-tight text-[#0891B2] uppercase dark:text-[#22D3EE]">
+						{group.name}
+					</h3>
+					<div class="mt-4 flex flex-wrap gap-2">
+						{#each group.skills as skill}
+							<span class="rounded-md bg-[#F1F5F9] px-2.5 py-1 text-xs text-[#64748B] dark:bg-[#2A2578]/30 dark:text-slate-400">
+								{skill}
+							</span>
+						{/each}
+					</div>
+				</div>
+			{/each}
 		</div>
 	</div>
 </section>
 
 <!-- CTA -->
-<section class="relative overflow-hidden border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]">
+<section class="relative overflow-hidden border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]/50">
 	<div use:reveal class="mx-auto flex max-w-7xl flex-col items-start gap-6 px-6 lg:px-8">
 		<p class="text-lg text-[#475569] dark:text-slate-300">
-			Got a question?
+			Like what you see?
 		</p>
 		<Button href="/contact/" variant="secondary">Get in touch</Button>
 	</div>
