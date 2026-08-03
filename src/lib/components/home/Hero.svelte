@@ -15,9 +15,9 @@
 	const HERO_PHRASES = [
 		'Full-Stack Web Developer',
 		'SvelteKit & Next.js Specialist',
-		'Indie Tool Builder',
+		'Web & Android Developer',
 		'Freelance Developer',
-		'Student of Clean Code',
+		'Figma to Production',
 	];
 
 	// -- REACTIVE STATES -- //
@@ -129,8 +129,8 @@
 				class:translate-y-0={isVisible}
 				style="transition-delay: 400ms;"
 			>
-				I build clean, efficient web applications — from full-stack platforms and AI tools to
-				Chrome extensions that do one thing well.
+				I'm a freelance full-stack developer building and shipping production web and Android apps —
+				from client Figma designs to the Google Play Store.
 			</p>
 
 			<!-- CTA BUTTONS -->
