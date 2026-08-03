@@ -150,7 +150,7 @@
 				Projects and Achievements
 			</h3>
 			<ul class="mt-2 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.2] text-[#334155]">
-				<li>Door Lock Module (2026) - IoT smart door lock system: Arduino device with RFID and face recognition, plus a web app for access management; registered with the Intellectual Property Office of the Philippines (IPOPHL).</li>
+				<li>Door Lock Module (2026) - developed an IoT smart door lock system using RFID and face recognition (Arduino device), with a web app for access management; successfully registered the project with the Intellectual Property Office of the Philippines (IPOPHL).</li>
 				<li>Top One Uwu (2022) - AI study assistant built and launched during my 2nd year of college, gaining traction within the Philippine programming community and receiving features from Inquirer.net and CLTV36.</li>
 			</ul>
 		</section>
