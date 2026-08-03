@@ -136,7 +136,6 @@
 				<p><span class="font-semibold text-[#0F172A]">Mobile:</span> Capacitor, Google Play Billing, Progressive Web Apps, Google Play Store deployment</p>
 				<p><span class="font-semibold text-[#0F172A]">Hosting and DevOps:</span> Vercel, Render, Cloudflare Pages, Plesk, Webuzo, Nginx, VPS, CI/CD, Monorepo</p>
 				<p><span class="font-semibold text-[#0F172A]">AI and APIs:</span> OpenAI API, Google AI Studio API, DeepSeek, LLM prompt engineering</p>
-				<p><span class="font-semibold text-[#0F172A]">Hardware and IoT:</span> Arduino, RFID</p>
 			</div>
 		</section>
 

@@ -24,8 +24,4 @@ export const skillGroups: SkillGroup[] = [
 		name: 'AI & APIs',
 		skills: ['OpenAI API', 'Google AI Studio API', 'DeepSeek', 'LLM prompt engineering', 'REST APIs'],
 	},
-	{
-		name: 'IoT & Hardware',
-		skills: ['Arduino', 'RFID'],
-	},
 ];
