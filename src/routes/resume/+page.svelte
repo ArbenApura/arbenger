@@ -137,7 +137,7 @@
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.2] text-[#334155]">
 						<li>Developed web automation and scraping pipelines that fed a prototype app store with web-scraped APKs, from metadata extraction to APK packaging.</li>
 						<li>Designed and implemented a parallel job-processing system with worker pooling, processing thousands of APK scraping tasks per day while scaling PostgreSQL incrementally with workload growth.</li>
-						<li>Created a full admin panel (PostgreSQL, Drizzle ORM): CMS with multi-language support across 40+ languages (manual, DeepL, Gemini AI), order and sales management, and usage stats.</li>
+						<li>Built a PostgreSQL/Drizzle CMS supporting 40+ languages with manual, DeepL, and Gemini-powered translation workflows, plus order, sales, and usage management.</li>
 						<li>Managed production deployment on Plesk and Webuzo, including VM provisioning and cloning, and organized all source code in a monorepo with optimized CI/CD.</li>
 					</ul>
 				</div>
