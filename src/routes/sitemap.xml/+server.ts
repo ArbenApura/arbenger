@@ -12,6 +12,7 @@ const STATIC_PAGES = [
 	{ path: '/blog/', priority: '0.8', changefreq: 'weekly', lastmod: LAST_MOD },
 	{ path: '/about/', priority: '0.6', changefreq: 'monthly', lastmod: LAST_MOD },
 	{ path: '/contact/', priority: '0.5', changefreq: 'monthly', lastmod: LAST_MOD },
+	{ path: '/resume/', priority: '0.5', changefreq: 'monthly', lastmod: LAST_MOD },
 	{ path: '/products/image-resizer/', priority: '0.7', changefreq: 'weekly', lastmod: '2026-05-21' },
 	{ path: '/products/image-compressor/', priority: '0.7', changefreq: 'weekly', lastmod: '2026-05-21' },
 	{ path: '/products/color-picker/', priority: '0.7', changefreq: 'weekly', lastmod: '2026-05-21' },

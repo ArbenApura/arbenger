@@ -6,6 +6,7 @@ export const navLinks: NavLink[] = [
 	{ label: 'Blog', href: '/blog/' },
 	{ label: 'About', href: '/about/' },
 	{ label: 'Contact', href: '/contact/' },
+	{ label: 'Resume', href: '/resume/' },
 ];
 
 export const socialLinks: SocialLink[] = [

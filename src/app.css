@@ -283,3 +283,19 @@ input[type='number'] {
 	animation: gradient-shift 8s ease infinite;
 	background-size: 200% 200%;
 }
+
+/* RESUME PRINT — US LETTER, ONE PAGE */
+@media print {
+	@page {
+		size: letter;
+		margin: 0.5in;
+	}
+
+	body {
+		background: #ffffff !important;
+	}
+
+	.resume-section {
+		break-inside: avoid;
+	}
+}
