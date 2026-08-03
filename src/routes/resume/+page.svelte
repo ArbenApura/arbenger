@@ -102,7 +102,7 @@
 				<p><span class="font-semibold text-[#0F172A]">Backend:</span> Node.js, Supabase, Firebase, PocketBase, MySQL, PHP</p>
 				<p><span class="font-semibold text-[#0F172A]">Mobile:</span> Capacitor, Progressive Web Apps, Google Play Store deployment</p>
 				<p><span class="font-semibold text-[#0F172A]">Hosting and DevOps:</span> Vercel, Render, Cloudflare Pages, Plesk, Webuzo, Nginx, VPS</p>
-				<p><span class="font-semibold text-[#0F172A]">AI and APIs:</span> OpenAI API, LLM prompt engineering</p>
+				<p><span class="font-semibold text-[#0F172A]">AI and APIs:</span> OpenAI API, Google AI Studio API, DeepSeek, LLM prompt engineering</p>
 			</div>
 		</section>
 
