@@ -14,11 +14,11 @@ export const skillGroups: SkillGroup[] = [
 	},
 	{
 		name: 'Mobile',
-		skills: ['Capacitor', 'Progressive Web Apps', 'Google Play deployment'],
+		skills: ['Capacitor', 'Google Play Billing', 'Progressive Web Apps', 'Google Play deployment'],
 	},
 	{
 		name: 'Hosting & DevOps',
-		skills: ['Vercel', 'Render', 'Cloudflare Pages', 'Plesk', 'Webuzo', 'Nginx', 'VPS'],
+		skills: ['Vercel', 'Render', 'Cloudflare Pages', 'Plesk', 'Webuzo', 'Nginx', 'VPS', 'CI/CD', 'Monorepo'],
 	},
 	{
 		name: 'AI & APIs',

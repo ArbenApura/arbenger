@@ -25,10 +25,14 @@
 			company: 'UniStar.BG Ltd',
 			period: '01/2025 — 06/2026',
 			points: [
-				'Collaborated with design teams to implement user-friendly interfaces and improve user experience.',
-				'Built modern web applications integrated with Capacitor for deployment on both Web and Google Play Store.',
-				'Developed secure, efficient APIs and managed databases for seamless app integration.',
-				'Handled server setup, configuration, and deployment to ensure reliable performance.',
+				'Sole developer of 7 Android and web apps shipped to the Google Play Store, implementing client Figma designs end-to-end.',
+				'Leading app "XAPK Installer APK Downloader" surpassed 500k+ downloads on mobile, tablet, and Android TV; two Android TV apps passed 100k+ downloads each.',
+				'Integrated Capacitor with SvelteKit to ship one codebase to both the Web and native Android.',
+				'Built a parallel queue task system (worker pooling) that processed large volumes of scraped data across available resources.',
+				'Developed web automation and scraping pipelines, including APK structure dissection and packaging.',
+				'Created a full admin panel: app CMS, multi-language support (manual, DeepL, and Gemini AI translation), orders and sales, and usage statistics.',
+				'Integrated Google Play Billing with idempotent purchase verification to prevent duplicate transactions.',
+				'Managed production deployment on Plesk and Webuzo (including VM deployment and cloning) and a monorepo with optimized CI/CD.',
 			],
 		},
 	];

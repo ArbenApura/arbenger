@@ -86,9 +86,9 @@
 				Professional Summary
 			</h3>
 			<p class="mt-2.5 text-[10.5pt] leading-[1.4] text-[#334155]">
-				Dedicated and adaptable full-stack developer focused on web development, proficient in SvelteKit and
-				Next.js. Creates user-friendly, efficient applications, values clean code and continuous learning, and
-				approaches challenges with a commitment to quality.
+				Full-stack developer with over 3 years building web and Android applications, proficient in SvelteKit,
+				Next.js, and Capacitor. Sole developer of 7 apps shipped to the Google Play Store, with 500k+ downloads
+				on the leading app. Creates user-friendly, efficient applications and values clean code and continuous learning.
 			</p>
 		</section>
 
@@ -100,8 +100,8 @@
 			<div class="mt-2.5 space-y-1 text-[10.5pt] leading-[1.4] text-[#334155]">
 				<p><span class="font-semibold text-[#0F172A]">Frontend:</span> TypeScript, JavaScript, SvelteKit, Svelte, Next.js, React, Tailwind CSS, SCSS, HTML</p>
 				<p><span class="font-semibold text-[#0F172A]">Backend:</span> Node.js, Supabase, Firebase, PocketBase, MySQL, PHP</p>
-				<p><span class="font-semibold text-[#0F172A]">Mobile:</span> Capacitor, Progressive Web Apps, Google Play Store deployment</p>
-				<p><span class="font-semibold text-[#0F172A]">Hosting and DevOps:</span> Vercel, Render, Cloudflare Pages, Plesk, Webuzo, Nginx, VPS</p>
+				<p><span class="font-semibold text-[#0F172A]">Mobile:</span> Capacitor, Google Play Billing, Progressive Web Apps, Google Play Store deployment</p>
+				<p><span class="font-semibold text-[#0F172A]">Hosting and DevOps:</span> Vercel, Render, Cloudflare Pages, Plesk, Webuzo, Nginx, VPS, CI/CD, Monorepo</p>
 				<p><span class="font-semibold text-[#0F172A]">AI and APIs:</span> OpenAI API, Google AI Studio API, DeepSeek, LLM prompt engineering</p>
 			</div>
 		</section>
@@ -117,10 +117,15 @@
 					<p class="shrink-0 text-[10pt] text-[#64748B]">01/2025 - 06/2026</p>
 				</div>
 				<ul class="mt-1.5 list-disc space-y-0.5 pl-4 text-[10.5pt] leading-[1.4] text-[#334155]">
-					<li>Collaborated with design teams to implement user-friendly interfaces and improve user experience.</li>
-					<li>Built modern web applications integrated with Capacitor for deployment on the Web and the Google Play Store.</li>
-					<li>Developed secure, efficient APIs and managed databases for seamless app integration.</li>
-					<li>Handled server setup, configuration, and deployment to ensure reliable performance.</li>
+					<li>Sole developer of 7 Android and web apps shipped to the Google Play Store, implementing client Figma designs end-to-end.</li>
+					<li>"XAPK Installer APK Downloader" surpassed 500k+ downloads on mobile, tablet, and Android TV; two Android TV apps passed 100k+ downloads each.</li>
+					<li>Integrated Capacitor with SvelteKit, shipping one codebase to both the Web and native Android.</li>
+					<li>Built a parallel queue task system (worker pooling) that processed large volumes of scraped data across available resources.</li>
+					<li>Developed web automation and scraping pipelines; dissected APK structure and packaging for product development.</li>
+					<li>Created a full admin panel: app CMS, multi-language support (manual, DeepL, and Gemini AI translation), orders and sales, and usage statistics.</li>
+					<li>Integrated Google Play Billing with idempotent purchase verification to prevent duplicate transactions.</li>
+					<li>Managed production deployment on Plesk and Webuzo, including virtual machine deployment and cloning.</li>
+					<li>Organized all source code in a monorepo with optimized CI/CD for continuous and fast updates.</li>
 				</ul>
 			</div>
 		</section>
