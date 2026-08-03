@@ -135,8 +135,8 @@
 				Projects and Achievements
 			</h3>
 			<ul class="mt-2 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.35] text-[#334155]">
-				<li>Door Lock Module (2026) - university capstone smart door lock with RFID and face recognition (Arduino), registered with IPOPHL.</li>
-				<li>Top One Uwu (2022) - AI study assistant that went viral in Programming Philippines and was featured in Inquirer.net (23k+ reactions, 36k+ shares).</li>
+				<li>Door Lock Module (2026) - university capstone smart door lock with RFID and face recognition (Arduino), registered with the Intellectual Property Office of the Philippines (IPOPHL).</li>
+				<li>Top One Uwu (2022) - AI study assistant that went viral in the Programming Philippines community and was featured in Inquirer.net, a popular media outlet in the Philippines.</li>
 			</ul>
 		</section>
 
@@ -161,12 +161,12 @@
 			</h3>
 			<div class="mt-2 space-y-1 text-[10.5pt] leading-[1.35] text-[#334155]">
 				<p>
-					<span class="font-semibold text-[#0F172A]">BS in Information Technology</span> - Bulacan State University
-					<span class="text-[#64748B]"> | Magna Cum Laude | 2025</span>
+					<span class="font-semibold text-[#0F172A]">BS in Information Technology</span> - Bulacan State University,
+					Sarmiento Campus
 				</p>
 				<p>
-					<span class="font-semibold text-[#0F172A]">High School and Senior High School</span> - San Jose del Monte
-					National Trade School <span class="text-[#64748B]"> | 2021</span>
+					Graduated <span class="font-semibold text-[#0F172A]">Magna Cum Laude</span>
+					<span class="text-[#64748B]"> | 2025</span>
 				</p>
 			</div>
 		</section>
