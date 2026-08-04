@@ -79,7 +79,7 @@
 			</h3>
 			<p class="mt-2 text-[10.5pt] leading-[1.2] text-[#334155]">
 				Full-stack developer focused on building and shipping production web and Android applications.
-				Experienced in turning client designs into complete products across frontend, backend, mobile, and
+				Experienced in turning designs into complete products across frontend, backend, mobile, and
 				infrastructure. Strong focus on TypeScript, SvelteKit, Next.js, PostgreSQL, and Capacitor.
 			</p>
 		</section>
@@ -92,7 +92,7 @@
 			<div class="mt-2 space-y-3">
 				<div>
 					<div class="flex items-baseline justify-between gap-4">
-						<p class="text-[11pt] font-semibold text-[#0F172A]">Smartago LLC - Freelance Full-Stack Developer</p>
+						<p class="text-[11pt] font-semibold text-[#0F172A]">Smartago LLC - Full-Stack Developer</p>
 						<p class="shrink-0 text-[10pt] text-[#64748B]">08/2025 - 06/2026</p>
 					</div>
 					<p class="mt-0 text-[10pt] text-[#64748B]">Additional work for the same client group · UniStar.BG subsidiary</p>
@@ -105,10 +105,10 @@
 				</div>
 				<div>
 					<div class="flex items-baseline justify-between gap-4">
-						<p class="text-[11pt] font-semibold text-[#0F172A]">UniStar.BG Ltd - Freelance Full-Stack Developer</p>
+						<p class="text-[11pt] font-semibold text-[#0F172A]">UniStar.BG Ltd - Full-Stack Developer</p>
 						<p class="shrink-0 text-[10pt] text-[#64748B]">01/2025 - 06/2026</p>
 					</div>
-					<p class="mt-0 text-[10pt] text-[#64748B]">Long-term freelance engagement via Upwork · Gotse Delchev, Bulgaria</p>
+					<p class="mt-0 text-[10pt] text-[#64748B]">Long-term remote engagement via Upwork · Gotse Delchev, Bulgaria</p>
 					<ul class="mt-1.5 list-disc space-y-0 pl-4 text-[10.5pt] leading-[1.2] text-[#334155]">
 						<li>Built an automated web scraping and APK ingestion pipeline covering metadata extraction, processing, packaging, and database persistence.</li>
 						<li>Designed and implemented a parallel job-processing system with worker pooling, processing thousands of APK scraping tasks per day while scaling PostgreSQL incrementally with workload growth.</li>

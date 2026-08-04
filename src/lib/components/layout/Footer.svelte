@@ -77,9 +77,9 @@
 
 			<!-- ABOUT BLURB -->
 			<div>
-				<h3 class="font-display text-sm font-bold tracking-tight text-[#0F172A] uppercase dark:text-white">Available for work</h3>
+				<h3 class="font-display text-sm font-bold tracking-tight text-[#0F172A] uppercase dark:text-white">Open to opportunities</h3>
 				<p class="mt-4 text-sm text-[#64748B] dark:text-slate-400">
-					Open to freelance projects and full-time roles. Based in the Philippines, working worldwide.
+					Open to full-time roles and new projects. Based in the Philippines, working worldwide.
 				</p>
 			</div>
 		</div>

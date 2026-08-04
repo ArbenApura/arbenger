@@ -79,16 +79,12 @@
 				<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">About</p>
 
 				<h2 class="font-display mt-4 text-3xl font-bold tracking-tight text-[#0F172A] md:text-4xl dark:text-white">
-					Less noise, more function.
+					This is my portfolio.
 				</h2>
 
 				<p class="mt-6 text-lg leading-relaxed text-[#475569] dark:text-slate-300">
-					I'm Arben — a full-stack developer from the Philippines. I build web apps, AI tools,
-					and extensions that do one thing well and get out of the way.
-				</p>
-
-				<p class="mt-4 text-[#64748B] dark:text-slate-400">
-					From capstone IoT systems to tools covered by national media — clean code, useful results.
+					I'm Arben Apura, a full-stack developer from the Philippines. Inside you'll find projects
+					I've shipped, tools I keep live, and blog posts on how they were built.
 				</p>
 
 				<div class="mt-10">

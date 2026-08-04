@@ -16,7 +16,7 @@
 		'Full-Stack Web Developer',
 		'SvelteKit & Next.js Specialist',
 		'Web App Developer',
-		'Freelance Developer',
+		'Web & Android Developer',
 		'Figma to Production',
 	];
 
@@ -91,20 +91,6 @@
 	<div class="relative z-10 mx-auto flex max-w-7xl items-center px-6 lg:px-8">
 		<!-- TEXT CONTENT — LEFT SIDE -->
 		<div class="flex-1">
-			<!-- TAGLINE -->
-			<div
-				class:opacity-0={!isVisible}
-				class:translate-y-8={!isVisible}
-				class:opacity-100={isVisible}
-				class:translate-y-0={isVisible}
-				style="transition: all 1s ease; transition-delay: 100ms;"
-			>
-				<span class="inline-flex items-center gap-2 rounded-full border border-[#2DD4BF]/30 bg-[#2DD4BF]/10 px-3.5 py-1.5 font-mono text-xs text-[#0F766E] dark:text-[#2DD4BF]">
-					<span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#2DD4BF]" />
-					Available for freelance work
-				</span>
-			</div>
-
 			<h1
 				class="font-display max-w-4xl text-4xl leading-[1.1] font-bold tracking-tight text-[#0F172A] transition-all duration-1000 md:text-6xl lg:text-7xl dark:text-white"
 				class:opacity-0={!isVisible}
@@ -129,8 +115,7 @@
 				class:translate-y-0={isVisible}
 				style="transition-delay: 400ms;"
 			>
-				I'm a freelance full-stack developer focused on building production web applications —
-				from client Figma designs to deployed products.
+				I'm a full-stack developer who builds production web and Android applications end to end.
 			</p>
 
 			<!-- CTA BUTTONS -->

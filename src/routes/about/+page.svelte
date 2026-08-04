@@ -21,7 +21,7 @@
 
 	const TIMELINE = [
 		{
-			role: 'Freelance Full-Stack Developer',
+			role: 'Full-Stack Developer',
 			company: 'Smartago LLC (Wilmington, DE, US · UniStar.BG Ltd subsidiary)',
 			period: '08/2025 — 06/2026 · additional work for the same client group',
 			points: [
@@ -32,9 +32,9 @@
 			],
 		},
 		{
-			role: 'Freelance Full-Stack Developer',
+			role: 'Full-Stack Developer',
 			company: 'UniStar.BG Ltd (Gotse Delchev, Bulgaria)',
-			period: '01/2025 — 06/2026 · long-term freelance engagement via Upwork',
+			period: '01/2025 — 06/2026 · long-term remote engagement via Upwork',
 			points: [
 				'Developed web automation and scraping pipelines for a prototype app store, scraping the web for APKs with thousands of scrapes per day.',
 				'Built a parallel queue task system (worker pooling) to process the scraped data, with incremental database scaling as usage grew.',
@@ -95,7 +95,7 @@
 		</h1>
 
 		<p class="mt-6 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			Freelance full-stack developer from San Jose Del Monte, Bulacan, Philippines. Remote-friendly, always building.
+			Full-stack developer from San Jose Del Monte, Bulacan, Philippines. Remote-friendly, always building.
 		</p>
 	</div>
 </section>
@@ -108,8 +108,8 @@
 
 			<p class="mt-6 text-lg leading-relaxed text-[#475569] dark:text-slate-300">
 				Full-stack developer focused on building and shipping production web and Android applications.
-				Experienced in turning client designs into complete products across frontend, backend, mobile, and
-				infrastructure, working as a freelance developer since my college years. Strong focus on TypeScript,
+				Experienced in turning designs into complete products across frontend, backend, mobile, and
+				infrastructure, building production software since my college years. Strong focus on TypeScript,
 				SvelteKit, Next.js, PostgreSQL, and Capacitor.
 			</p>
 		</div>
@@ -166,13 +166,8 @@
 				<div class="mt-4 space-y-4 text-sm">
 					<div>
 						<p class="font-medium text-[#0F172A] dark:text-white">BS in Information Technology</p>
-						<p class="text-[#64748B] dark:text-slate-400">Bulacan State University · Magna Cum Laude</p>
-						<p class="text-xs text-[#94A3B8] dark:text-slate-500">Expected 2025</p>
-					</div>
-					<div>
-						<p class="font-medium text-[#0F172A] dark:text-white">High School & Senior High School</p>
-						<p class="text-[#64748B] dark:text-slate-400">San Jose del Monte National Trade School</p>
-						<p class="text-xs text-[#94A3B8] dark:text-slate-500">Expected 2021</p>
+						<p class="text-[#64748B] dark:text-slate-400">Bulacan State University - Sarmiento Campus</p>
+						<p class="text-xs text-[#94A3B8] dark:text-slate-500">July 2025 · Magna Cum Laude</p>
 					</div>
 				</div>
 			</div>

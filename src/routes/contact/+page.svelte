@@ -25,7 +25,7 @@
 
 <MetaTags
 	title="Contact — Arben Apura"
-	description="Get in touch with Arben Apura — full-stack web developer. Email, phone, GitHub, and Facebook. Available for freelance work."
+	description="Get in touch with Arben Apura — full-stack web developer. Email, phone, GitHub, and Facebook. Open to new opportunities."
 	url="{SITE_URL}/contact/"
 />
 
@@ -58,7 +58,7 @@
 		</h1>
 
 		<p class="mt-6 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			Let's build something together. I'm currently available for freelance projects and full-time roles.
+			Let's build something together. I'm open to full-time roles and new projects — remote and worldwide.
 		</p>
 	</div>
 </section>
