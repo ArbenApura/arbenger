@@ -29,7 +29,7 @@
 					<span class="font-display text-lg tracking-tight text-[#0F172A] dark:text-white">ARBENGER</span>
 				</a>
 				<p class="mt-4 text-sm text-[#64748B] dark:text-slate-400">
-					Full-stack developer building web apps, AI tools, and extensions.
+					Full-stack developer building and shipping production web apps, Android apps, and AI tools.
 				</p>
 			</div>
 

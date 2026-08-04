@@ -180,8 +180,8 @@
 	</section>
 {/if}
 
-<!-- VIDEO EMBED -->
-{#if project.video}
+<!-- VIDEO EMBED — SKIPPED WHEN VIDEO IS THE COVER -->
+{#if project.video && project.cover}
 	<section class="relative overflow-hidden border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]/50">
 		<div class="mx-auto max-w-4xl px-6 lg:px-8">
 			<p use:reveal class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Demo</p>

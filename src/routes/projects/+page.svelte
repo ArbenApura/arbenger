@@ -21,6 +21,7 @@
 	// -- REACTIVE STATES -- //
 
 	$: liveProducts = products.filter((p) => p.status === 'live');
+	$: sortedProjects = [...projects].sort((a, b) => parseInt(a.year) - parseInt(b.year)).reverse();
 </script>
 
 <MetaTags
@@ -40,7 +41,7 @@
 		description: 'A selection of projects by Arben Apura.',
 		mainEntity: {
 			'@type': 'ItemList',
-			itemListElement: projects.map((p, i) => ({
+			itemListElement: sortedProjects.map((p, i) => ({
 				'@type': 'ListItem',
 				position: i + 1,
 				name: p.name,
@@ -72,7 +73,7 @@
 		</p>
 
 		<div class="grid gap-6 sm:grid-cols-2">
-			{#each projects as project, i}
+			{#each sortedProjects as project, i}
 				<ProjectCard {project} delay={i * 100} />
 			{/each}
 		</div>

@@ -1,10 +1,6 @@
 <script lang="ts">
 	// IMPORTED DEP-MODULES
-	import { onMount, onDestroy } from 'svelte';
 	import { dev } from '$app/environment';
-
-	// IMPORTED MODULES
-	import { hideChrome } from '$lib/stores/layout';
 
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
@@ -13,16 +9,6 @@
 	// -- CONSTANTS -- //
 
 	const SITE_URL = 'https://arbenger.com';
-
-	// -- LIFECYCLES -- //
-
-	onMount(() => {
-		hideChrome.set(true);
-	});
-
-	onDestroy(() => {
-		hideChrome.set(false);
-	});
 
 	// -- FUNCTIONS -- //
 
@@ -42,14 +28,12 @@
 <!-- PAGE HEADER (HIDDEN WHEN PRINTING) -->
 <section class="relative overflow-hidden pt-32 pb-10 print:hidden">
 	<div class="mx-auto max-w-7xl px-6 lg:px-8">
-		<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Resume</p>
-
-		<h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
+		<h1 class="font-display text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl dark:text-white">
 			Resume
 		</h1>
 
 		<p class="mt-4 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			A one-page overview, formatted for applicant tracking systems. Download the PDF version below.
+			One-page, ATS-friendly resume — download the PDF version below.
 		</p>
 
 		<div class="mt-8 flex flex-wrap items-center gap-3">
@@ -70,10 +54,6 @@
 				</button>
 			{/if}
 		</div>
-
-		<p class="mt-4 text-sm text-[#94A3B8] dark:text-slate-500">
-			US Letter, one page, ATS-friendly.
-		</p>
 	</div>
 </section>
 

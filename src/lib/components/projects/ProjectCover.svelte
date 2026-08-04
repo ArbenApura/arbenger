@@ -21,7 +21,18 @@
 		.toUpperCase();
 </script>
 
-{#if project.cover}
+{#if project.video}
+	<div class={placeholderClass}>
+		<iframe
+			src={project.video.embedUrl}
+			title={project.video.title}
+			class="h-full w-full"
+			loading="lazy"
+			allow="autoplay; fullscreen"
+			allowfullscreen
+		></iframe>
+	</div>
+{:else if project.cover}
 	<img src={project.cover} alt={`${project.name} screenshot`} loading="lazy" class={imageClass} />
 {:else}
 	<div class={placeholderClass}>
