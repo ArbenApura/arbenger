@@ -46,8 +46,6 @@ Rules:
 | `yarn check` | TypeScript + Svelte type checking before commit |
 | `yarn format` | Format all files before commit |
 | `yarn deploy` | Deploy to production |
-| `yarn db:generate` | After schema changes |
-| `yarn db:migrate` | Apply pending migrations |
 
 ## Branch Strategy
 
@@ -56,7 +54,6 @@ Work on `main` for solo development. Feature branches for experimental or large 
 ## Documentation Policy
 
 After code changes, update all relevant docs — not just changelog. This includes:
-- Product docs in `docs/products/`
 - Architecture docs in `docs/architecture/`
 - Guidelines in `docs/guidelines/`
 - Changelog in `docs/changelog/`
