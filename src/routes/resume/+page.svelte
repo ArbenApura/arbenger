@@ -1,7 +1,4 @@
 <script lang="ts">
-	// IMPORTED DEP-MODULES
-	import { dev } from '$app/environment';
-
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
 	import Breadcrumbs from '$lib/components/seo/Breadcrumbs.svelte';
@@ -45,14 +42,12 @@
 				Download Resume (PDF)
 			</a>
 
-			{#if dev}
-				<button
-					on:click={printResume}
-					class="inline-flex items-center gap-2 rounded-lg border border-[#0F172A] px-6 py-3 text-sm font-medium text-[#0F172A] transition-all duration-300 hover:bg-[#0F172A]/5 dark:border-[#22D3EE] dark:text-[#22D3EE] dark:hover:bg-[#22D3EE]/10"
-				>
-					Print (dev)
-				</button>
-			{/if}
+			<button
+				on:click={printResume}
+				class="inline-flex items-center gap-2 rounded-lg border border-[#0F172A] px-6 py-3 text-sm font-medium text-[#0F172A] transition-all duration-300 hover:bg-[#0F172A]/5 dark:border-[#22D3EE] dark:text-[#22D3EE] dark:hover:bg-[#22D3EE]/10"
+			>
+				Print
+			</button>
 		</div>
 	</div>
 </section>

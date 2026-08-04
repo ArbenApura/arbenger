@@ -1,6 +1,6 @@
 # State Management
 
-**Last updated:** 2026-05-27
+**Last updated:** 2026-08-05
 
 This document defines how state is managed across arbenger.com. The base site has minimal state requirements — theme preference is the primary concern.
 
@@ -14,7 +14,7 @@ This document defines how state is managed across arbenger.com. The base site ha
 
 1. **Minimal global state.** Most state lives in individual components as local `let` variables.
 2. **Stores for shared state only.** Only use a store when multiple unrelated components need the same value.
-3. **Persist only what matters.** Only theme and locale preferences are persisted to `localStorage`. All other state is ephemeral.
+3. **Persist only what matters.** Only the theme preference is persisted to `localStorage`. All other state is ephemeral.
 4. **Typed stores.** All stores have explicit TypeScript types.
 5. **Route-local stores for tools.** Self-contained product tools (e.g., image resizer) keep their stores inside the route directory (`_lib/store.ts`) rather than in shared `src/lib/stores/`.
 
@@ -76,7 +76,6 @@ All image compressor state is in `src/routes/products/(utilities)/image-compress
 | `batchExported` | `Writable<boolean>` | Whether batch ZIP has been exported |
 | `batchResultSize` | `Writable<number \| null>` | Total size of batch results after processing |
 | `filenameRevision` | `Writable<number>` | Incremented when filenames change (triggers reactivity) |
-| `totalProcessed` | `Writable<number \| null>` | Lifetime count from `/api/stats/?toolId=image-compressor` |
 
 The image compressor also maintains per-image state via `Map` objects:
 - `imageResultMap` — `Map<string, CompressResult>` — per-image compression results
@@ -111,16 +110,6 @@ Uses IndexedDB (database: `arbenger-html-editor`, store: `editor-state`) for cod
 - `destroyPersistence()` — unsubscribes all store listeners and clears timers.
 
 UI settings (activeTab, devicePreset) are persisted separately to localStorage key `arbenger-html-editor-ui` via `createPersistedStore()` helper in `store.ts`.
-
-### Stats Store and Functions (Shared)
-
-Both image resizer and image compressor `store.ts` export stores and functions for stats tracking:
-
-| Export | Type | Purpose |
-|--------|------|---------|
-| `totalProcessed` | `Writable<number \| null>` | Lifetime count from `/api/stats/`. Subscribed to by `+page.svelte` for the stats UI section. |
-| `fetchStats()` | Function | Fetches `GET /api/stats/` and updates the `totalProcessed` store. Called on mount and after each resize. |
-| `trackStats(count)` | Function (internal) | `POST /api/stats/` with `keepalive: true`, then calls `fetchStats()` to refresh the displayed count. Called after single resize and batch zip. |
 
 ### Toast Notifications
 
@@ -365,18 +354,6 @@ Most data is static imports. No load functions needed:
 import { products, categories } from '$lib/data/products';
 </script>
 ```
-
-### Dynamic Data (Stats)
-
-The image resizer page calls `fetchStats()` on mount, which populates the `totalProcessed` writable store:
-
-```typescript
-onMount(() => {
-  fetchStats(); // fetches GET /api/stats/ → updates totalProcessed store
-});
-```
-
-After each resize, `trackStats(count)` POSTs the increment then calls `fetchStats()` again to refresh the displayed count. This is a client-side store pattern, not a SvelteKit load function, because the stats are non-critical and should not block page rendering.
 
 ### Future (Dynamic Data)
 

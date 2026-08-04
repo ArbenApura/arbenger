@@ -63,7 +63,6 @@ let cancelled = false;
 export const batchProgress = writable<{ current: number; total: number } | null>(null);
 export const batchExported = writable(false);
 export const batchResultSize = writable<number | null>(null);
-export const totalProcessed = writable<number | null>(null);
 export const filenameRevision = writable(0);
 
 export const activeImage = derived(
@@ -646,7 +645,6 @@ export async function performCompress(): Promise<void> {
 
 			imageResultMap.set(img.id, r);
 			if (get(activeImageId) === img.id) result.set(r);
-			trackStats(1);
 
 			if (s.qualityMode === 'target-size') {
 				const targetBytes = s.targetSize * (s.targetUnit === 'MB' ? 1024 * 1024 : 1024);
@@ -736,7 +734,6 @@ export async function performBatchCompress(): Promise<void> {
 		}
 
 		batchResultSize.set(totalSize);
-		trackStats(list.length);
 	})()).finally(() => {
 		processingState.set('idle');
 		batchProgress.set(null);
@@ -775,26 +772,4 @@ export async function downloadBatchZip(zipName = 'compressed-images'): Promise<v
 
 	zipPromise.finally(() => processingState.set('idle'));
 	return zipPromise;
-}
-
-// -- STATS -- //
-
-export function fetchStats(): void {
-	if (!browser) return;
-	fetch('/api/stats/?toolId=image-compressor')
-		.then((r) => r.json())
-		.then((d) => totalProcessed.set(d.totalProcessed ?? null))
-		.catch(() => {});
-}
-
-function trackStats(count: number): void {
-	if (!browser) return;
-	fetch('/api/stats/', {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({ toolId: 'image-compressor', count }),
-		keepalive: true
-	})
-		.then(() => fetchStats())
-		.catch(() => {});
 }

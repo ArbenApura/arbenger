@@ -623,7 +623,6 @@ export async function performResize(): Promise<void> {
 		loading: `Resizing to ${s.width}×${s.height}...`,
 		success: () => {
 			const r = get(result);
-			trackStats(1);
 			return `Done — ${s.width}×${s.height}${r ? ` · ${formatBytes(r.size)}` : ''}`;
 		},
 		error: 'Resize failed'
@@ -828,7 +827,6 @@ export async function performBatchResize(): Promise<void> {
 		}
 
 		batchResultSize.set(totalSize);
-		trackStats(list.length);
 	})()).finally(() => {
 		processingState.set('idle');
 		batchProgress.set(null);
@@ -935,28 +933,6 @@ export function destroyWorker(): void {
 
 export function cancelProcessing(): void {
 	cancelled = true;
-}
-
-export const totalProcessed = writable<number | null>(null);
-
-export function fetchStats(): void {
-	if (!browser) return;
-	fetch('/api/stats/')
-		.then((r) => r.json())
-		.then((d) => totalProcessed.set(d.totalProcessed ?? null))
-		.catch(() => {});
-}
-
-function trackStats(count: number): void {
-	if (!browser) return;
-	fetch('/api/stats/', {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({ toolId: 'image-resizer', count }),
-		keepalive: true
-	})
-		.then(() => fetchStats())
-		.catch(() => {});
 }
 
 export function formatBytes(bytes: number): string {

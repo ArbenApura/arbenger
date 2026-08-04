@@ -10,18 +10,16 @@
 		clearAll,
 		cropRevision,
 		destroyWorker,
-		fetchStats,
 		hasImageCrop,
 		hasImages,
 		hasUnprocessedImages,
 		isBatchMode,
 		processingState,
 		setImageCrop,
-		totalProcessed,
 	} from './_lib/store';
 	import { cn } from '$lib/utils/cn';
 	// IMPORTED DEP-COMPONENTS
-	import { AlertTriangle, BookOpen, Crop, Globe, LogOut, Shield, Zap } from 'lucide-svelte';
+	import { AlertTriangle, BookOpen, Crop, LogOut, Shield } from 'lucide-svelte';
 	// IMPORTED COMPONENTS
 	import ConfirmDialog from '$lib/components/ui/ConfirmDialog.svelte';
 	import JsonLd from '$lib/components/seo/JsonLd.svelte';
@@ -120,7 +118,6 @@
 		document.addEventListener('paste', handlePaste);
 		document.addEventListener('keydown', handleKeydown);
 		window.addEventListener('beforeunload', handleBeforeUnload);
-		fetchStats();
 
 		const warnings: string[] = [];
 		if (typeof createImageBitmap === 'undefined') warnings.push('Image decoding (createImageBitmap)');
@@ -307,54 +304,6 @@
 				<ResizeControls batch />
 				<div class="border-t border-[#F1F5F9] dark:border-[#2A2578]/50" />
 				<InfoPanel batch />
-			</div>
-		</div>
-	{/if}
-
-	<!-- LIFETIME STATS -->
-	{#if $totalProcessed !== null && $totalProcessed > 0}
-		<div class="relative mt-4 overflow-hidden rounded-xl border border-[#E2E8F0] bg-white p-10 text-center sm:p-14 dark:border-[#2A2578] dark:bg-[#0B0A23]">
-			<!-- BACKGROUND GLOW -->
-			<div class="pointer-events-none absolute inset-0">
-				<div class="absolute left-1/2 top-1/2 size-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#22D3EE]/[0.07] blur-[100px]" />
-			</div>
-
-			<div class="relative">
-				<!-- EYEBROW LABEL -->
-				<p class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">
-					Images resized worldwide
-				</p>
-
-				<!-- BIG NUMBER -->
-				<p class="mt-5 font-display text-7xl font-bold tabular-nums tracking-tight text-[#0F172A] sm:text-8xl dark:text-white">
-					{$totalProcessed.toLocaleString()}
-				</p>
-
-				<p class="mt-3 font-display text-lg font-bold tracking-tight text-[#0F172A] sm:text-xl dark:text-white">
-					and growing every day
-				</p>
-
-				<p class="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-[#64748B] dark:text-slate-400">
-					Every single one processed right in the browser. No uploads, no servers, no compromises.
-				</p>
-
-				<!-- TRUST BADGES -->
-				<div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-					<span class="flex items-center gap-2 font-mono text-xs text-[#64748B] dark:text-slate-400">
-						<Shield size={14} class="text-[#0891B2] dark:text-[#22D3EE]" />
-						Zero images stored
-					</span>
-					<span class="hidden h-3.5 w-px bg-[#E2E8F0] sm:block dark:bg-[#2A2578]" />
-					<span class="flex items-center gap-2 font-mono text-xs text-[#64748B] dark:text-slate-400">
-						<Zap size={14} class="text-[#0891B2] dark:text-[#22D3EE]" />
-						Under 1s per image
-					</span>
-					<span class="hidden h-3.5 w-px bg-[#E2E8F0] sm:block dark:bg-[#2A2578]" />
-					<span class="flex items-center gap-2 font-mono text-xs text-[#64748B] dark:text-slate-400">
-						<Globe size={14} class="text-[#0891B2] dark:text-[#22D3EE]" />
-						Works everywhere, no account
-					</span>
-				</div>
 			</div>
 		</div>
 	{/if}

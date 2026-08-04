@@ -1,12 +1,12 @@
 # arbenger.com
 
-Company website for [Arbenger](https://arbenger.com).
+Personal portfolio and dev-log site for [Arben M. Apura](https://arbenger.com) — full-stack developer.
 
 ## Stack
 
 - **Framework:** SvelteKit + Svelte 4
 - **Styling:** Tailwind CSS v4
-- **Hosting:** Cloudflare Pages
+- **Hosting:** Cloudflare Pages (fully pre-rendered, no server-side bindings)
 - **Package manager:** Yarn
 
 ## Setup
@@ -35,20 +35,24 @@ Dev server runs on [localhost:8000](http://localhost:8000).
 
 ```
 src/
-  routes/              # Pages (home, about, products, contact, privacy, terms, cookies)
+  routes/              # Pages: home, about, projects (+[slug]), blog (+[slug]), contact, resume
+  routes/products/     # Client-side tools (image-resizer, image-compressor, html-editor, extension pages)
   lib/
     components/
-      layout/          # Navbar, Footer, ThemeToggle, LanguageSelector, CookieBanner
-      home/            # Hero, ProductCategories, AboutTeaser, ParticleBackground, Newsletter
-      ui/              # Button, Card, Badge, Logo, Typewriter, SectionLabel
-      seo/             # MetaTags, JsonLd
-    stores/            # theme.ts, locale.ts
-    data/              # products.ts, navigation.ts, locales.ts
+      layout/          # Navbar, Footer, ThemeToggle
+      home/            # Hero, AboutTeaser, ParticleBackground, FeaturedProjects, MinorTools, Skills
+      projects/        # ProjectCard, MinorProjectCard, ProjectCover
+      blog/            # BlogCard, BlogPagination, ReadingProgress
+      ui/              # Button, Badge, Logo, Typewriter, Select, UploadZone, ColorPicker, ...
+      seo/             # MetaTags, JsonLd, Breadcrumbs
+    data/              # projects.ts, blog.ts, skills.ts, navigation.ts, products.ts
+    stores/            # theme.ts, viewport.ts, layout.ts
     types/             # TypeScript interfaces
     utils/             # cn.ts (clsx + tailwind-merge)
     actions/           # reveal.ts, parallax.ts
   app.css              # Global styles, fonts, animations, scrollbar theming
   app.html             # HTML shell with theme init and font preloading
+extensions/            # Chrome extensions (color-picker, sound-booster)
 docs/                  # Guidelines, architecture, changelog, specs
 ```
 

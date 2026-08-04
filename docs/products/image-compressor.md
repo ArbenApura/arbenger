@@ -93,7 +93,6 @@ src/routes/products/(utilities)/image-compressor/
 | `batchProgress` | `Writable<{current, total} \| null>` | Batch export progress |
 | `batchExported` | `Writable<boolean>` | Whether batch ZIP has been downloaded |
 | `filenameRevision` | `Writable<number>` | Filename change counter for reactivity |
-| `totalProcessed` | `Writable<number \| null>` | Lifetime stats count |
 | `hasImages` | `Derived<boolean>` | Whether images list is non-empty |
 | `hasUnprocessedImages` | `Derived<boolean>` | True when images exist and batch not exported |
 | `imageCount` | `Derived<number>` | Number of loaded images |
@@ -118,7 +117,6 @@ src/routes/products/(utilities)/image-compressor/
 | `formatBytes(bytes)` | Human-readable file size |
 | `formatName(format)` | Format display name |
 | `getOutputFormat(entry, settings)` | Resolve output format from settings |
-| `fetchStats()` | Fetch stats from `/api/stats/?toolId=image-compressor` |
 
 ### Per-Image State (Map-based)
 
@@ -333,13 +331,3 @@ Both guards check `$hasUnprocessedImages`, which is `true` when images exist and
 | `upng-js` | PNG compression via color quantization (imported in worker and main-thread fallback) |
 | `jszip` | Batch ZIP export (dynamically imported) |
 | `svelte-sonner` | Toast notifications |
-
----
-
-## 12. Stats Tracking
-
-The compressor tracks usage via `/api/stats/?toolId=image-compressor`:
-
-- `trackStats(count)` — POST after each single compress or batch ZIP, with `keepalive: true`
-- `fetchStats()` — GET on mount, refreshes `totalProcessed` store
-- Stats UI section at page bottom shows lifetime count with trust badges (when count > 0)

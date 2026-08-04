@@ -10,3 +10,6 @@ build
 .dev.vars
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Reasonix local tool state
+.reasonix/

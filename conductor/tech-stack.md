@@ -27,21 +27,11 @@
 | `upng-js` | PNG compression via color quantization |
 | `nanoid` | Unique ID generation |
 
-## Backend / Database
-
-| Technology | Purpose |
-|------------|---------|
-| Neon PostgreSQL | Serverless Postgres database (AWS Singapore) |
-| Cloudflare Hyperdrive | Connection pooling proxy between Workers and Neon |
-| Drizzle ORM | Type-safe query builder and migrations |
-| `postgres` (postgres.js) | PostgreSQL client (`prepare: false` for Hyperdrive) |
-
 ## Infrastructure
 
 | Service | Purpose |
 |---------|---------|
 | Cloudflare Pages | Edge deployment (300+ locations), auto-SSL, preview deploys |
-| Cloudflare Workers | Server-rendered routes (API endpoints) |
 | Wrangler | CLI deployment and local dev |
 
 ## Package Manager
@@ -54,7 +44,6 @@ Yarn Classic (1.x) — `yarn.lock` tracked in git. Always use `yarn` commands, n
 |------|---------|
 | Prettier | Code formatting (`prettier-plugin-svelte` + `prettier-plugin-tailwindcss`) |
 | svelte-check | TypeScript + Svelte type checking |
-| drizzle-kit | Schema migrations and Drizzle Studio |
 | GitHub CLI (`gh`) | PR and issue management |
 
 ## Key Conventions

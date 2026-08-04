@@ -57,9 +57,6 @@ The dev server is configured to always run on **port 8000** (not the Vite defaul
 | `svelte-sonner` | Toast notification library (`<Toaster>` in root layout) |
 | `lucide-svelte` | Icon library |
 | `clsx` + `tailwind-merge` | Dynamic class composition (`cn()` utility) |
-| `drizzle-orm` | Type-safe ORM for PostgreSQL |
-| `postgres` | PostgreSQL client (postgres.js) for Cloudflare Hyperdrive |
-| `@neondatabase/serverless` | Neon serverless driver (used by drizzle-kit for migrations) |
 | `nanoid` | Unique ID generation |
 
 ### Key Dev Dependencies
@@ -71,27 +68,10 @@ The dev server is configured to always run on **port 8000** (not the Vite defaul
 | `@types/node` | Node.js type definitions for TypeScript |
 | `tailwindcss` + `@tailwindcss/vite` | Tailwind CSS v4 with Vite plugin |
 | `svelte-check` | TypeScript + Svelte type checking |
-| `drizzle-kit` | Schema migrations and Drizzle Studio |
-| `dotenv` | Load `.env` in `drizzle.config.ts` |
 
 ### Environment Variables
 
-| Variable | File | Purpose | Required |
-|----------|------|---------|----------|
-| `DATABASE_URL` | `.env` | Neon PostgreSQL connection string (used by `drizzle-kit` for migrations/studio) | Yes (for db commands) |
-| `DATABASE_URL` | `.dev.vars` | Same connection string (used by Cloudflare's local dev platform proxy) | Yes (for local dev) |
-
-Both `.env` and `.dev.vars` are gitignored. Production uses the Hyperdrive binding configured in `wrangler.toml`.
-
-### Database Commands
-
-| Command | Purpose |
-|---------|---------|
-| `yarn db:generate` | Generate Drizzle migration files from schema changes |
-| `yarn db:migrate` | Apply pending migrations to the database |
-| `yarn db:studio` | Open Drizzle Studio (visual database browser) |
-
----
+No environment variables are required. The site is fully static (pre-rendered) and has no server-side bindings.
 
 ## 3. Build Configuration
 
@@ -117,7 +97,7 @@ const config = {
 export default config;
 ```
 
-The `exclude` list ensures pre-rendered pages are served as static assets while non-prerendered routes (like `/api/stats/`) are handled by the Cloudflare Worker runtime.
+The `exclude` list ensures pre-rendered pages are served as static assets while any non-prerendered routes are handled by the Cloudflare Worker runtime.
 
 ### Pre-rendering
 
@@ -194,27 +174,11 @@ name = "arbenger"
 compatibility_date = "2026-05-09"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".svelte-kit/cloudflare"
-
-[[hyperdrive]]
-binding = "HYPERDRIVE"
-id = "<hyperdrive-config-id>"
-localConnectionString = "<neon-connection-string-for-local-dev>"
 ```
 
 Key settings:
 - **`nodejs_compat`** — Required because SvelteKit uses `node:async_hooks` internally. Without this flag, the Worker throws runtime errors.
 - **`pages_build_output_dir`** — Points Wrangler to the adapter-cloudflare output directory.
-- **`[[hyperdrive]]`** — Cloudflare Hyperdrive binding for PostgreSQL connection pooling. The `id` references the Hyperdrive config created via `npx wrangler hyperdrive create`. The `localConnectionString` is used during local dev/builds (production uses the Hyperdrive-managed connection).
-
-### Database Infrastructure
-
-| Service | Purpose |
-|---------|---------|
-| **Neon PostgreSQL** | Serverless Postgres database (AWS Singapore) |
-| **Cloudflare Hyperdrive** | Connection pooling proxy between Workers and Neon |
-| **Drizzle ORM** | Type-safe query builder and migration tool |
-
-The database client (`src/lib/server/db/index.ts`) uses `postgres` (postgres.js) with `prepare: false` (required for Hyperdrive since prepared statements are connection-specific). The schema is defined in `src/lib/server/db/schema.ts` and migrations live in `drizzle/`.
 
 ---
 
@@ -363,8 +327,7 @@ After the first production deployment:
 - [ ] `www.arbenger.com` redirects to `arbenger.com`
 - [ ] HTTP redirects to HTTPS
 - [ ] All 18 pages render correctly (home, about, products, contact, privacy, terms, cookies, products/image-resizer, products/image-compressor, products/color-picker, products/sound-booster, products/html-editor, blog, blog/html-css-js-editor-in-browser, blog/browser-volume-beyond-100, blog/color-picker-without-tracking, blog/resize-crop-convert-in-browser, blog/compress-images-90-smaller)
-- [ ] `/api/stats/` returns JSON (GET returns `{ totalProcessed: N }`, accepts `?toolId=` param)
-- [ ] Image resizer and compressor stats counters display at page bottom
+- [ ] `/api/stats/` no longer exists (removed 2026-08-05)
 - [ ] Theme toggle works (dark/light)
 - [ ] Mobile responsive (test on real device)
 - [ ] Favicon displays correctly

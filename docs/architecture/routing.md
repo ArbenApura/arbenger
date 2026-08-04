@@ -1,6 +1,6 @@
 # Routing Architecture
 
-**Last updated:** 2026-08-04
+**Last updated:** 2026-08-05
 
 This document defines the URL structure, rendering strategy, and route planning for arbenger.com.
 
@@ -66,14 +66,6 @@ Product tool routes use SvelteKit **group routes**. Utilities use `(utilities)/`
 | `/blog/[slug]` | `src/routes/blog/[slug]/+page.svelte` | Blog post shell (loads content via `import.meta.glob`) | Post title (dynamic) |
 
 Blog post routes use a dynamic `[slug]` parameter with `entries()` export in `+page.ts` to enumerate all slugs at build time for prerendering. Post content lives in `_posts/*.svelte` files inside the `[slug]` route directory, loaded eagerly via `import.meta.glob('./_posts/*.svelte', { eager: true })`.
-
-### API Routes (Server-Rendered)
-
-| Route | File | Methods | Purpose |
-|-------|------|---------|---------|
-| `/api/stats/` | `src/routes/api/stats/+server.ts` | GET, POST | Usage stats — GET returns `{ totalProcessed }`, POST atomically increments count via upsert |
-
-API routes are server-rendered (not prerendered). They run as Cloudflare Worker functions and access platform bindings (Hyperdrive) via `platform.env`. They are excluded from the sitemap and have no SEO concerns.
 
 ### Other Server Routes
 
@@ -171,9 +163,6 @@ src/routes/
         html-css-js-editor-in-browser.svelte
   contact/
     +page.svelte          ← Contact page (inherits root layout)
-  api/
-    stats/
-      +server.ts          ← Usage stats API (GET + POST, server-rendered)
   sitemap.xml/
     +server.ts            ← XML sitemap (pre-rendered at build time)
 ```

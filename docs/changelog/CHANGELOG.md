@@ -4,6 +4,17 @@ All notable decisions, changes, and milestones for arbenger.com are documented h
 
 ---
 
+## 2026-08-05 — Stats Removal & Hygiene Cleanup
+
+- **Stats system removed entirely** — deleted `/api/stats/` route, `src/lib/server/db/` (Drizzle schema + client), `drizzle/` migrations, `drizzle.config.ts`, and the `HYPERDRIVE` binding in `wrangler.toml`.
+- **Tool pages simplified** — image resizer and compressor no longer track or display lifetime "images processed" counters (`totalProcessed` store, `fetchStats()`, `trackStats()`, stats UI sections removed).
+- **Dependencies pruned** — removed `drizzle-orm`, `drizzle-kit`, `postgres`, `@neondatabase/serverless`, `dotenv` and the `db:generate` / `db:migrate` / `db:studio` scripts.
+- **Credential cleanup** — removed the Neon PostgreSQL connection string from `wrangler.toml` and deleted local `.env` / `.dev.vars`. The site is now fully static: no database, no server-side API, no environment variables.
+- **Resume page** — the Print button is now available in production (was dev-only), matching the "printable to PDF" promise.
+- **Docs synced** — README, architecture docs (routing, data models, state management), deployment guide, image-compressor product doc, and tech-stack doc updated to reflect the static, database-free architecture.
+
+---
+
 ## 2026-08-04 — Portfolio revision
 
 - Converted the site from a company presence to a personal portfolio (Arben M. Apura).
