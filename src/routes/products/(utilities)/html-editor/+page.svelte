@@ -132,10 +132,10 @@
 			},
 			{
 				'@type': 'Question',
-				name: 'Can I use this HTML editor offline?',
+				name: 'Is my code saved between visits?',
 				acceptedAnswer: {
 					'@type': 'Answer',
-					text: 'Yes. After your first visit, the editor and all its dependencies are cached in your browser. You can write and preview code without an internet connection.',
+					text: 'Yes. Your code is stored in your browser’s IndexedDB and restored automatically on your next visit — nothing is uploaded to a server.',
 				},
 			},
 			{
@@ -320,7 +320,7 @@
 					{#each [
 						{ q: 'Is my code sent to a server?', a: 'No. Everything runs in your browser. Your code never leaves your device — there are no uploads, no accounts, and no server-side processing.' },
 						{ q: 'What languages does this editor support?', a: 'HTML, CSS, and JavaScript. Each language has its own editor pane with syntax highlighting, auto-completion, and bracket matching powered by CodeMirror 6.' },
-						{ q: 'Can I use this offline?', a: 'Yes. After your first visit, the editor and all its dependencies are cached in your browser. You can write and preview code without an internet connection.' },
+						{ q: 'Is my code saved between visits?', a: 'Yes. Your code is stored in your browser’s IndexedDB and restored automatically on your next visit — nothing is uploaded to a server.' },
 						{ q: 'How does the formatting work?', a: 'The editor uses Prettier — the same formatter used by most professional codebases. It runs entirely in your browser via the Prettier standalone build. Click Format or press Shift+Alt+F.' },
 						{ q: 'Can I export my code?', a: 'Yes. Export as a ZIP file (index.html, style.css, script.js) or as a single standalone HTML file with CSS and JS inlined. Both download directly to your device.' },
 						{ q: 'Does the editor work on mobile?', a: 'The editor is responsive and works on tablets and phones. On smaller screens, the editor and preview stack vertically with tabbed switching between panes.' },

@@ -248,14 +248,14 @@
 				<code class="rounded bg-[#F1F5F9] px-1.5 py-0.5 font-mono text-sm dark:bg-[#2A2578]">activeTab</code>,
 				<code class="rounded bg-[#F1F5F9] px-1.5 py-0.5 font-mono text-sm dark:bg-[#2A2578]">storage</code>, and
 				<code class="rounded bg-[#F1F5F9] px-1.5 py-0.5 font-mono text-sm dark:bg-[#2A2578]">scripting</code>
-				— the minimum needed to process audio. No page content access, no network requests, no analytics.
+				— the minimum needed to process audio. No data collection, no network requests, no analytics.
 			</p>
 
 			<!-- TRUST BADGES -->
 			<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
 				<div class="flex items-center gap-2 rounded-lg border border-[#E2E8F0] px-4 py-2 dark:border-[#2A2578]">
 					<Lock size={16} class="text-[#2DD4BF]" />
-					<span class="text-sm text-[#475569] dark:text-slate-400">No page access</span>
+					<span class="text-sm text-[#475569] dark:text-slate-400">No data collection</span>
 				</div>
 				<div class="flex items-center gap-2 rounded-lg border border-[#E2E8F0] px-4 py-2 dark:border-[#2A2578]">
 					<Shield size={16} class="text-[#2DD4BF]" />

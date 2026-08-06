@@ -46,7 +46,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'resize-crop-convert-in-browser',
 		title: 'Resize, Crop, and Batch-Convert Images Without Uploading Anything',
 		description:
-			'Single image or 50 at once — resize, crop, rotate, and convert to PNG/JPEG/WebP directly in your browser. No server, no signup, no file size limits.',
+			'Single image or 50 at once — resize, crop, and convert to PNG/JPEG/WebP directly in your browser. No server, no signup, no uploads.',
 		date: '2026-05-10',
 		updatedDate: '2026-05-21',
 		category: 'tutorial',
@@ -56,7 +56,7 @@ export const blogPosts: BlogPost[] = [
 	},
 	{
 		slug: 'compress-images-90-smaller',
-		title: 'Compress Images 90% Smaller Without Visible Quality Loss',
+		title: 'Compress Images Up to 90% Smaller Without Visible Quality Loss',
 		description:
 			'Quality slider, target file size mode, before/after comparison, and batch compression for PNG, JPEG, and WebP — all client-side. No uploads, no watermarks.',
 		date: '2026-05-11',

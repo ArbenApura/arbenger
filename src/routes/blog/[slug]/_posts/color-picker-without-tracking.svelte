@@ -297,7 +297,7 @@
 			<div>
 				<p class="font-display text-base font-bold text-[#0F172A] dark:text-white">Read the results</p>
 				<p class="mt-1 text-sm text-[#475569] leading-relaxed dark:text-slate-300">
-					A live text preview shows the actual combination. Below it: the contrast ratio (e.g., "4.53:1") and three WCAG badges — AA, AA+ (large text), and AAA.
+					A live text preview shows the actual combination. Below it: the contrast ratio (e.g., "4.47:1") and three WCAG badges — AA, AA+ (large text), and AAA.
 				</p>
 			</div>
 		</div>
@@ -333,7 +333,7 @@
 			</div>
 			<!-- RESULT ROW -->
 			<div class="mt-3 flex items-center justify-between">
-				<span class="font-mono text-lg font-bold text-[#0F172A] dark:text-white">3.95:1</span>
+				<span class="font-mono text-lg font-bold text-[#0F172A] dark:text-white">4.47:1</span>
 				<div class="flex gap-1.5">
 					<span class="rounded bg-[#F87171]/15 px-2 py-0.5 text-[9px] font-bold text-[#F87171]">AA ✗</span>
 					<span class="rounded bg-[#4ADE80]/15 px-2 py-0.5 text-[9px] font-bold text-[#4ADE80]">AA+</span>
@@ -357,12 +357,12 @@
 				<tr>
 					<td class="px-4 py-3 font-mono text-xs font-medium text-[#0891B2] dark:text-[#22D3EE]">AA</td>
 					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">4.5:1</td>
-					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Normal text (under 18px or 14px bold)</td>
+					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Normal text (under 18pt / ≈24px, or 14pt bold / ≈18.7px)</td>
 				</tr>
 				<tr>
 					<td class="px-4 py-3 font-mono text-xs font-medium text-[#0891B2] dark:text-[#22D3EE]">AA+</td>
 					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">3:1</td>
-					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Large text (18px+ or 14px+ bold)</td>
+					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Large text (18pt+ / ≈24px+, or 14pt+ bold / ≈18.7px+)</td>
 				</tr>
 				<tr>
 					<td class="px-4 py-3 font-mono text-xs font-medium text-[#0891B2] dark:text-[#22D3EE]">AAA</td>
@@ -397,7 +397,7 @@
 		<div class="rounded-xl border border-[#E2E8F0] p-5 dark:border-[#2A2578]">
 			<p class="font-display text-sm font-bold text-[#0F172A] dark:text-white">Deuteranopia</p>
 			<p class="mt-2 text-xs text-[#64748B] dark:text-slate-400">
-				No green cones. Similar confusion as protanopia but with different brightness perception. The most common form — ~5% of men.
+				No green cones. Similar confusion to protanopia but with different brightness perception. The most common form — ~5% of men.
 			</p>
 		</div>
 		<div class="rounded-xl border border-[#E2E8F0] p-5 dark:border-[#2A2578]">
@@ -421,11 +421,11 @@
 					<svg width="12" height="8" viewBox="0 0 20 12" fill="none" class="text-[#CBD5E1] dark:text-slate-600">
 						<path d="M1 6h14M12 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 					</svg>
-					<div class="h-6 w-6 rounded bg-[#8B8B42]" />
+					<div class="h-6 w-6 rounded bg-[#766C42]" />
 				</div>
 				<div class="flex-1">
 					<p class="text-xs font-semibold text-[#0F172A] dark:text-white">Protanopia</p>
-					<p class="text-[10px] text-[#94A3B8] dark:text-slate-500">No red cones · #8B8B42</p>
+					<p class="text-[10px] text-[#94A3B8] dark:text-slate-500">No red cones · #766C42</p>
 				</div>
 			</div>
 			<!-- DEUTERANOPIA -->
@@ -435,11 +435,11 @@
 					<svg width="12" height="8" viewBox="0 0 20 12" fill="none" class="text-[#CBD5E1] dark:text-slate-600">
 						<path d="M1 6h14M12 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 					</svg>
-					<div class="h-6 w-6 rounded bg-[#A89A33]" />
+					<div class="h-6 w-6 rounded bg-[#A0913E]" />
 				</div>
 				<div class="flex-1">
 					<p class="text-xs font-semibold text-[#0F172A] dark:text-white">Deuteranopia</p>
-					<p class="text-[10px] text-[#94A3B8] dark:text-slate-500">No green cones · #A89A33</p>
+					<p class="text-[10px] text-[#94A3B8] dark:text-slate-500">No green cones · #A0913E</p>
 				</div>
 			</div>
 			<!-- TRITANOPIA -->
@@ -449,11 +449,11 @@
 					<svg width="12" height="8" viewBox="0 0 20 12" fill="none" class="text-[#CBD5E1] dark:text-slate-600">
 						<path d="M1 6h14M12 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 					</svg>
-					<div class="h-6 w-6 rounded bg-[#EF3F3F]" />
+					<div class="h-6 w-6 rounded bg-[#FF0046]" />
 				</div>
 				<div class="flex-1">
 					<p class="text-xs font-semibold text-[#0F172A] dark:text-white">Tritanopia</p>
-					<p class="text-[10px] text-[#94A3B8] dark:text-slate-500">No blue cones · #EF3F3F</p>
+					<p class="text-[10px] text-[#94A3B8] dark:text-slate-500">No blue cones · #FF0046</p>
 				</div>
 			</div>
 		</div>
@@ -526,7 +526,7 @@
 				<p class="mb-2 text-[10px] font-medium tracking-wide text-[#94A3B8] uppercase dark:text-slate-500">Complementary</p>
 				<div class="flex gap-1.5">
 					<div class="h-7 w-7 rounded-md bg-[#6366F1]" title="#6366F1" />
-					<div class="h-7 w-7 rounded-md bg-[#F1EE63]" title="#F1EE63" />
+					<div class="h-7 w-7 rounded-md bg-[#F2EF64]" title="#F2EF64" />
 				</div>
 			</div>
 			<!-- ANALOGOUS -->
@@ -534,10 +534,10 @@
 				<p class="mb-2 text-[10px] font-medium tracking-wide text-[#94A3B8] uppercase dark:text-slate-500">Analogous</p>
 				<div class="flex gap-1.5">
 					<div class="h-7 w-7 rounded-md bg-[#6366F1]" />
-					<div class="h-7 w-7 rounded-md bg-[#8363F1]" />
-					<div class="h-7 w-7 rounded-md bg-[#7363F1]" />
-					<div class="h-7 w-7 rounded-md bg-[#6383F1]" />
-					<div class="h-7 w-7 rounded-md bg-[#6393F1]" />
+					<div class="h-7 w-7 rounded-md bg-[#64ADF2]" />
+					<div class="h-7 w-7 rounded-md bg-[#648AF2]" />
+					<div class="h-7 w-7 rounded-md bg-[#8564F2]" />
+					<div class="h-7 w-7 rounded-md bg-[#A864F2]" />
 				</div>
 			</div>
 			<!-- TRIADIC -->
@@ -545,8 +545,8 @@
 				<p class="mb-2 text-[10px] font-medium tracking-wide text-[#94A3B8] uppercase dark:text-slate-500">Triadic</p>
 				<div class="flex gap-1.5">
 					<div class="h-7 w-7 rounded-md bg-[#6366F1]" />
-					<div class="h-7 w-7 rounded-md bg-[#66F163]" />
-					<div class="h-7 w-7 rounded-md bg-[#F16366]" />
+					<div class="h-7 w-7 rounded-md bg-[#F26467]" />
+					<div class="h-7 w-7 rounded-md bg-[#67F264]" />
 				</div>
 			</div>
 		</div>
@@ -593,15 +593,15 @@
 		</div>
 		<div class="p-5">
 			<div class="flex gap-1">
-				<div class="h-8 flex-1 rounded bg-[#C4C5F9]" />
-				<div class="h-8 flex-1 rounded bg-[#A4A6F6]" />
-				<div class="h-8 flex-1 rounded bg-[#8486F4]" />
-				<div class="h-8 flex-1 rounded bg-[#7376F2]" />
+				<div class="h-8 flex-1 rounded bg-[#FFFFFF]" />
+				<div class="h-8 flex-1 rounded bg-[#F1F1FE]" />
+				<div class="h-8 flex-1 rounded bg-[#C2C3FA]" />
+				<div class="h-8 flex-1 rounded bg-[#9395F6]" />
 				<div class="h-9 flex-1 rounded bg-[#6366F1]" />
-				<div class="h-8 flex-1 rounded bg-[#4F52C1]" />
-				<div class="h-8 flex-1 rounded bg-[#3B3E91]" />
-				<div class="h-8 flex-1 rounded bg-[#272A61]" />
-				<div class="h-8 flex-1 rounded bg-[#131531]" />
+				<div class="h-8 flex-1 rounded bg-[#3538ED]" />
+				<div class="h-8 flex-1 rounded bg-[#1317DD]" />
+				<div class="h-8 flex-1 rounded bg-[#0F12AE]" />
+				<div class="h-8 flex-1 rounded bg-[#0B0D7F]" />
 			</div>
 			<div class="mt-2 flex justify-between text-[9px] text-[#94A3B8] dark:text-slate-500">
 				<span>Lighter</span>
@@ -640,7 +640,7 @@
 		<div class="flex items-start gap-3">
 			<div class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0891B2] dark:bg-[#22D3EE]" />
 			<p class="text-sm text-[#475569] dark:text-slate-300">
-				<strong class="text-[#0F172A] dark:text-white">Clear all</strong> — requires confirmation (click once to see "Confirm?", click again to clear). Resets after 3 seconds if you don't confirm.
+				<strong class="text-[#0F172A] dark:text-white">Clear all</strong> — requires confirmation (click once to see "Confirm?", click again to clear). The confirmation prompt resets after 3 seconds if you don't confirm.
 			</p>
 		</div>
 		<div class="flex items-start gap-3">
@@ -657,7 +657,7 @@
 	<h2 class="font-display text-2xl font-bold text-[#0F172A] dark:text-white">8. Why We Built This</h2>
 
 	<p class="mt-4 text-[#475569] leading-relaxed dark:text-slate-300">
-		Multiple color picker extensions have been caught injecting tracking code after being sold to new owners. The market leader, ColorZilla, requires "access data on all websites" for basic functionality. And none of them include a contrast checker — you need a separate tool for that. We built Color Picker because the bar was on the floor.
+		Multiple color picker extensions have been caught injecting tracking code after being sold to new owners. The market leader, ColorZilla, requires "access data on all websites" for basic functionality. None of them include a contrast checker, either — you'd need a separate tool for that. We built Color Picker because the bar was on the floor.
 	</p>
 
 	<!-- TECH DETAILS -->
@@ -693,7 +693,7 @@
 	<div class="rounded-2xl border border-[#0891B2]/20 bg-[#0891B2]/5 p-8 text-center dark:border-[#22D3EE]/20 dark:bg-[#22D3EE]/5">
 		<p class="font-display text-xl font-bold text-[#0F172A] dark:text-white">Try Color Picker</p>
 		<p class="mt-2 text-sm text-[#475569] dark:text-slate-300">
-			Free, private, and lightweight. Two permissions. Six tools in one popup.
+			Free, private, and lightweight. Two permissions. Everything in one popup.
 		</p>
 		<div class="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
 			<a

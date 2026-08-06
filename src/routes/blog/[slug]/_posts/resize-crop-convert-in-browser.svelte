@@ -99,7 +99,7 @@
 		<!-- CLICK TO BROWSE (MINI UploadZone — BROWSE BUTTON HIGHLIGHTED) -->
 		<div class="flex flex-col items-center rounded-xl border border-[#E2E8F0] p-4 text-center dark:border-[#2A2578]">
 			<div class="mb-3 flex h-[88px] w-full flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-[#CBD5E1] bg-[#F8FAFC] dark:border-[#2A2578] dark:bg-[#1E1A5E]/30">
-				<p class="text-[9px] text-[#94A3B8] dark:text-slate-500">...paste, or</p>
+				<p class="text-[9px] text-[#94A3B8] dark:text-slate-500">Drop images here, paste, or</p>
 				<div class="rounded-lg bg-[#0891B2] px-4 py-1.5 text-[10px] font-medium text-white shadow-sm dark:bg-[#22D3EE] dark:text-[#0B0A23]">
 					Browse Files
 				</div>
@@ -186,7 +186,7 @@
 			<div>
 				<p class="font-display text-base font-bold text-[#0F172A] dark:text-white">Click Resize</p>
 				<p class="mt-1 text-sm text-[#475569] leading-relaxed dark:text-slate-300">
-					The image is processed using a Web Worker off the main thread, so the UI stays smooth. You'll see the
+					When your browser supports it, the image is processed in a Web Worker off the main thread, so the UI stays smooth. You'll see the
 					result preview instantly with file size comparison.
 				</p>
 			</div>
@@ -276,7 +276,7 @@
 	<h2 class="font-display text-2xl font-bold text-[#0F172A] dark:text-white">3. Cropping</h2>
 
 	<p class="mt-4 text-[#475569] leading-relaxed dark:text-slate-300">
-		Click the <strong class="text-[#0F172A] dark:text-white">Crop</strong> button below the preview to open the crop dialog.
+		Click the <strong class="text-[#0F172A] dark:text-white">Crop</strong> button in the top-right corner of the preview to open the crop dialog.
 		Drag the handles to select your region, then click Apply. The crop is applied before resizing.
 	</p>
 
@@ -410,13 +410,13 @@
 				<tr>
 					<td class="px-4 py-3 font-mono text-xs font-medium text-[#0891B2] dark:text-[#22D3EE]">JPEG</td>
 					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Photos, complex imagery</td>
-					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Adjustable (0-100)</td>
+					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Adjustable (1-100)</td>
 					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">No</td>
 				</tr>
 				<tr>
 					<td class="px-4 py-3 font-mono text-xs font-medium text-[#0891B2] dark:text-[#22D3EE]">WebP</td>
 					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Web use, best compression</td>
-					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Adjustable (0-100)</td>
+					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Adjustable (1-100)</td>
 					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Yes</td>
 				</tr>
 			</tbody>
@@ -634,7 +634,7 @@
 		<div class="flex items-start gap-3">
 			<div class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0891B2] dark:bg-[#22D3EE]" />
 			<p class="text-sm text-[#475569] dark:text-slate-300">
-				<strong class="text-[#0F172A] dark:text-white">Auto-naming patterns</strong> — choose from sequential (img-1, img-2), prefix-original, original-suffix, number-only, or custom templates with {'{name}'}, {'{n}'}, {'{w}'}, {'{h}'} tokens.
+				<strong class="text-[#0F172A] dark:text-white">Auto-naming patterns</strong> — choose from sequential (image-1, image-2), prefix-original, original-suffix, number-only, or custom templates with {'{name}'}, {'{n}'}, {'{w}'}, {'{h}'} tokens.
 			</p>
 		</div>
 		<div class="flex items-start gap-3">
@@ -666,12 +666,8 @@
 					<span class="font-mono text-[#0891B2] dark:text-[#22D3EE]">1080 x 1080</span>
 				</li>
 				<li class="flex justify-between">
-					<span>Instagram Story</span>
-					<span class="font-mono text-[#0891B2] dark:text-[#22D3EE]">1080 x 1920</span>
-				</li>
-				<li class="flex justify-between">
-					<span>Twitter/X Post</span>
-					<span class="font-mono text-[#0891B2] dark:text-[#22D3EE]">1200 x 675</span>
+					<span>Twitter / X</span>
+					<span class="font-mono text-[#0891B2] dark:text-[#22D3EE]">1600 x 900</span>
 				</li>
 				<li class="flex justify-between">
 					<span>YouTube Thumbnail</span>
@@ -682,8 +678,8 @@
 					<span class="font-mono text-[#0891B2] dark:text-[#22D3EE]">1200 x 627</span>
 				</li>
 				<li class="flex justify-between">
-					<span>Facebook Cover</span>
-					<span class="font-mono text-[#0891B2] dark:text-[#22D3EE]">820 x 312</span>
+					<span>Facebook</span>
+					<span class="font-mono text-[#0891B2] dark:text-[#22D3EE]">1200 x 630</span>
 				</li>
 			</ul>
 		</div>
@@ -720,8 +716,16 @@
 					<span class="font-mono text-[#0891B2] dark:text-[#22D3EE]">32 x 32</span>
 				</li>
 				<li class="flex justify-between">
-					<span>Apple Touch</span>
-					<span class="font-mono text-[#0891B2] dark:text-[#22D3EE]">180 x 180</span>
+					<span>Icon</span>
+					<span class="font-mono text-[#0891B2] dark:text-[#22D3EE]">64 x 64</span>
+				</li>
+				<li class="flex justify-between">
+					<span>Icon</span>
+					<span class="font-mono text-[#0891B2] dark:text-[#22D3EE]">128 x 128</span>
+				</li>
+				<li class="flex justify-between">
+					<span>Icon</span>
+					<span class="font-mono text-[#0891B2] dark:text-[#22D3EE]">256 x 256</span>
 				</li>
 				<li class="flex justify-between">
 					<span>Large Icon</span>

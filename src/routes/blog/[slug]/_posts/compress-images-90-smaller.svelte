@@ -7,7 +7,8 @@
 <section use:reveal>
 	<p class="text-lg leading-relaxed text-[#475569] dark:text-slate-300">
 		Arbenger Image Compressor is a free, browser-based tool that shrinks your PNG, JPEG, and WebP images without
-		uploading them to any server. Every pixel stays on your machine. This guide walks you through every feature —
+		uploading them to any server. Every pixel stays on your machine. On high-resolution photos, converting to WebP
+		can cut file size by up to 90%. This guide walks you through the main features —
 		from compressing a single photo to batch-processing dozens of images at once.
 	</p>
 
@@ -30,7 +31,7 @@
 		<div>
 			<p class="font-display text-sm font-bold text-[#0F172A] dark:text-white">100% Private</p>
 			<p class="mt-1 text-sm text-[#475569] dark:text-slate-400">
-				Your images never leave your browser. All compression happens locally using Web Workers and the Canvas API.
+				Your images never leave your browser. All compression happens locally using the Canvas API and, where supported, Web Workers.
 				No uploads, no servers, no tracking.
 			</p>
 		</div>
@@ -96,7 +97,7 @@
 		<!-- CLICK TO BROWSE -->
 		<div class="flex flex-col items-center rounded-xl border border-[#E2E8F0] p-4 text-center dark:border-[#2A2578]">
 			<div class="mb-3 flex h-[88px] w-full flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-[#CBD5E1] bg-[#F8FAFC] dark:border-[#2A2578] dark:bg-[#1E1A5E]/30">
-				<p class="text-[9px] text-[#94A3B8] dark:text-slate-500">...paste, or</p>
+				<p class="text-[9px] text-[#94A3B8] dark:text-slate-500">Drop images here, paste, or</p>
 				<div class="rounded-lg bg-[#0891B2] px-4 py-1.5 text-[10px] font-medium text-white shadow-sm dark:bg-[#22D3EE] dark:text-[#0B0A23]">
 					Browse Files
 				</div>
@@ -142,7 +143,7 @@
 	<h2 class="font-display text-2xl font-bold text-[#0F172A] dark:text-white">2. Compressing an Image</h2>
 
 	<p class="mt-4 text-[#475569] leading-relaxed dark:text-slate-300">
-		After uploading, you'll see the preview on the left and the controls panel on the right. Here's the compression workflow:
+		After uploading, you'll see the preview on the left and the control panel on the right (on smaller screens, the controls move below the preview). Here's the compression workflow:
 	</p>
 
 	<!-- WORKFLOW STEPS -->
@@ -172,7 +173,7 @@
 			<div>
 				<p class="font-display text-base font-bold text-[#0F172A] dark:text-white">Click Compress</p>
 				<p class="mt-1 text-sm text-[#475569] leading-relaxed dark:text-slate-300">
-					The image is compressed in a Web Worker off the main thread, so the UI stays smooth. You'll see the result with file size comparison instantly.
+					When your browser supports it, the image is compressed in a Web Worker off the main thread so the UI stays smooth. You'll see the result with an instant file-size comparison.
 				</p>
 			</div>
 		</div>
@@ -287,7 +288,7 @@
 				Original · 1.3 MB
 			</div>
 			<div class="absolute bottom-3 right-3 z-10 rounded-md bg-[#0891B2]/80 px-2 py-1 text-[10px] font-medium text-white backdrop-blur-sm dark:bg-[#22D3EE]/80 dark:text-[#0B0A23]">
-				Compressed · 320 KB · 75% smaller
+				Compressed · 320 KB · 76% smaller
 			</div>
 
 			<!-- ZOOM CONTROLS MOCKUP -->
@@ -347,13 +348,13 @@
 				<tr>
 					<td class="px-4 py-3 font-mono text-xs font-medium text-[#0891B2] dark:text-[#22D3EE]">JPEG</td>
 					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Lossy</td>
-					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Controls quality (0-100)</td>
+					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Controls quality (1-100)</td>
 					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Photos, complex imagery</td>
 				</tr>
 				<tr>
 					<td class="px-4 py-3 font-mono text-xs font-medium text-[#0891B2] dark:text-[#22D3EE]">WebP</td>
 					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Lossy</td>
-					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Controls quality (0-100)</td>
+					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Controls quality (1-100)</td>
 					<td class="px-4 py-3 text-[#475569] dark:text-slate-300">Web use, smallest files</td>
 				</tr>
 				<tr>
@@ -418,7 +419,7 @@
 		<div class="flex items-start gap-3">
 			<div class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0891B2] dark:bg-[#22D3EE]" />
 			<p class="text-sm text-[#475569] dark:text-slate-300">
-				<strong class="text-[#0F172A] dark:text-white">Validation</strong> — the target cannot exceed the original file size. The input highlights amber and the compress button is disabled if it does.
+				<strong class="text-[#0F172A] dark:text-white">Validation</strong> — the target can't be larger than the original file size. The input highlights amber and the compress button is disabled if it is.
 			</p>
 		</div>
 		<div class="flex items-start gap-3">
@@ -551,7 +552,7 @@
 		<div class="flex items-start gap-3">
 			<div class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0891B2] dark:bg-[#22D3EE]" />
 			<p class="text-sm text-[#475569] dark:text-slate-300">
-				<strong class="text-[#0F172A] dark:text-white">Auto-naming patterns</strong> — choose from sequential (img-1, img-2), prefix-original, original-suffix, number-only, or custom templates with {'{name}'} and {'{n}'} tokens.
+				<strong class="text-[#0F172A] dark:text-white">Auto-naming patterns</strong> — choose from sequential (photo-1, photo-2), prefix-original, original-suffix, number-only, or custom templates with {'{name}'} and {'{n}'} tokens.
 			</p>
 		</div>
 		<div class="flex items-start gap-3">
@@ -573,7 +574,7 @@
 				Use WebP for the smallest file sizes
 			</p>
 			<p class="mt-2 text-sm text-[#475569] dark:text-slate-300">
-				WebP typically produces files 25-34% smaller than JPEG at equivalent quality, with transparency support.
+				WebP typically produces smaller files than JPEG at equivalent quality, with transparency support.
 				Convert your PNGs and JPEGs to WebP for the best web performance.
 			</p>
 		</div>

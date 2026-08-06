@@ -27,7 +27,7 @@
 		<div>
 			<p class="font-display text-sm font-bold text-[#0F172A] dark:text-white">Minimal Permissions</p>
 			<p class="mt-1 text-sm text-[#475569] dark:text-slate-400">
-				This extension only uses <code class="rounded bg-[#F1F5F9] px-1 py-0.5 font-mono text-xs dark:bg-[#2A2578]">activeTab</code>, <code class="rounded bg-[#F1F5F9] px-1 py-0.5 font-mono text-xs dark:bg-[#2A2578]">storage</code>, and <code class="rounded bg-[#F1F5F9] px-1 py-0.5 font-mono text-xs dark:bg-[#2A2578]">scripting</code>. The audio processor only activates when you click the extension icon. No page content access, no network requests, no analytics.
+				This extension only uses <code class="rounded bg-[#F1F5F9] px-1 py-0.5 font-mono text-xs dark:bg-[#2A2578]">activeTab</code>, <code class="rounded bg-[#F1F5F9] px-1 py-0.5 font-mono text-xs dark:bg-[#2A2578]">storage</code>, and <code class="rounded bg-[#F1F5F9] px-1 py-0.5 font-mono text-xs dark:bg-[#2A2578]">scripting</code>. The audio processor only activates when you open the popup or press a keyboard shortcut — never automatically on page load. No data collection, no network requests, no analytics.
 			</p>
 		</div>
 	</div>
@@ -64,7 +64,7 @@
 			<div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0891B2] font-mono text-sm font-bold text-white dark:bg-[#22D3EE] dark:text-[#0B0A23]">1</div>
 			<div>
 				<p class="font-display text-base font-bold text-[#0F172A] dark:text-white">Play audio in any tab</p>
-				<p class="mt-1 text-sm text-[#475569] leading-relaxed dark:text-slate-300">Open YouTube, a podcast, Spotify Web, or any page with audio or video. The extension detects media elements automatically.</p>
+				<p class="mt-1 text-sm text-[#475569] leading-relaxed dark:text-slate-300">Open YouTube, a podcast episode, Spotify Web, or any page with audio or video. The extension detects media elements automatically.</p>
 			</div>
 		</div>
 		<div class="flex gap-4">
@@ -78,7 +78,7 @@
 			<div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0891B2] font-mono text-sm font-bold text-white dark:bg-[#22D3EE] dark:text-[#0B0A23]">3</div>
 			<div>
 				<p class="font-display text-base font-bold text-[#0F172A] dark:text-white">Drag past 100%</p>
-				<p class="mt-1 text-sm text-[#475569] leading-relaxed dark:text-slate-300">The percentage display turns cyan when boosting. A DynamicsCompressor prevents clipping at high volumes. The slider snaps to 100% when you're near it.</p>
+				<p class="mt-1 text-sm text-[#475569] leading-relaxed dark:text-slate-300">The percentage display turns cyan while boosting. A DynamicsCompressor prevents clipping at high volumes. The slider snaps to 100% when you're near it.</p>
 			</div>
 		</div>
 	</div>
@@ -368,7 +368,7 @@
 	<h2 class="font-display text-2xl font-bold text-[#0F172A] dark:text-white">6. On/Off Toggle</h2>
 
 	<p class="mt-4 text-[#475569] leading-relaxed dark:text-slate-300">
-		The toggle switch in the popup header instantly bypasses all audio processing. When off, gain resets to 1.0 (native volume) and EQ flattens — but your settings are preserved. Toggle back on and everything restores instantly.
+		The toggle switch in the popup header instantly bypasses all audio processing. When off, gain resets to 1.0 (native volume) and EQ flattens — but your settings are preserved. Toggle back on and everything is restored instantly.
 	</p>
 
 	<!-- ON/OFF MOCKUP -->
@@ -417,7 +417,7 @@
 	<h2 class="font-display text-2xl font-bold text-[#0F172A] dark:text-white">8. Why We Built This</h2>
 
 	<p class="mt-4 text-[#475569] leading-relaxed dark:text-slate-300">
-		Most volume booster extensions on the Chrome Web Store have broad host permissions, inject analytics, have bloated UIs, or lack an equalizer. We wanted one that's powerful, private, and polished.
+		Most volume booster extensions on the Chrome Web Store request broad host permissions, inject analytics, have bloated UIs, or lack an equalizer. We wanted one that's powerful, private, and polished.
 	</p>
 
 	<div class="mt-6 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-5 dark:border-[#2A2578] dark:bg-[#1E1A5E]/20">

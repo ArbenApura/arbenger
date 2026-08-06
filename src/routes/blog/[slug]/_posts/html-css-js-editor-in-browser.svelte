@@ -28,7 +28,7 @@
 		<div>
 			<p class="font-display text-sm font-bold text-[#0F172A] dark:text-white">100% Private</p>
 			<p class="mt-1 text-sm text-[#475569] dark:text-slate-400">
-				All code editing, formatting, linting, and previewing happens in your browser. Nothing is sent to a server. Your work persists in IndexedDB on your device.
+				All code editing, formatting, linting, and previewing happen in your browser. Nothing is sent to a server. Your work persists in IndexedDB on your device.
 			</p>
 		</div>
 	</div>
@@ -130,7 +130,7 @@
 	<h2 class="font-display text-2xl font-bold text-[#0F172A] dark:text-white">3. Prettier Formatting</h2>
 
 	<p class="mt-4 text-[#475569] leading-relaxed dark:text-slate-300">
-		Click <strong class="text-[#0F172A] dark:text-white">Format</strong> in the editor toolbar or press <kbd class="rounded border border-[#E2E8F0] bg-[#F8FAFC] px-1.5 py-0.5 font-mono text-xs dark:border-[#2A2578] dark:bg-[#1E1A5E]">Shift+Alt+F</kbd> to format the active pane. <strong class="text-[#0F172A] dark:text-white">Format All</strong> formats HTML, CSS, and JavaScript at once.
+		Click <strong class="text-[#0F172A] dark:text-white">Format</strong> in the editor toolbar or press <kbd class="rounded border border-[#E2E8F0] bg-[#F8FAFC] px-1.5 py-0.5 font-mono text-xs dark:border-[#2A2578] dark:bg-[#1E1A5E]">Shift+Alt+F</kbd> to format the active pane. Use the <strong class="text-[#0F172A] dark:text-white">All</strong> button to format every pane at once.
 	</p>
 
 	<!-- BEFORE / AFTER -->
@@ -169,7 +169,7 @@
 	<div class="mt-6 grid gap-4 sm:grid-cols-3">
 		<div class="rounded-xl border border-[#E2E8F0] p-4 dark:border-[#2A2578]">
 			<p class="font-display text-sm font-bold text-[#0F172A] dark:text-white">HTML</p>
-			<p class="mt-1 text-xs text-[#64748B] dark:text-slate-400">Unclosed tags, unmatched closing tags, missing required elements</p>
+			<p class="mt-1 text-xs text-[#64748B] dark:text-slate-400">Unclosed tags, unmatched closing tags</p>
 			<!-- MINI ERROR MOCKUP -->
 			<div class="mt-3 rounded bg-[#0B0A23] p-2 font-mono text-[10px]">
 				<div class="flex items-center gap-2">
@@ -224,11 +224,11 @@
 			<tbody class="font-mono text-xs">
 				<tr class="border-b border-[#E2E8F0] dark:border-[#2A2578]/50">
 					<td class="px-4 py-2.5 text-[#0891B2] dark:text-[#22D3EE]">ul>li*3</td>
-					<td class="px-4 py-2.5 text-[#475569] dark:text-slate-300">&lt;ul&gt;&lt;li&gt;&lt;/li&gt; &times;3&lt;/ul&gt;</td>
+					<td class="px-4 py-2.5 text-[#475569] dark:text-slate-300">&lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;</td>
 				</tr>
 				<tr class="border-b border-[#E2E8F0] dark:border-[#2A2578]/50">
 					<td class="px-4 py-2.5 text-[#0891B2] dark:text-[#22D3EE]">div.card>h2+p</td>
-					<td class="px-4 py-2.5 text-[#475569] dark:text-slate-300">&lt;div class="card"&gt;&lt;h2&gt;+&lt;p&gt;&lt;/div&gt;</td>
+					<td class="px-4 py-2.5 text-[#475569] dark:text-slate-300">&lt;div class="card"&gt;&lt;h2&gt;&lt;/h2&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</td>
 				</tr>
 				<tr class="border-b border-[#E2E8F0] dark:border-[#2A2578]/50">
 					<td class="px-4 py-2.5 text-[#0891B2] dark:text-[#22D3EE]">m10</td>
@@ -358,7 +358,7 @@
 	<h2 class="font-display text-2xl font-bold text-[#0F172A] dark:text-white">Why We Built This</h2>
 
 	<p class="mt-4 text-[#475569] leading-relaxed dark:text-slate-300">
-		Most online HTML editors either paywall basic features like private pens, or load 5-10MB of IDE framework for a task that should be instant. We wanted something in between: a clean editor with real developer tools (Prettier, linting, Emmet, device preview) that loads fast, works offline, and never touches your code.
+		Most online HTML editors either paywall basic features like private pens, or load a 5-10MB IDE framework for a task that should be instant. We wanted something in between: a clean editor with real developer tools (Prettier, linting, Emmet, device preview) that loads fast, runs entirely in your browser, and never uploads your code.
 	</p>
 
 	<!-- TECH DETAILS -->
@@ -367,7 +367,7 @@
 		<ul class="mt-3 space-y-2 text-sm text-[#475569] dark:text-slate-300">
 			<li class="flex items-start gap-3">
 				<span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0891B2] dark:bg-[#22D3EE]" />
-				<span><strong class="text-[#0F172A] dark:text-white">CodeMirror 6</strong> — modular editor core (~300KB vs Monaco's 5-10MB). Mobile-first, accessible.</span>
+				<span><strong class="text-[#0F172A] dark:text-white">CodeMirror 6</strong> — modular editor core, a fraction of the size of full IDE frameworks like Monaco. Mobile-first, accessible.</span>
 			</li>
 			<li class="flex items-start gap-3">
 				<span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0891B2] dark:bg-[#22D3EE]" />
@@ -379,7 +379,7 @@
 			</li>
 			<li class="flex items-start gap-3">
 				<span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0891B2] dark:bg-[#22D3EE]" />
-				<span><strong class="text-[#0F172A] dark:text-white">IndexedDB persistence</strong> — your code auto-saves to your browser. No cloud, no login.</span>
+				<span><strong class="text-[#0F172A] dark:text-white">IndexedDB persistence</strong> — your code auto-saves in your browser. No cloud, no login.</span>
 			</li>
 		</ul>
 	</div>
