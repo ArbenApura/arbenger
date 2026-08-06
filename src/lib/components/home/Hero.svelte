@@ -13,9 +13,9 @@
 	// -- CONSTANTS -- //
 
 	const HERO_PHRASES = [
-		'Full-Stack Web Developer',
+		'Full-Stack Developer',
 		'SvelteKit & Next.js Specialist',
-		'Web App Developer',
+		'Web Apps, AI Tools & Extensions',
 		'Web & Android Developer',
 		'Figma to Production',
 	];
