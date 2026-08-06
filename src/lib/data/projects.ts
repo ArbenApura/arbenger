@@ -31,6 +31,12 @@ export const projects: PortfolioProject[] = [
 			'Non-GMS support — works on Huawei, Amazon Fire, and custom ROMs',
 			'TV-first "10-foot" interface with D-Pad remote compatibility',
 		],
+		learnings: [
+			'Android package fragmentation — XAPK, split APKs (APKS/APKM), and OBB placement, plus the edge cases that break installers',
+			'TV-first interface patterns — D-Pad navigation and the "10-foot" UI',
+			'Pre-install security scanning with VirusTotal — balancing safety against install speed',
+			'Taking a client’s Figma and vision and shipping it to 500k+ downloads',
+		],
 		stack: [
 			'Svelte 5',
 			'SvelteKit 2',
@@ -99,6 +105,12 @@ export const projects: PortfolioProject[] = [
 			'No ads, no tracking, no data collection',
 			'Multi-language localization',
 		],
+		learnings: [
+			'Launcher development on Android TV — HOME-key mapping and replacing stock launchers on restrictive OEM boxes',
+			'Performance on cheap hardware — the "zero-lag" bar for a home screen on low-end boxes',
+			'Parental controls and accessibility as first-class features — PIN locks and large-text modes',
+			'Multi-architecture builds (ARMv7, ARM64, x86) across TV-box fragmentation',
+		],
 		stack: [
 			'Svelte 5',
 			'SvelteKit 2',
@@ -156,6 +168,12 @@ export const projects: PortfolioProject[] = [
 			'100% D-Pad / remote-friendly interface',
 			'Modern orange-themed UI',
 		],
+		learnings: [
+			'Play Store permissions — writing honest, reviewable justifications for MANAGE_EXTERNAL_STORAGE and REQUEST_INSTALL_PACKAGES',
+			'Split-APK installs and Shortcodes compatibility — matching an established ecosystem exactly',
+			'Resumable downloads and USB OTG file management on TV',
+			'Competing on trust — an ad-free utility in a category full of ad-heavy tools',
+		],
 		stack: [
 			'Svelte 5',
 			'SvelteKit 2',
@@ -209,6 +227,12 @@ export const projects: PortfolioProject[] = [
 			'100% ad-free with no in-app purchases — all features unlocked',
 			'HTTPS-encrypted transfer; files are automatically purged',
 		],
+		learnings: [
+			'Cloud-bridge architecture — a zero-footprint sender that works across networks without a paired app',
+			'Web-to-TV control — URL injection and clipboard sync from a phone browser to a TV',
+			'Privacy by design — HTTPS in transit and automatic file purging',
+			'One product, two surfaces — a web app and an Android app sharing the same core',
+		],
 		stack: [
 			'Svelte 5',
 			'SvelteKit 2',
@@ -259,11 +283,18 @@ export const projects: PortfolioProject[] = [
 		status: 'Completed',
 		recognition: 'Registered with IPOPHL · Feb 2026',
 		summary:
-			'Capstone for Bulacan State University: an Arduino-powered smart door lock with RFID and face recognition, managed through a SvelteKit web app.',
+			'Capstone for Bulacan State University: an Arduino-powered smart door lock with RFID and face recognition, managed through a SvelteKit web app — registered with the Intellectual Property Office of the Philippines.',
 		problem:
-			'Unauthorized access to the faculty room of the Information Technology and Decision Sciences (ITDS) Department at Bulacan State University — Sarmiento Campus.',
+			'The faculty room of the Information Technology and Decision Sciences (ITDS) Department at Bulacan State University — Sarmiento Campus was protected by physical keys shared among faculty. Access couldn’t be granted or revoked per person, there was no record of who entered and when, and re-securing the room meant changing the locks entirely. The department needed access control that worked per person — with an audit trail — without replacing the door.',
 		solution:
-			'An Arduino-powered smart door lock system with RFID and face recognition, plus a management website for real-time access control: assign, change, or remove face profiles and RFID cards from any browser.',
+			'I designed a smart door lock that authenticates people instead of keys: an Arduino Mega 2560 controls the hardware — RFID readers on both sides of the door, the locking mechanism, LCD/LED/buzzer feedback, and UPS backup power — while an ESP8266 NodeMCU keeps it connected to a SvelteKit management web app over Wi-Fi. Face recognition runs through the web interface, so the department assigns, changes, or removes face profiles and RFID cards from any browser, watches real-time access logs, and approves special access requests. What began as a capstone was refined into a working system for the department — and registered with the Intellectual Property Office of the Philippines (IPOPHL) in 2026.',
+		learnings: [
+			'Integrating hardware and web — Arduino for the door, ESP8266 for connectivity, SvelteKit for control, and making them talk reliably over Wi-Fi',
+			'Real-time access control — streaming door events from embedded hardware to a web dashboard',
+			'Face recognition in practice — tuning accuracy and lighting for a real doorway, not a demo',
+			'Shipping for a real department — uptime and backup power (UPS) mattered as much as features',
+			'Protecting the work — taking a capstone from concept to IPOPHL registration',
+		],
 		features: [
 			'RFID authentication from two readers (front and back of the door)',
 			'Face recognition through the web interface',
@@ -341,24 +372,30 @@ export const projects: PortfolioProject[] = [
 	{
 		slug: 'calculus-courseware',
 		name: 'Basic Calculus Courseware',
-		tagline: 'Client-built e-learning platform for a doctoral program.',
+		tagline: 'An e-learning platform for a doctoral program — built for a client teaching Basic Calculus online.',
 		year: '2021-2022',
 		category: 'Web App · E-learning',
 		role: 'Contracted full-stack developer',
 		status: 'Completed',
 		summary:
-			'A courseware platform for Basic Calculus with student and teacher accounts — courses, lessons, videos, modules, interactive worksheets, and assessments.',
-		problem: 'A client completing a doctoral degree needed a courseware platform tailored to teaching Basic Calculus.',
+			'A courseware platform that let a doctoral student teach Basic Calculus the way they wanted — student and teacher accounts, lessons organized by academic quarter, video materials, modules, interactive worksheets, and assessments.',
+		problem:
+			'In 2021–2022, while schools in the Philippines were shifting to online classes, a client completing a doctoral degree needed to teach Basic Calculus remotely. Generic classroom tools weren’t built for structured math instruction — lessons, materials, and assessments lived scattered across links and attachments, and there was no single place where the course actually lived.',
 		solution:
-			'A comprehensive web application covering the whole teaching workflow: enrolled students, lessons, academic quarters, video materials, modules, worksheets, and assessments.',
+			'I built a full courseware platform around the client’s real teaching flow: teacher and student accounts, courses and lessons organized by academic quarter, video materials for recorded instruction, downloadable and online modules, interactive worksheets, and assessments — one place where the whole course lived, built to the client’s vision from the ground up.',
 		features: [
 			'Student and teacher accounts',
-			'Course and lesson management',
-			'Video material storage',
-			'Module delivery',
+			'Course and lesson management by academic quarter',
+			'Video material storage for recorded lessons',
+			'Module delivery — downloadable and online',
 			'Interactive worksheets',
 			'Assessments',
 			'Academic quarter tracking',
+		],
+		learnings: [
+			'Client work from a real requirement — turning a doctoral student’s teaching workflow into a concrete spec',
+			'Designing e-learning for a specific subject — math instruction needs structure, not a generic LMS',
+			'Delivering for someone else’s students — the platform had to work for real classes, not demos',
 		],
 		stack: ['Next.js', 'React', 'Firebase'],
 		links: [],
@@ -374,10 +411,21 @@ export const projects: PortfolioProject[] = [
 		role: 'Solo developer · org VP',
 		status: 'Completed',
 		summary:
-			'Streamlined the membership process for the Exemplary League of Information Technology Students (ELITS) at Bulacan State University — Sarmiento Campus, with a blog alongside.',
-		problem: 'The student organization relied on manual sign-ups; membership needed a digital workflow.',
-		solution: 'A web application that streamlines ELITS membership, with a built-in blog covering a variety of topics.',
-		features: ['Digital membership process', 'Built-in blog'],
+			'Streamlined the membership process for the Exemplary League of Information Technology Students (ELITS) at Bulacan State University — Sarmiento Campus, with a blog alongside — built while serving as the organization’s Vice-President.',
+		problem:
+			'As Vice-President of the Exemplary League of Information Technology Students (ELITS), I saw membership handled the manual way: paper sign-ups, lists passed between officers, and announcements scattered across group chats. There was no single place for students to join, and no reliable record of who was actually a member.',
+		solution:
+			'I built the organization a digital membership portal: an online sign-up and membership workflow, member records for officers, and a built-in blog for announcements and org content — one place the whole organization could point new members to, maintained by the officers themselves.',
+		features: [
+			'Digital membership process — online sign-up replacing paper lists',
+			'Member records managed by officers',
+			'Built-in blog for announcements and org content',
+		],
+		learnings: [
+			'Dogfooding — building a product for the organization I led and using it myself',
+			'Scoping for a student org — a small, focused tool beats a big generic platform',
+			'Solo ownership — design, development, and deployment by one person',
+		],
 		stack: ['SvelteKit', 'Tailwind CSS', 'Supabase'],
 		links: [],
 		cover: '/projects/exemplary-league-portal/cover.png',
