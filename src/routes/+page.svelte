@@ -2,6 +2,9 @@
 	// IMPORTED MODULES
 	import { reveal } from '$lib/actions/reveal';
 
+	// IMPORTED MODULES
+	import { socialLinks } from '$lib/data/navigation';
+
 	// IMPORTED COMPONENTS
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
 	import JsonLd from '$lib/components/seo/JsonLd.svelte';
@@ -41,7 +44,7 @@
 			addressCountry: 'PH',
 		},
 		knowsAbout: ['SvelteKit', 'Next.js', 'TypeScript', 'Supabase', 'Firebase', 'Capacitor', 'OpenAI API'],
-		sameAs: ['https://github.com/ArbenApura', 'https://www.facebook.com/arbenapura.official'],
+		sameAs: socialLinks.map((l) => l.url),
 	}}
 />
 

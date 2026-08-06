@@ -103,15 +103,30 @@
 <!-- PROFESSIONAL SUMMARY -->
 <section class="relative overflow-hidden py-16">
 	<div class="mx-auto max-w-7xl px-6 lg:px-8">
-		<div use:revealSlide={{ direction: 'left' }} class="max-w-3xl">
-			<h2 class="font-display text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">Who I am</h2>
+		<div class="grid items-center gap-10 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-16">
+			<!-- PORTRAIT -->
+			<div use:revealSlide={{ direction: 'left' }} class="mx-auto w-full max-w-xs lg:max-w-none">
+				<img
+					src="/portrait.jpg"
+					alt="Portrait of Arben Apura"
+					width="800"
+					height="1203"
+					loading="lazy"
+					class="w-full rounded-2xl border border-[#E2E8F0] shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:border-[#2A2578]/60 dark:shadow-none"
+				/>
+			</div>
 
-			<p class="mt-6 text-lg leading-relaxed text-[#475569] dark:text-slate-300">
-				Full-stack developer focused on building and shipping production web and Android applications.
-				Experienced in turning designs into complete products across frontend, backend, mobile, and
-				infrastructure, building production software since my college years. Strong focus on TypeScript,
-				SvelteKit, Next.js, PostgreSQL, and Capacitor.
-			</p>
+			<!-- TEXT -->
+			<div use:revealSlide={{ direction: 'right' }}>
+				<h2 class="font-display text-3xl font-bold tracking-tight text-[#0F172A] dark:text-white">Who I am</h2>
+
+				<p class="mt-6 text-lg leading-relaxed text-[#475569] dark:text-slate-300">
+					Full-stack developer focused on building and shipping production web and Android applications.
+					Experienced in turning designs into complete products across frontend, backend, mobile, and
+					infrastructure, building production software since my college years. Strong focus on TypeScript,
+					SvelteKit, Next.js, PostgreSQL, and Capacitor.
+				</p>
+			</div>
 		</div>
 	</div>
 </section>

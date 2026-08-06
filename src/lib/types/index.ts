@@ -43,6 +43,8 @@ export interface SocialLink {
 	platform: string;
 	url: string;
 	icon: string;
+	description?: string;
+	stats?: { label: string; value: string }[];
 }
 
 export type BlogCategory = 'tutorial';
@@ -78,10 +80,14 @@ export interface PortfolioProject {
 	problem?: string;
 	solution?: string;
 	features: string[];
+	/** Personal takeaways shown in a "What I learned" section on the detail page. */
+	learnings?: string[];
 	stack: string[];
 	links: { label: string; url: string }[];
 	cover?: string;
 	screenshots?: string[];
 	video?: { embedUrl: string; title: string };
 	pdf?: { path: string; label: string };
+	/** Show on the home page "Featured projects" section (curated subset). */
+	featured?: boolean;
 }
