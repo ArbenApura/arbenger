@@ -8,6 +8,12 @@
 
 	// IMPORTED COMPONENTS
 	import ProjectCard from '$lib/components/projects/ProjectCard.svelte';
+
+	// -- REACTIVE STATES -- //
+
+	// Curated subset for the home page; falls back to all projects if none are flagged.
+	$: featuredProjects = projects.filter((p) => p.featured);
+	$: homeProjects = featuredProjects.length > 0 ? featuredProjects : projects;
 </script>
 
 <!-- FEATURED PROJECTS SECTION -->
@@ -32,7 +38,7 @@
 
 		<!-- PROJECT CARDS -->
 		<div class="grid gap-6 sm:grid-cols-2">
-			{#each projects as project, i}
+			{#each homeProjects as project, i}
 				<ProjectCard {project} delay={i * 100} />
 			{/each}
 		</div>

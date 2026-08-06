@@ -13,6 +13,7 @@
 	import JsonLd from '$lib/components/seo/JsonLd.svelte';
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
 	import ProjectCover from '$lib/components/projects/ProjectCover.svelte';
+	import Screenshot from '$lib/components/projects/Screenshot.svelte';
 
 	// -- REQUIRED PROPS -- //
 
@@ -25,6 +26,16 @@
 	// -- REACTIVE STATES -- //
 
 	$: project = data.project;
+
+	// -- GALLERY STATE: EACH SHOT REPORTS ITS ORIENTATION ON LOAD; LAYOUT GROUPS
+	//    LANDSCAPES (FULL-WIDTH ROWS) SEPARATELY FROM PORTRAITS (TWO-COLUMN) -- //
+
+	let orientations: (boolean | undefined)[] = [];
+
+	function handleResolve(index: number, isLandscape: boolean) {
+		orientations[index] = isLandscape;
+		orientations = orientations;
+	}
 </script>
 
 <MetaTags
@@ -164,6 +175,30 @@
 	</section>
 {/if}
 
+<!-- WHAT I LEARNED -->
+{#if project.learnings && project.learnings.length > 0}
+	<section class="relative overflow-hidden border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]/50">
+		<div class="mx-auto max-w-4xl px-6 lg:px-8">
+			<p use:reveal class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">What I learned</p>
+			<div class="mt-6 grid gap-3 sm:grid-cols-2">
+				{#each project.learnings as learning, i}
+					<div
+						use:reveal={{ delay: i * 60 }}
+						class="flex items-start gap-3 rounded-xl border border-[#E2E8F0] bg-white p-4 dark:border-[#2A2578] dark:bg-[#1E1A5E]/20"
+					>
+						<span
+							class="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-[#0891B2]/10 text-[10px] font-bold text-[#0891B2] dark:bg-[#22D3EE]/10 dark:text-[#22D3EE]"
+						>
+							{i + 1}
+						</span>
+						<span class="text-sm text-[#475569] dark:text-slate-300">{learning}</span>
+					</div>
+				{/each}
+			</div>
+		</div>
+	</section>
+{/if}
+
 <!-- TECH STACK -->
 {#if project.stack.length > 0}
 	<section class="relative overflow-hidden border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]/50">
@@ -207,13 +242,17 @@
 	<section class="relative overflow-hidden border-t border-[#E2E8F0] py-16 dark:border-[#2A2578]/50">
 		<div class="mx-auto max-w-4xl px-6 lg:px-8">
 			<p use:reveal class="font-mono text-sm text-[#0891B2] dark:text-[#22D3EE]">Screenshots</p>
-			<div class="mt-6 grid gap-6 sm:grid-cols-2">
-				{#each project.screenshots as shot, i}
-					<img
-						src={shot}
+
+			<!-- ALL SHOTS RENDER UNCONDITIONALLY (THEY DETECT ORIENTATION ON LOAD); ONCE RESOLVED:
+			     LANDSCAPES -> w-full + order-1 (own rows, on top) | PORTRAITS -> half-width + order-2
+			     (two-column below; justify-center centers a lone last portrait). Never mixed. -->
+			<div class="mt-6 flex flex-wrap justify-center gap-6">
+				{#each project.screenshots as src, i (src)}
+					<Screenshot
+						src={src}
 						alt={`${project.name} screenshot ${i + 1}`}
-						loading="lazy"
-						class="w-full rounded-xl border border-[#E2E8F0] dark:border-[#2A2578]/60"
+						onResolve={(isLandscape) => handleResolve(i, isLandscape)}
+						extraClass={orientations[i] === true ? 'w-full order-1' : orientations[i] === false ? 'sm:w-[calc(50%-0.75rem)] order-2' : ''}
 					/>
 				{/each}
 			</div>

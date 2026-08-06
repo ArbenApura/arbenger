@@ -21,7 +21,9 @@
 		.toUpperCase();
 </script>
 
-{#if project.video}
+{#if project.cover}
+	<img src={project.cover} alt={`${project.name} screenshot`} loading="lazy" class={imageClass} />
+{:else if project.video}
 	<div class={placeholderClass}>
 		<iframe
 			src={project.video.embedUrl}
@@ -32,8 +34,6 @@
 			allowfullscreen
 		></iframe>
 	</div>
-{:else if project.cover}
-	<img src={project.cover} alt={`${project.name} screenshot`} loading="lazy" class={imageClass} />
 {:else}
 	<div class={placeholderClass}>
 		<div class="relative flex h-full w-full items-center justify-center overflow-hidden bg-gradient-to-br from-[#1E1A5E] via-[#0B0A23] to-[#0B0A23]">

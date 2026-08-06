@@ -21,7 +21,7 @@
 	// -- REACTIVE STATES -- //
 
 	$: liveProducts = products.filter((p) => p.status === 'live');
-	$: sortedProjects = [...projects].sort((a, b) => parseInt(a.year) - parseInt(b.year)).reverse();
+	$: sortedProjects = [...projects].sort((a, b) => parseInt(b.year) - parseInt(a.year));
 </script>
 
 <MetaTags
