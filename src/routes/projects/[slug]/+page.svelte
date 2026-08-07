@@ -14,6 +14,7 @@
 	import MetaTags from '$lib/components/seo/MetaTags.svelte';
 	import ProjectCover from '$lib/components/projects/ProjectCover.svelte';
 	import Screenshot from '$lib/components/projects/Screenshot.svelte';
+	import VideoEmbed from '$lib/components/projects/VideoEmbed.svelte';
 
 	// -- REQUIRED PROPS -- //
 
@@ -223,15 +224,8 @@
 			<h2 class="font-display mt-3 text-2xl font-bold tracking-tight text-[#0F172A] dark:text-white">
 				{project.video.title}
 			</h2>
-			<div class="mt-6 aspect-video min-h-[240px] overflow-hidden rounded-2xl border border-[#E2E8F0] dark:border-[#2A2578]/60">
-				<iframe
-					src={project.video.embedUrl}
-					title={project.video.title}
-					class="h-full w-full"
-					loading="lazy"
-					allow="autoplay; fullscreen"
-					allowfullscreen
-				></iframe>
+			<div class="mt-6">
+				<VideoEmbed src={project.video.embedUrl} title={project.video.title} />
 			</div>
 		</div>
 	</section>

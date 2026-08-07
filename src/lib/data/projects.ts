@@ -306,9 +306,10 @@ export const projects: PortfolioProject[] = [
 			'UPS backup power during outages',
 		],
 		stack: ['SvelteKit', 'Supabase', 'Face API JS', 'Arduino Mega 2560', 'ESP8266 NodeMCU', 'RFID RC522', 'Vercel'],
-		links: [{ label: 'Video demo', url: 'https://drive.google.com/file/d/1nP0sxq7zsu-T9uGX4PkL9_r0YTN7GDT7/view' }],
+		links: [{ label: 'Video demo', url: 'https://cdn.arbenger.com/public/SmartDoorLockDemo.mp4' }],
+		cover: '/projects/door-lock-module/cover.png',
 		video: {
-			embedUrl: 'https://drive.google.com/file/d/1nP0sxq7zsu-T9uGX4PkL9_r0YTN7GDT7/preview',
+			embedUrl: 'https://cdn.arbenger.com/public/SmartDoorLockDemo.mp4',
 			title: 'Door Lock Module demo',
 		},
 		pdf: {
@@ -490,7 +491,7 @@ export const projects: PortfolioProject[] = [
 		],
 		cover: '/projects/virtual-piano/cover.jpg',
 		video: {
-			embedUrl: 'https://drive.google.com/file/d/1kvuu8uRPNqYt6ko-EPj1j5py4wnjiRsM/preview',
+			embedUrl: 'https://cdn.arbenger.com/public/virtual-piano-demo.mp4',
 			title: 'Virtual Piano By Arben — demo',
 		},
 		featured: true,
