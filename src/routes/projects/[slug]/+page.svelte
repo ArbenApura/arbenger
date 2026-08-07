@@ -98,7 +98,7 @@
 
 		<!-- COVER -->
 		<div class="mt-10 overflow-hidden rounded-2xl border border-[#E2E8F0] dark:border-[#2A2578]/60">
-			<ProjectCover {project} imageClass="aspect-video w-full object-cover" placeholderClass="aspect-video w-full" />
+			<ProjectCover {project} imageClass="aspect-video w-full object-cover" placeholderClass="aspect-video min-h-[240px] w-full" />
 		</div>
 
 		<!-- LINKS -->
@@ -223,7 +223,7 @@
 			<h2 class="font-display mt-3 text-2xl font-bold tracking-tight text-[#0F172A] dark:text-white">
 				{project.video.title}
 			</h2>
-			<div class="mt-6 aspect-video overflow-hidden rounded-2xl border border-[#E2E8F0] dark:border-[#2A2578]/60">
+			<div class="mt-6 aspect-video min-h-[240px] overflow-hidden rounded-2xl border border-[#E2E8F0] dark:border-[#2A2578]/60">
 				<iframe
 					src={project.video.embedUrl}
 					title={project.video.title}
