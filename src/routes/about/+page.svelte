@@ -47,7 +47,7 @@
 
 <MetaTags
 	title="About — Arben Apura, Full-Stack Web Developer"
-	description="Full-stack developer from San Jose Del Monte, Bulacan, Philippines. SvelteKit and Next.js specialist — web apps, AI tools, and Chrome extensions."
+	description="Full-stack developer from San Jose del Monte, Bulacan, Philippines. SvelteKit and Next.js specialist — web apps, AI tools, and Chrome extensions."
 	url="{SITE_URL}/about/"
 />
 
@@ -59,7 +59,7 @@
 		'@type': 'AboutPage',
 		name: 'About Arben Apura',
 		url: `${SITE_URL}/about/`,
-		description: 'Full-stack developer from San Jose Del Monte, Bulacan, Philippines. SvelteKit and Next.js specialist.',
+		description: 'Full-stack developer from San Jose del Monte, Bulacan, Philippines. SvelteKit and Next.js specialist.',
 		mainEntity: {
 			'@type': 'Person',
 			name: 'Arben M. Apura',
@@ -95,7 +95,7 @@
 		</h1>
 
 		<p class="mt-6 max-w-2xl text-lg text-[#475569] dark:text-slate-300">
-			Full-stack developer from San Jose Del Monte, Bulacan, Philippines. Remote-friendly, always building.
+			Full-stack developer from San Jose del Monte, Bulacan, Philippines. Remote-friendly, always building.
 		</p>
 	</div>
 </section>

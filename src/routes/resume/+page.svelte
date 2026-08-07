@@ -66,7 +66,7 @@
 				Full-Stack Developer
 			</p>
 			<p class="mt-3 text-[10pt] leading-relaxed text-[#334155]">
-				arbenapura.official@gmail.com | +63 976 430 4619 | San Jose Del Monte, Bulacan 3023, Philippines · Remote
+				arbenapura.official@gmail.com | +63 976 430 4619 | San Jose del Monte, Bulacan 3023, Philippines · Remote
 				<br />
 				github.com/ArbenApura | arbenger.com
 			</p>

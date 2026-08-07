@@ -39,7 +39,7 @@
 		telephone: '+639764304619',
 		address: {
 			'@type': 'PostalAddress',
-			addressLocality: 'San Jose Del Monte',
+			addressLocality: 'San Jose del Monte',
 			addressRegion: 'Bulacan',
 			addressCountry: 'PH',
 		},

@@ -108,7 +108,7 @@
 					</div>
 					<div>
 						<h2 class="font-display text-sm font-bold tracking-tight text-[#0F172A] dark:text-white">Location</h2>
-						<p class="mt-0.5 text-sm text-[#64748B] dark:text-slate-400">San Jose Del Monte, Bulacan, PH · Remote</p>
+						<p class="mt-0.5 text-sm text-[#64748B] dark:text-slate-400">San Jose del Monte, Bulacan, PH · Remote</p>
 					</div>
 				</div>
 			</div>
