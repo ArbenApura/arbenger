@@ -304,4 +304,13 @@ input[type='number'] {
 	.resume-section {
 		break-inside: avoid;
 	}
+
+	/* Tighten resume sheet spacing so it fits one US-Letter page (screen layout unchanged) */
+	.resume-sheet .resume-section {
+		margin-top: 6px !important;
+	}
+
+	.resume-sheet header p {
+		margin-top: 2px !important;
+	}
 }

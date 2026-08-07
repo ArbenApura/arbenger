@@ -13,7 +13,7 @@
 </script>
 
 <!-- FOOTER -->
-<footer class="border-t border-[#E2E8F0] bg-white dark:border-[#2A2578] dark:bg-[#0B0A23]">
+<footer class="border-t border-[#E2E8F0] bg-white print:hidden dark:border-[#2A2578] dark:bg-[#0B0A23]">
 	<div class="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
 		<!-- FOOTER GRID: STACKED ON MOBILE, 4 COLUMNS ON DESKTOP -->
 		<div class="grid gap-8 md:grid-cols-4">

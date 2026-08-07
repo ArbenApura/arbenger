@@ -82,6 +82,7 @@
 		isScrolled || isMobileMenuOpen || activePopover
 			? 'border-[#F1F5F9] bg-white/95 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-lg dark:border-[#2A2578] dark:bg-[#0B0A23]/95 dark:shadow-none'
 			: 'border-transparent bg-transparent',
+		'print:hidden',
 	)}
 >
 	<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
